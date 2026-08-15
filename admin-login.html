@@ -1373,6 +1373,8 @@
 
   /* ===== ADMIN SHELL — content (left) + static sticky nav+stats rail (right) ===== */
   .admin-shell{display:flex;gap:28px;align-items:flex-start;}
+  .admin-content{order:2;}
+  .admin-nav{order:1;}
   .admin-content{flex:1;min-width:0;}
   .admin-section{display:none;}
   .admin-section.active{display:block;animation:fadein .2s ease;}
@@ -1421,9 +1423,9 @@
       border:1.5px solid var(--line);background:#fff;color:var(--ink);
     }
     .admin-nav{
-      position:fixed;top:0;right:0;height:100vh;width:78vw;max-width:300px;z-index:2100;
-      border-radius:0;border:none;box-shadow:-8px 0 24px rgba(0,0,0,.18);
-      transform:translateX(100%);transition:transform .28s ease;
+      position:fixed;top:0;left:0;height:100vh;width:78vw;max-width:300px;z-index:2100;
+      border-radius:0;border:none;box-shadow:8px 0 24px rgba(0,0,0,.18);
+      transform:translateX(-100%);transition:transform .28s ease;
     }
     .admin-nav.open{transform:translateX(0);}
     .admin-nav-overlay{
