@@ -1371,25 +1371,38 @@
 
   .spinner-dark{display:none;width:15px;height:15px;border:2px solid rgba(19,35,61,.2);border-top-color:var(--ink);border-radius:50%;animation:spin .7s linear infinite;}
 
-  /* ===== ADMIN SHELL — right-side nav + sections ===== */
-  .admin-shell{display:flex;gap:32px;align-items:flex-start;}
+  /* ===== ADMIN SHELL — content (left) + static sticky nav+stats rail (right) ===== */
+  .admin-shell{display:flex;gap:28px;align-items:flex-start;}
   .admin-content{flex:1;min-width:0;}
   .admin-section{display:none;}
-  .admin-section.active{display:block;animation:fadein .25s ease;}
+  .admin-section.active{display:block;animation:fadein .2s ease;}
   .section-head{margin-bottom:22px;}
   .section-head h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--ink);margin-bottom:6px;}
   .section-head p{font-size:.86rem;color:var(--slate-soft);}
-  .admin-subhead{font-family:'Sora',sans-serif;font-size:.95rem;font-weight:700;color:var(--ink);margin:8px 0 14px;}
+  .admin-subhead{font-family:'Sora',sans-serif;font-size:.85rem;font-weight:700;color:var(--ink);margin:4px 0 12px;text-transform:uppercase;letter-spacing:.06em;}
 
   .admin-nav-toggle{display:none;}
   .admin-nav-overlay{display:none;}
 
+  /* This rail is sticky and always visible — it does NOT change when you switch
+     sections, so it never scrolls the page or disappears. It sits right after
+     the topbar, on the right, exactly where it was asked to be. */
   .admin-nav{
-    width:230px;flex-shrink:0;background:#fff;border:1px solid var(--line);border-radius:4px;
-    padding:14px;position:sticky;top:100px;display:flex;flex-direction:column;gap:2px;
+    width:240px;flex-shrink:0;background:#fff;border:1px solid var(--line);border-radius:4px;
+    padding:16px;position:sticky;top:100px;display:flex;flex-direction:column;gap:2px;
+    max-height:calc(100vh - 120px);overflow-y:auto;
   }
-  .admin-nav-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--slate-soft);padding:14px 10px 6px;}
-  .admin-nav-label:first-child{padding-top:6px;}
+  .admin-nav-stats{display:flex;flex-direction:column;gap:1px;margin-bottom:14px;border-radius:4px;overflow:hidden;}
+  .admin-nav-stat{
+    display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+    padding:11px 12px;background:var(--parchment);border-left:3px solid var(--gold);
+  }
+  .admin-nav-stat.pending{border-left-color:#c98a2e;}
+  .admin-nav-stat.approved{border-left-color:#2e7d46;}
+  .admin-nav-stat.rejected{border-left-color:var(--burgundy);}
+  .admin-nav-stat-num{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--ink);flex-shrink:0;}
+  .admin-nav-stat-lbl{font-size:.7rem;color:var(--slate-soft);text-transform:uppercase;letter-spacing:.05em;font-weight:600;text-align:right;}
+  .admin-nav-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--slate-soft);padding:6px 10px 6px;}
   .admin-nav-item{
     display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;text-align:left;
     padding:10px 12px;border-radius:3px;font-family:'Sora',sans-serif;font-size:.85rem;font-weight:600;
@@ -1410,7 +1423,7 @@
     .admin-nav{
       position:fixed;top:0;right:0;height:100vh;width:78vw;max-width:300px;z-index:2100;
       border-radius:0;border:none;box-shadow:-8px 0 24px rgba(0,0,0,.18);
-      transform:translateX(100%);transition:transform .28s ease;overflow-y:auto;
+      transform:translateX(100%);transition:transform .28s ease;
     }
     .admin-nav.open{transform:translateX(0);}
     .admin-nav-overlay{
@@ -1418,6 +1431,9 @@
     }
     .admin-nav-overlay.open{display:block;}
   }
+
+  /* ---- cascading "Send To" targeting selector (Materials / Videos / Notice forms) ---- */
+  .audience-sub{display:none;margin-top:14px;}
 
   /* ===== admin content forms + lists (materials / videos / noticeboard) ===== */
   .admin-form-card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:24px;margin-bottom:26px;}
@@ -1444,17 +1460,6 @@
   }
   .admin-list-item-actions button:hover{background:var(--burgundy);color:#fff;}
   .cat-tag{display:inline-block;background:var(--parchment);color:var(--ink);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 9px;border-radius:20px;margin-right:8px;}
-
-  .recent-row{
-    display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);
-  }
-  .recent-row:last-child{border-bottom:none;}
-  .recent-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--parchment);}
-  .recent-avatar-initials{width:38px;height:38px;border-radius:50%;background:var(--charcoal);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:.8rem;flex-shrink:0;}
-  .recent-info{flex:1;min-width:0;}
-  .recent-name{font-family:'Sora',sans-serif;font-weight:700;font-size:.86rem;color:var(--ink);}
-  .recent-track{font-size:.78rem;color:var(--slate-soft);}
-  .recent-date{font-size:.76rem;color:var(--slate-soft);flex-shrink:0;}
 
   .session-check{text-align:center;padding:60px 20px;color:var(--slate-soft);font-size:.88rem;}
   .session-check .spinner-dark{display:inline-block;margin-right:8px;vertical-align:middle;}
@@ -1656,33 +1661,8 @@
       <div class="admin-shell">
         <div class="admin-content" id="adminContent">
 
-          <!-- ───── OVERVIEW ───── -->
-          <div class="admin-section active" id="section-overview">
-            <div class="stat-cards">
-              <div class="stat-card">
-                <div class="stat-num" id="statTotal">0</div>
-                <div class="stat-lbl">Total Applications</div>
-              </div>
-              <div class="stat-card pending">
-                <div class="stat-num" id="statPending">0</div>
-                <div class="stat-lbl">Pending Review</div>
-              </div>
-              <div class="stat-card approved">
-                <div class="stat-num" id="statApproved">0</div>
-                <div class="stat-lbl">Approved Members</div>
-              </div>
-              <div class="stat-card rejected">
-                <div class="stat-num" id="statRejected">0</div>
-                <div class="stat-lbl">Rejected</div>
-              </div>
-            </div>
-            <div class="admin-subhead">Recent Applications</div>
-            <div id="recentAppsList"></div>
-            <div class="empty-state" id="recentAppsEmpty" style="display:none;">No applications yet.</div>
-          </div>
-
           <!-- ───── APPLICATIONS (existing approve/reject workflow — unchanged) ───── -->
-          <div class="admin-section" id="section-applications">
+          <div class="admin-section active" id="section-applications">
             <div class="section-head">
               <h2>Applications</h2>
               <p>Review, approve, or reject membership and qualification applications.</p>
@@ -1704,22 +1684,36 @@
           <div class="admin-section" id="section-materials">
             <div class="section-head">
               <h2>Study Materials</h2>
-              <p>Share reading materials or resource links with approved members. Paste a link (Google Drive, Dropbox, etc.) rather than uploading a file directly.</p>
+              <p>Upload documents for approved members. Files are hosted on Cloudinary, not Firebase.</p>
             </div>
             <div class="admin-form-card">
               <div class="reg-row c2">
                 <div class="reg-field"><label>Title</label><input type="text" id="matTitle" placeholder="e.g. RPL Portfolio Guidelines"></div>
-                <div class="reg-field"><label>Category</label>
-                  <select id="matCategory">
-                    <option value="general">General</option>
+                <div class="reg-field"><label>Send To</label>
+                  <select id="matCategory" onchange="updateTargeting('mat')">
+                    <option value="general">General (All Members)</option>
                     <option value="membership">Membership Grades</option>
                     <option value="practitioner">Practitioner Qualifications</option>
                     <option value="specialist">Specialist Qualifications</option>
                   </select>
                 </div>
               </div>
+              <div class="reg-row c1" id="matTrackRow" style="display:none;">
+                <div class="reg-field">
+                  <label>Specific Grade / Designation</label>
+                  <select id="matTrack"><option value="">All in this category</option></select>
+                </div>
+              </div>
               <div class="reg-row c1">
-                <div class="reg-field"><label>Link</label><input type="text" id="matLink" placeholder="https://drive.google.com/…"></div>
+                <div class="reg-field">
+                  <label>File</label>
+                  <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+                    <label for="matFile" style="display:inline-block;padding:10px 20px;border:1.5px solid var(--line);border-radius:2px;font-family:'Sora',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink);cursor:pointer;">Choose File</label>
+                    <input type="file" id="matFile" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx" style="display:none;" onchange="uploadMaterialFile()">
+                    <span id="matUploadStatus" style="font-size:.82rem;color:var(--slate-soft);"></span>
+                  </div>
+                  <div class="reg-hint">PDF, Word, Excel, or PowerPoint. Max 10MB.</div>
+                </div>
               </div>
               <div class="reg-row c1">
                 <div class="reg-field"><label>Description (optional)</label><textarea id="matDesc" rows="2"></textarea></div>
@@ -1741,13 +1735,19 @@
             <div class="admin-form-card">
               <div class="reg-row c2">
                 <div class="reg-field"><label>Title</label><input type="text" id="vidTitle" placeholder="e.g. Welcome to CIMS"></div>
-                <div class="reg-field"><label>Category</label>
-                  <select id="vidCategory">
-                    <option value="general">General</option>
+                <div class="reg-field"><label>Send To</label>
+                  <select id="vidCategory" onchange="updateTargeting('vid')">
+                    <option value="general">General (All Members)</option>
                     <option value="membership">Membership Grades</option>
                     <option value="practitioner">Practitioner Qualifications</option>
                     <option value="specialist">Specialist Qualifications</option>
                   </select>
+                </div>
+              </div>
+              <div class="reg-row c1" id="vidTrackRow" style="display:none;">
+                <div class="reg-field">
+                  <label>Specific Grade / Designation</label>
+                  <select id="vidTrack"><option value="">All in this category</option></select>
                 </div>
               </div>
               <div class="reg-row c1">
@@ -1771,8 +1771,22 @@
               <p>Post text announcements that all approved members will see on their dashboard.</p>
             </div>
             <div class="admin-form-card">
-              <div class="reg-row c1">
+              <div class="reg-row c2">
                 <div class="reg-field"><label>Notice Title</label><input type="text" id="noticeTitle" placeholder="e.g. CPD Deadline Reminder"></div>
+                <div class="reg-field"><label>Send To</label>
+                  <select id="noticeCategory" onchange="updateTargeting('notice')">
+                    <option value="general">General (All Members)</option>
+                    <option value="membership">Membership Grades</option>
+                    <option value="practitioner">Practitioner Qualifications</option>
+                    <option value="specialist">Specialist Qualifications</option>
+                  </select>
+                </div>
+              </div>
+              <div class="reg-row c1" id="noticeTrackRow" style="display:none;">
+                <div class="reg-field">
+                  <label>Specific Grade / Designation</label>
+                  <select id="noticeTrack"><option value="">All in this category</option></select>
+                </div>
               </div>
               <div class="reg-row c1">
                 <div class="reg-field"><label>Message</label><textarea id="noticeBody" rows="4"></textarea></div>
@@ -1782,6 +1796,7 @@
               </label>
               <button class="reg-btn-submit" onclick="postNotice()">
                 <span id="noticeBtnText">Post Notice</span><span class="spinner" id="noticeSpinner"></span>
+
               </button>
             </div>
             <div class="admin-list" id="noticeList"></div>
@@ -1792,11 +1807,26 @@
 
         <div class="admin-nav-overlay" id="adminNavOverlay" onclick="toggleAdminNav()"></div>
         <nav class="admin-nav" id="adminNav">
-          <div class="admin-nav-label">Overview</div>
-          <button class="admin-nav-item active" data-section="overview" onclick="setSection('overview')">Dashboard</button>
-          <div class="admin-nav-label">Enrolments</div>
-          <button class="admin-nav-item" data-section="applications" onclick="setSection('applications')">Applications <span class="count" id="navCountPending">0</span></button>
-          <div class="admin-nav-label">Content</div>
+          <div class="admin-nav-stats">
+            <div class="admin-nav-stat">
+              <span class="admin-nav-stat-num" id="statTotal">0</span>
+              <span class="admin-nav-stat-lbl">Total Applications</span>
+            </div>
+            <div class="admin-nav-stat pending">
+              <span class="admin-nav-stat-num" id="statPending">0</span>
+              <span class="admin-nav-stat-lbl">Pending Review</span>
+            </div>
+            <div class="admin-nav-stat approved">
+              <span class="admin-nav-stat-num" id="statApproved">0</span>
+              <span class="admin-nav-stat-lbl">Approved Members</span>
+            </div>
+            <div class="admin-nav-stat rejected">
+              <span class="admin-nav-stat-num" id="statRejected">0</span>
+              <span class="admin-nav-stat-lbl">Rejected</span>
+            </div>
+          </div>
+          <div class="admin-nav-label">Sections</div>
+          <button class="admin-nav-item active" data-section="applications" onclick="setSection('applications')">Applications <span class="count" id="navCountPending">0</span></button>
           <button class="admin-nav-item" data-section="materials" onclick="setSection('materials')">Study Materials</button>
           <button class="admin-nav-item" data-section="videos" onclick="setSection('videos')">Videos</button>
           <button class="admin-nav-item" data-section="notice" onclick="setSection('notice')">Noticeboard</button>
@@ -2019,6 +2049,55 @@
   let currentTab = 'pending';
   let currentUid = null;
 
+  // ---------- CLOUDINARY (unsigned upload — no API secret used, ever) ----------
+  // Replace CLOUDINARY_PRESET below with the unsigned preset name from your Cloudinary
+  // dashboard (Settings → Upload → Upload presets → Signing Mode: Unsigned).
+  const CLOUDINARY_CLOUD_NAME = 'ukvzu4uo';
+  const CLOUDINARY_PRESET = 'cims_materials';
+  let uploadedMaterialFile = null; // { url, name, bytes, format }
+
+  // ---------- CASCADING "SEND TO" TARGETING (materials / videos / notices) ----------
+  const MEMBERSHIP_GRADES = [
+    'Associate Member (ACIMS)', 'Chartered Member (MCIMS)', 'Chartered Fellow (FCIMS)', 'Chartered Doctoral Fellow (DCIMS)'
+  ];
+  const PRACTITIONER_TRACKS = [
+    'Chartered Project Manager','Chartered Operations Manager','Chartered Project Management Officer (PMO)',
+    'Chartered HR Manager','Chartered Project Cost Control Manager','Chartered Sales and Marketing Manager',
+    'Chartered Doctor of Business Administration','Chartered Global Supply Chain and Logistics Manager',
+    'Chartered Business Continuity Manager','Chartered Healthcare Information Manager','Chartered Safety Manager',
+    'Chartered Fire & Safety Manager','Chartered Office Manager','Chartered Sales Manager',
+    'Chartered Healthcare Quality Improvement Manager','Chartered Procurement Manager','Chartered Contract Manager',
+    'Chartered Bids and Proposal Manager','Chartered Compliance Manager','Chartered Contract Administrator',
+    'Chartered Strategy Manager','Chartered Healthcare Risk Manager','Chartered Healthcare Facility Manager',
+    'Chartered Governance Manager','Chartered Claims Manager','Chartered Digital Marketing Manager',
+    'Chartered Data Analytics Manager','Chartered Healthcare Administration Manager','Chartered Energy Manager',
+    'Chartered Project Risk Manager','Chartered Sustainability Manager','Chartered Strategic Management Professional',
+    'Chartered Oil and Gas Management Professional','Chartered IT Manager','Chartered Recruitment Manager',
+    'Chartered Sustainable Supply Chain Professional','Chartered Financial Risk Manager','Chartered Energy Risk Manager',
+    'Chartered Human Resource Professional','Chartered Marketing and Branding Professional','Chartered Facilities Manager'
+  ];
+  const SPECIALIST_TRACKS = [
+    'Chartered Human Resource Management Specialist','Chartered Leadership and Strategic Planning Specialist',
+    'Chartered International Trade & Logistics Specialist','Chartered Quality Management Specialist',
+    'Chartered Management Specialist','Chartered Business Specialist','Chartered Agile and Scrum Specialist',
+    'Chartered Supply Chain Management Specialist','Chartered Health and Safety Management Specialist',
+    'Chartered Training and Development Management Specialist','Chartered Transportation and Pipeline Logistics Management Specialist',
+    'Chartered Operations & Production Management Specialist','Chartered Oil Stock Manager'
+  ];
+  function populateTrackSelect(selectEl, options){
+    selectEl.innerHTML = '<option value="">All in this category</option>' +
+      options.map(o => `<option value="${o}">${o}</option>`).join('');
+  }
+  window.updateTargeting = function updateTargeting(prefix){
+    const cat = document.getElementById(prefix + 'Category').value;
+    const row = document.getElementById(prefix + 'TrackRow');
+    const trackSelect = document.getElementById(prefix + 'Track');
+    if (cat === 'membership'){ populateTrackSelect(trackSelect, MEMBERSHIP_GRADES); row.style.display = 'block'; }
+    else if (cat === 'practitioner'){ populateTrackSelect(trackSelect, PRACTITIONER_TRACKS); row.style.display = 'block'; }
+    else if (cat === 'specialist'){ populateTrackSelect(trackSelect, SPECIALIST_TRACKS); row.style.display = 'block'; }
+    else { trackSelect.innerHTML = '<option value="">All in this category</option>'; row.style.display = 'none'; }
+  };
+
   // ---------- SESSION / BFCACHE FIX ----------
   // Bug this addresses: navigating away from this tab (or hitting Back) and returning could
   // restore the page from the browser's back-forward cache instead of re-running this script,
@@ -2132,7 +2211,6 @@
       snap.forEach(d => allApps.push({ id: d.id, ...d.data() }));
       updateStats();
       renderApplications();
-      renderRecentApps();
     } catch (err){
       console.error(err);
       grid.innerHTML = `<div class="empty-state">Couldn't load applications. <a onclick="loadApplications()" style="color:var(--burgundy);font-weight:700;cursor:pointer;">Retry</a></div>`;
@@ -2141,45 +2219,74 @@
   };
 
   // ---------- RIGHT-SIDE NAV (section switching) ----------
+  // No scrollTo here anymore — the sidebar (with stats) is sticky and always visible,
+  // so there's no need to jerk the page back to the top on every click.
   window.setSection = function setSection(name){
     document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
     document.getElementById('section-' + name).classList.add('active');
     document.querySelectorAll('.admin-nav-item').forEach(n => n.classList.toggle('active', n.dataset.section === name));
     document.getElementById('adminNav').classList.remove('open');
     document.getElementById('adminNavOverlay').classList.remove('open');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   window.toggleAdminNav = function toggleAdminNav(){
     document.getElementById('adminNav').classList.toggle('open');
     document.getElementById('adminNavOverlay').classList.toggle('open');
   };
 
-  // ---------- RECENT APPLICATIONS (overview) ----------
-  function renderRecentApps(){
-    const list = document.getElementById('recentAppsList');
-    const empty = document.getElementById('recentAppsEmpty');
-    document.getElementById('navCountPending').textContent = allApps.filter(a => a.status === 'pending').length;
-    const recent = [...allApps].sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0)).slice(0, 6);
-    if (recent.length === 0){ list.innerHTML = ''; empty.style.display = 'block'; return; }
-    empty.style.display = 'none';
-    list.innerHTML = recent.map(a => {
-      const avatar = a.photoBase64
-        ? `<img class="recent-avatar" src="${a.photoBase64}">`
-        : `<div class="recent-avatar-initials">${initials(a.fullName)}</div>`;
-      return `
-        <div class="recent-row">
-          ${avatar}
-          <div class="recent-info">
-            <div class="recent-name">${a.fullName || '—'}</div>
-            <div class="recent-track">${a.track || '—'}</div>
-          </div>
-          <span class="status-badge ${a.status}">${a.status}</span>
-          <span class="recent-date">${fmtDate(a.createdAt)}</span>
-        </div>`;
-    }).join('');
-  }
-
   // ---------- STUDY MATERIALS ----------
+  window.uploadMaterialFile = function uploadMaterialFile(){
+    const fileInput = document.getElementById('matFile');
+    const file = fileInput.files[0];
+    const status = document.getElementById('matUploadStatus');
+    if (!file) return;
+    if (file.size > 10 * 1024 * 1024){
+      status.textContent = 'File too large (max 10MB).';
+      status.style.color = 'var(--burgundy)';
+      fileInput.value = '';
+      return;
+    }
+    if (CLOUDINARY_PRESET === 'REPLACE_WITH_YOUR_UNSIGNED_PRESET_NAME'){
+      status.textContent = '⚠️ Cloudinary preset not configured yet.';
+      status.style.color = 'var(--burgundy)';
+      fileInput.value = '';
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', CLOUDINARY_PRESET);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/auto/upload`, true);
+    status.style.color = 'var(--slate-soft)';
+    status.textContent = 'Uploading… 0%';
+
+    xhr.upload.onprogress = (e) => {
+      if (e.lengthComputable){
+        const pct = Math.round((e.loaded / e.total) * 100);
+        status.textContent = `Uploading… ${pct}%`;
+      }
+    };
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300){
+        const data = JSON.parse(xhr.responseText);
+        uploadedMaterialFile = { url: data.secure_url, name: file.name, bytes: data.bytes, format: data.format };
+        status.textContent = `✅ ${file.name} uploaded`;
+        status.style.color = '#215c33';
+      } else {
+        status.textContent = 'Upload failed. Please try again.';
+        status.style.color = 'var(--burgundy)';
+        fileInput.value = '';
+      }
+    };
+    xhr.onerror = () => {
+      status.textContent = 'Upload failed — check your connection.';
+      status.style.color = 'var(--burgundy)';
+      fileInput.value = '';
+    };
+    xhr.send(formData);
+  };
+
   window.loadMaterials = async function loadMaterials(){
     try {
       const snap = await getDocs(collection(db, 'materials'));
@@ -2197,28 +2304,35 @@
     list.innerHTML = sorted.map(m => `
       <div class="admin-list-item">
         <div class="admin-list-item-body">
-          <div class="admin-list-item-title"><span class="cat-tag">${appTypeLabel(m.category) || 'General'}</span>${m.title || 'Untitled'}</div>
-          <div class="admin-list-item-meta">Posted ${fmtDate(m.createdAt)}</div>
+          <div class="admin-list-item-title"><span class="cat-tag">${targetLabel(m.category, m.track)}</span>${m.title || 'Untitled'}</div>
+          <div class="admin-list-item-meta">Posted ${fmtDate(m.createdAt)}${m.fileName ? ' · ' + m.fileName : ''}</div>
           ${m.description ? `<div class="admin-list-item-desc">${m.description}</div>` : ''}
-          <a class="admin-list-item-link" href="${m.link}" target="_blank" rel="noopener">${m.link}</a>
+          <a class="admin-list-item-link" href="${m.fileUrl}" target="_blank" rel="noopener">Open File &rarr;</a>
         </div>
         <div class="admin-list-item-actions"><button onclick="deleteMaterial('${m.id}')">Delete</button></div>
       </div>`).join('');
   }
   window.addMaterial = async function addMaterial(){
     const title = document.getElementById('matTitle').value.trim();
-    const link = document.getElementById('matLink').value.trim();
     const category = document.getElementById('matCategory').value;
+    const track = document.getElementById('matTrack').value;
     const description = document.getElementById('matDesc').value.trim();
-    if (!title || !link){ showToast('Title and link are required.', 'error'); return; }
+    if (!title || !uploadedMaterialFile){ showToast('Title and a successfully uploaded file are required.', 'error'); return; }
     const btnText = document.getElementById('matBtnText');
     const spinner = document.getElementById('matSpinner');
     btnText.textContent = 'Posting…'; spinner.style.display = 'inline-block';
     try {
-      await addDoc(collection(db, 'materials'), { title, link, category, description, createdAt: serverTimestamp(), createdBy: currentUid });
+      await addDoc(collection(db, 'materials'), {
+        title, category, track, description,
+        fileUrl: uploadedMaterialFile.url, fileName: uploadedMaterialFile.name,
+        fileFormat: uploadedMaterialFile.format, fileBytes: uploadedMaterialFile.bytes,
+        createdAt: serverTimestamp(), createdBy: currentUid
+      });
       document.getElementById('matTitle').value = '';
-      document.getElementById('matLink').value = '';
       document.getElementById('matDesc').value = '';
+      document.getElementById('matFile').value = '';
+      document.getElementById('matUploadStatus').textContent = '';
+      uploadedMaterialFile = null;
       showToast('Material posted.', 'success');
       loadMaterials();
     } catch (err){ console.error(err); showToast('Failed to post material.', 'error'); }
@@ -2247,7 +2361,7 @@
     list.innerHTML = sorted.map(v => `
       <div class="admin-list-item">
         <div class="admin-list-item-body">
-          <div class="admin-list-item-title"><span class="cat-tag">${appTypeLabel(v.category) || 'General'}</span>${v.title || 'Untitled'}</div>
+          <div class="admin-list-item-title"><span class="cat-tag">${targetLabel(v.category, v.track)}</span>${v.title || 'Untitled'}</div>
           <div class="admin-list-item-meta">Posted ${fmtDate(v.createdAt)}</div>
           ${v.description ? `<div class="admin-list-item-desc">${v.description}</div>` : ''}
           <a class="admin-list-item-link" href="${v.link}" target="_blank" rel="noopener">${v.link}</a>
@@ -2259,13 +2373,14 @@
     const title = document.getElementById('vidTitle').value.trim();
     const link = document.getElementById('vidLink').value.trim();
     const category = document.getElementById('vidCategory').value;
+    const track = document.getElementById('vidTrack').value;
     const description = document.getElementById('vidDesc').value.trim();
     if (!title || !link){ showToast('Title and video link are required.', 'error'); return; }
     const btnText = document.getElementById('vidBtnText');
     const spinner = document.getElementById('vidSpinner');
     btnText.textContent = 'Posting…'; spinner.style.display = 'inline-block';
     try {
-      await addDoc(collection(db, 'videos'), { title, link, category, description, createdAt: serverTimestamp(), createdBy: currentUid });
+      await addDoc(collection(db, 'videos'), { title, link, category, track, description, createdAt: serverTimestamp(), createdBy: currentUid });
       document.getElementById('vidTitle').value = '';
       document.getElementById('vidLink').value = '';
       document.getElementById('vidDesc').value = '';
@@ -2300,7 +2415,7 @@
     list.innerHTML = sorted.map(n => `
       <div class="admin-list-item">
         <div class="admin-list-item-body">
-          <div class="admin-list-item-title">${n.pinned ? '<span class="pin">📌</span>' : ''}${n.title || 'Untitled'}</div>
+          <div class="admin-list-item-title">${n.pinned ? '<span class="pin">📌</span>' : ''}<span class="cat-tag">${targetLabel(n.category, n.track)}</span>${n.title || 'Untitled'}</div>
           <div class="admin-list-item-meta">Posted ${fmtDate(n.createdAt)}</div>
           <div class="admin-list-item-desc">${n.body || ''}</div>
         </div>
@@ -2310,13 +2425,15 @@
   window.postNotice = async function postNotice(){
     const title = document.getElementById('noticeTitle').value.trim();
     const body = document.getElementById('noticeBody').value.trim();
+    const category = document.getElementById('noticeCategory').value;
+    const track = document.getElementById('noticeTrack').value;
     const pinned = document.getElementById('noticePin').checked;
     if (!title || !body){ showToast('Title and message are required.', 'error'); return; }
     const btnText = document.getElementById('noticeBtnText');
     const spinner = document.getElementById('noticeSpinner');
     btnText.textContent = 'Posting…'; spinner.style.display = 'inline-block';
     try {
-      await addDoc(collection(db, 'notices'), { title, body, pinned, createdAt: serverTimestamp(), createdBy: currentUid });
+      await addDoc(collection(db, 'notices'), { title, body, category, track, pinned, createdAt: serverTimestamp(), createdBy: currentUid });
       document.getElementById('noticeTitle').value = '';
       document.getElementById('noticeBody').value = '';
       document.getElementById('noticePin').checked = false;
@@ -2343,6 +2460,7 @@
     document.getElementById('tabCountApproved').textContent = approved;
     document.getElementById('tabCountRejected').textContent = rejected;
     document.getElementById('tabCountAll').textContent = total;
+    document.getElementById('navCountPending').textContent = pending;
   }
 
   window.setTab = function setTab(tab){
@@ -2361,6 +2479,11 @@
   }
   function appTypeLabel(type){
     return { membership:'Membership Grade', practitioner:'Practitioner Qualification', specialist:'Specialist Qualification' }[type] || type || '—';
+  }
+  function targetLabel(category, track){
+    if (track) return track;
+    if (!category || category === 'general') return 'General';
+    return appTypeLabel(category);
   }
 
   window.renderApplications = function renderApplications(){
