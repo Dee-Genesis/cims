@@ -1639,11 +1639,6 @@
       </div>
     </div>
 
-    <!-- ═══ SESSION CHECK (shown briefly on load / after bfcache restore) ═══ -->
-    <div class="session-check" id="sessionCheck" style="display:none;">
-      <span class="spinner-dark" style="display:inline-block;"></span>Checking your session…
-    </div>
-
     <!-- ═══ DASHBOARD SCREEN ═══ -->
     <div id="dashboardScreen">
       <div class="admin-topbar">
@@ -2049,6 +2044,30 @@
   let currentTab = 'pending';
   let currentUid = null;
 
+  // ---------- IDLE / INACTIVITY AUTO SIGN-OUT ----------
+  // If you're away from this tab for longer than IDLE_TIMEOUT_MS, you'll be signed out
+  // and need to log in again — even though Firebase itself would otherwise keep you signed
+  // in indefinitely. Change the number below if you want a different window (currently 45 min).
+  const IDLE_TIMEOUT_MS = 45 * 60 * 1000;
+  const LAST_ACTIVE_KEY = 'cims_admin_last_active';
+  function markActive(){ localStorage.setItem(LAST_ACTIVE_KEY, Date.now().toString()); }
+  function getIdleMs(){
+    const last = parseInt(localStorage.getItem(LAST_ACTIVE_KEY) || '0', 10);
+    return Date.now() - last;
+  }
+  ['click','keydown','mousemove','scroll','touchstart'].forEach(evt => {
+    window.addEventListener(evt, markActive, { passive: true });
+  });
+  markActive();
+  // Also check periodically while the dashboard is open, in case you stay on the
+  // tab without navigating away or reloading — not just on return visits.
+  setInterval(() => {
+    if (currentUid && getIdleMs() > IDLE_TIMEOUT_MS){
+      signOut(auth);
+      showLoginAlert('Your session expired after a period of inactivity. Please sign in again.');
+    }
+  }, 60000);
+
   // ---------- CLOUDINARY (unsigned upload — no API secret used, ever) ----------
   // Replace CLOUDINARY_PRESET below with the unsigned preset name from your Cloudinary
   // dashboard (Settings → Upload → Upload presets → Signing Mode: Unsigned).
@@ -2098,29 +2117,15 @@
     else { trackSelect.innerHTML = '<option value="">All in this category</option>'; row.style.display = 'none'; }
   };
 
-  // ---------- SESSION / BFCACHE FIX ----------
+  // ---------- BFCACHE FIX ----------
   // Bug this addresses: navigating away from this tab (or hitting Back) and returning could
   // restore the page from the browser's back-forward cache instead of re-running this script,
-  // leaving Firebase's listeners dead — which showed up as "goes back to login and loads forever."
-  // Forcing a real reload when a bfcache restore is detected guarantees Firebase re-initialises cleanly.
+  // leaving Firebase's listeners dead. Forcing a real reload when that's detected guarantees
+  // Firebase re-initialises cleanly, without ever blocking the page on a "checking session"
+  // screen that could itself get stuck if the check never resolves.
   window.addEventListener('pageshow', (event) => {
     if (event.persisted) window.location.reload();
   });
-
-  // While Firebase determines whether you're already signed in, show a neutral
-  // "checking session" state instead of flashing the login form. If that check
-  // somehow never resolves (dead connection), offer a manual retry after 10s
-  // instead of leaving the page stuck.
-  document.getElementById('loginScreen').style.display = 'none';
-  document.getElementById('dashboardScreen').style.display = 'none';
-  document.getElementById('sessionCheck').style.display = 'block';
-  let authResolved = false;
-  setTimeout(() => {
-    if (!authResolved){
-      document.getElementById('sessionCheck').innerHTML =
-        'Taking longer than expected. <a onclick="window.location.reload()" style="color:var(--burgundy);font-weight:700;cursor:pointer;">Click to retry</a>';
-    }
-  }, 10000);
 
   function showToast(msg, type){
     const t = document.getElementById('toast');
@@ -2172,12 +2177,15 @@
   };
 
   onAuthStateChanged(auth, async (user) => {
-    authResolved = true;
-    document.getElementById('sessionCheck').style.display = 'none';
     if (!user){
       document.getElementById('loginScreen').style.display = 'flex';
       document.getElementById('dashboardScreen').style.display = 'none';
       currentUid = null;
+      return;
+    }
+    if (getIdleMs() > IDLE_TIMEOUT_MS){
+      await signOut(auth);
+      showLoginAlert('Your session expired after a period of inactivity. Please sign in again.');
       return;
     }
     const adminDoc = await getDoc(doc(db, 'admins', user.uid));
