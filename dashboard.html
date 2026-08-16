@@ -1792,6 +1792,16 @@
     return m ? `https://player.vimeo.com/video/${m[1]}` : null;
   }
 
+  // ---------- TIMEOUT HELPER ----------
+  // Wraps a Firestore call so a stalled network connection surfaces a visible
+  // retry option instead of leaving the page stuck on "Loading…" forever.
+  function withTimeout(promise, ms){
+    return Promise.race([
+      promise,
+      new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), ms))
+    ]);
+  }
+
   // ---------- AUTH GATE ----------
   // Re-checked on every load, not just once at login — an approved member who is later
   // suspended, or whose status otherwise changes, loses access immediately on next visit
@@ -1802,7 +1812,7 @@
       return;
     }
     try {
-      const appDoc = await getDoc(doc(db, 'applications', user.uid));
+      const appDoc = await withTimeout(getDoc(doc(db, 'applications', user.uid)), 12000);
       if (!appDoc.exists() || appDoc.data().status !== 'approved'){
         await signOut(auth);
         window.location.href = 'member-login.html';
@@ -1815,6 +1825,13 @@
       loadContent();
     } catch (err){
       console.error(err);
+      if (err.message === 'timeout'){
+        // Don't sign out or redirect on a mere network stall — that would punish
+        // someone with a slow connection by kicking them back to login. Offer a retry instead.
+        document.getElementById('dashLoading').innerHTML =
+          '<span>Taking longer than expected. <a onclick="window.location.reload()" style="color:var(--burgundy);font-weight:700;cursor:pointer;">Click to retry</a></span>';
+        return;
+      }
       await signOut(auth);
       window.location.href = 'member-login.html';
     }
@@ -1891,11 +1908,11 @@
   // ---------- CONTENT (materials / videos / notices) — filtered to this member ----------
   async function loadContent(){
     try {
-      const [matSnap, vidSnap, noticeSnap] = await Promise.all([
+      const [matSnap, vidSnap, noticeSnap] = await withTimeout(Promise.all([
         getDocs(collection(db, 'materials')),
         getDocs(collection(db, 'videos')),
         getDocs(collection(db, 'notices'))
-      ]);
+      ]), 15000);
       allMaterials = [];
       matSnap.forEach(d => allMaterials.push({ id: d.id, ...d.data() }));
       allMaterials = allMaterials.filter(isTargetedToMe);
@@ -1927,7 +1944,7 @@
       renderOverviewNotices();
     } catch (err){
       console.error(err);
-      showToast('Some content failed to load.', 'error');
+      showToast('Some content failed to load. Try refreshing the page.', 'error');
     }
   }
 
