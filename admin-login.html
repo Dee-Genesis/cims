@@ -1727,7 +1727,7 @@
           <div class="admin-section" id="section-videos">
             <div class="section-head">
               <h2>Videos</h2>
-              <p>Share YouTube or Vimeo links with approved members.</p>
+              <p>Share video links with approved members — YouTube, Vimeo, Google Classroom, or any other video URL.</p>
             </div>
             <div class="admin-form-card">
               <div class="reg-row c2">
@@ -1748,7 +1748,7 @@
                 </div>
               </div>
               <div class="reg-row c1">
-                <div class="reg-field"><label>Video Link (YouTube / Vimeo)</label><input type="text" id="vidLink" placeholder="https://youtube.com/watch?v=…"></div>
+                <div class="reg-field"><label>Video Link</label><input type="text" id="vidLink" placeholder="https://…"></div>
               </div>
               <div class="reg-row c1">
                 <div class="reg-field"><label>Description (optional)</label><textarea id="vidDesc" rows="2"></textarea></div>
@@ -2393,7 +2393,7 @@
   }
   window.addVideo = async function addVideo(){
     const title = document.getElementById('vidTitle').value.trim();
-    const link = document.getElementById('vidLink').value.trim();
+    const link = normalizeUrl(document.getElementById('vidLink').value.trim());
     const category = document.getElementById('vidCategory').value;
     const track = document.getElementById('vidTrack').value;
     const description = document.getElementById('vidDesc').value.trim();
@@ -2490,6 +2490,16 @@
     document.querySelectorAll('.admin-tab').forEach(t => t.classList.toggle('active', t.dataset.filter === tab));
     renderApplications();
   };
+
+  // A link typed without http:// or https:// (e.g. "www.facebook.com") gets treated
+  // by the browser as a path on this site instead of an external address, causing a 404
+  // on this site rather than opening the intended page. Normalize it before saving.
+  function normalizeUrl(url){
+    url = (url || '').trim();
+    if (!url) return url;
+    if (!/^https?:\/\//i.test(url)) return 'https://' + url;
+    return url;
+  }
 
   function initials(name){
     return (name || '?').split(' ').filter(Boolean).slice(0,2).map(w => w[0].toUpperCase()).join('');

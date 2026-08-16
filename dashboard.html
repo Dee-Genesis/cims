@@ -1758,6 +1758,15 @@
     setTimeout(() => { t.className = 'toast'; }, 3200);
   }
 
+  // Self-heals any link saved without http(s):// in front — otherwise the browser
+  // treats it as a path on this site (404) instead of the intended external address.
+  function normalizeUrl(url){
+    url = (url || '').trim();
+    if (!url) return url;
+    if (!/^https?:\/\//i.test(url)) return 'https://' + url;
+    return url;
+  }
+
   function initials(name){
     return (name || '?').split(' ').filter(Boolean).slice(0,2).map(w => w[0].toUpperCase()).join('');
   }
@@ -1960,7 +1969,7 @@
           <div class="content-card-meta">Posted ${fmtDate(m.createdAt)}${m.fileName ? ' · ' + m.fileName : ''}</div>
           ${m.description ? `<div class="content-card-desc">${m.description}</div>` : ''}
         </div>
-        <a class="content-card-cta" href="${m.fileUrl || m.link}" target="_blank" rel="noopener">Open &rarr;</a>
+        <a class="content-card-cta" href="${normalizeUrl(m.fileUrl || m.link)}" target="_blank" rel="noopener">Open &rarr;</a>
       </div>`).join('');
   }
 
@@ -1980,7 +1989,7 @@
           <div class="content-card-meta">Posted ${fmtDate(v.createdAt)}</div>
           ${v.description ? `<div class="content-card-desc">${v.description}</div>` : ''}
           ${player}
-          <a class="content-card-cta" href="${v.link}" target="_blank" rel="noopener">Watch on original site &rarr;</a>
+          <a class="content-card-cta" href="${normalizeUrl(v.link)}" target="_blank" rel="noopener">Watch on original site &rarr;</a>
         </div>`;
     }).join('');
   }
