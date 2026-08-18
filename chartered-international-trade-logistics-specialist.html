@@ -248,7 +248,7 @@
     font-weight:700;
     font-size:1.9rem;
     letter-spacing:.03em;
-    color:var(--ink);
+    color:#1C0D5B;
     line-height:1;
   }
   .nav-brand-text .fullname{
@@ -257,16 +257,26 @@
     font-size:.62rem;
     letter-spacing:.13em;
     text-transform:uppercase;
-    color:var(--burgundy);
+    color:#1C0D5B;
     line-height:1.55;
     margin-top:5px;
-    white-space:nowrap;
+    white-space:normal;
   }
   @media (max-width:700px){
     .nav-brand-text .acronym{font-size:1.3rem;}
     .nav-brand-text .fullname{font-size:.5rem;letter-spacing:.09em;}
   }
-  @media (max-width:420px){ .nav-brand-text .fullname{display:none;} }
+  @media (max-width:420px){
+    .brand{gap:10px;}
+    .nav-brand-text .acronym{font-size:1.1rem;}
+    .nav-brand-text .fullname{font-size:.42rem;letter-spacing:.05em;line-height:1.35;margin-top:3px;}
+  }
+  @media (max-width:360px){
+    .brand{gap:7px;}
+    .brand-mark{height:38px;}
+    .nav-brand-text .acronym{font-size:.95rem;}
+    .nav-brand-text .fullname{font-size:.36rem;letter-spacing:.03em;line-height:1.3;margin-top:2px;}
+  }
 
   nav.main{display:flex;align-items:center;}
   nav.main > ul{
@@ -1165,7 +1175,6 @@
         <li class="nav-item has-dropdown">
           <button class="nav-link" aria-expanded="false">Employers<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
           <div class="dropdown">
-            <a href="employers-corporate-membership.html">Corporate Membership</a>
             <a href="employers-hire-member.html">Hire a CIMS Member</a>
             <a href="accredited-training-partners.html">Accredited Training Partners</a>
             <a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a>
@@ -1231,7 +1240,6 @@
       <li class="has-sub">
         <button class="msub-toggle">Employers<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <ul class="msub">
-          <li><a href="employers-corporate-membership.html">Corporate Membership</a></li>
           <li><a href="employers-hire-member.html">Hire a CIMS Member</a></li>
           <li><a href="accredited-training-partners.html">Accredited Training Partners</a></li>
           <li><a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a></li>
@@ -1424,13 +1432,12 @@
       <a class="discipline-tile" href="chartered-quality-management-specialist.html">Quality Management (CQMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       <a class="discipline-tile" href="chartered-management-specialist.html">Management Specialist (CMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       <a class="discipline-tile" href="chartered-business-analyst-specialist.html">Business Specialist (CBS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-agile-and-scrum-specialist.html">Agile &amp; Scrum (CASS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="discipline-tile" href="chartered-agile-and-scrum-specialist.html">Agile &amp; Scrum (CASS&reg;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       <a class="discipline-tile" href="chartered-supply-chain-management-specialist.html">Supply Chain Management (CSCMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       <a class="discipline-tile" href="chartered-health-and-safety-management-specialist.html">Health &amp; Safety Management (CHSMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       <a class="discipline-tile" href="chartered-training-and-development-management-specialist.html">Training &amp; Development Management (CTDMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       <a class="discipline-tile" href="chartered-transportation-and-pipeline-logistics-management-specialist.html">Transportation &amp; Pipeline Logistics (CTPLMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       <a class="discipline-tile" href="chartered-operations-production-management-specialist.html">Operations &amp; Production Management (COPMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="specialist-qualifications.html">Oil Stock Manager (COSM&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -1500,7 +1507,6 @@
           <li><a href="specialist-qualifications.html">Specialist Qualifications</a></li>
           <li><a href="practitioner-qualifications.html">Practitioner Qualifications</a></li>
           <li><a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
-          <li><a href="employers-corporate-membership.html">Corporate Membership</a></li>
           <li><a href="employers-hire-member.html">Hire a CIMS Member</a></li>
         </ul>
       </div>

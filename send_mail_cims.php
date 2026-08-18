@@ -17,7 +17,7 @@ $phpMailerLoaded = loadPHPMailer();
 function clean($v) { return htmlspecialchars(strip_tags(trim($v)), ENT_QUOTES, 'UTF-8'); }
 
 // ── Which track is this submission? ──
-$track = clean($_POST['track'] ?? 'individual'); // 'individual' | 'partnership'
+$track = clean($_POST['track'] ?? 'individual'); // 'individual' | 'partnership' | 'upgrade'
 $ref   = clean($_POST['ref']   ?? '');
 
 $uploadDir = __DIR__ . '/uploads/cims-applications/';
@@ -207,7 +207,71 @@ if ($track === 'partnership') {
 }
 
 // =====================================================================
-// TRACK: INDIVIDUAL (membership / qualification / upgrade / cpd)
+// TRACK: UPGRADE (membership grade upgrade)
+// =====================================================================
+if ($track === 'upgrade') {
+
+    $upgradeGrade            = clean($_POST['upgradeGrade']            ?? '');
+    $currentMembershipNumber = clean($_POST['currentMembershipNumber'] ?? '');
+    $upgradeFullName         = clean($_POST['upgradeFullName']         ?? '');
+    $upgradeEmail            = filter_var(trim($_POST['upgradeEmail'] ?? ''), FILTER_VALIDATE_EMAIL);
+    $upgradePhone            = clean($_POST['upgradePhone']            ?? '');
+
+    if (!$upgradeGrade || !$currentMembershipNumber || !$upgradeFullName || !$upgradeEmail || !$ref) {
+        echo json_encode(['success' => false, 'message' => 'Missing required fields.']);
+        exit;
+    }
+
+    $uploads = [
+        'upload_currentcert'    => handleUpload('upload_currentcert',    $uploadDir, $ref, 5*1024*1024, $imgExts),
+        'upload_upgradesupport' => handleUpload('upload_upgradesupport', $uploadDir, $ref, 5*1024*1024, $docExts),
+    ];
+    $labels = [
+        'upload_currentcert'    => 'Latest Membership Certificate',
+        'upload_upgradesupport' => 'Supporting Document',
+    ];
+
+    $subject = "CIMS Membership Upgrade | {$upgradeFullName} [{$ref}]";
+
+    $body  = "CHARTERED INSTITUTE OF MANAGEMENT SPECIALISTS (CIMS), USA{$nl}";
+    $body .= "MEMBERSHIP UPGRADE SUBMISSION{$nl}";
+    $body .= $sep;
+    $body .= "Reference Number : {$ref}{$nl}";
+    $body .= "Submitted On     : {$now}{$nl}";
+    $body .= "New Grade        : {$upgradeGrade}{$nl}";
+    $body .= $sep . $nl;
+
+    $body .= "[ 1 ] CURRENT MEMBERSHIP DETAILS{$nl}" . $sub;
+    $body .= "Full Name               : {$upgradeFullName}{$nl}";
+    $body .= "Email Address           : {$upgradeEmail}{$nl}";
+    $body .= "Phone Number            : " . ($upgradePhone ?: 'Not provided') . "{$nl}";
+    $body .= "Current Membership No.  : {$currentMembershipNumber}{$nl}";
+    $body .= "New Membership Grade    : {$upgradeGrade}{$nl}";
+    $body .= $nl;
+
+    $body .= "[ 2 ] UPLOADED DOCUMENTS{$nl}" . $sub;
+    foreach ($uploads as $key => $up) {
+        $label = $labels[$key] ?? $key;
+        $body .= str_pad($label . ' :', 38) . ($up['ok'] ? $up['origName'] . ' (attached)' : 'Not uploaded') . "{$nl}";
+    }
+    $body .= $nl . $sep;
+    $body .= "Uploaded files saved to: uploads/cims-applications/{$nl}";
+    $body .= "Applicant email: {$upgradeEmail}{$nl}";
+    $body .= "Reference: {$ref}{$nl}";
+    $body .= $sep;
+
+    $result = sendEmail($phpMailerLoaded, $subject, $body, $upgradeEmail, $upgradeFullName, $uploads);
+
+    echo json_encode([
+        'success' => $result['sent'],
+        'ref'     => $ref,
+        'warning' => $result['warning'] ?: null
+    ]);
+    exit;
+}
+
+// =====================================================================
+// TRACK: INDIVIDUAL (membership / qualification)
 // =====================================================================
 
 $appType        = clean($_POST['appType']        ?? '');

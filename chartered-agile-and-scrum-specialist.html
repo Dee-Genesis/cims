@@ -245,7 +245,7 @@
     font-weight:700;
     font-size:1.9rem;
     letter-spacing:.03em;
-    color:var(--ink);
+    color:#1C0D5B;
     line-height:1;
   }
   .nav-brand-text .fullname{
@@ -254,7 +254,7 @@
     font-size:.62rem;
     letter-spacing:.13em;
     text-transform:uppercase;
-    color:var(--burgundy);
+    color:#1C0D5B;
     line-height:1.55;
     margin-top:5px;
     white-space:nowrap;
@@ -263,7 +263,25 @@
     .nav-brand-text .acronym{font-size:1.3rem;}
     .nav-brand-text .fullname{font-size:.5rem;letter-spacing:.09em;}
   }
-  @media (max-width:420px){ .nav-brand-text .fullname{display:none;} }
+  @media (max-width:420px){
+    .brand{gap:8px;}
+    .brand-mark{height:38px;}
+    .nav-brand-text .acronym{font-size:1.05rem;}
+    .nav-brand-text .fullname{
+      white-space:normal;
+      font-size:.4rem;
+      letter-spacing:.05em;
+      line-height:1.35;
+      margin-top:3px;
+      max-width:120px;
+    }
+  }
+  @media (max-width:360px){
+    .brand{gap:6px;}
+    .brand-mark{height:32px;}
+    .nav-brand-text .acronym{font-size:.92rem;}
+    .nav-brand-text .fullname{font-size:.36rem;max-width:100px;}
+  }
 
   nav.main{display:flex;align-items:center;}
   nav.main > ul{
@@ -1162,7 +1180,7 @@
         <li class="nav-item has-dropdown">
           <button class="nav-link" aria-expanded="false">Employers<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
           <div class="dropdown">
-            <a href="employers-corporate-membership.html">Corporate Membership</a>
+            <a href="partnership-framework.html">Partnership Framework</a>
             <a href="employers-hire-member.html">Hire a CIMS Member</a>
             <a href="accredited-training-partners.html">Accredited Training Partners</a>
             <a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a>
@@ -1226,7 +1244,7 @@
       <li class="has-sub">
         <button class="msub-toggle">Employers<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <ul class="msub">
-          <li><a href="employers-corporate-membership.html">Corporate Membership</a></li>
+          <li><a href="partnership-framework.html">Partnership Framework</a></li>
           <li><a href="employers-hire-member.html">Hire a CIMS Member</a></li>
           <li><a href="accredited-training-partners.html">Accredited Training Partners</a></li>
           <li><a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a></li>
@@ -1287,7 +1305,7 @@
     </div>
     <div class="fact">
       <div class="flbl">Post-Nominal</div>
-      <div class="fval">CASS&reg;</div>
+      <div class="fval">CASS&trade;</div>
     </div>
   </div>
 </div>
@@ -1300,14 +1318,14 @@
 
         <div class="block">
           <span class="eyebrow">Overview</span>
-          <h2 style="margin-top:14px;">About the CASS&reg; designation</h2>
+          <h2 style="margin-top:14px;">About the CASS&trade; designation</h2>
           <p>The Chartered Agile and Scrum Specialist (CASS&reg;) is a specialist-level credential from the Chartered Institute of Management Specialists (CIMS) that recognises individuals with exceptional expertise and leadership in agile delivery and scrum practice. It signifies a commitment to excellence in facilitating agile teams, guiding scrum ceremonies and driving iterative, high-value delivery.</p>
           <p>Holders of the designation are recognised as agile practitioners who can translate agile principles into measurable delivery outcomes &mdash; from sprint planning through to organisational agile transformation &mdash; while upholding the servant-leadership and continuous-improvement ethos the discipline demands.</p>
         </div>
 
         <div class="block" id="requirements">
           <h2 class="with-rule">Entry requirements</h2>
-          <p style="margin-top:18px;">To be considered for the CASS&reg; designation, applicants are expected to meet the following criteria:</p>
+          <p style="margin-top:18px;">To be considered for the CASS&trade; designation, applicants are expected to meet the following criteria:</p>
           <div class="req-list">
             <div class="req-card">
               <h4>Academic background</h4>
@@ -1333,7 +1351,7 @@
 
         <div class="block">
           <h2 class="with-rule">Standards &amp; competencies</h2>
-          <p style="margin-top:18px;">The CASS&reg; designation is awarded to professionals who can demonstrate consistent, evidenced competency in the following areas:</p>
+          <p style="margin-top:18px;">The CASS&trade; designation is awarded to professionals who can demonstrate consistent, evidenced competency in the following areas:</p>
           <div class="comp-grid">
             <div class="comp-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Scrum framework &amp; agile principles</span></div>
             <div class="comp-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Sprint planning &amp; backlog management</span></div>
@@ -1376,7 +1394,7 @@
       <aside class="side-stack">
         <div class="apply-card">
           <span class="eyebrow">Ready to apply?</span>
-          <h3>Begin your CASS&reg; application</h3>
+          <h3>Begin your CASS&trade; application</h3>
           <p>Submit your academic and professional experience for review and take the first step toward chartered recognition.</p>
           <a href="https://charteredims.com/application-form/" target="_blank" rel="noopener" class="btn btn-primary">Get Registered</a>
           <div class="phone-row">
@@ -1413,19 +1431,18 @@
       <p>Every CIMS specialist designation follows the same rigorous entry, assessment and competency framework. Explore the full range and find the discipline that fits your career.</p>
     </div>
     <div class="discipline-grid">
-      <a class="discipline-tile" href="chartered-human-resource-management-specialist-chrms.html">Human Resource Management (CHRMS&reg;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-leadership-and-strategic-planning-specialist.html">Leadership &amp; Strategic Planning (CLSPS&reg;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-international-trade-logistics-specialist.html">International Trade &amp; Logistics (CITLS&reg;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-quality-management-specialist.html">Quality Management (CQMS&reg;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-management-specialist.html">Management Specialist (CMS&reg;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-business-analyst-specialist.html">Business Specialist (CBS&reg;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="discipline-tile" href="chartered-human-resource-management-specialist-chrms.html">Human Resource Management (CHRMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="discipline-tile" href="chartered-leadership-and-strategic-planning-specialist.html">Leadership &amp; Strategic Planning (CLSPS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="discipline-tile" href="chartered-international-trade-logistics-specialist.html">International Trade &amp; Logistics (CITLS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="discipline-tile" href="chartered-quality-management-specialist.html">Quality Management (CQMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="discipline-tile" href="chartered-management-specialist.html">Management Specialist (CMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="discipline-tile" href="chartered-business-analyst-specialist.html">Business Specialist (CBS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       <a class="discipline-tile active" href="chartered-agile-and-scrum-specialist.html">Agile &amp; Scrum (CASS&reg;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-supply-chain-management-specialist.html">Supply Chain Management (CSCMS&reg;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-health-and-safety-management-specialist.html">Health &amp; Safety Management (CHSMS&reg;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-training-and-development-management-specialist.html">Training &amp; Development Management (CTDMS&reg;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-transportation-and-pipeline-logistics-management-specialist.html">Transportation &amp; Pipeline Logistics (CTPLMS&reg;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-operations-production-management-specialist.html">Operations &amp; Production Management (COPMS&reg;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="specialist-qualifications.html">Oil Stock Manager (COSM&reg;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="discipline-tile" href="chartered-supply-chain-management-specialist.html">Supply Chain Management (CSCMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="discipline-tile" href="chartered-health-and-safety-management-specialist.html">Health &amp; Safety Management (CHSMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="discipline-tile" href="chartered-training-and-development-management-specialist.html">Training &amp; Development Management (CTDMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="discipline-tile" href="chartered-transportation-and-pipeline-logistics-management-specialist.html">Transportation &amp; Pipeline Logistics (CTPLMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      <a class="discipline-tile" href="chartered-operations-production-management-specialist.html">Operations &amp; Production Management (COPMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
     </div>
   </div>
 </section>
@@ -1435,7 +1452,7 @@
     <div class="partner-card">
       <div>
         <span class="eyebrow">Take The Next Step</span>
-        <h2>Apply for CASS&reg; today</h2>
+        <h2>Apply for CASS&trade; today</h2>
         <p>Join agile and scrum professionals worldwide holding a chartered specialist credential recognised across 170+ countries.</p>
       </div>
       <div style="display:flex;gap:14px;flex-wrap:wrap;">
@@ -1495,7 +1512,7 @@
           <li><a href="#path-specialist">Specialist Qualifications</a></li>
           <li><a href="#path-practitioner">Practitioner Qualifications</a></li>
           <li><a href="https://charteredims.com/chartered-strategic-director-csd/" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
-          <li><a href="employers-corporate-membership.html">Corporate Membership</a></li>
+          <li><a href="partnership-framework.html">Partnership Framework</a></li>
           <li><a href="employers-hire-member.html">Hire a CIMS Member</a></li>
         </ul>
       </div>
