@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chartered Strategic Director&trade; (CSD) | Chartered Institute of Management Specialists (CIMS)</title>
+<title>Chartered Strategic Director (CSD&trade;) | Chartered Institute of Management Specialists (CIMS)</title>
 <meta name="description" content="Chartered Strategic Director (CSD) is one of the highest executive recognitions awarded by CIMS, USA, recognising distinguished leaders for strategic leadership, governance oversight, organisational impact and executive excellence.">
 <link rel="icon" type="image/png" href="assets/logos/cims-logo.png">
 <link rel="apple-touch-icon" href="assets/logos/logo.png">
@@ -110,6 +110,75 @@
   .topbar-social a svg{width:12px;height:12px;fill:#e7ddce;transition:fill .15s ease;}
   .topbar-social a:hover{border-color:var(--gold);}
   .topbar-social a:hover svg{fill:var(--gold);}
+  .topbar-search-wrap{position:relative;flex:0 1 260px;}
+  .topbar-search{
+    display:flex;align-items:center;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(231,221,206,.28);
+    border-radius:999px;
+    overflow:hidden;
+    width:100%;
+  }
+  .topbar-search input{
+    flex:1;min-width:0;
+    background:none;border:none;outline:none;
+    padding:7px 4px 7px 16px;
+    color:#e7ddce;
+    font-family:'Inter',sans-serif;
+    font-size:.78rem;
+  }
+  .topbar-search input::placeholder{color:rgba(231,221,206,.5);}
+  .topbar-search button{
+    background:var(--burgundy);
+    border:none;margin:3px;
+    width:26px;height:26px;flex-shrink:0;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;cursor:pointer;
+    transition:background .15s ease;
+  }
+  .topbar-search button:hover{background:var(--burgundy-dark);}
+  .topbar-search button svg{width:13px;height:13px;}
+  .search-suggest{
+    position:absolute;top:calc(100% + 8px);left:0;right:0;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-top:2px solid var(--gold);
+    box-shadow:var(--shadow);
+    z-index:60;
+    max-height:340px;overflow-y:auto;
+    display:none;
+  }
+  .search-suggest.open{display:block;}
+  .search-suggest a{
+    display:flex;flex-direction:column;gap:2px;
+    padding:9px 16px;
+    color:var(--ink);
+    font-size:.83rem;font-weight:600;
+    border-bottom:1px solid var(--line);
+  }
+  .search-suggest a:last-child{border-bottom:none;}
+  .search-suggest a:hover, .search-suggest a.active{background:var(--parchment);color:var(--burgundy);}
+  .search-suggest a small{
+    font-family:'Sora',sans-serif;
+    font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;
+  }
+  .search-suggest .no-results{padding:12px 16px;font-size:.8rem;color:var(--slate-soft);}
+  .topbar-apply{
+    flex-shrink:0;
+    background:var(--gold);
+    color:var(--charcoal);
+    font-weight:700;
+    font-size:.74rem;
+    letter-spacing:.03em;
+    padding:8px 20px;
+    border-radius:999px;
+    white-space:nowrap;
+    transition:background .15s ease;
+  }
+  .topbar-apply:hover{background:var(--gold-light);}
+  @media (max-width:560px){ .topbar-search-wrap{display:none;} }
 
   /* ---------- notice ribbon ---------- */
   .notice{
@@ -915,16 +984,22 @@
     background:var(--charcoal);
     color:var(--paper);
     overflow:hidden;
-    padding:96px 0 76px;
+    padding:110px 0 96px;
+  }
+  .page-hero .hero-bg{
+    position:absolute;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:center 30%;
+    opacity:.5;
   }
   .page-hero::before{
     content:"";position:absolute;inset:0;
     background:
-      radial-gradient(circle at 85% 20%, rgba(176,141,87,.16), transparent 55%),
-      linear-gradient(180deg, rgba(19,20,15,.2), rgba(19,20,15,.55));
+      radial-gradient(circle at 85% 15%, rgba(176,141,87,.22), transparent 55%),
+      linear-gradient(100deg, rgba(19,20,15,.94) 0%, rgba(19,20,15,.82) 42%, rgba(19,20,15,.5) 100%);
     pointer-events:none;
   }
-  .page-hero .wrap{position:relative;z-index:2;max-width:920px;}
+  .page-hero .wrap{position:relative;z-index:2;max-width:1240px;}
+  .page-hero .hero-inner{max-width:700px;}
   .page-hero .crest{width:64px;height:64px;margin-bottom:22px;opacity:.92;}
   .page-hero .eyebrow{color:var(--gold-light);}
   .page-hero .eyebrow::before{background:var(--gold-light);}
@@ -942,6 +1017,79 @@
   }
   .page-hero .breadcrumb a{color:#c9bfae;}
   .page-hero .breadcrumb a:hover{color:var(--gold-light);}
+
+  /* ---------- hero certificate badge ---------- */
+  .hero-badge{
+    position:absolute;top:56px;right:6%;z-index:2;
+    width:172px;height:172px;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+  }
+  .hero-badge svg{width:100%;height:100%;}
+  @media (max-width:1100px){ .hero-badge{display:none;} }
+
+  /* ---------- quick facts strip (bridges hero into content) ---------- */
+  .facts-strip{
+    position:relative;z-index:3;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .facts-strip .wrap{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    max-width:1240px;
+  }
+  .fact-item{
+    display:flex;align-items:center;gap:14px;
+    padding:26px 24px;
+    border-left:1px solid var(--line);
+  }
+  .fact-item:first-child{border-left:none;}
+  .fact-item svg{width:26px;height:26px;flex-shrink:0;stroke:var(--burgundy);fill:none;stroke-width:1.8;}
+  .fact-item .fact-label{
+    display:block;font-family:'Sora',sans-serif;font-size:.68rem;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--slate-soft);margin-bottom:3px;
+  }
+  .fact-item .fact-value{
+    display:block;font-family:'Sora',sans-serif;font-weight:700;font-size:.92rem;color:var(--ink);
+  }
+  @media (max-width:900px){
+    .facts-strip .wrap{grid-template-columns:1fr 1fr;}
+    .fact-item{border-left:none;border-top:1px solid var(--line);}
+    .fact-item:nth-child(2){border-left:1px solid var(--line);}
+    .fact-item:nth-child(4){border-left:1px solid var(--line);}
+  }
+  @media (max-width:520px){
+    .facts-strip .wrap{grid-template-columns:1fr;}
+    .fact-item{border-left:none !important;}
+  }
+
+  /* ---------- graphical benefit cards ---------- */
+  .benefit-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px;
+    max-width:1080px;margin-left:auto;margin-right:auto;
+  }
+  @media (max-width:900px){ .benefit-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:600px){ .benefit-grid{grid-template-columns:1fr;} }
+  .benefit-card{
+    background:var(--paper);border:1px solid var(--line);
+    padding:30px 26px;position:relative;
+  }
+  .benefit-card::before{content:"";position:absolute;top:0;left:0;width:36px;height:3px;background:var(--gold);}
+  .benefit-card .b-icon{
+    width:44px;height:44px;border-radius:50%;
+    background:var(--parchment);border:1px solid var(--gold-dim);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+  }
+  .benefit-card .b-icon svg{width:20px;height:20px;stroke:var(--burgundy);fill:none;stroke-width:1.8;}
+  .benefit-card h3{font-size:1.02rem;margin-bottom:10px;line-height:1.3;}
+  .benefit-card p{color:var(--slate-soft);font-size:.92rem;line-height:1.65;margin:0 0 8px;}
+  .benefit-card ul{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px;}
+  .benefit-card ul li{
+    font-size:.84rem;color:var(--slate-soft);line-height:1.4;
+    display:flex;gap:8px;align-items:flex-start;
+  }
+  .benefit-card ul li svg{width:13px;height:13px;flex-shrink:0;margin-top:3px;stroke:var(--gold);fill:none;stroke-width:3;}
+  .benefit-card .b-name{font-family:'Sora',sans-serif;font-weight:700;color:var(--ink);font-size:.94rem;margin-top:10px;}
 
   .role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;}
   @media (max-width:900px){.role-grid{grid-template-columns:1fr 1fr;}}
@@ -1013,6 +1161,21 @@
 </head>
 <body>
 
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-search-wrap">
+      <form class="topbar-search" role="search" action="search-results.html" method="get" id="siteSearchForm" autocomplete="off">
+        <input type="search" name="q" id="siteSearchInput" placeholder="Search site" aria-label="Search site">
+        <button type="submit" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+      <div class="search-suggest" id="siteSearchSuggest"></div>
+    </div>
+    <a href="app.html" class="topbar-apply">Apply Now</a>
+  </div>
+</div>
+
 <header class="site">
   <div class="wrap nav-row">
     <a href="index.html" class="brand">
@@ -1034,6 +1197,10 @@
             <a href="legal-standing.html">Legal Standing</a>
             <a href="why-choose-us.html">Why Choose Us</a>
             <a href="recognition.html">Professional Recognition</a>
+            <a href="professional-standards-ethics.html">Professional Standards &amp; Ethics</a>
+            <a href="policies-regulations.html">Policies &amp; Regulations</a>
+            <a href="complaints-appeals.html">Complaints &amp; Appeals</a>
+            <a href="management-journal-publications.html">Management Journal &amp; Publications</a>
           </div>
         </li>
         <li class="nav-item has-dropdown">
@@ -1044,7 +1211,10 @@
             <a href="membership-chartered.html">Chartered Member (MCIMS)</a>
             <a href="membership-fellow.html">Chartered Fellow (FCIMS)</a>
             <a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a>
+            <a href="cpd.html">Continuing Professional Development (CPD)</a>
             <a href="membership-benefits.html">Membership Benefits</a>
+
+            <a href="digital-credentials-verification.html">Digital Credentials &amp; Verification</a>
           </div>
         </li>
         <li class="nav-item has-dropdown">
@@ -1052,6 +1222,7 @@
           <div class="dropdown">
             <a href="specialist-qualifications.html">Specialist Qualifications</a>
             <a href="practitioner-qualifications.html">Practitioner Qualifications</a>
+            <a href="assessment-quality-assurance.html">Assessment &amp; Quality Assurance</a>
           </div>
         </li>
         <li class="nav-item has-dropdown">
@@ -1059,18 +1230,20 @@
           <div class="dropdown">
             <a href="employers-corporate-membership.html">Corporate Membership</a>
             <a href="employers-hire-member.html">Hire a CIMS Member</a>
+            <a href="accredited-training-partners.html">Accredited Training Partners</a>
+            <a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a>
           </div>
         </li>
 
         <li class="nav-item">
-          <a href="chartered-strategic-director-csd.html" aria-current="page">Chartered Strategic Director (CSD)</a>
+          <a href="chartered-strategic-director.html" aria-current="page">Chartered Strategic Director (CSD)</a>
         </li>
       </ul>
     </nav>
 
     <div class="nav-utils">
       <div class="nav-item has-dropdown">
-        <button class="nav-link btn-pill filled" aria-expanded="false">Member Area<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="nav-link btn-pill filled" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="dropdown">
           <a href="register.html">Register</a>
           <a href="member-login.html">Member Log In</a>
@@ -1092,6 +1265,10 @@
           <li><a href="legal-standing.html">Legal Standing</a></li>
           <li><a href="why-choose-us.html">Why Choose Us</a></li>
           <li><a href="recognition.html">Professional Recognition</a></li>
+          <li><a href="professional-standards-ethics.html">Professional Standards &amp; Ethics</a></li>
+          <li><a href="policies-regulations.html">Policies &amp; Regulations</a></li>
+          <li><a href="complaints-appeals.html">Complaints &amp; Appeals</a></li>
+          <li><a href="management-journal-publications.html">Management Journal &amp; Publications</a></li>
         </ul>
       </li>
       <li class="has-sub">
@@ -1102,7 +1279,8 @@
           <li><a href="membership-chartered.html">Chartered Member (MCIMS)</a></li>
           <li><a href="membership-fellow.html">Chartered Fellow (FCIMS)</a></li>
           <li><a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a></li>
-          <li><a href="membership-benefits.html">Membership Benefits</a></li>
+          <li><a href="cpd.html">Continuing Professional Development (CPD)</a></li>
+          <li><a href="digital-credentials-verification.html">Digital Credentials &amp; Verification</a></li>
         </ul>
       </li>
       <li class="has-sub">
@@ -1110,6 +1288,7 @@
         <ul class="msub">
           <li><a href="specialist-qualifications.html">Specialist Qualifications</a></li>
           <li><a href="practitioner-qualifications.html">Practitioner Qualifications</a></li>
+          <li><a href="assessment-quality-assurance.html">Assessment &amp; Quality Assurance</a></li>
         </ul>
       </li>
       <li class="has-sub">
@@ -1117,11 +1296,13 @@
         <ul class="msub">
           <li><a href="employers-corporate-membership.html">Corporate Membership</a></li>
           <li><a href="employers-hire-member.html">Hire a CIMS Member</a></li>
+          <li><a href="accredited-training-partners.html">Accredited Training Partners</a></li>
+          <li><a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a></li>
         </ul>
       </li>
-      <li><a href="chartered-strategic-director-csd.html" aria-current="page">Chartered Strategic Director (CSD)</a></li>
+      <li><a href="chartered-strategic-director.html" aria-current="page">Chartered Strategic Director (CSD)</a></li>
       <li class="has-sub">
-        <button class="msub-toggle">Member Area<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="msub-toggle">CPD Portal<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <ul class="msub">
           <li><a href="register.html">Register</a></li>
           <li><a href="member-login.html">Member Log In</a></li>
@@ -1136,15 +1317,49 @@
 </header>
 
 <section class="page-hero">
+  <img class="hero-bg" src="assets/images/45.jpg" alt="Executive leadership boardroom setting representing the Chartered Strategic Director recognition">
+  <div class="hero-badge" aria-hidden="true">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="92" fill="rgba(19,20,15,.35)" stroke="#D8BD8A" stroke-width="1.5"/>
+      <circle cx="100" cy="100" r="78" fill="none" stroke="#D8BD8A" stroke-width="1" stroke-dasharray="2 5"/>
+      <text x="100" y="72" text-anchor="middle" font-family="Sora, sans-serif" font-size="9" letter-spacing="2" fill="#D8BD8A">CHARTERED</text>
+      <text x="100" y="104" text-anchor="middle" font-family="Playfair Display, serif" font-weight="700" font-size="34" fill="#fff">CSD</text>
+      <text x="100" y="128" text-anchor="middle" font-family="Sora, sans-serif" font-size="8.5" letter-spacing="1.5" fill="#D8BD8A">EXECUTIVE</text>
+      <text x="100" y="140" text-anchor="middle" font-family="Sora, sans-serif" font-size="8.5" letter-spacing="1.5" fill="#D8BD8A">RECOGNITION</text>
+    </svg>
+  </div>
   <div class="wrap">
-    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="index.html#pathway">Qualifications</a><span>/</span><span>Chartered Strategic Director (CSD)</span></div>
-    <span class="eyebrow">Executive Recognition &middot; Chartered Strategic Director&trade; (CSD&trade;)</span>
-    <h1>Chartered Strategic Director&trade; (CSD)</h1>
-    <p class="lede">One of the highest executive recognitions awarded by the Chartered Institute of Management Specialists (CIMS), USA.</p>
-    <p class="lede">Recognising distinguished leaders who have demonstrated strategic leadership, governance oversight, organisational impact, and executive excellence.</p>
-    <div class="hero-ctas" style="margin-top:22px;">
-      <a href="register.html" class="btn btn-primary" style="background:var(--gold);border-color:var(--gold);color:var(--charcoal);">Register for CSD Application Now</a>
-      <a href="mailto:admin@charteredims.com" class="btn btn-ghost" style="border-color:rgba(255,255,255,.55);color:#fff;">Email admin@charteredims.com</a>
+    <div class="hero-inner">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="index.html#pathway">Qualifications</a><span>/</span><span>Chartered Strategic Director (CSD)</span></div>
+      <span class="eyebrow">Executive Recognition &middot; Chartered Strategic Director (CSD&trade;)</span>
+      <h1>Chartered Strategic Director (CSD&trade;)</h1>
+      <p class="lede">One of the highest executive recognitions awarded by the Chartered Institute of Management Specialists (CIMS), USA.</p>
+      <p class="lede">Recognising distinguished leaders who have demonstrated strategic leadership, governance oversight, organisational impact, and executive excellence.</p>
+      <div class="hero-ctas" style="margin-top:22px;">
+        <a href="register.html" class="btn btn-primary" style="background:var(--gold);border-color:var(--gold);color:var(--charcoal);">Register for CSD Application Now</a>
+        <a href="mailto:admin@charteredims.com" class="btn btn-ghost" style="border-color:rgba(255,255,255,.55);color:#fff;">Email admin@charteredims.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="facts-strip">
+  <div class="wrap">
+    <div class="fact-item">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6.5 1-4.7 4.6 1.1 6.4-5.9-3.1-5.9 3.1 1.1-6.4L2 9l6.5-1z"/></svg>
+      <span><span class="fact-label">Awarding Body</span><span class="fact-value">CIMS, USA</span></span>
+    </div>
+    <div class="fact-item">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 12L3 7l9-5 9 5-9 5z"/><path d="M3 15l9 5 9-5"/></svg>
+      <span><span class="fact-label">Format</span><span class="fact-value">Assessment-Based, No Classroom</span></span>
+    </div>
+    <div class="fact-item">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 1 1-17 0 8.5 8.5 0 0 1 17 0z"/><path d="M12 7v5l3 3"/></svg>
+      <span><span class="fact-label">Recognition</span><span class="fact-value">Lifetime, With Verification</span></span>
+    </div>
+    <div class="fact-item">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 12l2 2 4-4"/></svg>
+      <span><span class="fact-label">Post-Nominal</span><span class="fact-value">Use of CSD&trade; Designation</span></span>
     </div>
   </div>
 </section>
@@ -1177,8 +1392,8 @@
   <div class="wrap">
     <div class="section-head" style="max-width:820px;">
       <span class="eyebrow">The Designation</span>
-      <h2>What Is Chartered Strategic Director&trade; (CSD)?</h2>
-      <p>The Chartered Strategic Director&trade; designation is an executive recognition awarded through a rigorous professional assessment process rather than classroom attendance.</p>
+      <h2>What Is Chartered Strategic Director (CSD&trade;)?</h2>
+      <p>The Chartered Strategic Director designation is an executive recognition awarded through a rigorous professional assessment process rather than classroom attendance.</p>
       <p>The designation recognises demonstrated achievement in:</p>
     </div>
     <ul class="check-list" style="max-width:820px;">
@@ -1196,10 +1411,10 @@
   <div class="wrap">
     <div class="section-head" style="max-width:820px;">
       <span class="eyebrow">Why It Matters</span>
-      <h2>Why Executives Pursue the Chartered Strategic Director&trade; (CSD&trade;)</h2>
+      <h2>Why Executives Pursue the Chartered Strategic Director (CSD&trade;)</h2>
     </div>
     <div style="max-width:820px;">
-      <p style="color:var(--slate-soft);font-size:1.02rem;line-height:1.75;margin-bottom:16px;">The <strong>Chartered Strategic Director&trade; (CSD&trade;)</strong> designation is more than a professional title&mdash;it is a formal recognition of executive leadership, strategic influence, and organisational achievement.</p>
+      <p style="color:var(--slate-soft);font-size:1.02rem;line-height:1.75;margin-bottom:16px;">The <strong>Chartered Strategic Director (CSD&trade;)</strong> designation is more than a professional title&mdash;it is a formal recognition of executive leadership, strategic influence, and organisational achievement.</p>
       <p style="color:var(--slate-soft);font-size:1.02rem;line-height:1.75;margin-bottom:16px;">Awarded by the <strong>Chartered Institute of Management Specialists (CIMS), USA</strong>, the designation acknowledges accomplished leaders who have demonstrated excellence in strategic management, governance, executive decision-making, and organisational transformation.</p>
       <p style="color:var(--slate-soft);font-size:1.02rem;line-height:1.75;">Successful candidates benefit from international executive recognition designed to strengthen their professional standing and distinguish them among senior leaders.</p>
     </div>
@@ -1210,114 +1425,64 @@
   <div class="wrap">
     <div class="section-head center">
       <span class="eyebrow">What You Gain</span>
-      <h2>Benefits of the Chartered Strategic Director&trade; (CSD&trade;)</h2>
+      <h2>Benefits of the Chartered Strategic Director (CSD&trade;)</h2>
     </div>
 
-    <div style="max-width:880px;margin:0 auto;">
+    <div class="benefit-grid">
 
-      <div class="subblock">
-        <h3>Executive Recognition of Your Career Achievement</h3>
-        <p>The CSD&trade; designation formally recognises your executive accomplishments, strategic leadership, and contribution to organisational success through an independent professional assessment process.</p>
-        <p>Rather than recognising classroom attendance, the designation acknowledges demonstrated executive competence and leadership impact.</p>
+      <div class="benefit-card">
+        <div class="b-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6.5 1-4.7 4.6 1.1 6.4-5.9-3.1-5.9 3.1 1.1-6.4L2 9l6.5-1z"/></svg></div>
+        <h3>Executive Recognition of Career Achievement</h3>
+        <p>Formally recognises your executive accomplishments, strategic leadership, and contribution to organisational success through independent professional assessment&mdash;not classroom attendance.</p>
       </div>
 
-      <div class="subblock">
+      <div class="benefit-card">
+        <div class="b-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M14 3v6h6"/></svg></div>
         <h3>Prestigious Executive Post-Nominal</h3>
-        <p>Successful candidates are authorised to use the internationally recognised executive designation:</p>
-        <p style="font-family:'Sora',sans-serif;font-weight:700;color:var(--ink);font-size:1.05rem;">First Name Last Name, CSD&trade;</p>
-        <p>The designation may be used on:</p>
-        <ul class="check-list">
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Business Cards</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Executive Profiles</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>LinkedIn</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Email Signatures</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Corporate Biographies</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Professional Publications</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Conference Speaker Profiles</li>
-        </ul>
+        <p>Authorised for use on business cards, LinkedIn, email signatures, corporate biographies, publications, and speaker profiles.</p>
+        <p class="b-name">First Name Last Name, CSD&trade;</p>
       </div>
 
-      <div class="subblock">
+      <div class="benefit-card">
+        <div class="b-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z"/></svg></div>
         <h3>Strengthen Executive Credibility</h3>
-        <p>The CSD&trade; designation provides additional professional distinction when engaging with:</p>
-        <ul class="check-list">
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Boards of Directors</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Government Institutions</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Investors</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>International Organisations</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Clients</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Business Partners</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Executive Recruitment Firms</li>
-        </ul>
-        <p style="margin-top:14px;">It demonstrates that your executive leadership has been independently assessed against recognised professional standards.</p>
+        <p>Additional professional distinction when engaging with boards, government institutions, investors, clients, and executive recruitment firms.</p>
       </div>
 
-      <div class="subblock">
+      <div class="benefit-card">
+        <div class="b-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
         <h3>Independent Recognition of Executive Competence</h3>
-        <p>Candidates are evaluated through a structured assessment framework covering:</p>
-        <ul class="check-list">
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Strategic Leadership</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Executive Decision-Making</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Corporate Governance</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Organisational Transformation</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Leadership Impact</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Professional Achievement</li>
-        </ul>
-        <p style="margin-top:14px;">This provides independent recognition of executive capability rather than relying solely on academic qualifications.</p>
+        <p>Evaluated through a structured framework covering strategic leadership, decision-making, governance, and organisational transformation.</p>
       </div>
 
-      <div class="subblock">
+      <div class="benefit-card">
+        <div class="b-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg></div>
         <h3>Enhance Your Professional Brand</h3>
-        <p>The CSD&trade; designation strengthens your executive profile by showcasing your leadership achievements and strategic management experience.</p>
-        <p>It provides an additional professional credential that may enhance visibility across executive networks, corporate profiles, and professional platforms.</p>
+        <p>Strengthens your executive profile, enhancing visibility across executive networks, corporate profiles, and professional platforms.</p>
       </div>
 
-      <div class="subblock">
+      <div class="benefit-card">
+        <div class="b-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         <h3>Recognition Across Multiple Sectors</h3>
-        <p>The designation is suitable for leaders serving within:</p>
-        <ul class="check-list">
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Private Sector Organisations</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Government Ministries</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Public Institutions</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Multinational Corporations</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>International Organisations</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Family Businesses</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Entrepreneurial Ventures</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Non-Governmental Organisations</li>
-        </ul>
+        <p>Suitable for leaders in private sector organisations, government ministries, multinationals, NGOs, and entrepreneurial ventures.</p>
       </div>
 
-      <div class="subblock">
+      <div class="benefit-card">
+        <div class="b-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
         <h3>Recognition of Strategic Leadership</h3>
-        <p>Unlike operational management awards, the CSD&trade; specifically recognises executives who influence organisational direction through:</p>
-        <ul class="check-list">
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Strategic Planning</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Governance Oversight</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Executive Leadership</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Corporate Growth</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Organisational Change</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Performance Improvement</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Long-Term Value Creation</li>
-        </ul>
+        <p>Unlike operational management awards, the CSD&trade; recognises executives who influence organisational direction, growth, and long-term value.</p>
       </div>
 
-      <div class="subblock">
+      <div class="benefit-card">
+        <div class="b-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h3>Executive Differentiation</h3>
-        <p>The CSD&trade; helps distinguish accomplished executives from their peers by recognising demonstrated leadership experience and strategic contribution.</p>
-        <p>For professionals seeking board appointments, executive advisory roles, consultancy opportunities, or broader leadership visibility, the designation provides an additional mark of executive distinction.</p>
+        <p>Distinguishes accomplished executives seeking board appointments, advisory roles, or broader leadership visibility.</p>
       </div>
 
-      <div class="subblock">
+      <div class="benefit-card">
+        <div class="b-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3>Lifetime Professional Recognition</h3>
-        <p>Upon successful completion of the assessment process, successful candidates receive:</p>
-        <ul class="check-list">
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Chartered Strategic Director&trade; (CSD&trade;) Designation</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Official Chartered Certificate</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Executive Recognition Letter</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Lifetime Certificate Verification</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Professional Listing (where applicable)</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Authorisation to use the CSD&trade; post-nominal designation</li>
-        </ul>
+        <p>Successful candidates receive an official chartered certificate, executive recognition letter, professional listing, and lifetime verification.</p>
       </div>
 
     </div>
@@ -1333,7 +1498,7 @@
       <h2>A Recognition Earned Through Professional Assessment</h2>
     </div>
     <div style="max-width:820px;">
-      <p style="color:var(--slate-soft);font-size:1.02rem;line-height:1.75;margin-bottom:16px;">The Chartered Strategic Director&trade; (CSD&trade;) is awarded through a structured professional assessment process.</p>
+      <p style="color:var(--slate-soft);font-size:1.02rem;line-height:1.75;margin-bottom:16px;">The Chartered Strategic Director (CSD&trade;) is awarded through a structured professional assessment process.</p>
       <p style="color:var(--slate-soft);font-size:1.02rem;line-height:1.75;margin-bottom:16px;">Candidates demonstrate executive competence through credential verification, leadership portfolio assessment, strategic case study submission, and executive endorsement.</p>
       <p style="color:var(--slate-soft);font-size:1.02rem;line-height:1.75;">This ensures that the designation reflects demonstrated executive achievement rather than classroom participation alone.</p>
     </div>
@@ -1345,7 +1510,7 @@
     <div class="section-head">
       <span class="eyebrow">The Distinction</span>
       <h2>Why Distinguished Leaders Choose CSD&trade;</h2>
-      <p>Executives pursue the Chartered Strategic Director&trade; designation because it provides:</p>
+      <p>Executives pursue the Chartered Strategic Director designation because it provides:</p>
     </div>
     <ul class="check-list on-dark" style="max-width:760px;">
       <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Independent recognition of executive leadership</li>
@@ -1424,7 +1589,7 @@
       <h2>What Successful Candidates Receive</h2>
     </div>
     <ul class="check-list" style="max-width:820px;">
-      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Chartered Strategic Director&trade; (CSD&trade;)</li>
+      <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Chartered Strategic Director (CSD&trade;)</li>
       <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Official Chartered Certificate</li>
       <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Executive Recognition Letter</li>
       <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Professional Listing</li>
@@ -1498,10 +1663,8 @@
         <p>Step into the world of management and future-ready your career with the knowledge, skills and ethics the profession demands.</p>
         <div class="foot-social">
           <a href="https://www.facebook.com/profile.php?id=61590429427981" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg></a>
-          <a href="https://www.linkedin.com/company/chartered-institute-of-management-specialists/" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
-          <a href="https://www.instagram.com" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.23.41.55.21.95.47 1.37.89.42.42.68.82.89 1.37.17.42.36 1.05.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.41 2.23-.21.55-.47.95-.89 1.37-.42.42-.82.68-1.37.89-.42.17-1.05.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.23-.41-.55-.21-.95-.47-1.37-.89-.42-.42-.68-.82-.89-1.37-.17-.42-.36-1.05-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.24-1.8.41-2.23.21-.55.47-.95.89-1.37.42-.42.82-.68 1.37-.89.42-.17 1.05-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39C1.35 2.68.94 3.35.63 4.14.33 4.9.14 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.85a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
-          <a href="https://www.twitter.com" aria-label="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M18.24 2H21l-6.55 7.49L22.2 22h-6.15l-4.82-6.3L5.7 22H2.93l7.02-8.02L1.8 2h6.3l4.35 5.76L18.24 2zm-1.08 18h1.7L7.9 3.9H6.08L17.16 20z"/></svg></a>
-          <a href="https://www.youtube.com" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.23-1.64-.94-2.36c-.9-.94-1.9-.95-2.36-1C16.9 2.5 12 2.5 12 2.5h-.01s-4.9 0-8.2.34c-.46.05-1.46.06-2.36 1C.72 4.56.5 6.2.5 6.2S.26 8.13.26 10.05v1.78c0 1.93.24 3.86.24 3.86s.23 1.64.93 2.36c.9.95 2.08.92 2.6 1.02 1.9.18 8.06.34 8.06.34s4.9-.01 8.2-.35c.46-.05 1.46-.06 2.36-1 .7-.72.94-2.36.94-2.36s.24-1.93.24-3.86v-1.78c0-1.92-.24-3.85-.24-3.85zM9.7 14.7V7.9l6.5 3.4-6.5 3.4z"/></svg></a>
+          <a href="https://www.linkedin.com/company/chartered-institute-of-management-specialists/about/?viewAsMember=true" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+          <a href="https://www.instagram.com/charteredims/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.23.41.55.21.95.47 1.37.89.42.42.68.82.89 1.37.17.42.36 1.05.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.41 2.23-.21.55-.47.95-.89 1.37-.42.42-.82.68-1.37.89-.42.17-1.05.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.23-.41-.55-.21-.95-.47-1.37-.89-.42-.42-.68-.82-.89-1.37-.17-.42-.36-1.05-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.24-1.8.41-2.23.21-.55.47-.95.89-1.37.42-.42.82-.68 1.37-.89.42-.17 1.05-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39C1.35 2.68.94 3.35.63 4.14.33 4.9.14 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.85a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
         </div>
       </div>
 
@@ -1552,7 +1715,7 @@
       <div>
         <h4>Contact</h4>
         <ul>
-          <li>212 N. 2nd St., STE 100<br>Richmond, KY 40475, US</li>
+          <li><strong>Registered Office Address:</strong><br>821 N ST STE 102<br>Anchorage, AK 99501, USA</li>
           <li>Monday to Saturday, 9:00 to 17:00</li>
           <li><a href="mailto:admin@charteredims.com">admin@charteredims.com</a></li>
           <li><a href="tel:+18592109109">+1 (859) 210-9109</a></li>
@@ -1573,6 +1736,7 @@
   </div>
 </footer>
 
+<script src="site-search.js"></script>
 <script>
   // ---------- mobile menu toggle ----------
   const toggle = document.getElementById('menuToggle');
@@ -1681,6 +1845,66 @@
       }
     });
   });
+
+  // ---------- live site search (top bar) ----------
+  (function(){
+    const input = document.getElementById('siteSearchInput');
+    const box = document.getElementById('siteSearchSuggest');
+    const form = document.getElementById('siteSearchForm');
+    if (!input || !box || !form || !window.CIMS_SEARCH) return;
+
+    let activeIndex = -1;
+
+    function render(results) {
+      activeIndex = -1;
+      if (!results.length) {
+        box.innerHTML = '<div class="no-results">No matching pages. Press Enter to see full results.</div>';
+        box.classList.add('open');
+        return;
+      }
+      box.innerHTML = results.slice(0, 8).map(p =>
+        `<a href="${p.url}"><span>${p.title}</span><small>${p.section}</small></a>`
+      ).join('');
+      box.classList.add('open');
+    }
+
+    function close(){ box.classList.remove('open'); box.innerHTML=''; activeIndex = -1; }
+
+    input.addEventListener('input', () => {
+      const q = input.value;
+      if (!q.trim()) { close(); return; }
+      render(window.CIMS_SEARCH(q));
+    });
+
+    input.addEventListener('keydown', (e) => {
+      const items = Array.from(box.querySelectorAll('a'));
+      if (!items.length) return;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeIndex = (activeIndex + 1) % items.length;
+        items.forEach((a,i)=>a.classList.toggle('active', i===activeIndex));
+        items[activeIndex].scrollIntoView({block:'nearest'});
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeIndex = (activeIndex - 1 + items.length) % items.length;
+        items.forEach((a,i)=>a.classList.toggle('active', i===activeIndex));
+        items[activeIndex].scrollIntoView({block:'nearest'});
+      } else if (e.key === 'Enter' && activeIndex >= 0) {
+        e.preventDefault();
+        window.location.href = items[activeIndex].getAttribute('href');
+      } else if (e.key === 'Escape') {
+        close();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!form.contains(e.target) && !box.contains(e.target)) close();
+    });
+
+    form.addEventListener('submit', (e) => {
+      if (!input.value.trim()) e.preventDefault();
+    });
+  })();
 </script>
 
 </body>

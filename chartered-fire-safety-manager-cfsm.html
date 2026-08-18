@@ -110,6 +110,75 @@
   .topbar-social a svg{width:12px;height:12px;fill:#e7ddce;transition:fill .15s ease;}
   .topbar-social a:hover{border-color:var(--gold);}
   .topbar-social a:hover svg{fill:var(--gold);}
+  .topbar-search-wrap{position:relative;flex:0 1 260px;}
+  .topbar-search{
+    display:flex;align-items:center;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(231,221,206,.28);
+    border-radius:999px;
+    overflow:hidden;
+    width:100%;
+  }
+  .topbar-search input{
+    flex:1;min-width:0;
+    background:none;border:none;outline:none;
+    padding:7px 4px 7px 16px;
+    color:#e7ddce;
+    font-family:'Inter',sans-serif;
+    font-size:.78rem;
+  }
+  .topbar-search input::placeholder{color:rgba(231,221,206,.5);}
+  .topbar-search button{
+    background:var(--burgundy);
+    border:none;margin:3px;
+    width:26px;height:26px;flex-shrink:0;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;cursor:pointer;
+    transition:background .15s ease;
+  }
+  .topbar-search button:hover{background:var(--burgundy-dark);}
+  .topbar-search button svg{width:13px;height:13px;}
+  .search-suggest{
+    position:absolute;top:calc(100% + 8px);left:0;right:0;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-top:2px solid var(--gold);
+    box-shadow:var(--shadow);
+    z-index:60;
+    max-height:340px;overflow-y:auto;
+    display:none;
+  }
+  .search-suggest.open{display:block;}
+  .search-suggest a{
+    display:flex;flex-direction:column;gap:2px;
+    padding:9px 16px;
+    color:var(--ink);
+    font-size:.83rem;font-weight:600;
+    border-bottom:1px solid var(--line);
+  }
+  .search-suggest a:last-child{border-bottom:none;}
+  .search-suggest a:hover, .search-suggest a.active{background:var(--parchment);color:var(--burgundy);}
+  .search-suggest a small{
+    font-family:'Sora',sans-serif;
+    font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;
+  }
+  .search-suggest .no-results{padding:12px 16px;font-size:.8rem;color:var(--slate-soft);}
+  .topbar-apply{
+    flex-shrink:0;
+    background:var(--gold);
+    color:var(--charcoal);
+    font-weight:700;
+    font-size:.74rem;
+    letter-spacing:.03em;
+    padding:8px 20px;
+    border-radius:999px;
+    white-space:nowrap;
+    transition:background .15s ease;
+  }
+  .topbar-apply:hover{background:var(--gold-light);}
+  @media (max-width:560px){ .topbar-search-wrap{display:none;} }
 
   /* ---------- notice ribbon ---------- */
   .notice{
@@ -1026,6 +1095,21 @@
 </head>
 <body>
 
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-search-wrap">
+      <form class="topbar-search" role="search" action="search-results.html" method="get" id="siteSearchForm" autocomplete="off">
+        <input type="search" name="q" id="siteSearchInput" placeholder="Search site" aria-label="Search site">
+        <button type="submit" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+      <div class="search-suggest" id="siteSearchSuggest"></div>
+    </div>
+    <a href="app.html" class="topbar-apply">Apply Now</a>
+  </div>
+</div>
+
 <header class="site">
   <div class="wrap nav-row">
     <a href="index.html" class="brand">
@@ -1047,6 +1131,10 @@
             <a href="legal-standing.html">Legal Standing</a>
             <a href="why-choose-us.html">Why Choose Us</a>
             <a href="recognition.html">Professional Recognition</a>
+            <a href="professional-standards-ethics.html">Professional Standards &amp; Ethics</a>
+            <a href="policies-regulations.html">Policies &amp; Regulations</a>
+            <a href="complaints-appeals.html">Complaints &amp; Appeals</a>
+            <a href="management-journal-publications.html">Management Journal &amp; Publications</a>
           </div>
         </li>
         <li class="nav-item has-dropdown">
@@ -1058,6 +1146,9 @@
             <a href="membership-fellow.html">Chartered Fellow (FCIMS)</a>
             <a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a>
             <a href="membership-benefits.html">Membership Benefits</a>
+            <a href="cpd.html">Continuing Professional Development (CPD)</a>
+
+            <a href="digital-credentials-verification.html">Digital Credentials &amp; Verification</a>
           </div>
         </li>
         <li class="nav-item has-dropdown">
@@ -1065,6 +1156,7 @@
           <div class="dropdown">
             <a href="specialist-qualifications.html">Specialist Qualifications</a>
             <a href="practitioner-qualifications.html">Practitioner Qualifications</a>
+            <a href="assessment-quality-assurance.html">Assessment &amp; Quality Assurance</a>
           </div>
         </li>
         <li class="nav-item has-dropdown">
@@ -1072,6 +1164,8 @@
           <div class="dropdown">
             <a href="employers-corporate-membership.html">Corporate Membership</a>
             <a href="employers-hire-member.html">Hire a CIMS Member</a>
+            <a href="accredited-training-partners.html">Accredited Training Partners</a>
+            <a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a>
           </div>
         </li>
 
@@ -1083,7 +1177,7 @@
 
     <div class="nav-utils">
       <div class="nav-item has-dropdown">
-        <button class="nav-link btn-pill filled" aria-expanded="false">Member Area<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="nav-link btn-pill filled" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="dropdown">
           <a href="register.html">Register</a>
           <a href="member-login.html">Member Log In</a>
@@ -1105,6 +1199,10 @@
           <li><a href="legal-standing.html">Legal Standing</a></li>
           <li><a href="why-choose-us.html">Why Choose Us</a></li>
           <li><a href="recognition.html">Professional Recognition</a></li>
+          <li><a href="professional-standards-ethics.html">Professional Standards &amp; Ethics</a></li>
+          <li><a href="policies-regulations.html">Policies &amp; Regulations</a></li>
+          <li><a href="complaints-appeals.html">Complaints &amp; Appeals</a></li>
+          <li><a href="management-journal-publications.html">Management Journal &amp; Publications</a></li>
         </ul>
       </li>
       <li class="has-sub">
@@ -1116,6 +1214,8 @@
           <li><a href="membership-fellow.html">Chartered Fellow (FCIMS)</a></li>
           <li><a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a></li>
           <li><a href="membership-benefits.html">Membership Benefits</a></li>
+          <li><a href="cpd.html">Continuing Professional Development (CPD)</a></li>
+          <li><a href="digital-credentials-verification.html">Digital Credentials &amp; Verification</a></li>
         </ul>
       </li>
       <li class="has-sub">
@@ -1123,6 +1223,7 @@
         <ul class="msub">
           <li><a href="specialist-qualifications.html">Specialist Qualifications</a></li>
           <li><a href="practitioner-qualifications.html">Practitioner Qualifications</a></li>
+          <li><a href="assessment-quality-assurance.html">Assessment &amp; Quality Assurance</a></li>
         </ul>
       </li>
       <li class="has-sub">
@@ -1130,11 +1231,13 @@
         <ul class="msub">
           <li><a href="employers-corporate-membership.html">Corporate Membership</a></li>
           <li><a href="employers-hire-member.html">Hire a CIMS Member</a></li>
+          <li><a href="accredited-training-partners.html">Accredited Training Partners</a></li>
+          <li><a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a></li>
         </ul>
       </li>
       <li><a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
       <li class="has-sub">
-        <button class="msub-toggle">Member Area<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="msub-toggle">CPD Portal<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <ul class="msub">
           <li><a href="register.html">Register</a></li>
           <li><a href="member-login.html">Member Log In</a></li>
@@ -1304,7 +1407,7 @@
   <div class="wrap">
     <div class="section-head center">
       <span class="eyebrow">Choose Your Discipline</span>
-      <h2>41 practitioner qualifications, one chartering standard</h2>
+      <h2>41 practitioner qualifications, one chartered standard</h2>
       <p>Every CIMS practitioner designation follows the same rigorous entry, assessment and competency framework. Explore the full range and find the discipline that fits your career.</p>
     </div>
     <div class="discipline-grid">
@@ -1314,7 +1417,6 @@
       <a class="discipline-tile" href="chartered-hr-manager-ch-hrm.html">HR Manager (CH-HRM&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       <a class="discipline-tile" href="chartered-project-cost-control-manager-cpccm.html">Project Cost Control Manager (CPCCM&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       <a class="discipline-tile" href="chartered-sales-and-marketing-manager.html">Sales and Marketing Manager (CSMM&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-doctor-of-business-administration.html">Doctor of Business Administration (CDBA&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       <a class="discipline-tile" href="chartered-global-supply-chain-and-logistics-manager-cgsclm.html">Global Supply Chain and Logistics Manager (CGSCLM&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       <a class="discipline-tile" href="chartered-business-continuity-manager-cbcm.html">Business Continuity Manager (CBCM&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       <a class="discipline-tile" href="chartered-healthcare-information-management-manager-chimmgr.html">Healthcare Information Manager (CHIMMGR&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
@@ -1383,10 +1485,8 @@
         <p>Step into the world of management and future-ready your career with the knowledge, skills and ethics the profession demands.</p>
         <div class="foot-social">
           <a href="https://www.facebook.com/profile.php?id=61590429427981" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg></a>
-          <a href="https://www.linkedin.com/company/chartered-institute-of-management-specialists/" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
-          <a href="https://www.instagram.com" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.23.41.55.21.95.47 1.37.89.42.42.68.82.89 1.37.17.42.36 1.05.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.41 2.23-.21.55-.47.95-.89 1.37-.42.42-.82.68-1.37.89-.42.17-1.05.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.23-.41-.55-.21-.95-.47-1.37-.89-.42-.42-.68-.82-.89-1.37-.17-.42-.36-1.05-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.24-1.8.41-2.23.21-.55.47-.95.89-1.37.42-.42.82-.68 1.37-.89.42-.17 1.05-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39C1.35 2.68.94 3.35.63 4.14.33 4.9.14 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.85a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
-          <a href="https://www.twitter.com" aria-label="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M18.24 2H21l-6.55 7.49L22.2 22h-6.15l-4.82-6.3L5.7 22H2.93l7.02-8.02L1.8 2h6.3l4.35 5.76L18.24 2zm-1.08 18h1.7L7.9 3.9H6.08L17.16 20z"/></svg></a>
-          <a href="https://www.youtube.com" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.23-1.64-.94-2.36c-.9-.94-1.9-.95-2.36-1C16.9 2.5 12 2.5 12 2.5h-.01s-4.9 0-8.2.34c-.46.05-1.46.06-2.36 1C.72 4.56.5 6.2.5 6.2S.26 8.13.26 10.05v1.78c0 1.93.24 3.86.24 3.86s.23 1.64.93 2.36c.9.95 2.08.92 2.6 1.02 1.9.18 8.06.34 8.06.34s4.9-.01 8.2-.35c.46-.05 1.46-.06 2.36-1 .7-.72.94-2.36.94-2.36s.24-1.93.24-3.86v-1.78c0-1.92-.24-3.85-.24-3.85zM9.7 14.7V7.9l6.5 3.4-6.5 3.4z"/></svg></a>
+          <a href="https://www.linkedin.com/company/chartered-institute-of-management-specialists/about/?viewAsMember=true" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+          <a href="https://www.instagram.com/charteredims/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.23.41.55.21.95.47 1.37.89.42.42.68.82.89 1.37.17.42.36 1.05.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.41 2.23-.21.55-.47.95-.89 1.37-.42.42-.82.68-1.37.89-.42.17-1.05.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.23-.41-.55-.21-.95-.47-1.37-.89-.42-.42-.68-.82-.89-1.37-.17-.42-.36-1.05-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.24-1.8.41-2.23.21-.55.47-.95.89-1.37.42-.42.82-.68 1.37-.89.42-.17 1.05-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39C1.35 2.68.94 3.35.63 4.14.33 4.9.14 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.85a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
         </div>
       </div>
 
@@ -1437,7 +1537,7 @@
       <div>
         <h4>Contact</h4>
         <ul>
-          <li>212 N. 2nd St., STE 100<br>Richmond, KY 40475, US</li>
+          <li><strong>Registered Office Address:</strong><br>821 N ST STE 102<br>Anchorage, AK 99501, USA</li>
           <li>Monday to Saturday, 9:00 to 17:00</li>
           <li><a href="mailto:admin@charteredims.com">admin@charteredims.com</a></li>
           <li><a href="tel:+18592109109">+1 (859) 210-9109</a></li>
@@ -1458,6 +1558,7 @@
   </div>
 </footer>
 
+<script src="site-search.js"></script>
 <script>
   // ---------- mobile menu toggle ----------
   const toggle = document.getElementById('menuToggle');
@@ -1563,6 +1664,65 @@
     resizeDebounce = setTimeout(resetNavForViewport, 150);
   });
 
+  // ---------- live site search (top bar) ----------
+  (function(){
+    const input = document.getElementById('siteSearchInput');
+    const box = document.getElementById('siteSearchSuggest');
+    const form = document.getElementById('siteSearchForm');
+    if (!input || !box || !form || !window.CIMS_SEARCH) return;
+
+    let activeIndex = -1;
+
+    function render(results) {
+      activeIndex = -1;
+      if (!results.length) {
+        box.innerHTML = '<div class="no-results">No matching pages. Press Enter to see full results.</div>';
+        box.classList.add('open');
+        return;
+      }
+      box.innerHTML = results.slice(0, 8).map(p =>
+        `<a href="${p.url}"><span>${p.title}</span><small>${p.section}</small></a>`
+      ).join('');
+      box.classList.add('open');
+    }
+
+    function close(){ box.classList.remove('open'); box.innerHTML=''; activeIndex = -1; }
+
+    input.addEventListener('input', () => {
+      const q = input.value;
+      if (!q.trim()) { close(); return; }
+      render(window.CIMS_SEARCH(q));
+    });
+
+    input.addEventListener('keydown', (e) => {
+      const items = Array.from(box.querySelectorAll('a'));
+      if (!items.length) return;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeIndex = (activeIndex + 1) % items.length;
+        items.forEach((a,i)=>a.classList.toggle('active', i===activeIndex));
+        items[activeIndex].scrollIntoView({block:'nearest'});
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeIndex = (activeIndex - 1 + items.length) % items.length;
+        items.forEach((a,i)=>a.classList.toggle('active', i===activeIndex));
+        items[activeIndex].scrollIntoView({block:'nearest'});
+      } else if (e.key === 'Enter' && activeIndex >= 0) {
+        e.preventDefault();
+        window.location.href = items[activeIndex].getAttribute('href');
+      } else if (e.key === 'Escape') {
+        close();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!form.contains(e.target) && !box.contains(e.target)) close();
+    });
+
+    form.addEventListener('submit', (e) => {
+      if (!input.value.trim()) e.preventDefault();
+    });
+  })();
 </script>
 
 </body>
