@@ -1349,7 +1349,7 @@
       </form>
       <div class="search-suggest" id="siteSearchSuggest"></div>
     </div>
-    <a href="app.html" class="topbar-apply">Apply Now</a>
+    <a href="app.html" class="topbar-apply" id="applyNowBtn">Apply Now</a>
   </div>
 </div>
 
@@ -1419,7 +1419,7 @@
 
     <div class="nav-utils">
       <div class="nav-item has-dropdown">
-        <button class="nav-link btn-pill filled" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="nav-link btn-pill filled" id="cpdPortalBtn" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="dropdown">
           <a href="register.html">Register</a>
           <a href="member-login.html">Member Log In</a>
@@ -1628,11 +1628,8 @@
                 <div class="profile-item"><div class="profile-item-label">Country</div><div class="profile-item-val" id="p-country">—</div></div>
                 <div class="profile-item"><div class="profile-item-label">Grade / Designation</div><div class="profile-item-val" id="p-track">—</div></div>
                 <div class="profile-item"><div class="profile-item-label">Reference Number</div><div class="profile-item-val" id="p-ref">—</div></div>
-                <div class="profile-item"><div class="profile-item-label">Highest Qualification</div><div class="profile-item-val" id="p-qual">—</div></div>
-                <div class="profile-item"><div class="profile-item-label">Field of Study</div><div class="profile-item-val" id="p-field">—</div></div>
-                <div class="profile-item"><div class="profile-item-label">Job Title</div><div class="profile-item-val" id="p-job">—</div></div>
-                <div class="profile-item"><div class="profile-item-label">Employer</div><div class="profile-item-val" id="p-employer">—</div></div>
-                <div class="profile-item"><div class="profile-item-label">Experience</div><div class="profile-item-val" id="p-exp">—</div></div>
+                <div class="profile-item"><div class="profile-item-label">Membership Number</div><div class="profile-item-val" id="p-memnum">—</div></div>
+                <div class="profile-item"><div class="profile-item-label">Username</div><div class="profile-item-val" id="p-username">—</div></div>
                 <div class="profile-item"><div class="profile-item-label">Member Since</div><div class="profile-item-val" id="p-since">—</div></div>
               </div>
               <button class="btn-small" onclick="requestPasswordReset()">Change Password</button>
@@ -1915,9 +1912,13 @@
     }
   }, 60000);
 
-  // bfcache fix — same reasoning as admin-login.html
+  // bfcache fix — same reasoning as admin-login.html: forcing a full reload every time
+  // this page was restored from bfcache (which mobile browsers trigger just from switching
+  // apps/tabs, not only Back/Forward) was nuking and rebuilding the whole dashboard on every
+  // return. Instead, just silently refresh the on-screen content in place — Firebase keeps
+  // the signed-in session valid across bfcache pauses on its own.
   window.addEventListener('pageshow', (event) => {
-    if (event.persisted) window.location.reload();
+    if (event.persisted && myApp) loadContent();
   });
 
   function showToast(msg, type){
@@ -1957,7 +1958,7 @@
   // items go only to members with that exact grade/designation.
   function isTargetedToMe(item){
     if (!item.category || item.category === 'general') return true;
-    if (item.category !== myApp.applicationType) return false;
+    if (item.category !== 'membership') return false;
     if (!item.track) return true;
     return item.track === myApp.track;
   }
@@ -2065,11 +2066,8 @@
     document.getElementById('p-country').textContent = myApp.country || '—';
     document.getElementById('p-track').textContent = myApp.track || '—';
     document.getElementById('p-ref').textContent = myApp.referenceNumber || '—';
-    document.getElementById('p-qual').textContent = myApp.highestQualification || '—';
-    document.getElementById('p-field').textContent = myApp.fieldOfStudy || '—';
-    document.getElementById('p-job').textContent = myApp.jobTitle || '—';
-    document.getElementById('p-employer').textContent = myApp.employer || '—';
-    document.getElementById('p-exp').textContent = myApp.yearsExperience || '—';
+    document.getElementById('p-memnum').textContent = myApp.membershipNumber || '—';
+    document.getElementById('p-username').textContent = myApp.username || '—';
     document.getElementById('p-since').textContent = fmtDate(myApp.approvedAt || myApp.createdAt);
   }
 
@@ -2190,5 +2188,51 @@
       </div>`).join('');
   }
 </script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/66a63f20becc2fed692c2214/1i3smd6el';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
+<script>
+  (function(){
+    var applyBtn = document.getElementById('applyNowBtn');
+    var cpdBtn = document.getElementById('cpdPortalBtn');
+    if (!applyBtn || !cpdBtn) return;
+
+    function alignApplyNow(){
+      // Below this width the desktop nav (and CPD Portal button) is hidden
+      // in favour of the hamburger menu, so there's nothing to align to.
+      if (window.innerWidth <= 1100) {
+        applyBtn.style.transform = '';
+        return;
+      }
+      var applyRect = applyBtn.getBoundingClientRect();
+      var cpdRect = cpdBtn.getBoundingClientRect();
+      var applyCenter = applyRect.left + (applyRect.width / 2);
+      var cpdCenter = cpdRect.left + (cpdRect.width / 2);
+      var shift = cpdCenter - applyCenter;
+      applyBtn.style.transform = 'translateX(' + shift + 'px)';
+    }
+
+    alignApplyNow();
+    window.addEventListener('resize', alignApplyNow);
+    window.addEventListener('load', alignApplyNow);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(alignApplyNow);
+    }
+  })();
+</script>
+
 </body>
 </html>

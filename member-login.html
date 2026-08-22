@@ -1397,7 +1397,7 @@
       </form>
       <div class="search-suggest" id="siteSearchSuggest"></div>
     </div>
-    <a href="app.html" class="topbar-apply">Apply Now</a>
+    <a href="app.html" class="topbar-apply" id="applyNowBtn">Apply Now</a>
   </div>
 </div>
 
@@ -1467,7 +1467,7 @@
 
     <div class="nav-utils">
       <div class="nav-item has-dropdown">
-        <button class="nav-link btn-pill filled" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="nav-link btn-pill filled" id="cpdPortalBtn" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="dropdown">
           <a href="register.html">Register</a>
           <a href="member-login.html">Member Log In</a>
@@ -1999,5 +1999,51 @@
     }
   });
 </script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/66a63f20becc2fed692c2214/1i3smd6el';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
+<script>
+  (function(){
+    var applyBtn = document.getElementById('applyNowBtn');
+    var cpdBtn = document.getElementById('cpdPortalBtn');
+    if (!applyBtn || !cpdBtn) return;
+
+    function alignApplyNow(){
+      // Below this width the desktop nav (and CPD Portal button) is hidden
+      // in favour of the hamburger menu, so there's nothing to align to.
+      if (window.innerWidth <= 1100) {
+        applyBtn.style.transform = '';
+        return;
+      }
+      var applyRect = applyBtn.getBoundingClientRect();
+      var cpdRect = cpdBtn.getBoundingClientRect();
+      var applyCenter = applyRect.left + (applyRect.width / 2);
+      var cpdCenter = cpdRect.left + (cpdRect.width / 2);
+      var shift = cpdCenter - applyCenter;
+      applyBtn.style.transform = 'translateX(' + shift + 'px)';
+    }
+
+    alignApplyNow();
+    window.addEventListener('resize', alignApplyNow);
+    window.addEventListener('load', alignApplyNow);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(alignApplyNow);
+    }
+  })();
+</script>
+
 </body>
 </html>

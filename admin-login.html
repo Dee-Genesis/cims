@@ -214,7 +214,11 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:10px 0;
+    /* Only override top/bottom — the shorthand "padding:10px 0" used to also zero
+       out left/right, cancelling .wrap's 32px side padding and pushing the CPD
+       Portal button further right than Apply Now in the bar above it. */
+    padding-top:10px;
+    padding-bottom:10px;
     gap:32px;
   }
   .brand{
@@ -1567,7 +1571,7 @@
       </form>
       <div class="search-suggest" id="siteSearchSuggest"></div>
     </div>
-    <a href="app.html" class="topbar-apply">Apply Now</a>
+    <a href="app.html" class="topbar-apply" id="applyNowBtn">Apply Now</a>
   </div>
 </div>
 
@@ -1638,7 +1642,7 @@
 
     <div class="nav-utils">
       <div class="nav-item has-dropdown">
-        <button class="nav-link btn-pill filled" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="nav-link btn-pill filled" id="cpdPortalBtn" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="dropdown">
           <a href="register.html">Register</a>
           <a href="member-login.html">Member Log In</a>
@@ -1810,15 +1814,13 @@
                 <div class="reg-field"><label>Send To</label>
                   <select id="matCategory" onchange="updateTargeting('mat')">
                     <option value="general">General (All Members)</option>
-                    <option value="membership">Membership Grades</option>
-                    <option value="practitioner">Practitioner Qualifications</option>
-                    <option value="specialist">Specialist Qualifications</option>
+                    <option value="membership">CPD Categories</option>
                   </select>
                 </div>
               </div>
               <div class="reg-row c1" id="matTrackRow" style="display:none;">
                 <div class="reg-field">
-                  <label>Specific Grade / Designation</label>
+                  <label>Specific CPD Category</label>
                   <select id="matTrack"><option value="">All in this category</option></select>
                 </div>
               </div>
@@ -1856,15 +1858,13 @@
                 <div class="reg-field"><label>Send To</label>
                   <select id="vidCategory" onchange="updateTargeting('vid')">
                     <option value="general">General (All Members)</option>
-                    <option value="membership">Membership Grades</option>
-                    <option value="practitioner">Practitioner Qualifications</option>
-                    <option value="specialist">Specialist Qualifications</option>
+                    <option value="membership">CPD Categories</option>
                   </select>
                 </div>
               </div>
               <div class="reg-row c1" id="vidTrackRow" style="display:none;">
                 <div class="reg-field">
-                  <label>Specific Grade / Designation</label>
+                  <label>Specific CPD Category</label>
                   <select id="vidTrack"><option value="">All in this category</option></select>
                 </div>
               </div>
@@ -1894,15 +1894,13 @@
                 <div class="reg-field"><label>Send To</label>
                   <select id="noticeCategory" onchange="updateTargeting('notice')">
                     <option value="general">General (All Members)</option>
-                    <option value="membership">Membership Grades</option>
-                    <option value="practitioner">Practitioner Qualifications</option>
-                    <option value="specialist">Specialist Qualifications</option>
+                    <option value="membership">CPD Categories</option>
                   </select>
                 </div>
               </div>
               <div class="reg-row c1" id="noticeTrackRow" style="display:none;">
                 <div class="reg-field">
-                  <label>Specific Grade / Designation</label>
+                  <label>Specific CPD Category</label>
                   <select id="noticeTrack"><option value="">All in this category</option></select>
                 </div>
               </div>
@@ -1969,17 +1967,13 @@
     </div>
     <div class="modal-grid">
       <div><div class="modal-item-label">Application Reference</div><div class="modal-item-val" id="m-ref">—</div></div>
-      <div><div class="modal-item-label">Category</div><div class="modal-item-val" id="m-apptype">—</div></div>
-      <div><div class="modal-item-label">Grade / Designation</div><div class="modal-item-val" id="m-track">—</div></div>
+      <div><div class="modal-item-label">CPD Category</div><div class="modal-item-val" id="m-track">—</div></div>
       <div><div class="modal-item-label">Submitted</div><div class="modal-item-val" id="m-date">—</div></div>
       <div><div class="modal-item-label">Email</div><div class="modal-item-val" id="m-email">—</div></div>
       <div><div class="modal-item-label">Phone</div><div class="modal-item-val" id="m-phone">—</div></div>
       <div><div class="modal-item-label">Country</div><div class="modal-item-val" id="m-country">—</div></div>
-      <div><div class="modal-item-label">Highest Qualification</div><div class="modal-item-val" id="m-qual">—</div></div>
-      <div><div class="modal-item-label">Field of Study</div><div class="modal-item-val" id="m-field">—</div></div>
-      <div><div class="modal-item-label">Job Title</div><div class="modal-item-val" id="m-job">—</div></div>
-      <div><div class="modal-item-label">Employer</div><div class="modal-item-val" id="m-employer">—</div></div>
-      <div><div class="modal-item-label">Experience</div><div class="modal-item-val" id="m-exp">—</div></div>
+      <div><div class="modal-item-label">Membership Number</div><div class="modal-item-val" id="m-memnum">—</div></div>
+      <div><div class="modal-item-label">Username</div><div class="modal-item-val" id="m-username">—</div></div>
     </div>
     <div class="modal-actions" id="modalActions"></div>
   </div>
@@ -2075,6 +2069,38 @@
 <script src="site-search.js"></script>
 <script>
   // ---------- mobile menu + dropdown behaviour (same as rest of site) ----------
+  // ---------- centre "Apply Now" over "CPD Portal" ----------
+  // CPD Portal is wider than Apply Now (it has the dropdown arrow), so simply right-aligning
+  // both buttons leaves their edges flush but their centres offset. This measures both buttons'
+  // actual on-screen positions and nudges Apply Now sideways so their horizontal centres match
+  // exactly, on any screen size — a fixed pixel value would drift depending on font rendering
+  // and viewport width. Only runs at desktop widths (min-width:1101px), since below that the
+  // CPD Portal button in the header is replaced by the mobile hamburger menu.
+  (function alignApplyNowToCpdPortal(){
+    const applyBtn = document.getElementById('applyNowBtn');
+    const cpdBtn = document.getElementById('cpdPortalBtn');
+    if (!applyBtn || !cpdBtn) return;
+
+    function align(){
+      applyBtn.style.transform = ''; // reset before measuring, or offsets stack on repeated calls
+      if (window.innerWidth < 1101){
+        // CPD Portal is hidden on mobile/tablet (hamburger menu takes over) — nothing to align to.
+        return;
+      }
+      const cpdRect = cpdBtn.getBoundingClientRect();
+      const applyRect = applyBtn.getBoundingClientRect();
+      const cpdCenter = cpdRect.left + cpdRect.width / 2;
+      const applyCenter = applyRect.left + applyRect.width / 2;
+      applyBtn.style.transform = `translateX(${cpdCenter - applyCenter}px)`;
+    }
+
+    align();
+    window.addEventListener('resize', align);
+    // Re-run once web fonts finish loading — button widths (and therefore centres)
+    // can shift slightly once the real font swaps in for the fallback font.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(align);
+  })();
+
   const toggle = document.getElementById('menuToggle');
   const menu = document.getElementById('mobileMenu');
   function closeMobileMenu(){
@@ -2258,32 +2284,9 @@
   let uploadedMaterialFile = null; // { url, name, bytes, format }
 
   // ---------- CASCADING "SEND TO" TARGETING (materials / videos / notices) ----------
+  // Only 4 CPD categories exist as an audience for content delivery.
   const MEMBERSHIP_GRADES = [
     'Associate Member (ACIMS)', 'Chartered Member (MCIMS)', 'Chartered Fellow (FCIMS)', 'Chartered Doctoral Fellow (DCIMS)'
-  ];
-  const PRACTITIONER_TRACKS = [
-    'Chartered Project Manager','Chartered Operations Manager','Chartered Project Management Officer (PMO)',
-    'Chartered HR Manager','Chartered Project Cost Control Manager','Chartered Sales and Marketing Manager',
-    'Chartered Doctor of Business Administration','Chartered Global Supply Chain and Logistics Manager',
-    'Chartered Business Continuity Manager','Chartered Healthcare Information Manager','Chartered Safety Manager',
-    'Chartered Fire & Safety Manager','Chartered Office Manager','Chartered Sales Manager',
-    'Chartered Healthcare Quality Improvement Manager','Chartered Procurement Manager','Chartered Contract Manager',
-    'Chartered Bids and Proposal Manager','Chartered Compliance Manager','Chartered Contract Administrator',
-    'Chartered Strategy Manager','Chartered Healthcare Risk Manager','Chartered Healthcare Facility Manager',
-    'Chartered Governance Manager','Chartered Claims Manager','Chartered Digital Marketing Manager',
-    'Chartered Data Analytics Manager','Chartered Healthcare Administration Manager','Chartered Energy Manager',
-    'Chartered Project Risk Manager','Chartered Sustainability Manager','Chartered Strategic Management Professional',
-    'Chartered Oil and Gas Management Professional','Chartered IT Manager','Chartered Recruitment Manager',
-    'Chartered Sustainable Supply Chain Professional','Chartered Financial Risk Manager','Chartered Energy Risk Manager',
-    'Chartered Human Resource Professional','Chartered Marketing and Branding Professional','Chartered Facilities Manager'
-  ];
-  const SPECIALIST_TRACKS = [
-    'Chartered Human Resource Management Specialist','Chartered Leadership and Strategic Planning Specialist',
-    'Chartered International Trade & Logistics Specialist','Chartered Quality Management Specialist',
-    'Chartered Management Specialist','Chartered Business Specialist','Chartered Agile and Scrum Specialist',
-    'Chartered Supply Chain Management Specialist','Chartered Health and Safety Management Specialist',
-    'Chartered Training and Development Management Specialist','Chartered Transportation and Pipeline Logistics Management Specialist',
-    'Chartered Operations & Production Management Specialist','Chartered Oil Stock Manager'
   ];
   function populateTrackSelect(selectEl, options){
     selectEl.innerHTML = '<option value="">All in this category</option>' +
@@ -2294,19 +2297,27 @@
     const row = document.getElementById(prefix + 'TrackRow');
     const trackSelect = document.getElementById(prefix + 'Track');
     if (cat === 'membership'){ populateTrackSelect(trackSelect, MEMBERSHIP_GRADES); row.style.display = 'block'; }
-    else if (cat === 'practitioner'){ populateTrackSelect(trackSelect, PRACTITIONER_TRACKS); row.style.display = 'block'; }
-    else if (cat === 'specialist'){ populateTrackSelect(trackSelect, SPECIALIST_TRACKS); row.style.display = 'block'; }
     else { trackSelect.innerHTML = '<option value="">All in this category</option>'; row.style.display = 'none'; }
   };
 
   // ---------- BFCACHE FIX ----------
-  // Bug this addresses: navigating away from this tab (or hitting Back) and returning could
-  // restore the page from the browser's back-forward cache instead of re-running this script,
-  // leaving Firebase's listeners dead. Forcing a real reload when that's detected guarantees
-  // Firebase re-initialises cleanly, without ever blocking the page on a "checking session"
-  // screen that could itself get stuck if the check never resolves.
+  // Bug this used to cause: forcing a full window.location.reload() every time the browser
+  // restored this tab from bfcache — which happens routinely on mobile when you simply switch
+  // apps/tabs and come back, not just on Back/Forward navigation. That nuked and rebuilt the
+  // entire dashboard (fonts, Firebase SDK, all data) on every return, which looked like the
+  // dashboard "exiting" or endlessly loading.
+  //
+  // Fix: instead of reloading, just silently re-check the session and refresh the on-screen
+  // data in place. The Firebase SDK itself already keeps the signed-in user's token valid
+  // across bfcache pauses and auto-refreshes it on the next request, so a full reload was
+  // never actually required for auth to keep working — only for the data to look current.
   window.addEventListener('pageshow', (event) => {
-    if (event.persisted) window.location.reload();
+    if (event.persisted && currentUid) {
+      loadApplications();
+      loadMaterials();
+      loadVideos();
+      loadNotices();
+    }
   });
 
   function showToast(msg, type){
@@ -2358,10 +2369,26 @@
     await signOut(auth);
   };
 
+  // Bug this fixes: the Sign In button gets disabled with a "Signing in…" spinner the
+  // moment you submit the form, and that state was previously never cleared once login
+  // succeeded (the dashboard just covers it up). So after signing out, the login form
+  // reappeared with the button still stuck disabled/spinning from the earlier session —
+  // it looked like the page was "still loading" when really the button just couldn't be
+  // clicked. This resets it every time the login screen is (re)shown.
+  function resetLoginButton(){
+    const btn = document.getElementById('loginBtn');
+    const btnText = document.getElementById('loginBtnText');
+    const spinner = document.getElementById('loginSpinner');
+    btn.disabled = false;
+    btnText.textContent = 'Sign In';
+    spinner.style.display = 'none';
+  }
+
   onAuthStateChanged(auth, async (user) => {
     if (!user){
       document.getElementById('loginScreen').style.display = 'flex';
       document.getElementById('dashboardScreen').style.display = 'none';
+      resetLoginButton();
       currentUid = null;
       return;
     }
@@ -2795,17 +2822,13 @@
     document.getElementById('modalStatus').textContent = a.status;
     document.getElementById('modalStatus').className = `status-badge ${a.status}`;
     document.getElementById('m-ref').textContent = a.referenceNumber || '—';
-    document.getElementById('m-apptype').textContent = appTypeLabel(a.applicationType);
     document.getElementById('m-track').textContent = a.track || '—';
     document.getElementById('m-date').textContent = fmtDate(a.createdAt);
     document.getElementById('m-email').textContent = a.email || '—';
     document.getElementById('m-phone').textContent = a.phone || '—';
     document.getElementById('m-country').textContent = a.country || '—';
-    document.getElementById('m-qual').textContent = a.highestQualification || '—';
-    document.getElementById('m-field').textContent = a.fieldOfStudy || '—';
-    document.getElementById('m-job').textContent = a.jobTitle || '—';
-    document.getElementById('m-employer').textContent = a.employer || '—';
-    document.getElementById('m-exp').textContent = a.yearsExperience || '—';
+    document.getElementById('m-memnum').textContent = a.membershipNumber || '—';
+    document.getElementById('m-username').textContent = a.username || '—';
 
     const actionsEl = document.getElementById('modalActions');
     if (a.status === 'pending'){
@@ -2827,5 +2850,7 @@
     if (e.target.id === 'modalOverlay') closeModal();
   });
 </script>
+
+
 </body>
 </html>
