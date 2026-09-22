@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Register | Chartered Institute of Management Specialists (CIMS)</title>
-<meta name="description" content="Apply for CIMS Membership, Practitioner Qualifications, or Specialist Qualifications. Submit your application for review by the Membership Team.">
+<title>Sign Up | CIMS CPD Portal</title>
+<meta name="description" content="Sign up for the CIMS Continuing Professional Development (CPD) Portal. Confirm your Membership Grade and Membership Number, then create your CPD account for review by the Membership Team.">
 <link rel="icon" type="image/png" href="assets/logos/cims-logo.png">
 <link rel="apple-touch-icon" href="assets/logos/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -278,10 +278,13 @@
   nav.main{display:flex;align-items:center;}
   nav.main > ul{
     list-style:none;margin:0;padding:0;
-    display:flex;align-items:center;gap:34px;
-    font-size:.83rem;font-weight:600;
+    display:flex;align-items:center;gap:20px;
+    font-size:.88rem;font-weight:600;
     color:var(--ink);
   }
+  /* scale the menu up on wider desktops */
+  @media (min-width:1200px){ nav.main > ul{gap:26px;font-size:.93rem;} }
+  @media (min-width:1280px){ nav.main > ul{gap:30px;font-size:.97rem;} }
   nav.main > ul > li{position:relative;}
   nav.main > ul > li > a,
   nav.main > ul > li > button.nav-link{
@@ -308,7 +311,7 @@
   /* dropdown panel */
   .dropdown{
     position:absolute;top:100%;left:0;
-    min-width:265px;
+    min-width:290px;
     background:var(--paper);
     border:1px solid var(--line);
     border-top:2px solid var(--gold);
@@ -327,8 +330,8 @@
   .nav-item.open > .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
   .dropdown a{
     display:block;
-    padding:11px 22px;
-    font-size:.85rem;font-weight:600;
+    padding:12px 24px;
+    font-size:.95rem;font-weight:600;
     color:var(--ink);
     border-left:2px solid transparent;
   }
@@ -408,8 +411,8 @@
   .mobile-list > li > a,
   .msub-toggle{
     display:flex;align-items:center;justify-content:space-between;gap:10px;
-    width:100%;padding:15px 28px;
-    font-weight:600;font-size:.92rem;
+    width:100%;padding:17px 28px;
+    font-weight:600;font-size:1.05rem;
     background:none;border:none;color:var(--paper);font-family:inherit;
     text-align:left;cursor:pointer;
   }
@@ -425,10 +428,10 @@
     background:rgba(0,0,0,.2);
     transition:max-height .3s ease;
   }
-  li.has-sub.open > .msub{max-height:600px;}
+  li.has-sub.open > .msub{max-height:900px;}
   .msub li a{
-    display:block;padding:12px 28px 12px 42px;
-    font-size:.85rem;color:#d9cfc0;
+    display:block;padding:13px 28px 13px 42px;
+    font-size:.97rem;color:#d9cfc0;
     border-bottom:1px solid rgba(255,255,255,.05);
   }
   .msub li a:hover{color:var(--gold-light);}
@@ -1371,7 +1374,7 @@
       </form>
       <div class="search-suggest" id="siteSearchSuggest"></div>
     </div>
-    <a href="app.html" class="topbar-apply">Apply Now</a>
+    <a href="app.html" class="topbar-apply" id="applyNowBtn">Apply Now</a>
   </div>
 </div>
 
@@ -1435,14 +1438,17 @@
         </li>
 
         <li class="nav-item">
-          <a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a>
+          <a href="chartered-executive-leader-cexl.html" target="_blank" rel="noopener">CExL&trade;</a>
+        </li>
+        <li class="nav-item">
+          <a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">CSD&trade;</a>
         </li>
       </ul>
     </nav>
 
     <div class="nav-utils">
       <div class="nav-item has-dropdown">
-        <button class="nav-link btn-pill filled" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="nav-link btn-pill filled" id="cpdPortalBtn" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="dropdown">
           <a href="register.html">Register</a>
           <a href="member-login.html">Member Log In</a>
@@ -1499,7 +1505,8 @@
           <li><a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a></li>
         </ul>
       </li>
-      <li><a href="chartered-strategic-director.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
+      <li><a href="chartered-executive-leader-cexl.html" target="_blank" rel="noopener">CExL&trade;</a></li>
+      <li><a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">CSD&trade;</a></li>
       <li class="has-sub">
         <button class="msub-toggle">CPD Portal<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <ul class="msub">
@@ -1523,8 +1530,8 @@
       <span class="current">Register</span>
     </nav>
     <span class="eyebrow">Member Area</span>
-    <h1 style="margin-top:18px;">Start Your Application</h1>
-    <p class="lede">Apply for a CIMS Membership Grade, Practitioner Qualification, or Specialist Qualification. Your application is reviewed by the Membership Team before account access is granted.</p>
+    <h1 style="margin-top:18px;">Sign Up</h1>
+    <p class="lede">Register for the CIMS Continuing Professional Development (CPD) Portal. Confirm your Membership Grade and Membership Number, then create your account. Your sign up is reviewed by the Membership Team before account access is granted.</p>
   </div>
   <div class="hero-inner-seal">
     <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
@@ -1546,7 +1553,7 @@
     <div class="reg-progress" id="regProgress">
       <div class="reg-step active" data-step="1">
         <div class="reg-step-num">1</div>
-        <div class="reg-step-label">Application</div>
+        <div class="reg-step-label">CPD Category</div>
       </div>
       <div class="reg-step" data-step="2">
         <div class="reg-step-num">2</div>
@@ -1568,119 +1575,21 @@
 
       <!-- ===== STEP 1: APPLICATION CATEGORY ===== -->
       <div class="reg-panel active" id="panel-1">
-        <h2>Choose Your <em>Application Category</em></h2>
-        <p class="sub">CIMS offers three application pathways &mdash; Membership Grades, Practitioner Qualifications and Specialist Qualifications. Select a category to reveal the specific grade or designation you are applying for.</p>
+        <h2>Choose Your <em>CPD Category</em></h2>
+        <p class="sub">This sign up is strictly for Continuing Professional Development (CPD). Select the Membership Grade you currently hold with CIMS to continue.</p>
 
-        <div class="reg-section-label">Application Category</div>
+        <div class="reg-section-label">CPD Category</div>
         <div class="reg-row c1">
           <div class="reg-field">
-            <label>Application Type <span class="req">*</span></label>
-            <select id="appType" onchange="updateAppType()">
-              <option value="">— Select Application Type —</option>
-              <option value="membership">Membership Grade</option>
-              <option value="practitioner">Practitioner Qualification</option>
-              <option value="specialist">Specialist Qualification</option>
+            <label>CPD Category (Membership Grade) <span class="req">*</span></label>
+            <select id="membershipGrade" onchange="updateInfoBox()">
+              <option value="">— Select CPD Category —</option>
+              <option value="Associate Member (ACIMS)">Associate Member (ACIMS)</option>
+              <option value="Chartered Member (MCIMS)">Chartered Member (MCIMS)</option>
+              <option value="Chartered Fellow (FCIMS)">Chartered Fellow (FCIMS)</option>
+              <option value="Chartered Doctoral Fellow (DCIMS)">Chartered Doctoral Fellow (DCIMS)</option>
             </select>
-            <div class="reg-err" id="appTypeErr">Please select an application type.</div>
-          </div>
-        </div>
-
-        <!-- Membership sub-select -->
-        <div id="membershipOptions" style="display:none">
-          <div class="reg-section-label">Membership Grade</div>
-          <div class="reg-row c1">
-            <div class="reg-field">
-              <label>Select Grade <span class="req">*</span></label>
-              <select id="membershipGrade" onchange="updateInfoBox()">
-                <option value="">— Select Grade —</option>
-                <option value="Associate Member (ACIMS)">Associate Member (ACIMS)</option>
-                <option value="Chartered Member (MCIMS)">Chartered Member (MCIMS)</option>
-                <option value="Chartered Fellow (FCIMS)">Chartered Fellow (FCIMS)</option>
-                <option value="Chartered Doctoral Fellow (DCIMS)">Chartered Doctoral Fellow (DCIMS)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <!-- Practitioner sub-select -->
-        <div id="practitionerOptions" style="display:none">
-          <div class="reg-section-label">Practitioner Qualification</div>
-          <div class="reg-row c1">
-            <div class="reg-field">
-              <label>Select Designation <span class="req">*</span></label>
-              <select id="practitionerTrack" onchange="updateInfoBox()">
-                <option value="">— Select Designation —</option>
-                <option>Chartered Project Manager</option>
-                <option>Chartered Operations Manager</option>
-                <option>Chartered Project Management Officer (PMO)</option>
-                <option>Chartered HR Manager</option>
-                <option>Chartered Project Cost Control Manager</option>
-                <option>Chartered Sales and Marketing Manager</option>
-                <option>Chartered Doctor of Business Administration</option>
-                <option>Chartered Global Supply Chain and Logistics Manager</option>
-                <option>Chartered Business Continuity Manager</option>
-                <option>Chartered Healthcare Information Manager</option>
-                <option>Chartered Safety Manager</option>
-                <option>Chartered Fire &amp; Safety Manager</option>
-                <option>Chartered Office Manager</option>
-                <option>Chartered Sales Manager</option>
-                <option>Chartered Healthcare Quality Improvement Manager</option>
-                <option>Chartered Procurement Manager</option>
-                <option>Chartered Contract Manager</option>
-                <option>Chartered Bids and Proposal Manager</option>
-                <option>Chartered Compliance Manager</option>
-                <option>Chartered Contract Administrator</option>
-                <option>Chartered Strategy Manager</option>
-                <option>Chartered Healthcare Risk Manager</option>
-                <option>Chartered Healthcare Facility Manager</option>
-                <option>Chartered Governance Manager</option>
-                <option>Chartered Claims Manager</option>
-                <option>Chartered Digital Marketing Manager</option>
-                <option>Chartered Data Analytics Manager</option>
-                <option>Chartered Healthcare Administration Manager</option>
-                <option>Chartered Energy Manager</option>
-                <option>Chartered Project Risk Manager</option>
-                <option>Chartered Sustainability Manager</option>
-                <option>Chartered Strategic Management Professional</option>
-                <option>Chartered Oil and Gas Management Professional</option>
-                <option>Chartered IT Manager</option>
-                <option>Chartered Recruitment Manager</option>
-                <option>Chartered Sustainable Supply Chain Professional</option>
-                <option>Chartered Financial Risk Manager</option>
-                <option>Chartered Energy Risk Manager</option>
-                <option>Chartered Human Resource Professional</option>
-                <option>Chartered Marketing and Branding Professional</option>
-                <option>Chartered Facilities Manager</option>
-              </select>
-              <div class="reg-hint">41 broad-based designations. See the full list on the <a href="practitioner-qualifications.html" target="_blank" style="color:var(--burgundy);">Practitioner Qualifications</a> page.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Specialist sub-select -->
-        <div id="specialistOptions" style="display:none">
-          <div class="reg-section-label">Specialist Qualification</div>
-          <div class="reg-row c1">
-            <div class="reg-field">
-              <label>Select Designation <span class="req">*</span></label>
-              <select id="specialistTrack" onchange="updateInfoBox()">
-                <option value="">— Select Designation —</option>
-                <option>Chartered Human Resource Management Specialist</option>
-                <option>Chartered Leadership and Strategic Planning Specialist</option>
-                <option>Chartered International Trade &amp; Logistics Specialist</option>
-                <option>Chartered Quality Management Specialist</option>
-                <option>Chartered Management Specialist</option>
-                <option>Chartered Business Specialist</option>
-                <option>Chartered Agile and Scrum Specialist</option>
-                <option>Chartered Supply Chain Management Specialist</option>
-                <option>Chartered Health and Safety Management Specialist</option>
-                <option>Chartered Training and Development Management Specialist</option>
-                <option>Chartered Transportation and Pipeline Logistics Management Specialist</option>
-                <option>Chartered Operations &amp; Production Management Specialist</option>
-                <option>Chartered Oil Stock Manager</option>
-              </select>
-              <div class="reg-hint">13 targeted designations. See the full list on the <a href="specialist-qualifications.html" target="_blank" style="color:var(--burgundy);">Specialist Qualifications</a> page.</div>
-            </div>
+            <div class="reg-err" id="membershipGradeErr">Please select your CPD category.</div>
           </div>
         </div>
 
@@ -1692,10 +1601,10 @@
         </div>
       </div>
 
-      <!-- ===== STEP 2: PERSONAL & PROFESSIONAL INFO ===== -->
+      <!-- ===== STEP 2: PERSONAL & MEMBERSHIP INFO ===== -->
       <div class="reg-panel" id="panel-2">
-        <h2>Your <em>Personal &amp; Professional</em> Details</h2>
-        <p class="sub">This information is used to assess your eligibility and will appear on your CIMS member record once approved.</p>
+        <h2>Your <em>Personal &amp; Membership</em> Details</h2>
+        <p class="sub">This information is used to verify your existing CIMS membership and will appear on your CPD Portal record once approved.</p>
 
         <div class="reg-section-label">Profile Photo</div>
         <div class="reg-row c1">
@@ -1739,73 +1648,26 @@
         </div>
         <div class="reg-row c2">
           <div class="reg-field">
-            <label>Email Address <span class="req">*</span></label>
+            <label>Registered Email Address <span class="req">*</span></label>
             <input type="email" id="email" autocomplete="email">
             <div class="reg-err" id="emailErr">Enter a valid email address.</div>
           </div>
           <div class="reg-field">
             <label>Phone Number <span class="req">*</span></label>
-            <input type="tel" id="phone" autocomplete="tel" placeholder="+1 555 000 0000">
+            <input type="tel" id="phone" autocomplete="tel">
             <div class="reg-err" id="phoneErr">Phone number is required.</div>
           </div>
         </div>
-        <div class="reg-row c1">
+        <div class="reg-row c2">
           <div class="reg-field">
             <label>Country of Residence <span class="req">*</span></label>
             <input type="text" id="country" autocomplete="country-name">
             <div class="reg-err" id="countryErr">Country is required.</div>
           </div>
-        </div>
-
-        <div class="reg-section-label">Academic Background</div>
-        <div class="reg-row c2">
           <div class="reg-field">
-            <label>Highest Academic Qualification <span class="req">*</span></label>
-            <select id="highestQual">
-              <option value="">— Select —</option>
-              <option>High School Diploma</option>
-              <option>Associate Degree</option>
-              <option>Bachelor's Degree</option>
-              <option>Master's Degree</option>
-              <option>Doctoral Degree</option>
-              <option>Professional Certification (no degree)</option>
-              <option>Other / Equivalent</option>
-            </select>
-            <div class="reg-err" id="highestQualErr">Please select your highest qualification.</div>
-          </div>
-          <div class="reg-field">
-            <label>Field of Study <span class="req">*</span></label>
-            <input type="text" id="fieldOfStudy" placeholder="e.g. Business Administration">
-            <div class="reg-err" id="fieldOfStudyErr">Field of study is required.</div>
-          </div>
-        </div>
-
-        <div class="reg-section-label">Professional Experience</div>
-        <div class="reg-row c2">
-          <div class="reg-field">
-            <label>Current Job Title <span class="req">*</span></label>
-            <input type="text" id="jobTitle">
-            <div class="reg-err" id="jobTitleErr">Job title is required.</div>
-          </div>
-          <div class="reg-field">
-            <label>Current Employer / Organisation <span class="req">*</span></label>
-            <input type="text" id="employer">
-            <div class="reg-err" id="employerErr">Employer is required.</div>
-          </div>
-        </div>
-        <div class="reg-row c1">
-          <div class="reg-field">
-            <label>Years of Relevant Professional Experience <span class="req">*</span></label>
-            <select id="yearsExp">
-              <option value="">— Select —</option>
-              <option>Less than 2 years</option>
-              <option>2–4 years</option>
-              <option>5–7 years</option>
-              <option>8–10 years</option>
-              <option>11–15 years</option>
-              <option>16+ years</option>
-            </select>
-            <div class="reg-err" id="yearsExpErr">Please select your experience range.</div>
+            <label>Membership Number <span class="req">*</span></label>
+            <input type="text" id="membershipNumber">
+            <div class="reg-err" id="membershipNumberErr">Membership number is required.</div>
           </div>
         </div>
 
@@ -1817,8 +1679,16 @@
 
       <!-- ===== STEP 3: ACCOUNT SECURITY ===== -->
       <div class="reg-panel" id="panel-3">
-        <h2>Secure Your <em>Account</em></h2>
-        <p class="sub">This password protects your CIMS member portal account. You'll use it together with your email to log in once your application is approved.</p>
+        <h2>Create Your <em>Account</em></h2>
+        <p class="sub">Choose a username and password for your CIMS CPD Portal account. You'll use these to log in once your sign up is approved.</p>
+
+        <div class="reg-row c1">
+          <div class="reg-field">
+            <label>Username <span class="req">*</span></label>
+            <input type="text" id="username" autocomplete="username">
+            <div class="reg-err" id="usernameErr">Please choose a username.</div>
+          </div>
+        </div>
 
         <div class="reg-row c1">
           <div class="reg-field">
@@ -1855,16 +1725,12 @@
 
         <div class="reg-review-section">
           <div class="reg-review-head">
-            <h4>Application</h4>
+            <h4>CPD Category</h4>
             <span class="reg-review-edit" onclick="goToStep(1)">Edit</span>
           </div>
           <div class="reg-review-grid">
             <div>
-              <div class="reg-review-label">Category</div>
-              <div class="reg-review-val" id="rv-apptype">—</div>
-            </div>
-            <div>
-              <div class="reg-review-label">Grade / Designation</div>
+              <div class="reg-review-label">Membership Grade</div>
               <div class="reg-review-val gold" id="rv-track">—</div>
             </div>
           </div>
@@ -1877,19 +1743,25 @@
           </div>
           <div class="reg-review-grid">
             <div><div class="reg-review-label">Full Name</div><div class="reg-review-val" id="rv-name">—</div></div>
-            <div><div class="reg-review-label">Email</div><div class="reg-review-val" id="rv-email">—</div></div>
+            <div><div class="reg-review-label">Membership Number</div><div class="reg-review-val" id="rv-memnum">—</div></div>
+            <div><div class="reg-review-label">Registered Email</div><div class="reg-review-val" id="rv-email">—</div></div>
             <div><div class="reg-review-label">Phone</div><div class="reg-review-val" id="rv-phone">—</div></div>
             <div><div class="reg-review-label">Country</div><div class="reg-review-val" id="rv-country">—</div></div>
-            <div><div class="reg-review-label">Highest Qualification</div><div class="reg-review-val" id="rv-qual">—</div></div>
-            <div><div class="reg-review-label">Field of Study</div><div class="reg-review-val" id="rv-field">—</div></div>
-            <div><div class="reg-review-label">Job Title</div><div class="reg-review-val" id="rv-job">—</div></div>
-            <div><div class="reg-review-label">Employer</div><div class="reg-review-val" id="rv-employer">—</div></div>
-            <div><div class="reg-review-label">Experience</div><div class="reg-review-val" id="rv-exp">—</div></div>
+          </div>
+        </div>
+
+        <div class="reg-review-section">
+          <div class="reg-review-head">
+            <h4>Account</h4>
+            <span class="reg-review-edit" onclick="goToStep(3)">Edit</span>
+          </div>
+          <div class="reg-review-grid">
+            <div><div class="reg-review-label">Username</div><div class="reg-review-val" id="rv-username">—</div></div>
           </div>
         </div>
 
         <div class="reg-declaration">
-          <p>I confirm that the information provided in this application is true and accurate to the best of my knowledge. I understand that CIMS will review my application and that submission does not guarantee admission. I understand that account access will only be granted once my application has been reviewed and approved by the Membership Team.</p>
+          <p>I confirm that the information provided in this sign up is true and accurate to the best of my knowledge. I understand that CIMS will review my details and that submission does not guarantee approval. I understand that account access will only be granted once my sign up has been reviewed and authorized by the Membership Team.</p>
           <label class="reg-declaration-check">
             <input type="checkbox" id="declarationCheck">
             <span>I have read and agree to the above declaration and the <a href="privacy.html" target="_blank">Privacy Policy</a>.</span>
@@ -1899,7 +1771,7 @@
         <div class="reg-nav">
           <button type="button" class="reg-btn-prev" onclick="goToStep(3)">&larr; Back</button>
           <button type="button" class="reg-btn-submit" id="submitBtn" onclick="submitApplication()">
-            <span id="submitBtnText">Submit Application</span>
+            <span id="submitBtnText">Submit for Authorization</span>
             <span class="spinner" id="submitSpinner"></span>
           </button>
         </div>
@@ -1910,10 +1782,10 @@
     <!-- ===== SUCCESS SCREEN ===== -->
     <div class="reg-success" id="successScreen">
       <div class="reg-success-icon">&#10003;</div>
-      <h2>Application <em>Submitted</em></h2>
-      <p>Thank you for applying to CIMS. A verification email has been sent to <strong id="successEmail"></strong> &mdash; please verify your address. Your application is now <strong>pending review</strong> by our Membership Team. You'll be able to log in to the Member Portal once your application is approved.</p>
+      <h2>Sign Up <em>Submitted</em></h2>
+      <p>Thank you for signing up to the CIMS CPD Portal. A verification email has been sent to <strong id="successEmail"></strong> &mdash; please verify your address. Your sign up is now <strong>pending authorization</strong> by our Membership Team. You'll be able to log in to the CPD Portal once it is authorized.</p>
       <div class="reg-ref-box">
-        <div class="reg-ref-label">Your Application Reference</div>
+        <div class="reg-ref-label">Your Sign Up Reference</div>
         <div class="reg-ref-num" id="refNumber">—</div>
       </div>
       <div class="reg-success-btns">
@@ -2176,46 +2048,19 @@
     reader.readAsDataURL(file);
   });
 
-  function getAppTypeLabel(){
-    const map = { membership:'Membership Grade', practitioner:'Practitioner Qualification', specialist:'Specialist Qualification' };
-    return map[v('appType')] || '—';
-  }
   function getTrack(){
-    const type = v('appType');
-    if (type === 'membership')   return v('membershipGrade');
-    if (type === 'practitioner') return v('practitionerTrack');
-    if (type === 'specialist')   return v('specialistTrack');
-    return '';
-  }
-
-  function updateAppType(){
-    const val = v('appType');
-    ['membershipOptions','practitionerOptions','specialistOptions'].forEach(id => {
-      document.getElementById(id).style.display = 'none';
-    });
-    if (val === 'membership')   document.getElementById('membershipOptions').style.display = 'block';
-    if (val === 'practitioner') document.getElementById('practitionerOptions').style.display = 'block';
-    if (val === 'specialist')   document.getElementById('specialistOptions').style.display = 'block';
-    updateInfoBox();
+    return v('membershipGrade');
   }
 
   const membershipInfo = {
-    'Associate Member (ACIMS)': '<strong>Associate Member (ACIMS)</strong>A minimum of a bachelor\'s degree in a relevant field (or an equivalent qualification recognized by CIMS), and up to 5 years of relevant, entry-level professional experience.',
-    'Chartered Member (MCIMS)': '<strong>Chartered Member (MCIMS)</strong>A bachelor\'s degree or higher in a relevant field, and a minimum of 8 years of relevant work experience in a managerial or leadership role.',
-    'Chartered Fellow (FCIMS)': '<strong>Chartered Fellow (FCIMS)</strong>A master\'s degree or higher in a relevant field, and a minimum of 10 years of significant work experience in a leadership or executive capacity.',
-    'Chartered Doctoral Fellow (DCIMS)': '<strong>Chartered Doctoral Fellow (DCIMS)</strong>A doctoral degree in a relevant field, and a minimum of 15 years of distinguished work experience in a leadership or executive capacity.'
+    'Associate Member (ACIMS)': '<strong>Associate Member (ACIMS)</strong>CPD sign up for members holding the Associate Member (ACIMS) grade.',
+    'Chartered Member (MCIMS)': '<strong>Chartered Member (MCIMS)</strong>CPD sign up for members holding the Chartered Member (MCIMS) grade.',
+    'Chartered Fellow (FCIMS)': '<strong>Chartered Fellow (FCIMS)</strong>CPD sign up for members holding the Chartered Fellow (FCIMS) grade.',
+    'Chartered Doctoral Fellow (DCIMS)': '<strong>Chartered Doctoral Fellow (DCIMS)</strong>CPD sign up for members holding the Chartered Doctoral Fellow (DCIMS) grade.'
   };
-  function qualificationInfo(name, kind){
-    if (!name) return '';
-    return `<strong>${name}</strong>Assessed through CIMS's structured Recognition of Prior Learning (RPL) framework: Professional Credential Verification (20%), RPL Portfolio Assessment (40%), and an Applied Professional Case Study (40%). Conferred with an internationally verifiable digital credential upon approval by the Governing Council.`;
-  }
   function updateInfoBox(){
     const box = document.getElementById('infoBox');
-    const type = v('appType');
-    let html = '';
-    if (type === 'membership')   html = membershipInfo[v('membershipGrade')] || '';
-    if (type === 'practitioner') html = qualificationInfo(v('practitionerTrack'));
-    if (type === 'specialist')   html = qualificationInfo(v('specialistTrack'));
+    const html = membershipInfo[v('membershipGrade')] || '';
     if (html){ box.innerHTML = html; box.style.display = 'block'; } else { box.style.display = 'none'; }
   }
 
@@ -2244,9 +2089,7 @@
   function validateStep(step){
     let ok = true;
     if (step === 1){
-      const type = v('appType');
-      if (showErr('appType','appTypeErr', !type)) ok = false;
-      if (type && !getTrack()) ok = false;
+      if (showErr('membershipGrade','membershipGradeErr', !v('membershipGrade'))) ok = false;
     }
     if (step === 2){
       if (showErr('firstName','firstNameErr', !v('firstName'))) ok = false;
@@ -2254,15 +2097,12 @@
       if (showErr('email','emailErr', !v('email') || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email')))) ok = false;
       if (showErr('phone','phoneErr', !v('phone'))) ok = false;
       if (showErr('country','countryErr', !v('country'))) ok = false;
-      if (showErr('highestQual','highestQualErr', !v('highestQual'))) ok = false;
-      if (showErr('fieldOfStudy','fieldOfStudyErr', !v('fieldOfStudy'))) ok = false;
-      if (showErr('jobTitle','jobTitleErr', !v('jobTitle'))) ok = false;
-      if (showErr('employer','employerErr', !v('employer'))) ok = false;
-      if (showErr('yearsExp','yearsExpErr', !v('yearsExp'))) ok = false;
+      if (showErr('membershipNumber','membershipNumberErr', !v('membershipNumber'))) ok = false;
       if (showErr('photoInput','photoErr', !profilePhotoData)) ok = false;
     }
     if (step === 3){
       const pw = v('password'), cpw = v('confirmPassword');
+      if (showErr('username','usernameErr', !v('username'))) ok = false;
       if (showErr('password','passwordErr', pw.length < 8)) ok = false;
       if (showErr('confirmPassword','confirmPasswordErr', pw !== cpw || !cpw)) ok = false;
     }
@@ -2304,17 +2144,13 @@
   });
 
   function populateReview(){
-    document.getElementById('rv-apptype').textContent = getAppTypeLabel();
-    document.getElementById('rv-track').textContent   = getTrack() || '—';
-    document.getElementById('rv-name').textContent     = `${v('title') ? v('title')+' ' : ''}${v('firstName')} ${v('lastName')}`.trim() || '—';
-    document.getElementById('rv-email').textContent    = v('email') || '—';
-    document.getElementById('rv-phone').textContent    = v('phone') || '—';
-    document.getElementById('rv-country').textContent  = v('country') || '—';
-    document.getElementById('rv-qual').textContent     = v('highestQual') || '—';
-    document.getElementById('rv-field').textContent    = v('fieldOfStudy') || '—';
-    document.getElementById('rv-job').textContent      = v('jobTitle') || '—';
-    document.getElementById('rv-employer').textContent = v('employer') || '—';
-    document.getElementById('rv-exp').textContent      = v('yearsExp') || '—';
+    document.getElementById('rv-track').textContent    = getTrack() || '—';
+    document.getElementById('rv-name').textContent      = `${v('title') ? v('title')+' ' : ''}${v('firstName')} ${v('lastName')}`.trim() || '—';
+    document.getElementById('rv-memnum').textContent    = v('membershipNumber') || '—';
+    document.getElementById('rv-email').textContent     = v('email') || '—';
+    document.getElementById('rv-phone').textContent     = v('phone') || '—';
+    document.getElementById('rv-country').textContent   = v('country') || '—';
+    document.getElementById('rv-username').textContent  = v('username') || '—';
   }
 
   function genRef(){
@@ -2400,20 +2236,17 @@
       // 3. Send email verification
       await sendEmailVerification(user);
 
-      // 4. Save application record to Firestore (status: pending — admin must approve)
+      // 4. Save CPD sign up record to Firestore (status: pending — admin must authorize)
       await setDoc(doc(db, 'applications', user.uid), {
         uid: user.uid,
         referenceNumber: ref,
-        applicationType: v('appType'),          // 'membership' | 'practitioner' | 'specialist'
-        track: getTrack(),                       // specific grade / designation name
+        applicationType: 'cpd',
+        track: getTrack(),                       // Membership Grade (CPD category)
         title: v('title'),
         firstName, lastName, fullName,
+        username: v('username'),
+        membershipNumber: v('membershipNumber'),
         email, phone: v('phone'), country: v('country'),
-        highestQualification: v('highestQual'),
-        fieldOfStudy: v('fieldOfStudy'),
-        jobTitle: v('jobTitle'),
-        employer: v('employer'),
-        yearsExperience: v('yearsExp'),
         photoBase64: profilePhotoData,
         status: 'pending',            // admin changes this to 'approved' or 'rejected'
         emailVerified: false,
@@ -2443,9 +2276,55 @@
         msg = '⚠️ Network error. Please check your connection and try again.';
       }
       showAlert(msg);
-      btn.disabled = false; btnText.textContent = 'Submit Application'; spinner.style.display = 'none';
+      btn.disabled = false; btnText.textContent = 'Submit for Authorization'; spinner.style.display = 'none';
     }
   };
 </script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/66a63f20becc2fed692c2214/1i3smd6el';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
+<script>
+  (function(){
+    var applyBtn = document.getElementById('applyNowBtn');
+    var cpdBtn = document.getElementById('cpdPortalBtn');
+    if (!applyBtn || !cpdBtn) return;
+
+    function alignApplyNow(){
+      // Below this width the desktop nav (and CPD Portal button) is hidden
+      // in favour of the hamburger menu, so there's nothing to align to.
+      if (window.innerWidth <= 1100) {
+        applyBtn.style.transform = '';
+        return;
+      }
+      var applyRect = applyBtn.getBoundingClientRect();
+      var cpdRect = cpdBtn.getBoundingClientRect();
+      var applyCenter = applyRect.left + (applyRect.width / 2);
+      var cpdCenter = cpdRect.left + (cpdRect.width / 2);
+      var shift = cpdCenter - applyCenter;
+      applyBtn.style.transform = 'translateX(' + shift + 'px)';
+    }
+
+    alignApplyNow();
+    window.addEventListener('resize', alignApplyNow);
+    window.addEventListener('load', alignApplyNow);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(alignApplyNow);
+    }
+  })();
+</script>
+
 </body>
 </html>

@@ -278,10 +278,13 @@
   nav.main{display:flex;align-items:center;}
   nav.main > ul{
     list-style:none;margin:0;padding:0;
-    display:flex;align-items:center;gap:34px;
-    font-size:.83rem;font-weight:600;
+    display:flex;align-items:center;gap:20px;
+    font-size:.88rem;font-weight:600;
     color:var(--ink);
   }
+  /* scale the menu up on wider desktops */
+  @media (min-width:1200px){ nav.main > ul{gap:26px;font-size:.93rem;} }
+  @media (min-width:1280px){ nav.main > ul{gap:30px;font-size:.97rem;} }
   nav.main > ul > li{position:relative;}
   nav.main > ul > li > a,
   nav.main > ul > li > button.nav-link{
@@ -308,7 +311,7 @@
   /* dropdown panel */
   .dropdown{
     position:absolute;top:100%;left:0;
-    min-width:265px;
+    min-width:290px;
     background:var(--paper);
     border:1px solid var(--line);
     border-top:2px solid var(--gold);
@@ -327,8 +330,8 @@
   .nav-item.open > .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
   .dropdown a{
     display:block;
-    padding:11px 22px;
-    font-size:.85rem;font-weight:600;
+    padding:12px 24px;
+    font-size:.95rem;font-weight:600;
     color:var(--ink);
     border-left:2px solid transparent;
   }
@@ -408,8 +411,8 @@
   .mobile-list > li > a,
   .msub-toggle{
     display:flex;align-items:center;justify-content:space-between;gap:10px;
-    width:100%;padding:15px 28px;
-    font-weight:600;font-size:.92rem;
+    width:100%;padding:17px 28px;
+    font-weight:600;font-size:1.05rem;
     background:none;border:none;color:var(--paper);font-family:inherit;
     text-align:left;cursor:pointer;
   }
@@ -425,10 +428,10 @@
     background:rgba(0,0,0,.2);
     transition:max-height .3s ease;
   }
-  li.has-sub.open > .msub{max-height:600px;}
+  li.has-sub.open > .msub{max-height:900px;}
   .msub li a{
-    display:block;padding:12px 28px 12px 42px;
-    font-size:.85rem;color:#d9cfc0;
+    display:block;padding:13px 28px 13px 42px;
+    font-size:.97rem;color:#d9cfc0;
     border-bottom:1px solid rgba(255,255,255,.05);
   }
   .msub li a:hover{color:var(--gold-light);}
@@ -1113,7 +1116,7 @@
       </form>
       <div class="search-suggest" id="siteSearchSuggest"></div>
     </div>
-    <a href="app.html" class="topbar-apply">Apply Now</a>
+    <a href="app.html" class="topbar-apply" id="applyNowBtn">Apply Now</a>
   </div>
 </div>
 
@@ -1177,14 +1180,17 @@
         </li>
 
         <li class="nav-item">
-          <a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a>
+          <a href="chartered-executive-leader-cexl.html" target="_blank" rel="noopener">CExL&trade;</a>
+        </li>
+        <li class="nav-item">
+          <a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">CSD&trade;</a>
         </li>
       </ul>
     </nav>
 
     <div class="nav-utils">
       <div class="nav-item has-dropdown">
-        <button class="nav-link btn-pill filled" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="nav-link btn-pill filled" id="cpdPortalBtn" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="dropdown">
           <a href="register.html">Register</a>
           <a href="member-login.html">Member Log In</a>
@@ -1221,6 +1227,7 @@
           <li><a href="membership-fellow.html">Chartered Fellow (FCIMS)</a></li>
           <li><a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a></li>
           <li><a href="cpd.html">Continuing Professional Development (CPD)</a></li>
+          <li><a href="membership-benefits.html">Membership Benefits</a></li>
           <li><a href="digital-credentials-verification.html">Digital Credentials &amp; Verification</a></li>
         </ul>
       </li>
@@ -1241,7 +1248,8 @@
           <li><a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a></li>
         </ul>
       </li>
-      <li><a href="chartered-strategic-director.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
+      <li><a href="chartered-executive-leader-cexl.html" target="_blank" rel="noopener">CExL&trade;</a></li>
+      <li><a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">CSD&trade;</a></li>
       <li class="has-sub">
         <button class="msub-toggle">CPD Portal<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <ul class="msub">
@@ -1384,7 +1392,7 @@
         <p>Interested in representing CIMS in your region? Get in touch to explore a representative partnership.</p>
       </div>
       <div style="display:flex;gap:14px;flex-wrap:wrap;">
-        <a href="register.html" class="btn btn-primary">Get Registered</a>
+        <a href="app.html" class="btn btn-primary">Get Registered</a>
         <a href="contact-us.html" class="btn btn-ghost" style="border-color:rgba(255,255,255,.5);color:#fff;">Contact Us</a>
       </div>
     </div>
@@ -1668,6 +1676,52 @@
     form.addEventListener('submit', (e) => {
       if (!input.value.trim()) e.preventDefault();
     });
+  })();
+</script>
+
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/66a63f20becc2fed692c2214/1i3smd6el';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
+<script>
+  (function(){
+    var applyBtn = document.getElementById('applyNowBtn');
+    var cpdBtn = document.getElementById('cpdPortalBtn');
+    if (!applyBtn || !cpdBtn) return;
+
+    function alignApplyNow(){
+      // Below this width the desktop nav (and CPD Portal button) is hidden
+      // in favour of the hamburger menu, so there's nothing to align to.
+      if (window.innerWidth <= 1100) {
+        applyBtn.style.transform = '';
+        return;
+      }
+      var applyRect = applyBtn.getBoundingClientRect();
+      var cpdRect = cpdBtn.getBoundingClientRect();
+      var applyCenter = applyRect.left + (applyRect.width / 2);
+      var cpdCenter = cpdRect.left + (cpdRect.width / 2);
+      var shift = cpdCenter - applyCenter;
+      applyBtn.style.transform = 'translateX(' + shift + 'px)';
+    }
+
+    alignApplyNow();
+    window.addEventListener('resize', alignApplyNow);
+    window.addEventListener('load', alignApplyNow);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(alignApplyNow);
+    }
   })();
 </script>
 

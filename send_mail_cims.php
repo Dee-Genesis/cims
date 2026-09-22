@@ -44,6 +44,42 @@ $sep = "============================================================{$nl}";
 $sub = "------------------------------------------------------------{$nl}";
 $now = date('l, d F Y \a\t H:i T');
 
+// Builds and sends a raw multipart/mixed email via PHP's mail() so that
+// file attachments are included even when PHPMailer/Composer isn't set up
+// on the server. This is what actually gets the uploaded documents to the
+// Secretariat's inbox instead of just leaving a note that they exist.
+function sendEmailWithAttachmentsFallback($subject, $body, $replyToEmail, $uploads) {
+    $boundary = 'CIMS-' . md5(uniqid('', true));
+    $eol = "\r\n";
+
+    $headers  = "From: noreply@charteredims.com{$eol}";
+    if ($replyToEmail) $headers .= "Reply-To: {$replyToEmail}{$eol}";
+    $headers .= "MIME-Version: 1.0{$eol}";
+    $headers .= "Content-Type: multipart/mixed; boundary=\"{$boundary}\"{$eol}";
+
+    $message  = "--{$boundary}{$eol}";
+    $message .= "Content-Type: text/plain; charset=UTF-8{$eol}";
+    $message .= "Content-Transfer-Encoding: 7bit{$eol}{$eol}";
+    $message .= $body . $eol . $eol;
+
+    foreach ($uploads as $up) {
+        if (!empty($up['ok']) && !empty($up['path']) && file_exists($up['path'])) {
+            $fileContent = chunk_split(base64_encode(file_get_contents($up['path'])));
+            $fileName    = $up['origName'] ?: basename($up['path']);
+            $mime        = function_exists('mime_content_type') ? (mime_content_type($up['path']) ?: 'application/octet-stream') : 'application/octet-stream';
+
+            $message .= "--{$boundary}{$eol}";
+            $message .= "Content-Type: {$mime}; name=\"{$fileName}\"{$eol}";
+            $message .= "Content-Transfer-Encoding: base64{$eol}";
+            $message .= "Content-Disposition: attachment; filename=\"{$fileName}\"{$eol}{$eol}";
+            $message .= $fileContent . $eol;
+        }
+    }
+    $message .= "--{$boundary}--";
+
+    return mail('admin@charteredims.com', $subject, $message, $headers);
+}
+
 function sendEmail($phpMailerLoaded, $subject, $body, $replyToEmail, $replyToName, $uploads) {
     $sent = false; $warning = '';
     if ($phpMailerLoaded) {
@@ -68,10 +104,9 @@ function sendEmail($phpMailerLoaded, $subject, $body, $replyToEmail, $replyToNam
         }
     }
     if (!$sent) {
-        $headers  = "From: noreply@charteredims.com\r\n";
-        if ($replyToEmail) $headers .= "Reply-To: {$replyToEmail}\r\n";
-        $fallbackNote = "\r\n\r\nNOTE: File attachments could not be sent via this fallback method. Retrieve from server: uploads/cims-applications/\r\n" . ($warning ? "Error: $warning" : '');
-        $sent = mail('admin@charteredims.com', $subject, $body . $fallbackNote, $headers);
+        // Fall back to a hand-built multipart email so attachments still
+        // reach the Secretariat inbox even without PHPMailer installed.
+        $sent = sendEmailWithAttachmentsFallback($subject, $body, $replyToEmail, $uploads);
     }
     return ['sent' => $sent, 'warning' => $warning];
 }
@@ -304,9 +339,6 @@ $qual2          = clean($_POST['qual2']          ?? '');
 $body2          = clean($_POST['body2']          ?? '');
 $qual3          = clean($_POST['qual3']          ?? '');
 $body3          = clean($_POST['body3']          ?? '');
-$englishMethod  = clean($_POST['englishMethod']  ?? '');
-$englishScore   = clean($_POST['englishScore']   ?? '');
-$englishDate    = clean($_POST['englishDate']    ?? '');
 
 $jobTitle       = clean($_POST['jobTitle']       ?? '');
 $employer       = clean($_POST['employer']       ?? '');
@@ -344,7 +376,6 @@ $uploads = [
     'upload_transcripts' => handleUpload('upload_transcripts', $uploadDir, $ref, 5*1024*1024, $imgExts),
     'upload_cv'          => handleUpload('upload_cv',          $uploadDir, $ref, 5*1024*1024, $docExts),
     'upload_proofcert'   => handleUpload('upload_proofcert',   $uploadDir, $ref, 5*1024*1024, $imgExts),
-    'upload_english'     => handleUpload('upload_english',     $uploadDir, $ref, 5*1024*1024, $imgExts),
     'upload_refs'        => handleUpload('upload_refs',        $uploadDir, $ref, 5*1024*1024, $imgExts),
     'upload_workproof'   => handleUpload('upload_workproof',   $uploadDir, $ref, 5*1024*1024, $imgExts),
 ];
@@ -353,7 +384,6 @@ $labels = [
     'upload_transcripts' => 'Academic Transcripts & Certificates',
     'upload_cv'          => 'Curriculum Vitae / Résumé',
     'upload_proofcert'   => 'Professional Certifications',
-    'upload_english'     => 'English Proficiency Certificate',
     'upload_refs'        => 'Letters of Reference / Recommendation',
     'upload_workproof'   => 'Proof of Work Experience',
 ];
@@ -398,9 +428,6 @@ $body .= "Grade / GPA / Class      : " . ($grade ?: 'Not provided') . "{$nl}";
 $body .= "Language of Instruction  : {$instrLang}{$nl}";
 $body .= "Additional Qualification : " . ($qual2 ?: 'None') . " — " . ($body2 ?: 'N/A') . "{$nl}";
 $body .= "Third Qualification      : " . ($qual3 ?: 'None') . " — " . ($body3 ?: 'N/A') . "{$nl}";
-$body .= "English Proficiency      : {$englishMethod}{$nl}";
-$body .= "English Test Score       : " . ($englishScore ?: 'N/A') . "{$nl}";
-$body .= "English Test Date        : " . ($englishDate  ?: 'N/A') . "{$nl}";
 $body .= $nl;
 
 $body .= "[ 4 ] PROFESSIONAL EXPERIENCE{$nl}" . $sub;

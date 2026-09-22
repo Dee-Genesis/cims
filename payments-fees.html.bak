@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Payments & Fees | Chartered Institute of Management Specialists (CIMS)</title>
+<meta name="description" content="Official CIMS payment methods, accepted channels, fee information and how to protect yourself from payment fraud when dealing with the Institute.">
+<link rel="icon" type="image/png" href="assets/logos/cims-logo.png">
+<link rel="apple-touch-icon" href="assets/logos/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#13233d;
+    --ink-soft:#1c3763;
+    --charcoal:#241f1a;
+    --charcoal-2:#2f2822;
+    --parchment:#F6F1E4;
+    --paper:#FBF8F1;
+    --gold:#B08D57;
+    --gold-light:#D8BD8A;
+    --gold-dim:rgba(176,141,87,.35);
+    --burgundy:#6E1423;
+    --burgundy-dark:#4c0e18;
+    --slate:#26241f;
+    --slate-soft:#5b564c;
+    --line: rgba(43,36,32,.14);
+    --line-gold: rgba(176,141,87,.45);
+    --shadow: 0 20px 50px rgba(43,36,32,.14);
+    --radius: 2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--slate);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Sora',sans-serif;
+    color:var(--ink);
+    margin:0;
+    font-weight:700;
+    letter-spacing:-.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .eyebrow{
+    font-family:'Sora',sans-serif;
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:.6em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  @media (max-width:700px){ .wrap{padding:0 20px;} }
+
+  /* ---------- certificate divider ---------- */
+  .seal-rule{
+    height:14px;
+    background-image: repeating-linear-gradient(90deg, var(--gold) 0 6px, transparent 6px 16px);
+    opacity:.55;
+    margin:0;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    background:var(--charcoal);
+    color:#e7ddce;
+    font-family:'Sora',sans-serif;
+    font-size:.75rem;
+    letter-spacing:.02em;
+  }
+  .topbar .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:9px;
+    padding-bottom:9px;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .topbar-left{display:flex;gap:22px;flex-wrap:wrap;}
+  .topbar a:hover{color:var(--gold-light);}
+  .topbar-social{display:flex;gap:12px;}
+  .topbar-social a{
+    width:24px;height:24px;
+    border:1px solid rgba(231,221,206,.28);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .topbar-social a svg{width:12px;height:12px;fill:#e7ddce;transition:fill .15s ease;}
+  .topbar-social a:hover{border-color:var(--gold);}
+  .topbar-social a:hover svg{fill:var(--gold);}
+
+  /* ---------- notice ribbon ---------- */
+  .notice{
+    background:var(--gold);
+    color:var(--charcoal);
+  }
+  .notice .wrap{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:8px 32px;
+    font-size:.82rem;
+    font-weight:600;
+  }
+  .notice span.tag{
+    font-family:'Sora',sans-serif;
+    font-size:.68rem;
+    letter-spacing:.1em;
+    background:var(--charcoal);
+    color:var(--gold-light);
+    padding:3px 8px;
+    text-transform:uppercase;
+    flex-shrink:0;
+  }
+
+  /* ---------- header / nav ---------- */
+  header.site{
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:50;
+  }
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 0;
+    gap:32px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .brand-mark{
+    height:64px;
+    flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .brand-mark img{
+    height:100%;width:auto;
+    object-fit:contain;
+  }
+  @media (max-width:700px){ .brand-mark{height:46px;} }
+
+  /* CIML-style stacked brand title */
+  .nav-brand-text{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    line-height:1;
+  }
+  .nav-brand-text .acronym{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:1.9rem;
+    letter-spacing:.03em;
+    color:#1C0D5B;
+    line-height:1;
+  }
+  .nav-brand-text .fullname{
+    font-family:'Playfair Display',serif;
+    font-weight:600;
+    font-size:.62rem;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    color:#1C0D5B;
+    line-height:1.55;
+    margin-top:5px;
+    white-space:normal;
+  }
+  @media (max-width:700px){
+    .nav-brand-text .acronym{font-size:1.3rem;}
+    .nav-brand-text .fullname{font-size:.5rem;letter-spacing:.09em;}
+  }
+  @media (max-width:420px){
+    .brand{gap:10px;}
+    .nav-brand-text .acronym{font-size:1.1rem;}
+    .nav-brand-text .fullname{font-size:.42rem;letter-spacing:.05em;line-height:1.35;margin-top:3px;}
+  }
+  @media (max-width:360px){
+    .brand{gap:7px;}
+    .brand-mark{height:38px;}
+    .nav-brand-text .acronym{font-size:.95rem;}
+    .nav-brand-text .fullname{font-size:.36rem;letter-spacing:.03em;line-height:1.3;margin-top:2px;}
+  }
+
+  nav.main{display:flex;align-items:center;}
+  nav.main > ul{
+    list-style:none;margin:0;padding:0;
+    display:flex;align-items:center;gap:34px;
+    font-size:.83rem;font-weight:600;
+    color:var(--ink);
+  }
+  nav.main > ul > li{position:relative;}
+  nav.main > ul > li > a,
+  nav.main > ul > li > button.nav-link{
+    display:flex;align-items:center;gap:6px;
+    padding:10px 2px;
+    border-bottom:2px solid transparent;
+    background:none;border-top:none;border-left:none;border-right:none;
+    font:inherit;color:inherit;cursor:pointer;
+    transition:border-color .15s ease, color .15s ease;
+    white-space:nowrap;
+  }
+  nav.main > ul > li > a:hover,
+  nav.main > ul > li > button.nav-link:hover,
+  nav.main > ul > li.open > button.nav-link,
+  nav.main > ul > li.open > a{border-color:var(--gold);color:var(--burgundy);}
+  .caret{
+    width:10px;height:10px;flex-shrink:0;
+    stroke:currentColor;
+    transition:transform .25s ease;
+  }
+  .nav-item.open > .nav-link .caret,
+  .nav-item.open > .nav-link > .caret{transform:rotate(180deg);}
+
+  /* dropdown panel */
+  .dropdown{
+    position:absolute;top:100%;left:0;
+    min-width:265px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-top:2px solid var(--gold);
+    box-shadow:var(--shadow);
+    padding:8px 0;
+    margin-top:14px;
+    opacity:0;visibility:hidden;
+    transform:translateY(8px);
+    transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+    z-index:90;
+  }
+  /* invisible bridge so the gap between link and panel doesn't kill hover */
+  .dropdown::before{
+    content:"";position:absolute;left:0;right:0;top:-14px;height:14px;
+  }
+  .nav-item.open > .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+  .dropdown a{
+    display:block;
+    padding:11px 22px;
+    font-size:.85rem;font-weight:600;
+    color:var(--ink);
+    border-left:2px solid transparent;
+  }
+  .dropdown a:hover{background:var(--parchment);border-left-color:var(--gold);color:var(--burgundy);}
+  .nav-utils .dropdown{left:auto;right:0;min-width:220px;}
+
+  /* utility buttons (contact / member area) */
+  .nav-utils{display:flex;align-items:center;gap:10px;}
+  .btn-pill{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:'Sora',sans-serif;
+    font-weight:700;font-size:.78rem;letter-spacing:.02em;
+    padding:10px 20px;
+    border-radius:999px;
+    border:1.5px solid var(--burgundy);
+    cursor:pointer;white-space:nowrap;
+    transition:all .18s ease;background:transparent;color:var(--burgundy);
+  }
+  .btn-pill:hover{background:var(--burgundy);color:#fff;}
+  .btn-pill.filled{background:var(--burgundy);color:#fff;}
+  .btn-pill.filled:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark);}
+  .btn-pill .caret{border-color:currentColor;}
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight:700;
+    font-size:.82rem;
+    letter-spacing:.02em;
+    padding:12px 22px;
+    border:1.5px solid var(--burgundy);
+    border-radius:var(--radius);
+    transition:all .18s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--burgundy);color:#fff;}
+  .btn-primary:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark);}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .btn-gold{border-color:var(--gold);color:var(--ink);}
+  .btn-gold:hover{background:var(--gold);border-color:var(--gold);}
+
+  .menu-toggle{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    width:34px;height:34px;
+    background:none;border:none;cursor:pointer;padding:6px;
+    flex-shrink:0;
+  }
+  .menu-toggle span{width:22px;height:2px;background:var(--ink);display:block;transition:transform .22s ease, opacity .22s ease;}
+  .menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .menu-toggle.active span:nth-child(2){opacity:0;}
+  .menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  @media (max-width:1100px){
+    nav.main{display:none;}
+    .nav-utils > .btn-pill,
+    .nav-utils > .nav-item.has-dropdown{display:none;}
+    .menu-toggle{display:flex;}
+  }
+  @media (min-width:1101px){ .mobile-menu{display:none !important;} }
+
+  /* mobile drawer */
+  .mobile-menu{
+    display:none;
+    background:var(--charcoal);
+    color:var(--paper);
+    max-height:calc(100vh - 100%);
+    overflow-y:auto;
+  }
+  .mobile-menu.open{display:block;}
+  .mobile-list{list-style:none;margin:0;padding:10px 0;display:flex;flex-direction:column;}
+  .mobile-list > li{border-bottom:1px solid rgba(255,255,255,.08);}
+  .mobile-list > li > a,
+  .msub-toggle{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    width:100%;padding:15px 28px;
+    font-weight:600;font-size:.92rem;
+    background:none;border:none;color:var(--paper);font-family:inherit;
+    text-align:left;cursor:pointer;
+  }
+  .msub-toggle .mcaret{
+    width:11px;height:11px;flex-shrink:0;
+    stroke:var(--gold-light);
+    transition:transform .25s ease;
+  }
+  li.has-sub.open > .msub-toggle .mcaret{transform:rotate(180deg);}
+  .msub{
+    list-style:none;margin:0;padding:0;
+    max-height:0;overflow:hidden;
+    background:rgba(0,0,0,.2);
+    transition:max-height .3s ease;
+  }
+  li.has-sub.open > .msub{max-height:600px;}
+  .msub li a{
+    display:block;padding:12px 28px 12px 42px;
+    font-size:.85rem;color:#d9cfc0;
+    border-bottom:1px solid rgba(255,255,255,.05);
+  }
+  .msub li a:hover{color:var(--gold-light);}
+  .mobile-actions{padding:20px 28px 30px;display:flex;flex-direction:column;gap:12px;}
+  .mobile-actions .btn{justify-content:center;}
+
+  /* ---------- hero slider ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    overflow:hidden;
+    color:#fff;
+  }
+  .hero-slide{
+    position:absolute;inset:0;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity 1.1s ease;
+    z-index:1;
+  }
+  .hero-slide.active{opacity:1;visibility:visible;z-index:2;}
+  .hero-slide img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+  }
+  .hero-slide::after{
+    content:"";
+    position:absolute;inset:0;
+    background:
+      linear-gradient(90deg, rgba(19,20,15,.82) 0%, rgba(19,20,15,.42) 48%, rgba(19,20,15,.18) 100%),
+      linear-gradient(0deg, rgba(19,20,15,.55) 0%, rgba(19,20,15,0) 40%);
+  }
+  .hero-slide-content{
+    position:relative;z-index:3;
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 32px;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .hero-slide-content .eyebrow{color:var(--gold-light);}
+  .hero-slide-content .eyebrow::before{background:var(--gold-light);}
+  .hero-slide h1{
+    color:#fff;
+    font-size:clamp(2.2rem, 4.6vw, 3.7rem);
+    line-height:1.08;
+    margin:18px 0 22px;
+    max-width:16ch;
+  }
+  .hero-slide h1 em{
+    color:var(--gold-light);
+    font-style:italic;
+  }
+  .hero-slide p.lede{
+    font-size:1.1rem;
+    color:#e9e4d8;
+    max-width:50ch;
+    line-height:1.6;
+    margin-bottom:32px;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-ctas .btn-primary{background:var(--gold);border-color:var(--gold);color:var(--charcoal);}
+  .hero-ctas .btn-primary:hover{background:var(--gold-light);border-color:var(--gold-light);}
+  .hero-ctas .btn-ghost{border-color:rgba(255,255,255,.55);color:#fff;}
+  .hero-ctas .btn-ghost:hover{background:#fff;color:var(--charcoal);border-color:#fff;}
+
+  .hero-arrow{
+    position:absolute;top:50%;
+    transform:translateY(-50%);
+    z-index:5;
+    width:52px;height:52px;
+    border:1px solid rgba(255,255,255,.4);
+    border-radius:50%;
+    background:rgba(19,20,15,.28);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    opacity:0;
+    transition:opacity .35s ease, background .2s ease;
+  }
+  .hero-arrow svg{width:18px;height:18px;stroke:#fff;fill:none;}
+  .hero:hover .hero-arrow, .hero:focus-within .hero-arrow{opacity:1;}
+  .hero-arrow:hover{background:rgba(176,141,87,.55);}
+  .hero-arrow.prev{left:28px;}
+  .hero-arrow.next{right:28px;}
+  @media (max-width:700px){ .hero-arrow{width:40px;height:40px;} .hero-arrow.prev{left:12px;} .hero-arrow.next{right:12px;} }
+
+  .hero-dots{
+    position:absolute;bottom:30px;left:50%;
+    transform:translateX(-50%);
+    z-index:5;
+    display:flex;gap:10px;
+  }
+  .hero-dot{
+    width:9px;height:9px;border-radius:50%;
+    background:rgba(255,255,255,.4);
+    border:none;cursor:pointer;
+    padding:0;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .hero-dot.active{background:var(--gold-light);transform:scale(1.25);}
+
+  .hero-seal{
+    position:absolute;
+    right:48px;bottom:64px;
+    width:118px;height:118px;
+    z-index:4;
+  }
+  .hero-seal svg{width:100%;height:100%;}
+  .hero-seal .ring-outer{animation:spin 60s linear infinite;transform-origin:center;}
+  @media (prefers-reduced-motion: reduce){ .hero-seal .ring-outer{animation:none;} }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  @media (max-width:900px){ .hero-seal{display:none;} }
+
+  /* ---------- stat strip ---------- */
+  .stats{
+    background:var(--gold);
+  }
+  .stats .wrap{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    padding:38px 32px;
+  }
+  @media (max-width:700px){ .stats .wrap{grid-template-columns:1fr 1fr;gap:24px;} }
+  .stat{text-align:center;border-right:1px solid rgba(43,36,32,.25);}
+  .stat:last-child{border-right:none;}
+  @media (max-width:700px){ .stat{border-right:none;padding-bottom:8px;} }
+  .stat .num{
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    font-size:2.4rem;
+    color:var(--charcoal);
+    line-height:1;
+  }
+  .stat .lbl{
+    font-family:'Sora',sans-serif;
+    font-size:.7rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--charcoal);
+    margin-top:8px;
+    opacity:.85;
+  }
+
+  /* ---------- generic section ---------- */
+  section{padding:88px 0;}
+  @media (max-width:700px){section{padding:56px 0;}}
+  .section-head{
+    max-width:640px;
+    margin-bottom:48px;
+  }
+  .section-head.center{max-width:680px;margin-left:auto;margin-right:auto;text-align:center;}
+  .section-head.center .eyebrow{justify-content:center;}
+  .section-head h2{
+    font-size:clamp(1.6rem,3vw,2.3rem);
+    margin-top:14px;
+    line-height:1.15;
+  }
+  .section-head p{
+    color:var(--slate-soft);
+    font-size:1.02rem;
+    line-height:1.65;
+    margin-top:16px;
+  }
+
+  /* ---------- quick access (intro + sidebar) ---------- */
+  .quickaccess{background:var(--parchment);}
+  .qa-grid{
+    display:grid;
+    grid-template-columns:1.3fr .9fr;
+    gap:56px;
+    align-items:start;
+  }
+  @media (max-width:900px){ .qa-grid{grid-template-columns:1fr;gap:40px;} }
+  .qa-intro p{color:var(--slate-soft);line-height:1.75;font-size:1.02rem;margin-bottom:16px;}
+  .qa-intro .hero-ctas{margin-top:8px;}
+  .sidebar-stack{display:flex;flex-direction:column;gap:28px;}
+  .sw{
+    background:var(--paper);
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+  }
+  .sw-head{
+    background:var(--ink);
+    color:#fff;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 22px;
+    gap:12px;
+  }
+  .sw-head h3{
+    color:#fff;
+    font-family:'Sora',sans-serif;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    margin:0;
+  }
+  .sw-head .sw-viewall{
+    font-family:'Sora',sans-serif;
+    font-size:.7rem;
+    font-weight:700;
+    letter-spacing:.05em;
+    color:var(--gold-light);
+    display:inline-flex;align-items:center;gap:6px;
+    white-space:nowrap;
+  }
+  .sw-head .sw-viewall svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.4;}
+  .sw-links{list-style:none;margin:0;padding:0;}
+  .sw-links li{border-bottom:1px solid var(--line);}
+  .sw-links li:last-child{border-bottom:none;}
+  .sw-links a{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:16px 22px;
+    font-family:'Sora',sans-serif;
+    font-weight:600;
+    font-size:.9rem;
+    color:var(--ink);
+    transition:background .15s ease, padding-left .15s ease, color .15s ease;
+  }
+  .sw-links a:hover{background:var(--parchment);padding-left:26px;color:var(--burgundy);}
+  .sw-links a svg{width:14px;height:14px;flex-shrink:0;stroke:var(--gold);fill:none;stroke-width:2.2;transition:transform .15s ease;}
+  .sw-links a:hover svg{transform:translateX(3px);stroke:var(--burgundy);}
+  .sw-news{list-style:none;margin:0;padding:0;}
+  .sw-news li{border-bottom:1px solid var(--line);}
+  .sw-news li:last-child{border-bottom:none;}
+  .sw-news a{
+    display:flex;gap:14px;
+    padding:16px 22px;
+    align-items:flex-start;
+  }
+  .sw-news a:hover{background:var(--parchment);}
+  .sw-news .sw-thumb{width:58px;height:58px;flex-shrink:0;overflow:hidden;border:1px solid var(--line);}
+  .sw-news .sw-thumb img{width:100%;height:100%;object-fit:cover;}
+  .sw-news .sw-date{
+    font-family:'Sora',sans-serif;
+    font-size:.66rem;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:block;
+    margin-bottom:4px;
+  }
+  .sw-news .sw-title{
+    font-size:.86rem;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1.4;
+  }
+  .sw-news a:hover .sw-title{color:var(--burgundy);}
+
+  /* about / why choose */
+  .about-grid{
+    display:grid;
+    grid-template-columns:.75fr 1fr .95fr;
+    gap:44px;
+    align-items:start;
+  }
+  @media (max-width:900px){.about-grid{grid-template-columns:1fr;gap:36px;}}
+  .about-photo{position:relative;}
+  .about-photo img{width:100%;aspect-ratio:5/4;object-fit:cover;border:1px solid var(--line);}
+  .about-badge{
+    position:absolute;left:24px;bottom:-24px;
+    background:var(--burgundy);color:var(--paper);
+    padding:16px 20px;
+    border:1px solid var(--gold);
+    display:flex;flex-direction:column;
+    min-width:120px;
+  }
+  .about-badge .n{font-family:'Sora',sans-serif;font-weight:700;font-size:1.6rem;color:var(--gold-light);line-height:1;}
+  .about-badge .l{font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:#f0e3d3;margin-top:4px;}
+  .about-copy p{color:var(--slate-soft);line-height:1.75;font-size:1.02rem;margin-bottom:16px;}
+  .feature-list{display:flex;flex-direction:column;gap:22px;margin-top:8px;}
+  .feature{
+    display:flex;gap:16px;
+    padding:20px;
+    border:1px solid var(--line);
+    background:var(--paper);
+  }
+  .feature .fnum{
+    font-family:'Sora',sans-serif;
+    color:var(--gold);
+    font-weight:600;
+    font-size:.8rem;
+    flex-shrink:0;
+    padding-top:2px;
+  }
+  .feature h4{font-size:1.02rem;margin-bottom:6px;}
+  .feature p{color:var(--slate-soft);font-size:.92rem;line-height:1.55;margin:0;}
+
+  /* why choose icon cards */
+  .why{background:var(--parchment);}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  @media (max-width:900px){ .why-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .why-grid{grid-template-columns:1fr;} }
+  .why-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-top:3px solid var(--gold);
+    padding:30px 24px;
+  }
+  .why-card .icon{
+    width:46px;height:46px;
+    border-radius:50%;
+    background:var(--charcoal);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;
+  }
+  .why-card .icon svg{width:22px;height:22px;stroke:var(--gold-light);fill:none;stroke-width:1.6;}
+  .why-card h4{font-size:1rem;margin-bottom:8px;}
+  .why-card p{color:var(--slate-soft);font-size:.9rem;line-height:1.55;margin:0;}
+
+  /* pathway (real sequence) */
+  .pathway{
+    background:var(--charcoal);
+    color:var(--paper);
+  }
+  .pathway .section-head h2{color:var(--paper);}
+  .pathway .section-head p{color:#d9cfc0;}
+  .pathway .eyebrow{color:var(--gold-light);}
+  .pathway .eyebrow::before{background:var(--gold-light);}
+  .path-line{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    margin-top:20px;
+  }
+  .path-line::before{
+    content:"";
+    position:absolute;
+    top:120px;left:0;right:0;
+    height:1px;
+    background:repeating-linear-gradient(90deg, var(--gold) 0 8px, transparent 8px 16px);
+  }
+  @media (max-width:900px){
+    .path-line{grid-template-columns:1fr;gap:28px;}
+    .path-line::before{display:none;}
+  }
+  .path-step{padding-right:28px;position:relative;}
+  .path-thumb{
+    width:100%;height:120px;
+    overflow:hidden;
+    position:relative;
+    margin-bottom:34px;
+  }
+  .path-thumb img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.85);}
+  .path-step .pnum{
+    width:56px;height:56px;
+    border:1.5px solid var(--gold);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    color:var(--gold-light);
+    font-size:1.05rem;
+    background:var(--burgundy);
+    box-shadow:0 4px 14px rgba(0,0,0,.35);
+    position:absolute;
+    left:16px;top:88px;
+    z-index:2;
+  }
+  .path-step h3{color:var(--paper);font-size:1.15rem;margin-bottom:10px;}
+  .path-step p{color:#d9cfc0;font-size:.92rem;line-height:1.6;margin:0 0 14px;}
+  .path-step a{
+    font-family:'Sora',sans-serif;
+    font-size:.72rem;
+    letter-spacing:.06em;
+    color:var(--gold-light);
+    text-transform:uppercase;
+    border-bottom:1px solid var(--gold-light);
+    padding-bottom:2px;
+  }
+
+  /* gallery */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:16px;
+  }
+  .gallery-grid a{position:relative;overflow:hidden;display:block;border:1px solid var(--line);aspect-ratio:4/5;}
+  .gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .gallery-grid a:hover img{transform:scale(1.06);}
+  .gallery-grid .cap{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:16px 18px;
+    background:linear-gradient(0deg, rgba(19,20,15,.82), transparent);
+    color:#fff;
+    font-family:'Sora',sans-serif;
+    font-size:.82rem;
+    font-weight:600;
+  }
+  @media (max-width:900px){
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .gallery-grid a{aspect-ratio:4/3;}
+    .gallery-grid a:nth-child(1){grid-column:1/3;}
+  }
+
+  /* testimonials */
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  @media (max-width:900px){.testi-grid{grid-template-columns:1fr;}}
+  .testi{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-top:3px solid var(--gold);
+    padding:30px 26px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .testi .quote-mark{
+    font-family:'Sora',sans-serif;
+    font-size:2.6rem;
+    color:var(--gold-dim);
+    line-height:1;
+  }
+  .testi p.body{color:var(--slate);font-size:.96rem;line-height:1.65;margin:0;}
+  .testi .who{
+    display:flex;align-items:center;gap:12px;
+    border-top:1px solid var(--line);
+    padding-top:14px;
+  }
+  .testi .who img{
+    width:44px;height:44px;border-radius:50%;
+    object-fit:cover;flex-shrink:0;
+    border:1.5px solid var(--gold);
+  }
+  .testi .who .name{font-weight:700;color:var(--ink);font-size:.92rem;}
+  .testi .who .role{font-family:'Sora',sans-serif;font-size:.72rem;color:var(--slate-soft);text-transform:uppercase;letter-spacing:.04em;}
+
+  /* news & events */
+  .news{background:var(--parchment);}
+  .news-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  @media (max-width:900px){.news-grid{grid-template-columns:1fr;}}
+  .news-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .news-thumb{position:relative;aspect-ratio:16/10;overflow:hidden;}
+  .news-thumb img{width:100%;height:100%;object-fit:cover;}
+  .news-tag{
+    position:absolute;top:14px;left:14px;
+    background:var(--burgundy);color:#fff;
+    font-family:'Sora',sans-serif;
+    font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;
+    padding:5px 10px;
+  }
+  .news-body{padding:22px 22px 24px;}
+  .news-meta{font-size:.76rem;color:var(--slate-soft);margin-bottom:10px;}
+  .news-body h4{font-size:1.02rem;line-height:1.4;margin-bottom:10px;}
+  .news-body p{color:var(--slate-soft);font-size:.9rem;line-height:1.55;margin:0;}
+
+  /* partner strip */
+  .partners{background:var(--parchment);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .partners .wrap{padding:40px 32px;text-align:center;}
+  .partners .eyebrow{justify-content:center;}
+  .partners .plabel{margin-top:10px;color:var(--slate-soft);font-size:.9rem;}
+
+  /* Partner-with-us: contained card, not a full-bleed banner */
+  .partner-cta{padding:64px 0 84px;}
+  .partner-card{
+    max-width:860px;
+    margin:0 auto;
+    background:var(--charcoal);
+    border:1px solid var(--gold-dim);
+    padding:42px 46px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:28px;
+    flex-wrap:wrap;
+    position:relative;
+    color:var(--paper);
+  }
+  .partner-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);}
+  .partner-card .eyebrow{color:var(--gold-light);}
+  .partner-card .eyebrow::before{background:var(--gold-light);}
+  .partner-card h2{color:var(--paper);font-size:clamp(1.25rem,2.4vw,1.6rem);margin-top:10px;}
+  .partner-card p{color:#cbbfa8;margin-top:8px;max-width:40ch;font-size:.94rem;line-height:1.6;}
+  .partner-card .btn-primary{background:var(--gold);color:var(--charcoal);border-color:var(--gold);}
+  .partner-card .btn-primary:hover{background:var(--gold-light);border-color:var(--gold-light);}
+  @media (max-width:700px){ .partner-card{padding:32px 26px;} }
+
+  /* footer */
+  footer{
+    background:var(--charcoal-2);
+    color:#c9bfae;
+    padding-top:64px;
+  }
+  .foot-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr .9fr 1fr;
+    gap:36px;
+    padding-bottom:40px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  @media (max-width:1180px){.foot-grid{grid-template-columns:1fr 1fr 1fr;row-gap:44px;}}
+  @media (max-width:700px){.foot-grid{grid-template-columns:1fr 1fr;row-gap:36px;}}
+  @media (max-width:480px){.foot-grid{grid-template-columns:1fr;}}
+  footer h4{
+    color:var(--gold-light);
+    font-family:'Sora',sans-serif;
+    font-size:.7rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:.85rem;}
+  footer ul li{line-height:1.5;}
+  footer ul li a:hover{color:var(--gold-light);}
+  .foot-brand .brand-mark{height:52px;margin-bottom:6px;}
+  footer .foot-brand p{color:#b7ac98;font-size:.88rem;line-height:1.6;margin-top:14px;max-width:34ch;}
+  .foot-institution-name{
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    color:#fff !important;
+    font-size:1rem;
+    line-height:1.35;
+    letter-spacing:.01em;
+    margin-top:16px !important;
+    max-width:22ch;
+  }
+  .foot-social{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
+  .foot-social a{
+    width:32px;height:32px;border:1px solid rgba(255,255,255,.2);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .foot-social a svg{width:14px;height:14px;fill:#c9bfae;transition:fill .15s ease;}
+  .foot-social a:hover{border-color:var(--gold-light);}
+  .foot-social a:hover svg{fill:var(--gold-light);}
+  .foot-strip{
+    display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;
+    padding:22px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    font-size:.8rem;color:#a99e88;
+  }
+  .foot-strip strong{color:var(--gold-light);font-family:'Sora',sans-serif;font-weight:600;}
+  .foot-strip .foot-strip-item{display:flex;align-items:center;gap:8px;}
+  .foot-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 0;font-size:.78rem;color:#8f846f;flex-wrap:wrap;gap:10px;
+  }
+  .foot-bottom a:hover{color:var(--gold-light);}
+
+  /* ---------- inner page hero banner ---------- */
+  .hero-inner{
+    position:relative;
+    min-height:56vh;
+    overflow:hidden;
+    color:#fff;
+    display:flex;
+    align-items:center;
+  }
+  .hero-inner img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+  }
+  .hero-inner::after{
+    content:"";
+    position:absolute;inset:0;
+    background:
+      linear-gradient(90deg, rgba(19,20,15,.85) 0%, rgba(19,20,15,.55) 55%, rgba(19,20,15,.32) 100%),
+      linear-gradient(0deg, rgba(19,20,15,.5) 0%, rgba(19,20,15,0) 45%);
+  }
+  .hero-inner-content{
+    position:relative;z-index:3;
+    max-width:1240px;
+    margin:0 auto;
+    padding:120px 32px 64px;
+    width:100%;
+  }
+  .breadcrumb{
+    display:flex;align-items:center;flex-wrap:wrap;gap:8px;
+    font-family:'Sora',sans-serif;
+    font-size:.78rem;font-weight:600;
+    color:#e9e4d8;
+    margin-bottom:20px;
+  }
+  .breadcrumb a{color:#e9e4d8;opacity:.85;}
+  .breadcrumb a:hover{color:var(--gold-light);opacity:1;}
+  .breadcrumb .sep{color:var(--gold-light);opacity:.7;}
+  .breadcrumb .current{color:var(--gold-light);}
+  .hero-inner h1{
+    color:#fff;
+    font-size:clamp(2.1rem, 4.4vw, 3.4rem);
+    line-height:1.1;
+    max-width:20ch;
+  }
+  .hero-inner p.lede{
+    font-size:1.05rem;
+    color:#e9e4d8;
+    max-width:56ch;
+    line-height:1.65;
+    margin-top:18px;
+  }
+  .hero-inner-seal{
+    position:absolute;
+    right:48px;bottom:40px;
+    width:104px;height:104px;
+    z-index:4;
+    opacity:.9;
+  }
+  .hero-inner-seal svg{width:100%;height:100%;}
+  .hero-inner-seal .ring-outer{animation:spin 60s linear infinite;transform-origin:center;}
+  @media (prefers-reduced-motion: reduce){ .hero-inner-seal .ring-outer{animation:none;} }
+  @media (max-width:900px){ .hero-inner-seal{display:none;} }
+  @media (max-width:700px){ .hero-inner-content{padding:100px 20px 48px;} }
+
+  /* ---------- official policy notice ---------- */
+  .notice-box{
+    background:var(--charcoal);
+    color:var(--paper);
+    border:1px solid var(--gold-dim);
+    border-top:3px solid var(--gold);
+    padding:36px 38px;
+  }
+  .notice-box .eyebrow{color:var(--gold-light);}
+  .notice-box .eyebrow::before{background:var(--gold-light);}
+  .notice-box h3{color:var(--paper);margin-top:12px;font-size:1.2rem;}
+  .notice-box p{color:#d9cfc0;line-height:1.8;font-size:.96rem;margin-top:14px;margin-bottom:0;}
+  .notice-box p strong{color:var(--gold-light);}
+  .notice-box p + p{margin-top:14px;}
+
+  /* ---------- svg emblem row ---------- */
+  .emblem-row{
+    display:flex;
+    align-items:stretch;
+    justify-content:center;
+    gap:36px;
+    flex-wrap:wrap;
+    padding:48px 32px 56px;
+  }
+  .emblem-row figure{
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    align-items:center;
+    width:260px;
+    max-width:80vw;
+  }
+  .emblem-row .emblem-frame{
+    width:100%;
+    aspect-ratio:4/3;
+    background:var(--paper);
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    padding:14px;
+  }
+  .emblem-row img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+  }
+  .emblem-row figcaption{
+    font-family:'Sora',sans-serif;
+    font-weight:600;
+    font-size:.8rem;
+    color:var(--slate-soft);
+    text-align:center;
+  }
+
+  /* ---------- grade badges ---------- */
+  .grade-badges{
+    display:flex;flex-wrap:wrap;gap:14px;
+    margin-top:28px;
+  }
+  .grade-badge{
+    display:flex;flex-direction:column;gap:2px;
+    padding:14px 22px;
+    background:var(--parchment);
+    border:1px solid var(--line);
+    border-left:3px solid var(--gold);
+  }
+  .grade-badge .gb-letters{
+    font-family:'Sora',sans-serif;font-weight:700;
+    font-size:1rem;color:var(--burgundy);
+  }
+  .grade-badge .gb-name{font-size:.8rem;color:var(--slate-soft);}
+
+  /* ---------- how to join steps ---------- */
+  .join-steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+    margin-top:16px;
+  }
+  @media (max-width:900px){ .join-steps{grid-template-columns:1fr;} }
+  .join-step{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:30px 26px;
+    position:relative;
+  }
+  .join-step .js-num{
+    font-family:'Playfair Display',serif;
+    font-size:2.2rem;
+    color:var(--gold);
+    line-height:1;
+    margin-bottom:12px;
+    display:block;
+  }
+  .join-step h4{font-size:1.02rem;margin-bottom:8px;}
+  .join-step p{color:var(--slate-soft);font-size:.92rem;line-height:1.6;margin:0;}
+
+  /* ---------- advantage blocks ---------- */
+  .adv-block{
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:18px;
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .adv-block:first-child{padding-top:0;}
+  .adv-block:last-child{border-bottom:none;}
+  .adv-block .adv-num{
+    width:44px;height:44px;
+    border-radius:50%;
+    background:var(--charcoal);
+    color:var(--gold-light);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Sora',sans-serif;font-weight:700;font-size:.92rem;
+    flex-shrink:0;
+  }
+  .adv-block h4{font-size:1.06rem;margin-bottom:8px;}
+  .adv-block p{color:var(--slate-soft);line-height:1.75;font-size:.96rem;margin:0;}
+  .adv-block .postnom-list{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:8px 20px;
+    margin-top:14px;
+    list-style:none;padding:0;
+  }
+  @media (max-width:560px){ .adv-block .postnom-list{grid-template-columns:1fr;} }
+  .adv-block .postnom-list li{
+    font-size:.92rem;color:var(--ink);
+    padding:8px 14px;
+    background:var(--parchment);
+    border-left:2px solid var(--gold);
+  }
+  .adv-block .postnom-list li strong{color:var(--burgundy);}
+
+  /* ---------- additional considerations (shared pattern) ---------- */
+  .consider-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+    margin-top:16px;
+  }
+  @media (max-width:900px){ .consider-grid{grid-template-columns:1fr;} }
+  .consider-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:32px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .consider-card .cc-icon{
+    width:48px;height:48px;
+    border-radius:50%;
+    background:var(--burgundy);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .consider-card .cc-icon svg{width:22px;height:22px;stroke:var(--gold-light);fill:none;stroke-width:1.7;}
+  .consider-card h4{font-size:1.06rem;}
+  .consider-card p{color:var(--slate-soft);font-size:.94rem;line-height:1.65;margin:0;}
+</style>
+<style>
+  .cpd-intro{max-width:780px;margin-bottom:44px;}
+  .cpd-intro p{color:var(--slate-soft);line-height:1.85;font-size:1.02rem;margin-top:16px;}
+
+  .cpd-block{max-width:820px;margin-bottom:48px;}
+  .cpd-block h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--ink);margin-bottom:16px;padding-bottom:14px;border-bottom:2px solid var(--line);}
+  .cpd-block p{color:var(--slate-soft);line-height:1.85;font-size:.98rem;margin-bottom:16px;}
+  .cpd-block p strong{color:var(--ink);}
+
+  .cpd-chip-grid{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 20px;}
+  .cpd-chip{
+    background:var(--paper);border:1px solid var(--line);border-radius:20px;
+    padding:8px 18px;font-size:.85rem;color:var(--slate);font-weight:500;
+  }
+
+  .cpd-note{
+    background:var(--parchment);border-left:3px solid var(--gold);padding:16px 20px;
+    font-size:.9rem;color:var(--slate-soft);line-height:1.7;border-radius:0 4px 4px 0;
+  }
+  .cpd-note strong{color:var(--ink);}
+
+  /* ---------- ATP check-list (reuses the same content-block rhythm) ---------- */
+  .check-list{
+    list-style:none;margin:16px 0 20px;padding:0;
+    display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;
+  }
+  @media (max-width:700px){ .check-list{grid-template-columns:1fr;} }
+  .check-list li{
+    display:flex;align-items:flex-start;gap:10px;
+    font-size:.94rem;color:var(--slate);line-height:1.55;
+    padding:10px 14px;
+    background:var(--paper);border:1px solid var(--line);border-left:2px solid var(--gold);
+  }
+  .check-list li svg{width:15px;height:15px;flex-shrink:0;margin-top:3px;stroke:var(--gold);fill:none;stroke-width:2.4;}
+</style>
+</head>
+<body>
+<header class="site">
+  <div class="wrap nav-row">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><img src="assets/logos/cims-logo.png" alt="Chartered Institute of Management Specialists (CIMS) crest"></span>
+      <div class="nav-brand-text">
+        <span class="acronym">CIMS</span>
+        <span class="fullname" color="black">Chartered Institute of<br>Management Specialists</span>
+      </div>
+    </a>
+
+    <nav class="main" aria-label="Primary">
+      <ul>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link" aria-expanded="false">About Us<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dropdown">
+            <a href="history.html">History</a>
+            <a href="council-members.html">Council Members</a>
+            <a href="overseas-representatives.html">Overseas Representatives</a>
+            <a href="legal-standing.html">Legal Standing</a>
+            <a href="why-choose-us.html">Why Choose Us</a>
+            <a href="recognition.html">Professional Recognition</a>
+            <a href="professional-standards-ethics.html">Professional Standards &amp; Ethics</a>
+            <a href="policies-regulations.html">Policies &amp; Regulations</a>
+            <a href="complaints-appeals.html">Complaints &amp; Appeals</a>
+            <a href="management-journal-publications.html">Management Journal &amp; Publications</a>
+          </div>
+        </li>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link" aria-expanded="false">Membership<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dropdown">
+            <a href="membership.html">Overview</a>
+            <a href="membership-associate.html">Associate Member (ACIMS)</a>
+            <a href="membership-chartered.html">Chartered Member (MCIMS)</a>
+            <a href="membership-fellow.html">Chartered Fellow (FCIMS)</a>
+            <a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a>
+            <a href="membership-benefits.html">Membership Benefits</a>
+            <a href="cpd.html">Continuing Professional Development (CPD)</a>
+          </div>
+        </li>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link" aria-expanded="false">Qualifications<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dropdown">
+            <a href="specialist-qualifications.html">Specialist Qualifications</a>
+            <a href="practitioner-qualifications.html">Practitioner Qualifications</a>
+            <a href="assessment-quality-assurance.html">Assessment &amp; Quality Assurance</a>
+          </div>
+        </li>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link" aria-expanded="false">Employers<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dropdown">
+            <a href="partnership-framework.html">Partnership Framework</a>
+            <a href="employers-hire-member.html">Hire a CIMS Member</a>
+            <a href="accredited-training-partners.html">Accredited Training Partners</a>
+            <a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="nav-utils">
+      <div class="nav-item has-dropdown">
+        <button class="nav-link btn-pill filled" aria-expanded="false">Member Area<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="dropdown">
+          <a href="register.html">Register</a>
+          <a href="member-login.html">Member Log In</a>
+          <a href="admin-login.html">Admin Log In</a>
+        </div>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-list">
+      <li class="has-sub">
+        <button class="msub-toggle">About Us<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="history.html">History</a></li>
+          <li><a href="council-members.html">Council Members</a></li>
+          <li><a href="overseas-representatives.html">Overseas Representatives</a></li>
+          <li><a href="legal-standing.html">Legal Standing</a></li>
+          <li><a href="why-choose-us.html">Why Choose Us</a></li>
+          <li><a href="recognition.html">Professional Recognition</a></li>
+          <li><a href="professional-standards-ethics.html">Professional Standards &amp; Ethics</a></li>
+          <li><a href="policies-regulations.html">Policies &amp; Regulations</a></li>
+          <li><a href="complaints-appeals.html">Complaints &amp; Appeals</a></li>
+          <li><a href="management-journal-publications.html">Management Journal &amp; Publications</a></li>
+        </ul>
+      </li>
+      <li class="has-sub">
+        <button class="msub-toggle">Membership<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="membership.html">Overview</a></li>
+          <li><a href="membership-associate.html">Associate Member (ACIMS)</a></li>
+          <li><a href="membership-chartered.html">Chartered Member (MCIMS)</a></li>
+          <li><a href="membership-fellow.html">Chartered Fellow (FCIMS)</a></li>
+          <li><a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a></li>
+          <li><a href="membership-benefits.html">Membership Benefits</a></li>
+          <li><a href="cpd.html">Continuing Professional Development (CPD)</a></li>
+        </ul>
+      </li>
+      <li class="has-sub">
+        <button class="msub-toggle">Qualifications<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="specialist-qualifications.html">Specialist Qualifications</a></li>
+          <li><a href="practitioner-qualifications.html">Practitioner Qualifications</a></li>
+          <li><a href="assessment-quality-assurance.html">Assessment &amp; Quality Assurance</a></li>
+        </ul>
+      </li>
+      <li class="has-sub">
+        <button class="msub-toggle">Employers<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="partnership-framework.html">Partnership Framework</a></li>
+          <li><a href="employers-hire-member.html">Hire a CIMS Member</a></li>
+          <li><a href="accredited-training-partners.html">Accredited Training Partners</a></li>
+          <li><a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a></li>
+        </ul>
+      </li>
+      <li><a href="chartered-strategic-director.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
+      <li class="has-sub">
+        <button class="msub-toggle">Member Area<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="register.html">Register</a></li>
+          <li><a href="member-login.html">Member Log In</a></li>
+          <li><a href="admin-login.html">Admin Log In</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="mobile-actions">
+      <a href="contact-us.html" class="btn btn-gold" style="border-color:var(--gold-light);color:var(--paper);">Contact Us</a>
+    </div>
+  </div>
+</header>
+<section class="hero-inner" aria-label="Page introduction">
+  <img src="assets/images/13.jpg" alt="CIMS Payments and Fees">
+  <div class="hero-inner-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Payments &amp; Fees</span>
+    </nav>
+    <span class="eyebrow">Support Centre</span>
+    <h1 style="margin-top:18px;">Official CIMS Payment Methods</h1>
+    <p class="lede">Secure, transparent payment options for members, applicants, certification candidates and institutional partners.</p>
+  </div>
+  <div class="hero-inner-seal">
+    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <g class="ring-outer">
+        <circle cx="150" cy="150" r="142" fill="none" stroke="#B08D57" stroke-width="2" stroke-dasharray="3 10"/>
+      </g>
+      <circle cx="150" cy="150" r="118" fill="none" stroke="#D8BD8A" stroke-width="2"/>
+      <circle cx="150" cy="150" r="104" fill="#241f1a" stroke="#B08D57" stroke-width="2"/>
+      <text x="150" y="145" text-anchor="middle" font-family="Sora, sans-serif" font-weight="700" font-size="44" fill="#F6F1E4">CIMS</text>
+      <text x="150" y="178" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" letter-spacing="3" fill="#D8BD8A">CHARTERED</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+
+    <div class="cpd-intro">
+      <span class="eyebrow">Accepted Channels</span>
+      <p>The <strong>Chartered Institute of Management Specialists (CIMS)</strong> is committed to providing secure and transparent payment options for members, applicants, certification candidates and institutional partners.</p>
+      <p>Payments to CIMS should only be made through an official payment channel issued or confirmed by the Institute.</p>
+    </div>
+
+    <div class="cpd-block">
+      <h2>Accepted Payment Methods</h2>
+      <p>CIMS currently accepts payments through:</p>
+      <ul class="check-list" style="grid-template-columns:1fr;">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong style="color:var(--ink);">Secure Debit/Credit Card Payment</strong> — applicants may pay using a secure payment link issued directly by the CIMS Accounts Department. Payment links may be specific to an applicant, membership application, professional certification or institutional transaction and should not be transferred to another individual without authorisation.</span></li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong style="color:var(--ink);">International Bank Transfer</strong> — CIMS also accepts international bank transfers directly to the Institute's designated institutional bank account. Official banking instructions are provided by the CIMS Accounts Department upon request or as part of an authorised invoice or payment instruction. For security purposes, full banking information is not published publicly on the CIMS website.</span></li>
+      </ul>
+    </div>
+
+    <div class="cpd-block">
+      <h2>Institutional Beneficiary</h2>
+      <p>Where payment is made by international bank transfer, applicants should ensure that the beneficiary information provided in the official payment instruction corresponds with:</p>
+      <div class="cpd-note" style="margin-bottom:16px;">
+        <strong>Beneficiary:</strong> Chartered Institute of Management Specialists
+      </div>
+      <p style="margin-bottom:0;">Applicants should not make CIMS membership, certification or partnership payments to an individual's personal bank account.</p>
+    </div>
+
+    <div class="cpd-block">
+      <h2>Payment References</h2>
+      <p style="margin-bottom:0;">When making a bank transfer, the applicant or organisation should use the payment reference, invoice number, applicant name or other identifying information specified in the payment instruction. This enables the Accounts Department to identify and allocate the payment correctly.</p>
+    </div>
+
+    <div class="cpd-block">
+      <h2>Payment Confirmation</h2>
+      <p>Following payment, candidates may be requested to provide evidence of the transaction where confirmation is not automatically received.</p>
+      <p style="margin-bottom:0;">Payments are considered confirmed only after the Institute has been able to verify receipt of the applicable funds. The Accounts Department will subsequently update the applicant's or organisation's record accordingly.</p>
+    </div>
+
+    <div class="cpd-block">
+      <h2>Professional Assessment Fees</h2>
+      <p>Where an application requires professional assessment or credential verification, the applicable Professional Credential Verification &amp; Assessment Fee must be paid before the formal assessment or verification process commences.</p>
+      <p style="margin-bottom:0;">Unless expressly stated otherwise, assessment and credential-verification fees are non-refundable once the applicable verification or assessment process has commenced.</p>
+    </div>
+
+    <div class="cpd-block">
+      <h2>Certification Fees</h2>
+      <p>Where a professional certification is subject to assessment, payment of an assessment fee does not constitute certification or guarantee approval.</p>
+      <p style="margin-bottom:0;">The applicable Certification Fee becomes payable only at the appropriate stage communicated by the Institute, following satisfactory completion of the relevant assessment requirements and approval.</p>
+    </div>
+
+    <div class="cpd-block">
+      <h2>Membership Fees</h2>
+      <p>Applicants admitted to an eligible CIMS membership grade will receive formal instructions regarding the applicable membership fee.</p>
+      <p style="margin-bottom:0;">Payment alone does not confer CIMS membership. Membership becomes effective only following completion of the applicable admission requirements and formal confirmation by the Institute.</p>
+    </div>
+
+    <div class="cpd-block">
+      <h2>Accredited Training Partner &amp; Corporate Payments</h2>
+      <p>Organisations applying for <a href="accredited-training-partners.html">Accredited Training Partner</a> status, <a href="employers-corporate-membership.html">Corporate Membership</a> or other institutional relationships will receive payment instructions appropriate to the particular application.</p>
+      <p style="margin-bottom:0;">Payment of an accreditation evaluation fee does not guarantee Accredited Training Partner approval. Institutional approval remains subject to satisfactory completion of the applicable assessment, due-diligence and quality-assurance requirements.</p>
+    </div>
+
+    <div class="cpd-block">
+      <h2>International Courier Charges</h2>
+      <p style="margin-bottom:0;">Where a physical certificate or other credential is requested, an additional international courier charge may apply. Candidates who elect to receive an eligible Digital Certificate and Digital Badge only are not required to pay an international courier charge unless physical documentation is subsequently requested.</p>
+    </div>
+
+    <div class="cpd-block">
+      <h2>Currency &amp; Bank Charges</h2>
+      <p>Unless otherwise stated on an invoice or payment instruction, CIMS international fees are quoted in United States Dollars (USD).</p>
+      <p style="margin-bottom:0;">Applicants making international bank transfers are responsible for ensuring that the full amount specified by CIMS is received. Any intermediary, correspondent or originating bank charges should be taken into consideration when arranging payment.</p>
+    </div>
+
+    <div class="cpd-block" style="max-width:none;margin-bottom:0;">
+      <h2>Payment Security</h2>
+      <p>To protect applicants and institutional partners from fraud:</p>
+      <ul class="check-list">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Only use payment instructions received through an authorised CIMS communication</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Do not make payments to personal bank accounts</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Do not disclose card information by ordinary email</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Verify unexpected changes to banking instructions directly with CIMS before making payment</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Retain your transaction receipt or payment confirmation</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Quote your application, invoice or payment reference where applicable</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="notice-box" style="max-width:820px;">
+      <span class="eyebrow">Important Notice</span>
+      <h3>Payment never guarantees an outcome</h3>
+      <p>CIMS will never guarantee membership, professional certification, accreditation or assessment approval solely in exchange for payment. All professional awards and institutional approvals remain subject to the applicable eligibility, assessment, verification and approval requirements.</p>
+      <p>For official payment instructions or confirmation of a payment request, applicants should contact the CIMS Accounts Department through the Institute's official communication channels.</p>
+    </div>
+  </div>
+</section>
+
+<section class="partner-cta">
+  <div class="wrap">
+    <div class="partner-card">
+      <div>
+        <span class="eyebrow">Questions About a Payment?</span>
+        <h2>Speak with the CIMS Accounts Department</h2>
+        <p>For official payment instructions, invoice queries or to confirm a payment request, get in touch directly.</p>
+      </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;">
+        <a href="contact-us.html" class="btn btn-primary">Contact Us</a>
+        <a href="faq.html" class="btn btn-ghost" style="border-color:rgba(255,255,255,.5);color:#fff;">Read the FAQ</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer id="site-footer">
+  <div class="wrap">
+
+
+
+    <div class="foot-grid" style="padding-top:40px;">
+      <div class="foot-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><img src="assets/logos/logo.png" alt="CIMS logo"></span>
+        </a>
+        <p class="foot-institution-name">Chartered Institute of Management Specialists</p>
+        <p>Step into the world of management and future-ready your career with the knowledge, skills and ethics the profession demands.</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/profile.php?id=61590429427981" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg></a>
+          <a href="https://www.linkedin.com/company/chartered-institute-of-management-specialists/" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+          <a href="https://www.instagram.com" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.23.41.55.21.95.47 1.37.89.42.42.68.82.89 1.37.17.42.36 1.05.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.41 2.23-.21.55-.47.95-.89 1.37-.42.42-.82.68-1.37.89-.42.17-1.05.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.23-.41-.55-.21-.95-.47-1.37-.89-.42-.42-.68-.82-.89-1.37-.17-.42-.36-1.05-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.24-1.8.41-2.23.21-.55.47-.95.89-1.37.42-.42.82-.68 1.37-.89.42-.17 1.05-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39C1.35 2.68.94 3.35.63 4.14.33 4.9.14 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.85a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
+          <a href="https://www.twitter.com" aria-label="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M18.24 2H21l-6.55 7.49L22.2 22h-6.15l-4.82-6.3L5.7 22H2.93l7.02-8.02L1.8 2h6.3l4.35 5.76L18.24 2zm-1.08 18h1.7L7.9 3.9H6.08L17.16 20z"/></svg></a>
+          <a href="https://www.youtube.com" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.23-1.64-.94-2.36c-.9-.94-1.9-.95-2.36-1C16.9 2.5 12 2.5 12 2.5h-.01s-4.9 0-8.2.34c-.46.05-1.46.06-2.36 1C.72 4.56.5 6.2.5 6.2S.26 8.13.26 10.05v1.78c0 1.93.24 3.86.24 3.86s.23 1.64.93 2.36c.9.95 2.08.92 2.6 1.02 1.9.18 8.06.34 8.06.34s4.9-.01 8.2-.35c.46-.05 1.46-.06 2.36-1 .7-.72.94-2.36.94-2.36s.24-1.93.24-3.86v-1.78c0-1.92-.24-3.85-.24-3.85zM9.7 14.7V7.9l6.5 3.4-6.5 3.4z"/></svg></a>
+        </div>
+      </div>
+
+       <div>
+        <h4>About Us</h4>
+        <ul>
+          <li><a href="history.html">History</a></li>
+          <li><a href="council-members.html">Council Members</a></li>
+          <li><a href="overseas-representatives.html">Overseas Representatives</a></li>
+          <li><a href="legal-standing.html">Legal Standing</a></li>
+          <li><a href="why-choose-us.html">Why Choose Us</a></li>
+          <li><a href="recognition.html">Professional Recognition</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Membership</h4>
+        <ul>
+          <li><a href="membership.html">Overview</a></li>
+          <li><a href="membership-associate.html">Associate Member (ACIMS)</a></li>
+          <li><a href="membership-chartered.html">Chartered Member (MCIMS)</a></li>
+          <li><a href="membership-fellow.html">Chartered Fellow (FCIMS)</a></li>
+          <li><a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a></li>
+          <li><a href="membership-benefits.html">Membership Benefits</a></li>
+        </ul>
+      </div>
+
+       <div>
+        <h4>Qualifications &amp; Employers</h4>
+        <ul>
+          <li><a href="specialist-qualifications.html">Specialist Qualifications</a></li>
+          <li><a href="practitioner-qualifications.html">Practitioner Qualifications</a></li>
+          <li><a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
+          <li><a href="partnership-framework.html">Partnership Framework</a></li>
+          <li><a href="employers-hire-member.html">Hire a CIMS Member</a></li>
+          <li><a href="accredited-training-partners.html">Accredited Training Partners</a></li>
+        </ul>
+      </div>
+
+
+
+      <div>
+        <h4>Member Area</h4>
+        <ul>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="member-login.html">Member Log In</a></li>
+          <li><a href="admin-login.html">Admin Log In</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>212 N. 2nd St., STE 100<br>Richmond, KY 40475, US</li>
+          <li>Monday to Saturday, 9:00 to 17:00</li>
+          <li><a href="mailto:admin@charteredims.com">admin@charteredims.com</a></li>
+          <li><a href="tel:+18592109109">+1 (859) 210-9109</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Chartered Institute of Management Specialists, LLC. All rights reserved.</span>
+      <span style="display:flex;gap:18px;flex-wrap:wrap;">
+        <a href="privacy.html">Privacy</a>
+        <a href="legal-standing.html">Legal Standing</a>
+        <a href="faq.html">FAQ</a>
+        <a href="payments-fees.html">Payments &amp; Fees</a>
+        <a href="certificate-verification.html">Verify a Credential</a>
+      </span>
+    </div>
+  </div>
+</footer>
+<script>
+  // ---------- mobile menu + dropdown behaviour (same as rest of site) ----------
+  const toggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('mobileMenu');
+  function closeMobileMenu(){
+    menu.classList.remove('open'); toggle.classList.remove('active'); toggle.setAttribute('aria-expanded','false');
+    document.querySelectorAll('.mobile-list li.has-sub.open').forEach(li => li.classList.remove('open'));
+  }
+  toggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    toggle.classList.toggle('active', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  document.querySelectorAll('.msub-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const li = btn.closest('li');
+      const wasOpen = li.classList.contains('open');
+      li.parentElement.querySelectorAll(':scope > li.has-sub').forEach(l => l.classList.remove('open'));
+      li.classList.toggle('open', !wasOpen);
+    });
+  });
+  const dropdownItems = document.querySelectorAll('.nav-item.has-dropdown');
+  let closeTimer = null;
+  function openItem(item, viaClick){
+    clearTimeout(closeTimer);
+    dropdownItems.forEach(i => { if (i !== item) i.classList.remove('open'); });
+    item.classList.add('open');
+    if (viaClick) item.dataset.openedByClick = 'true';
+    item.querySelector('.nav-link')?.setAttribute('aria-expanded','true');
+  }
+  function closeItem(item){
+    item.classList.remove('open'); delete item.dataset.openedByClick;
+    item.querySelector('.nav-link')?.setAttribute('aria-expanded','false');
+  }
+  function closeAllDropdowns(){ dropdownItems.forEach(closeItem); }
+  dropdownItems.forEach(item => {
+    const link = item.querySelector('.nav-link');
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isOpen = item.classList.contains('open');
+      const openedByClick = item.dataset.openedByClick === 'true';
+      if (isOpen && openedByClick) closeItem(item);
+      else { dropdownItems.forEach(i => { if (i !== item) closeItem(i); }); openItem(item, true); }
+    });
+    item.addEventListener('mouseenter', () => openItem(item));
+    item.addEventListener('mouseleave', () => { closeTimer = setTimeout(() => closeItem(item), 380); });
+    item.addEventListener('focusin', () => openItem(item));
+  });
+  document.addEventListener('click', (e) => { dropdownItems.forEach(item => { if (!item.contains(e.target)) closeItem(item); }); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAllDropdowns(); });
+  const breakpointQuery = window.matchMedia('(max-width: 1100px)');
+  function resetNavForViewport(){ closeMobileMenu(); closeAllDropdowns(); }
+  if (breakpointQuery.addEventListener) breakpointQuery.addEventListener('change', resetNavForViewport);
+  else if (breakpointQuery.addListener) breakpointQuery.addListener(resetNavForViewport);
+  let resizeDebounce;
+  window.addEventListener('resize', () => { clearTimeout(resizeDebounce); resizeDebounce = setTimeout(resetNavForViewport, 150); });
+</script>
+</body>
+</html>

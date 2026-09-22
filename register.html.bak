@@ -1,0 +1,2451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Register | Chartered Institute of Management Specialists (CIMS)</title>
+<meta name="description" content="Apply for CIMS Membership, Practitioner Qualifications, or Specialist Qualifications. Submit your application for review by the Membership Team.">
+<link rel="icon" type="image/png" href="assets/logos/cims-logo.png">
+<link rel="apple-touch-icon" href="assets/logos/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#13233d;
+    --ink-soft:#1c3763;
+    --charcoal:#241f1a;
+    --charcoal-2:#2f2822;
+    --parchment:#F6F1E4;
+    --paper:#FBF8F1;
+    --gold:#B08D57;
+    --gold-light:#D8BD8A;
+    --gold-dim:rgba(176,141,87,.35);
+    --burgundy:#6E1423;
+    --burgundy-dark:#4c0e18;
+    --slate:#26241f;
+    --slate-soft:#5b564c;
+    --line: rgba(43,36,32,.14);
+    --line-gold: rgba(176,141,87,.45);
+    --shadow: 0 20px 50px rgba(43,36,32,.14);
+    --radius: 2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--slate);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Sora',sans-serif;
+    color:var(--ink);
+    margin:0;
+    font-weight:700;
+    letter-spacing:-.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .eyebrow{
+    font-family:'Sora',sans-serif;
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:.6em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  @media (max-width:700px){ .wrap{padding:0 20px;} }
+
+  /* ---------- certificate divider ---------- */
+  .seal-rule{
+    height:14px;
+    background-image: repeating-linear-gradient(90deg, var(--gold) 0 6px, transparent 6px 16px);
+    opacity:.55;
+    margin:0;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    background:var(--charcoal);
+    color:#e7ddce;
+    font-family:'Sora',sans-serif;
+    font-size:.75rem;
+    letter-spacing:.02em;
+  }
+  .topbar .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:9px;
+    padding-bottom:9px;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .topbar-left{display:flex;gap:22px;flex-wrap:wrap;}
+  .topbar a:hover{color:var(--gold-light);}
+  .topbar-social{display:flex;gap:12px;}
+  .topbar-social a{
+    width:24px;height:24px;
+    border:1px solid rgba(231,221,206,.28);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .topbar-social a svg{width:12px;height:12px;fill:#e7ddce;transition:fill .15s ease;}
+  .topbar-social a:hover{border-color:var(--gold);}
+  .topbar-social a:hover svg{fill:var(--gold);}
+  .topbar-search-wrap{position:relative;flex:0 1 260px;}
+  .topbar-search{
+    display:flex;align-items:center;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(231,221,206,.28);
+    border-radius:999px;
+    overflow:hidden;
+    width:100%;
+  }
+  .topbar-search input{
+    flex:1;min-width:0;
+    background:none;border:none;outline:none;
+    padding:7px 4px 7px 16px;
+    color:#e7ddce;
+    font-family:'Inter',sans-serif;
+    font-size:.78rem;
+  }
+  .topbar-search input::placeholder{color:rgba(231,221,206,.5);}
+  .topbar-search button{
+    background:var(--burgundy);
+    border:none;margin:3px;
+    width:26px;height:26px;flex-shrink:0;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;cursor:pointer;
+    transition:background .15s ease;
+  }
+  .topbar-search button:hover{background:var(--burgundy-dark);}
+  .topbar-search button svg{width:13px;height:13px;}
+  .search-suggest{
+    position:absolute;top:calc(100% + 8px);left:0;right:0;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-top:2px solid var(--gold);
+    box-shadow:var(--shadow);
+    z-index:60;
+    max-height:340px;overflow-y:auto;
+    display:none;
+  }
+  .search-suggest.open{display:block;}
+  .search-suggest a{
+    display:flex;flex-direction:column;gap:2px;
+    padding:9px 16px;
+    color:var(--ink);
+    font-size:.83rem;font-weight:600;
+    border-bottom:1px solid var(--line);
+  }
+  .search-suggest a:last-child{border-bottom:none;}
+  .search-suggest a:hover, .search-suggest a.active{background:var(--parchment);color:var(--burgundy);}
+  .search-suggest a small{
+    font-family:'Sora',sans-serif;
+    font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;
+  }
+  .search-suggest .no-results{padding:12px 16px;font-size:.8rem;color:var(--slate-soft);}
+  .topbar-apply{
+    flex-shrink:0;
+    background:var(--gold);
+    color:var(--charcoal);
+    font-weight:700;
+    font-size:.74rem;
+    letter-spacing:.03em;
+    padding:8px 20px;
+    border-radius:999px;
+    white-space:nowrap;
+    transition:background .15s ease;
+  }
+  .topbar-apply:hover{background:var(--gold-light);}
+  @media (max-width:560px){ .topbar-search-wrap{display:none;} }
+
+  /* ---------- notice ribbon ---------- */
+  .notice{
+    background:var(--gold);
+    color:var(--charcoal);
+  }
+  .notice .wrap{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:8px 32px;
+    font-size:.82rem;
+    font-weight:600;
+  }
+  .notice span.tag{
+    font-family:'Sora',sans-serif;
+    font-size:.68rem;
+    letter-spacing:.1em;
+    background:var(--charcoal);
+    color:var(--gold-light);
+    padding:3px 8px;
+    text-transform:uppercase;
+    flex-shrink:0;
+  }
+
+  /* ---------- header / nav ---------- */
+  header.site{
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:50;
+  }
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 0;
+    gap:32px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .brand-mark{
+    height:64px;
+    flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .brand-mark img{
+    height:100%;width:auto;
+    object-fit:contain;
+  }
+  @media (max-width:700px){ .brand-mark{height:46px;} }
+
+  /* CIML-style stacked brand title */
+  .nav-brand-text{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    line-height:1;
+  }
+  .nav-brand-text .acronym{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:1.9rem;
+    letter-spacing:.03em;
+    color:#1C0D5B;
+    line-height:1;
+  }
+  .nav-brand-text .fullname{
+    font-family:'Playfair Display',serif;
+    font-weight:600;
+    font-size:.62rem;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    color:#1C0D5B;
+    line-height:1.55;
+    margin-top:5px;
+    white-space:normal;
+  }
+  @media (max-width:700px){
+    .nav-brand-text .acronym{font-size:1.3rem;}
+    .nav-brand-text .fullname{font-size:.5rem;letter-spacing:.09em;}
+  }
+  @media (max-width:420px){
+    .brand{gap:10px;}
+    .nav-brand-text .acronym{font-size:1.1rem;}
+    .nav-brand-text .fullname{font-size:.42rem;letter-spacing:.05em;line-height:1.35;margin-top:3px;}
+  }
+  @media (max-width:360px){
+    .brand{gap:7px;}
+    .brand-mark{height:38px;}
+    .nav-brand-text .acronym{font-size:.95rem;}
+    .nav-brand-text .fullname{font-size:.36rem;letter-spacing:.03em;line-height:1.3;margin-top:2px;}
+  }
+
+  nav.main{display:flex;align-items:center;}
+  nav.main > ul{
+    list-style:none;margin:0;padding:0;
+    display:flex;align-items:center;gap:34px;
+    font-size:.83rem;font-weight:600;
+    color:var(--ink);
+  }
+  nav.main > ul > li{position:relative;}
+  nav.main > ul > li > a,
+  nav.main > ul > li > button.nav-link{
+    display:flex;align-items:center;gap:6px;
+    padding:10px 2px;
+    border-bottom:2px solid transparent;
+    background:none;border-top:none;border-left:none;border-right:none;
+    font:inherit;color:inherit;cursor:pointer;
+    transition:border-color .15s ease, color .15s ease;
+    white-space:nowrap;
+  }
+  nav.main > ul > li > a:hover,
+  nav.main > ul > li > button.nav-link:hover,
+  nav.main > ul > li.open > button.nav-link,
+  nav.main > ul > li.open > a{border-color:var(--gold);color:var(--burgundy);}
+  .caret{
+    width:10px;height:10px;flex-shrink:0;
+    stroke:currentColor;
+    transition:transform .25s ease;
+  }
+  .nav-item.open > .nav-link .caret,
+  .nav-item.open > .nav-link > .caret{transform:rotate(180deg);}
+
+  /* dropdown panel */
+  .dropdown{
+    position:absolute;top:100%;left:0;
+    min-width:265px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-top:2px solid var(--gold);
+    box-shadow:var(--shadow);
+    padding:8px 0;
+    margin-top:14px;
+    opacity:0;visibility:hidden;
+    transform:translateY(8px);
+    transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+    z-index:90;
+  }
+  /* invisible bridge so the gap between link and panel doesn't kill hover */
+  .dropdown::before{
+    content:"";position:absolute;left:0;right:0;top:-14px;height:14px;
+  }
+  .nav-item.open > .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+  .dropdown a{
+    display:block;
+    padding:11px 22px;
+    font-size:.85rem;font-weight:600;
+    color:var(--ink);
+    border-left:2px solid transparent;
+  }
+  .dropdown a:hover{background:var(--parchment);border-left-color:var(--gold);color:var(--burgundy);}
+  .nav-utils .dropdown{left:auto;right:0;min-width:220px;}
+
+  /* utility buttons (contact / member area) */
+  .nav-utils{display:flex;align-items:center;gap:10px;}
+  .btn-pill{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:'Sora',sans-serif;
+    font-weight:700;font-size:.78rem;letter-spacing:.02em;
+    padding:10px 20px;
+    border-radius:999px;
+    border:1.5px solid var(--burgundy);
+    cursor:pointer;white-space:nowrap;
+    transition:all .18s ease;background:transparent;color:var(--burgundy);
+  }
+  .btn-pill:hover{background:var(--burgundy);color:#fff;}
+  .btn-pill.filled{background:var(--burgundy);color:#fff;}
+  .btn-pill.filled:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark);}
+  .btn-pill .caret{border-color:currentColor;}
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight:700;
+    font-size:.82rem;
+    letter-spacing:.02em;
+    padding:12px 22px;
+    border:1.5px solid var(--burgundy);
+    border-radius:var(--radius);
+    transition:all .18s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--burgundy);color:#fff;}
+  .btn-primary:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark);}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+  .btn-gold{border-color:var(--gold);color:var(--ink);}
+  .btn-gold:hover{background:var(--gold);border-color:var(--gold);}
+
+  .menu-toggle{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    width:34px;height:34px;
+    background:none;border:none;cursor:pointer;padding:6px;
+    flex-shrink:0;
+  }
+  .menu-toggle span{width:22px;height:2px;background:var(--ink);display:block;transition:transform .22s ease, opacity .22s ease;}
+  .menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .menu-toggle.active span:nth-child(2){opacity:0;}
+  .menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  @media (max-width:1100px){
+    nav.main{display:none;}
+    .nav-utils > .btn-pill,
+    .nav-utils > .nav-item.has-dropdown{display:none;}
+    .menu-toggle{display:flex;}
+  }
+  @media (min-width:1101px){ .mobile-menu{display:none !important;} }
+
+  /* mobile drawer */
+  .mobile-menu{
+    display:none;
+    background:var(--charcoal);
+    color:var(--paper);
+    max-height:calc(100vh - 100%);
+    overflow-y:auto;
+  }
+  .mobile-menu.open{display:block;}
+  .mobile-list{list-style:none;margin:0;padding:10px 0;display:flex;flex-direction:column;}
+  .mobile-list > li{border-bottom:1px solid rgba(255,255,255,.08);}
+  .mobile-list > li > a,
+  .msub-toggle{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    width:100%;padding:15px 28px;
+    font-weight:600;font-size:.92rem;
+    background:none;border:none;color:var(--paper);font-family:inherit;
+    text-align:left;cursor:pointer;
+  }
+  .msub-toggle .mcaret{
+    width:11px;height:11px;flex-shrink:0;
+    stroke:var(--gold-light);
+    transition:transform .25s ease;
+  }
+  li.has-sub.open > .msub-toggle .mcaret{transform:rotate(180deg);}
+  .msub{
+    list-style:none;margin:0;padding:0;
+    max-height:0;overflow:hidden;
+    background:rgba(0,0,0,.2);
+    transition:max-height .3s ease;
+  }
+  li.has-sub.open > .msub{max-height:600px;}
+  .msub li a{
+    display:block;padding:12px 28px 12px 42px;
+    font-size:.85rem;color:#d9cfc0;
+    border-bottom:1px solid rgba(255,255,255,.05);
+  }
+  .msub li a:hover{color:var(--gold-light);}
+  .mobile-actions{padding:20px 28px 30px;display:flex;flex-direction:column;gap:12px;}
+  .mobile-actions .btn{justify-content:center;}
+
+  /* ---------- hero slider ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    overflow:hidden;
+    color:#fff;
+  }
+  .hero-slide{
+    position:absolute;inset:0;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity 1.1s ease;
+    z-index:1;
+  }
+  .hero-slide.active{opacity:1;visibility:visible;z-index:2;}
+  .hero-slide img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+  }
+  .hero-slide::after{
+    content:"";
+    position:absolute;inset:0;
+    background:
+      linear-gradient(90deg, rgba(19,20,15,.82) 0%, rgba(19,20,15,.42) 48%, rgba(19,20,15,.18) 100%),
+      linear-gradient(0deg, rgba(19,20,15,.55) 0%, rgba(19,20,15,0) 40%);
+  }
+  .hero-slide-content{
+    position:relative;z-index:3;
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 32px;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .hero-slide-content .eyebrow{color:var(--gold-light);}
+  .hero-slide-content .eyebrow::before{background:var(--gold-light);}
+  .hero-slide h1{
+    color:#fff;
+    font-size:clamp(2.2rem, 4.6vw, 3.7rem);
+    line-height:1.08;
+    margin:18px 0 22px;
+    max-width:16ch;
+  }
+  .hero-slide h1 em{
+    color:var(--gold-light);
+    font-style:italic;
+  }
+  .hero-slide p.lede{
+    font-size:1.1rem;
+    color:#e9e4d8;
+    max-width:50ch;
+    line-height:1.6;
+    margin-bottom:32px;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-ctas .btn-primary{background:var(--gold);border-color:var(--gold);color:var(--charcoal);}
+  .hero-ctas .btn-primary:hover{background:var(--gold-light);border-color:var(--gold-light);}
+  .hero-ctas .btn-ghost{border-color:rgba(255,255,255,.55);color:#fff;}
+  .hero-ctas .btn-ghost:hover{background:#fff;color:var(--charcoal);border-color:#fff;}
+
+  .hero-arrow{
+    position:absolute;top:50%;
+    transform:translateY(-50%);
+    z-index:5;
+    width:52px;height:52px;
+    border:1px solid rgba(255,255,255,.4);
+    border-radius:50%;
+    background:rgba(19,20,15,.28);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    opacity:0;
+    transition:opacity .35s ease, background .2s ease;
+  }
+  .hero-arrow svg{width:18px;height:18px;stroke:#fff;fill:none;}
+  .hero:hover .hero-arrow, .hero:focus-within .hero-arrow{opacity:1;}
+  .hero-arrow:hover{background:rgba(176,141,87,.55);}
+  .hero-arrow.prev{left:28px;}
+  .hero-arrow.next{right:28px;}
+  @media (max-width:700px){ .hero-arrow{width:40px;height:40px;} .hero-arrow.prev{left:12px;} .hero-arrow.next{right:12px;} }
+
+  .hero-dots{
+    position:absolute;bottom:30px;left:50%;
+    transform:translateX(-50%);
+    z-index:5;
+    display:flex;gap:10px;
+  }
+  .hero-dot{
+    width:9px;height:9px;border-radius:50%;
+    background:rgba(255,255,255,.4);
+    border:none;cursor:pointer;
+    padding:0;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .hero-dot.active{background:var(--gold-light);transform:scale(1.25);}
+
+  .hero-seal{
+    position:absolute;
+    right:48px;bottom:64px;
+    width:118px;height:118px;
+    z-index:4;
+  }
+  .hero-seal svg{width:100%;height:100%;}
+  .hero-seal .ring-outer{animation:spin 60s linear infinite;transform-origin:center;}
+  @media (prefers-reduced-motion: reduce){ .hero-seal .ring-outer{animation:none;} }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  @media (max-width:900px){ .hero-seal{display:none;} }
+
+  /* ---------- stat strip ---------- */
+  .stats{
+    background:var(--gold);
+  }
+  .stats .wrap{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    padding:38px 32px;
+  }
+  @media (max-width:700px){ .stats .wrap{grid-template-columns:1fr 1fr;gap:24px;} }
+  .stat{text-align:center;border-right:1px solid rgba(43,36,32,.25);}
+  .stat:last-child{border-right:none;}
+  @media (max-width:700px){ .stat{border-right:none;padding-bottom:8px;} }
+  .stat .num{
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    font-size:2.4rem;
+    color:var(--charcoal);
+    line-height:1;
+  }
+  .stat .lbl{
+    font-family:'Sora',sans-serif;
+    font-size:.7rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--charcoal);
+    margin-top:8px;
+    opacity:.85;
+  }
+
+  /* ---------- generic section ---------- */
+  section{padding:88px 0;}
+  @media (max-width:700px){section{padding:56px 0;}}
+  .section-head{
+    max-width:640px;
+    margin-bottom:48px;
+  }
+  .section-head.center{max-width:680px;margin-left:auto;margin-right:auto;text-align:center;}
+  .section-head.center .eyebrow{justify-content:center;}
+  .section-head h2{
+    font-size:clamp(1.6rem,3vw,2.3rem);
+    margin-top:14px;
+    line-height:1.15;
+  }
+  .section-head p{
+    color:var(--slate-soft);
+    font-size:1.02rem;
+    line-height:1.65;
+    margin-top:16px;
+  }
+
+  /* ---------- quick access (intro + sidebar) ---------- */
+  .quickaccess{background:var(--parchment);}
+  .qa-grid{
+    display:grid;
+    grid-template-columns:1.3fr .9fr;
+    gap:56px;
+    align-items:start;
+  }
+  @media (max-width:900px){ .qa-grid{grid-template-columns:1fr;gap:40px;} }
+  .qa-intro p{color:var(--slate-soft);line-height:1.75;font-size:1.02rem;margin-bottom:16px;}
+  .qa-intro .hero-ctas{margin-top:8px;}
+  .sidebar-stack{display:flex;flex-direction:column;gap:28px;}
+  .sw{
+    background:var(--paper);
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+  }
+  .sw-head{
+    background:var(--ink);
+    color:#fff;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 22px;
+    gap:12px;
+  }
+  .sw-head h3{
+    color:#fff;
+    font-family:'Sora',sans-serif;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    margin:0;
+  }
+  .sw-head .sw-viewall{
+    font-family:'Sora',sans-serif;
+    font-size:.7rem;
+    font-weight:700;
+    letter-spacing:.05em;
+    color:var(--gold-light);
+    display:inline-flex;align-items:center;gap:6px;
+    white-space:nowrap;
+  }
+  .sw-head .sw-viewall svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.4;}
+  .sw-links{list-style:none;margin:0;padding:0;}
+  .sw-links li{border-bottom:1px solid var(--line);}
+  .sw-links li:last-child{border-bottom:none;}
+  .sw-links a{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:16px 22px;
+    font-family:'Sora',sans-serif;
+    font-weight:600;
+    font-size:.9rem;
+    color:var(--ink);
+    transition:background .15s ease, padding-left .15s ease, color .15s ease;
+  }
+  .sw-links a:hover{background:var(--parchment);padding-left:26px;color:var(--burgundy);}
+  .sw-links a svg{width:14px;height:14px;flex-shrink:0;stroke:var(--gold);fill:none;stroke-width:2.2;transition:transform .15s ease;}
+  .sw-links a:hover svg{transform:translateX(3px);stroke:var(--burgundy);}
+  .sw-news{list-style:none;margin:0;padding:0;}
+  .sw-news li{border-bottom:1px solid var(--line);}
+  .sw-news li:last-child{border-bottom:none;}
+  .sw-news a{
+    display:flex;gap:14px;
+    padding:16px 22px;
+    align-items:flex-start;
+  }
+  .sw-news a:hover{background:var(--parchment);}
+  .sw-news .sw-thumb{width:58px;height:58px;flex-shrink:0;overflow:hidden;border:1px solid var(--line);}
+  .sw-news .sw-thumb img{width:100%;height:100%;object-fit:cover;}
+  .sw-news .sw-date{
+    font-family:'Sora',sans-serif;
+    font-size:.66rem;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:block;
+    margin-bottom:4px;
+  }
+  .sw-news .sw-title{
+    font-size:.86rem;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1.4;
+  }
+  .sw-news a:hover .sw-title{color:var(--burgundy);}
+
+  /* about / why choose */
+  .about-grid{
+    display:grid;
+    grid-template-columns:.75fr 1fr .95fr;
+    gap:44px;
+    align-items:start;
+  }
+  @media (max-width:900px){.about-grid{grid-template-columns:1fr;gap:36px;}}
+  .about-photo{position:relative;}
+  .about-photo img{width:100%;aspect-ratio:5/4;object-fit:cover;border:1px solid var(--line);}
+  .about-badge{
+    position:absolute;left:24px;bottom:-24px;
+    background:var(--burgundy);color:var(--paper);
+    padding:16px 20px;
+    border:1px solid var(--gold);
+    display:flex;flex-direction:column;
+    min-width:120px;
+  }
+  .about-badge .n{font-family:'Sora',sans-serif;font-weight:700;font-size:1.6rem;color:var(--gold-light);line-height:1;}
+  .about-badge .l{font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:#f0e3d3;margin-top:4px;}
+  .about-copy p{color:var(--slate-soft);line-height:1.75;font-size:1.02rem;margin-bottom:16px;}
+  .feature-list{display:flex;flex-direction:column;gap:22px;margin-top:8px;}
+  .feature{
+    display:flex;gap:16px;
+    padding:20px;
+    border:1px solid var(--line);
+    background:var(--paper);
+  }
+  .feature .fnum{
+    font-family:'Sora',sans-serif;
+    color:var(--gold);
+    font-weight:600;
+    font-size:.8rem;
+    flex-shrink:0;
+    padding-top:2px;
+  }
+  .feature h4{font-size:1.02rem;margin-bottom:6px;}
+  .feature p{color:var(--slate-soft);font-size:.92rem;line-height:1.55;margin:0;}
+
+  /* why choose icon cards */
+  .why{background:var(--parchment);}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  @media (max-width:900px){ .why-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:520px){ .why-grid{grid-template-columns:1fr;} }
+  .why-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-top:3px solid var(--gold);
+    padding:30px 24px;
+  }
+  .why-card .icon{
+    width:46px;height:46px;
+    border-radius:50%;
+    background:var(--charcoal);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;
+  }
+  .why-card .icon svg{width:22px;height:22px;stroke:var(--gold-light);fill:none;stroke-width:1.6;}
+  .why-card h4{font-size:1rem;margin-bottom:8px;}
+  .why-card p{color:var(--slate-soft);font-size:.9rem;line-height:1.55;margin:0;}
+
+  /* pathway (real sequence) */
+  .pathway{
+    background:var(--charcoal);
+    color:var(--paper);
+  }
+  .pathway .section-head h2{color:var(--paper);}
+  .pathway .section-head p{color:#d9cfc0;}
+  .pathway .eyebrow{color:var(--gold-light);}
+  .pathway .eyebrow::before{background:var(--gold-light);}
+  .path-line{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    margin-top:20px;
+  }
+  .path-line::before{
+    content:"";
+    position:absolute;
+    top:120px;left:0;right:0;
+    height:1px;
+    background:repeating-linear-gradient(90deg, var(--gold) 0 8px, transparent 8px 16px);
+  }
+  @media (max-width:900px){
+    .path-line{grid-template-columns:1fr;gap:28px;}
+    .path-line::before{display:none;}
+  }
+  .path-step{padding-right:28px;position:relative;}
+  .path-thumb{
+    width:100%;height:120px;
+    overflow:hidden;
+    position:relative;
+    margin-bottom:34px;
+  }
+  .path-thumb img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) brightness(.85);}
+  .path-step .pnum{
+    width:56px;height:56px;
+    border:1.5px solid var(--gold);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    color:var(--gold-light);
+    font-size:1.05rem;
+    background:var(--burgundy);
+    box-shadow:0 4px 14px rgba(0,0,0,.35);
+    position:absolute;
+    left:16px;top:88px;
+    z-index:2;
+  }
+  .path-step h3{color:var(--paper);font-size:1.15rem;margin-bottom:10px;}
+  .path-step p{color:#d9cfc0;font-size:.92rem;line-height:1.6;margin:0 0 14px;}
+  .path-step a{
+    font-family:'Sora',sans-serif;
+    font-size:.72rem;
+    letter-spacing:.06em;
+    color:var(--gold-light);
+    text-transform:uppercase;
+    border-bottom:1px solid var(--gold-light);
+    padding-bottom:2px;
+  }
+
+  /* gallery */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:16px;
+  }
+  .gallery-grid a{position:relative;overflow:hidden;display:block;border:1px solid var(--line);aspect-ratio:4/5;}
+  .gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .gallery-grid a:hover img{transform:scale(1.06);}
+  .gallery-grid .cap{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:16px 18px;
+    background:linear-gradient(0deg, rgba(19,20,15,.82), transparent);
+    color:#fff;
+    font-family:'Sora',sans-serif;
+    font-size:.82rem;
+    font-weight:600;
+  }
+  @media (max-width:900px){
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .gallery-grid a{aspect-ratio:4/3;}
+    .gallery-grid a:nth-child(1){grid-column:1/3;}
+  }
+
+  /* testimonials */
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  @media (max-width:900px){.testi-grid{grid-template-columns:1fr;}}
+  .testi{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-top:3px solid var(--gold);
+    padding:30px 26px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .testi .quote-mark{
+    font-family:'Sora',sans-serif;
+    font-size:2.6rem;
+    color:var(--gold-dim);
+    line-height:1;
+  }
+  .testi p.body{color:var(--slate);font-size:.96rem;line-height:1.65;margin:0;}
+  .testi .who{
+    display:flex;align-items:center;gap:12px;
+    border-top:1px solid var(--line);
+    padding-top:14px;
+  }
+  .testi .who img{
+    width:44px;height:44px;border-radius:50%;
+    object-fit:cover;flex-shrink:0;
+    border:1.5px solid var(--gold);
+  }
+  .testi .who .name{font-weight:700;color:var(--ink);font-size:.92rem;}
+  .testi .who .role{font-family:'Sora',sans-serif;font-size:.72rem;color:var(--slate-soft);text-transform:uppercase;letter-spacing:.04em;}
+
+  /* news & events */
+  .news{background:var(--parchment);}
+  .news-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  @media (max-width:900px){.news-grid{grid-template-columns:1fr;}}
+  .news-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .news-thumb{position:relative;aspect-ratio:16/10;overflow:hidden;}
+  .news-thumb img{width:100%;height:100%;object-fit:cover;}
+  .news-tag{
+    position:absolute;top:14px;left:14px;
+    background:var(--burgundy);color:#fff;
+    font-family:'Sora',sans-serif;
+    font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;
+    padding:5px 10px;
+  }
+  .news-body{padding:22px 22px 24px;}
+  .news-meta{font-size:.76rem;color:var(--slate-soft);margin-bottom:10px;}
+  .news-body h4{font-size:1.02rem;line-height:1.4;margin-bottom:10px;}
+  .news-body p{color:var(--slate-soft);font-size:.9rem;line-height:1.55;margin:0;}
+
+  /* partner strip */
+  .partners{background:var(--parchment);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .partners .wrap{padding:40px 32px;text-align:center;}
+  .partners .eyebrow{justify-content:center;}
+  .partners .plabel{margin-top:10px;color:var(--slate-soft);font-size:.9rem;}
+
+  /* Partner-with-us: contained card, not a full-bleed banner */
+  .partner-cta{padding:64px 0 84px;}
+  .partner-card{
+    max-width:860px;
+    margin:0 auto;
+    background:var(--charcoal);
+    border:1px solid var(--gold-dim);
+    padding:42px 46px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:28px;
+    flex-wrap:wrap;
+    position:relative;
+    color:var(--paper);
+  }
+  .partner-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);}
+  .partner-card .eyebrow{color:var(--gold-light);}
+  .partner-card .eyebrow::before{background:var(--gold-light);}
+  .partner-card h2{color:var(--paper);font-size:clamp(1.25rem,2.4vw,1.6rem);margin-top:10px;}
+  .partner-card p{color:#cbbfa8;margin-top:8px;max-width:40ch;font-size:.94rem;line-height:1.6;}
+  .partner-card .btn-primary{background:var(--gold);color:var(--charcoal);border-color:var(--gold);}
+  .partner-card .btn-primary:hover{background:var(--gold-light);border-color:var(--gold-light);}
+  @media (max-width:700px){ .partner-card{padding:32px 26px;} }
+
+  /* footer */
+  footer{
+    background:var(--charcoal-2);
+    color:#c9bfae;
+    padding-top:64px;
+  }
+  .foot-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr .9fr 1fr;
+    gap:36px;
+    padding-bottom:40px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  @media (max-width:1180px){.foot-grid{grid-template-columns:1fr 1fr 1fr;row-gap:44px;}}
+  @media (max-width:700px){.foot-grid{grid-template-columns:1fr 1fr;row-gap:36px;}}
+  @media (max-width:480px){.foot-grid{grid-template-columns:1fr;}}
+  footer h4{
+    color:var(--gold-light);
+    font-family:'Sora',sans-serif;
+    font-size:.7rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:.85rem;}
+  footer ul li{line-height:1.5;}
+  footer ul li a:hover{color:var(--gold-light);}
+  .foot-brand .brand-mark{height:52px;margin-bottom:6px;}
+  footer .foot-brand p{color:#b7ac98;font-size:.88rem;line-height:1.6;margin-top:14px;max-width:34ch;}
+  .foot-institution-name{
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    color:#fff !important;
+    font-size:1rem;
+    line-height:1.35;
+    letter-spacing:.01em;
+    margin-top:16px !important;
+    max-width:22ch;
+  }
+  .foot-social{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
+  .foot-social a{
+    width:32px;height:32px;border:1px solid rgba(255,255,255,.2);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .foot-social a svg{width:14px;height:14px;fill:#c9bfae;transition:fill .15s ease;}
+  .foot-social a:hover{border-color:var(--gold-light);}
+  .foot-social a:hover svg{fill:var(--gold-light);}
+  .foot-strip{
+    display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;
+    padding:22px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    font-size:.8rem;color:#a99e88;
+  }
+  .foot-strip strong{color:var(--gold-light);font-family:'Sora',sans-serif;font-weight:600;}
+  .foot-strip .foot-strip-item{display:flex;align-items:center;gap:8px;}
+  .foot-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 0;font-size:.78rem;color:#8f846f;flex-wrap:wrap;gap:10px;
+  }
+  .foot-bottom a:hover{color:var(--gold-light);}
+
+  /* ---------- inner page hero banner ---------- */
+  .hero-inner{
+    position:relative;
+    min-height:56vh;
+    overflow:hidden;
+    color:#fff;
+    display:flex;
+    align-items:center;
+  }
+  .hero-inner img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+  }
+  .hero-inner::after{
+    content:"";
+    position:absolute;inset:0;
+    background:
+      linear-gradient(90deg, rgba(19,20,15,.85) 0%, rgba(19,20,15,.55) 55%, rgba(19,20,15,.32) 100%),
+      linear-gradient(0deg, rgba(19,20,15,.5) 0%, rgba(19,20,15,0) 45%);
+  }
+  .hero-inner-content{
+    position:relative;z-index:3;
+    max-width:1240px;
+    margin:0 auto;
+    padding:120px 32px 64px;
+    width:100%;
+  }
+  .breadcrumb{
+    display:flex;align-items:center;flex-wrap:wrap;gap:8px;
+    font-family:'Sora',sans-serif;
+    font-size:.78rem;font-weight:600;
+    color:#e9e4d8;
+    margin-bottom:20px;
+  }
+  .breadcrumb a{color:#e9e4d8;opacity:.85;}
+  .breadcrumb a:hover{color:var(--gold-light);opacity:1;}
+  .breadcrumb .sep{color:var(--gold-light);opacity:.7;}
+  .breadcrumb .current{color:var(--gold-light);}
+  .hero-inner h1{
+    color:#fff;
+    font-size:clamp(2.1rem, 4.4vw, 3.4rem);
+    line-height:1.1;
+    max-width:20ch;
+  }
+  .hero-inner p.lede{
+    font-size:1.05rem;
+    color:#e9e4d8;
+    max-width:56ch;
+    line-height:1.65;
+    margin-top:18px;
+  }
+  .hero-inner-seal{
+    position:absolute;
+    right:48px;bottom:40px;
+    width:104px;height:104px;
+    z-index:4;
+    opacity:.9;
+  }
+  .hero-inner-seal svg{width:100%;height:100%;}
+  .hero-inner-seal .ring-outer{animation:spin 60s linear infinite;transform-origin:center;}
+  @media (prefers-reduced-motion: reduce){ .hero-inner-seal .ring-outer{animation:none;} }
+  @media (max-width:900px){ .hero-inner-seal{display:none;} }
+  @media (max-width:700px){ .hero-inner-content{padding:100px 20px 48px;} }
+
+  /* ---------- official policy notice ---------- */
+  .notice-box{
+    background:var(--charcoal);
+    color:var(--paper);
+    border:1px solid var(--gold-dim);
+    border-top:3px solid var(--gold);
+    padding:36px 38px;
+  }
+  .notice-box .eyebrow{color:var(--gold-light);}
+  .notice-box .eyebrow::before{background:var(--gold-light);}
+  .notice-box h3{color:var(--paper);margin-top:12px;font-size:1.2rem;}
+  .notice-box p{color:#d9cfc0;line-height:1.8;font-size:.96rem;margin-top:14px;margin-bottom:0;}
+  .notice-box p strong{color:var(--gold-light);}
+  .notice-box p + p{margin-top:14px;}
+
+  /* ---------- svg emblem row ---------- */
+  .emblem-row{
+    display:flex;
+    align-items:stretch;
+    justify-content:center;
+    gap:36px;
+    flex-wrap:wrap;
+    padding:48px 32px 56px;
+  }
+  .emblem-row figure{
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    align-items:center;
+    width:260px;
+    max-width:80vw;
+  }
+  .emblem-row .emblem-frame{
+    width:100%;
+    aspect-ratio:4/3;
+    background:var(--paper);
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    padding:14px;
+  }
+  .emblem-row img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+  }
+  .emblem-row figcaption{
+    font-family:'Sora',sans-serif;
+    font-weight:600;
+    font-size:.8rem;
+    color:var(--slate-soft);
+    text-align:center;
+  }
+
+  /* ---------- grade badges ---------- */
+  .grade-badges{
+    display:flex;flex-wrap:wrap;gap:14px;
+    margin-top:28px;
+  }
+  .grade-badge{
+    display:flex;flex-direction:column;gap:2px;
+    padding:14px 22px;
+    background:var(--parchment);
+    border:1px solid var(--line);
+    border-left:3px solid var(--gold);
+  }
+  .grade-badge .gb-letters{
+    font-family:'Sora',sans-serif;font-weight:700;
+    font-size:1rem;color:var(--burgundy);
+  }
+  .grade-badge .gb-name{font-size:.8rem;color:var(--slate-soft);}
+
+  /* ---------- how to join steps ---------- */
+  .join-steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+    margin-top:16px;
+  }
+  @media (max-width:900px){ .join-steps{grid-template-columns:1fr;} }
+  .join-step{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:30px 26px;
+    position:relative;
+  }
+  .join-step .js-num{
+    font-family:'Playfair Display',serif;
+    font-size:2.2rem;
+    color:var(--gold);
+    line-height:1;
+    margin-bottom:12px;
+    display:block;
+  }
+  .join-step h4{font-size:1.02rem;margin-bottom:8px;}
+  .join-step p{color:var(--slate-soft);font-size:.92rem;line-height:1.6;margin:0;}
+
+  /* ---------- advantage blocks ---------- */
+  .adv-block{
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:18px;
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .adv-block:first-child{padding-top:0;}
+  .adv-block:last-child{border-bottom:none;}
+  .adv-block .adv-num{
+    width:44px;height:44px;
+    border-radius:50%;
+    background:var(--charcoal);
+    color:var(--gold-light);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Sora',sans-serif;font-weight:700;font-size:.92rem;
+    flex-shrink:0;
+  }
+  .adv-block h4{font-size:1.06rem;margin-bottom:8px;}
+  .adv-block p{color:var(--slate-soft);line-height:1.75;font-size:.96rem;margin:0;}
+  .adv-block .postnom-list{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:8px 20px;
+    margin-top:14px;
+    list-style:none;padding:0;
+  }
+  @media (max-width:560px){ .adv-block .postnom-list{grid-template-columns:1fr;} }
+  .adv-block .postnom-list li{
+    font-size:.92rem;color:var(--ink);
+    padding:8px 14px;
+    background:var(--parchment);
+    border-left:2px solid var(--gold);
+  }
+  .adv-block .postnom-list li strong{color:var(--burgundy);}
+
+  /* ---------- additional considerations (shared pattern) ---------- */
+  .consider-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+    margin-top:16px;
+  }
+  @media (max-width:900px){ .consider-grid{grid-template-columns:1fr;} }
+  .consider-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:32px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .consider-card .cc-icon{
+    width:48px;height:48px;
+    border-radius:50%;
+    background:var(--burgundy);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .consider-card .cc-icon svg{width:22px;height:22px;stroke:var(--gold-light);fill:none;stroke-width:1.7;}
+  .consider-card h4{font-size:1.06rem;}
+  .consider-card p{color:var(--slate-soft);font-size:.94rem;line-height:1.65;margin:0;}
+</style>
+<style>
+  /* ===== REGISTER PAGE — APPLICATION WIZARD ===== */
+  .reg-wrap{max-width:920px;margin:0 auto;padding:64px 32px 100px;}
+  @media (max-width:700px){ .reg-wrap{padding:44px 20px 72px;} }
+
+  .reg-progress{display:flex;align-items:center;justify-content:space-between;margin-bottom:48px;gap:6px;}
+  .reg-step{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1;position:relative;}
+  .reg-step:not(:last-child)::after{
+    content:'';position:absolute;top:17px;left:calc(50% + 24px);right:calc(-50% + 24px);
+    height:1px;background:var(--line);z-index:0;
+  }
+  .reg-step.done:not(:last-child)::after{background:var(--gold);}
+  .reg-step-num{
+    width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;
+    font-weight:700;font-size:.85rem;color:var(--slate-soft);background:var(--paper);
+    position:relative;z-index:1;transition:all .2s ease;
+  }
+  .reg-step.active .reg-step-num{border-color:var(--burgundy);background:var(--burgundy);color:#fff;}
+  .reg-step.done .reg-step-num{border-color:var(--gold);background:var(--gold);color:var(--charcoal);}
+  .reg-step-label{font-size:.72rem;font-weight:600;color:var(--slate-soft);text-transform:uppercase;letter-spacing:.06em;text-align:center;}
+  .reg-step.active .reg-step-label{color:var(--burgundy);}
+  @media (max-width:640px){ .reg-step-label{display:none;} }
+
+  .reg-panel{display:none;}
+  .reg-panel.active{display:block;animation:fadein .25s ease;}
+  @keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .reg-panel h2{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--ink);margin-bottom:8px;}
+  .reg-panel h2 em{color:var(--burgundy);font-style:normal;}
+  .reg-panel > p.sub{color:var(--slate-soft);line-height:1.7;margin-bottom:32px;max-width:640px;}
+
+  .reg-section-label{
+    font-family:'Sora',sans-serif;font-size:.72rem;font-weight:700;text-transform:uppercase;
+    letter-spacing:.1em;color:var(--gold);border-bottom:1px solid var(--line);
+    padding-bottom:8px;margin:28px 0 18px;
+  }
+  .reg-section-label:first-of-type{margin-top:0;}
+
+  .reg-row{display:grid;gap:18px;margin-bottom:0;}
+  .reg-row.c1{grid-template-columns:1fr;}
+  .reg-row.c2{grid-template-columns:1fr 1fr;}
+  .reg-row.c3{grid-template-columns:1fr 1fr 1fr;}
+  @media (max-width:700px){ .reg-row.c2,.reg-row.c3{grid-template-columns:1fr;} }
+
+  .reg-field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;}
+  .reg-field label{font-family:'Sora',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink);}
+  .reg-field .req{color:var(--burgundy);}
+  .reg-field input,.reg-field select,.reg-field textarea{
+    padding:12px 15px;border:1.5px solid var(--line);border-radius:var(--radius);
+    font-size:.9rem;font-family:'Inter',sans-serif;color:var(--slate);background:var(--paper);
+    outline:none;transition:border-color .2s ease,box-shadow .2s ease;width:100%;
+  }
+  .reg-field input:focus,.reg-field select:focus,.reg-field textarea:focus{
+    border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-dim);
+  }
+  .reg-field input.err,.reg-field select.err{border-color:var(--burgundy);}
+  .reg-field select{
+    appearance:none;-webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235b564c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer;
+  }
+  .reg-field optgroup{font-family:'Sora',sans-serif;font-weight:700;font-style:normal;color:var(--burgundy);}
+  .reg-hint{font-size:.78rem;color:var(--slate-soft);}
+  .reg-err{display:none;font-size:.78rem;color:var(--burgundy);margin-top:2px;}
+  .reg-err.show{display:block;}
+
+  .reg-pw-wrap{position:relative;}
+  .reg-pw-toggle{
+    position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;
+    color:var(--slate-soft);font-size:.76rem;font-weight:600;font-family:'Sora',sans-serif;
+    background:none;border:none;
+  }
+  .reg-pw-strength{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:6px;display:none;}
+  .reg-pw-fill{height:100%;width:0;transition:width .2s ease,background .2s ease;}
+  .reg-pw-label{font-size:.74rem;margin-top:4px;font-weight:600;}
+
+  .reg-info-box{
+    display:none;background:var(--parchment);border-left:3px solid var(--gold);
+    padding:16px 20px;border-radius:0 4px 4px 0;font-size:.87rem;color:var(--slate-soft);
+    line-height:1.7;margin:20px 0 4px;
+  }
+  .reg-info-box strong{color:var(--ink);display:block;margin-bottom:6px;font-family:'Sora',sans-serif;}
+
+  .reg-nav{
+    display:flex;align-items:center;justify-content:space-between;margin-top:36px;
+    padding-top:24px;border-top:1px solid var(--line);gap:12px;flex-wrap:wrap;
+  }
+  .reg-btn-next,.reg-btn-submit{
+    background:var(--burgundy);color:#fff;padding:13px 30px;border-radius:2px;
+    font-family:'Sora',sans-serif;font-weight:600;font-size:.86rem;letter-spacing:.02em;
+    border:1px solid var(--burgundy);cursor:pointer;transition:all .2s ease;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .reg-btn-next:hover,.reg-btn-submit:hover{background:var(--burgundy-dark);}
+  .reg-btn-submit:disabled{opacity:.6;cursor:not-allowed;}
+  .reg-btn-prev{
+    background:transparent;color:var(--ink);border:1.5px solid var(--line);padding:12px 24px;
+    border-radius:2px;font-family:'Sora',sans-serif;font-weight:600;font-size:.86rem;cursor:pointer;
+    transition:all .2s ease;
+  }
+  .reg-btn-prev:hover{border-color:var(--ink);}
+
+  .reg-review-section{background:var(--parchment);border-radius:4px;padding:22px 24px;margin-bottom:16px;}
+  .reg-review-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+  .reg-review-head h4{font-family:'Sora',sans-serif;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink);}
+  .reg-review-edit{font-size:.78rem;color:var(--burgundy);cursor:pointer;font-weight:600;font-family:'Sora',sans-serif;}
+  .reg-review-edit:hover{text-decoration:underline;}
+  .reg-review-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  @media (max-width:600px){ .reg-review-grid{grid-template-columns:1fr;} }
+  .reg-review-label{font-size:.72rem;color:var(--slate-soft);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;}
+  .reg-review-val{font-size:.88rem;color:var(--slate);font-weight:500;}
+  .reg-review-val.gold{color:var(--burgundy);font-weight:700;}
+
+  .reg-declaration{background:#fff;border:1.5px solid var(--line);border-radius:4px;padding:20px 22px;margin:24px 0;}
+  .reg-declaration p{font-size:.84rem;color:var(--slate-soft);line-height:1.75;margin-bottom:14px;}
+  .reg-declaration-check{display:flex;gap:12px;align-items:flex-start;cursor:pointer;font-size:.85rem;color:var(--slate);}
+  .reg-declaration-check input{accent-color:var(--burgundy);margin-top:3px;flex-shrink:0;}
+  .reg-declaration-check a{color:var(--burgundy);}
+
+  .reg-alert{display:none;align-items:flex-start;gap:10px;padding:14px 16px;border-radius:4px;font-size:.86rem;line-height:1.6;margin-bottom:22px;}
+  .reg-alert.error{display:flex;background:#fbeceb;border:1px solid #e3b6b1;color:#7a2a22;}
+  .reg-alert.success{display:flex;background:#eaf3ec;border:1px solid #b8d6bf;color:#215c33;}
+
+  .reg-success{display:none;text-align:center;padding:40px 24px;}
+  .reg-success-icon{
+    width:76px;height:76px;border-radius:50%;background:var(--burgundy);color:var(--gold-light);
+    font-size:2.1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;
+  }
+  .reg-success h2{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--ink);margin-bottom:14px;}
+  .reg-success h2 em{color:var(--burgundy);font-style:normal;}
+  .reg-success p{color:var(--slate-soft);font-size:.95rem;line-height:1.8;max-width:540px;margin:0 auto 26px;}
+  .reg-ref-box{background:var(--charcoal);border-radius:4px;padding:22px 30px;display:inline-block;margin-bottom:28px;}
+  .reg-ref-label{font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;}
+  .reg-ref-num{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--gold-light);letter-spacing:.05em;}
+  .reg-success-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+
+  .spinner{display:none;width:15px;height:15px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-search-wrap">
+      <form class="topbar-search" role="search" action="search-results.html" method="get" id="siteSearchForm" autocomplete="off">
+        <input type="search" name="q" id="siteSearchInput" placeholder="Search site" aria-label="Search site">
+        <button type="submit" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+      <div class="search-suggest" id="siteSearchSuggest"></div>
+    </div>
+    <a href="app.html" class="topbar-apply">Apply Now</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><img src="assets/logos/cims-logo.png" alt="Chartered Institute of Management Specialists (CIMS) crest"></span>
+      <div class="nav-brand-text">
+        <span class="acronym">CIMS</span>
+        <span class="fullname" color="black">Chartered Institute of<br>Management Specialists</span>
+      </div>
+    </a>
+
+    <nav class="main" aria-label="Primary">
+      <ul>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link" aria-expanded="false">About Us<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dropdown">
+            <a href="history.html">History</a>
+            <a href="council-members.html">Council Members</a>
+            <a href="overseas-representatives.html">Overseas Representatives</a>
+            <a href="legal-standing.html">Legal Standing</a>
+            <a href="why-choose-us.html">Why Choose Us</a>
+            <a href="recognition.html">Professional Recognition</a>
+            <a href="professional-standards-ethics.html">Professional Standards &amp; Ethics</a>
+            <a href="policies-regulations.html">Policies &amp; Regulations</a>
+            <a href="complaints-appeals.html">Complaints &amp; Appeals</a>
+            <a href="management-journal-publications.html">Management Journal &amp; Publications</a>
+          </div>
+        </li>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link" aria-expanded="false">Membership<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dropdown">
+            <a href="membership.html">Overview</a>
+            <a href="membership-associate.html">Associate Member (ACIMS)</a>
+            <a href="membership-chartered.html">Chartered Member (MCIMS)</a>
+            <a href="membership-fellow.html">Chartered Fellow (FCIMS)</a>
+            <a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a>
+            <a href="cpd.html">Continuing Professional Development (CPD)</a>
+            <a href="membership-benefits.html">Membership Benefits</a>
+
+            <a href="digital-credentials-verification.html">Digital Credentials &amp; Verification</a>
+          </div>
+        </li>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link" aria-expanded="false">Qualifications<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dropdown">
+            <a href="specialist-qualifications.html">Specialist Qualifications</a>
+            <a href="practitioner-qualifications.html">Practitioner Qualifications</a>
+            <a href="assessment-quality-assurance.html">Assessment &amp; Quality Assurance</a>
+          </div>
+        </li>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link" aria-expanded="false">Employers<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dropdown">
+            <a href="partnership-framework.html">Partnership Framework</a>
+            <a href="employers-hire-member.html">Hire a CIMS Member</a>
+            <a href="accredited-training-partners.html">Accredited Training Partners</a>
+            <a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="nav-utils">
+      <div class="nav-item has-dropdown">
+        <button class="nav-link btn-pill filled" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="dropdown">
+          <a href="register.html">Register</a>
+          <a href="member-login.html">Member Log In</a>
+          <a href="admin-login.html">Admin Log In</a>
+        </div>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-list">
+      <li class="has-sub">
+        <button class="msub-toggle">About Us<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="history.html">History</a></li>
+          <li><a href="council-members.html">Council Members</a></li>
+          <li><a href="overseas-representatives.html">Overseas Representatives</a></li>
+          <li><a href="legal-standing.html">Legal Standing</a></li>
+          <li><a href="why-choose-us.html">Why Choose Us</a></li>
+          <li><a href="recognition.html">Professional Recognition</a></li>
+          <li><a href="professional-standards-ethics.html">Professional Standards &amp; Ethics</a></li>
+          <li><a href="policies-regulations.html">Policies &amp; Regulations</a></li>
+          <li><a href="complaints-appeals.html">Complaints &amp; Appeals</a></li>
+          <li><a href="management-journal-publications.html">Management Journal &amp; Publications</a></li>
+        </ul>
+      </li>
+      <li class="has-sub">
+        <button class="msub-toggle">Membership<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="membership.html">Overview</a></li>
+          <li><a href="membership-associate.html">Associate Member (ACIMS)</a></li>
+          <li><a href="membership-chartered.html">Chartered Member (MCIMS)</a></li>
+          <li><a href="membership-fellow.html">Chartered Fellow (FCIMS)</a></li>
+          <li><a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a></li>
+          <li><a href="cpd.html">Continuing Professional Development (CPD)</a></li>
+          <li><a href="digital-credentials-verification.html">Digital Credentials &amp; Verification</a></li>
+        </ul>
+      </li>
+      <li class="has-sub">
+        <button class="msub-toggle">Qualifications<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="specialist-qualifications.html">Specialist Qualifications</a></li>
+          <li><a href="practitioner-qualifications.html">Practitioner Qualifications</a></li>
+          <li><a href="assessment-quality-assurance.html">Assessment &amp; Quality Assurance</a></li>
+        </ul>
+      </li>
+      <li class="has-sub">
+        <button class="msub-toggle">Employers<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="partnership-framework.html">Partnership Framework</a></li>
+          <li><a href="employers-hire-member.html">Hire a CIMS Member</a></li>
+          <li><a href="accredited-training-partners.html">Accredited Training Partners</a></li>
+          <li><a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a></li>
+        </ul>
+      </li>
+      <li><a href="chartered-strategic-director.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
+      <li class="has-sub">
+        <button class="msub-toggle">CPD Portal<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="register.html">Register</a></li>
+          <li><a href="member-login.html">Member Log In</a></li>
+          <li><a href="admin-login.html">Admin Log In</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="mobile-actions">
+      <a href="contact-us.html" class="btn btn-gold" style="border-color:var(--gold-light);color:var(--paper);">Contact Us</a>
+    </div>
+  </div>
+</header>
+<section class="hero-inner" aria-label="Page introduction">
+  <img src="assets/images/2.jpg" alt="CIMS members networking">
+  <div class="hero-inner-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <span class="current">Register</span>
+    </nav>
+    <span class="eyebrow">Member Area</span>
+    <h1 style="margin-top:18px;">Start Your Application</h1>
+    <p class="lede">Apply for a CIMS Membership Grade, Practitioner Qualification, or Specialist Qualification. Your application is reviewed by the Membership Team before account access is granted.</p>
+  </div>
+  <div class="hero-inner-seal">
+    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <g class="ring-outer">
+        <circle cx="150" cy="150" r="142" fill="none" stroke="#B08D57" stroke-width="2" stroke-dasharray="3 10"/>
+      </g>
+      <circle cx="150" cy="150" r="118" fill="none" stroke="#D8BD8A" stroke-width="2"/>
+      <circle cx="150" cy="150" r="104" fill="#241f1a" stroke="#B08D57" stroke-width="2"/>
+      <text x="150" y="145" text-anchor="middle" font-family="Sora, sans-serif" font-weight="700" font-size="44" fill="#F6F1E4">CIMS</text>
+      <text x="150" y="178" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" letter-spacing="3" fill="#D8BD8A">CHARTERED</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="wrap reg-wrap" id="regWrap">
+
+    <!-- ===== PROGRESS ===== -->
+    <div class="reg-progress" id="regProgress">
+      <div class="reg-step active" data-step="1">
+        <div class="reg-step-num">1</div>
+        <div class="reg-step-label">Application</div>
+      </div>
+      <div class="reg-step" data-step="2">
+        <div class="reg-step-num">2</div>
+        <div class="reg-step-label">Personal Info</div>
+      </div>
+      <div class="reg-step" data-step="3">
+        <div class="reg-step-num">3</div>
+        <div class="reg-step-label">Account</div>
+      </div>
+      <div class="reg-step" data-step="4">
+        <div class="reg-step-num">4</div>
+        <div class="reg-step-label">Review</div>
+      </div>
+    </div>
+
+    <div class="reg-alert error" id="formAlert"></div>
+
+    <form id="regForm" novalidate>
+
+      <!-- ===== STEP 1: APPLICATION CATEGORY ===== -->
+      <div class="reg-panel active" id="panel-1">
+        <h2>Choose Your <em>Application Category</em></h2>
+        <p class="sub">CIMS offers three application pathways &mdash; Membership Grades, Practitioner Qualifications and Specialist Qualifications. Select a category to reveal the specific grade or designation you are applying for.</p>
+
+        <div class="reg-section-label">Application Category</div>
+        <div class="reg-row c1">
+          <div class="reg-field">
+            <label>Application Type <span class="req">*</span></label>
+            <select id="appType" onchange="updateAppType()">
+              <option value="">— Select Application Type —</option>
+              <option value="membership">Membership Grade</option>
+              <option value="practitioner">Practitioner Qualification</option>
+              <option value="specialist">Specialist Qualification</option>
+            </select>
+            <div class="reg-err" id="appTypeErr">Please select an application type.</div>
+          </div>
+        </div>
+
+        <!-- Membership sub-select -->
+        <div id="membershipOptions" style="display:none">
+          <div class="reg-section-label">Membership Grade</div>
+          <div class="reg-row c1">
+            <div class="reg-field">
+              <label>Select Grade <span class="req">*</span></label>
+              <select id="membershipGrade" onchange="updateInfoBox()">
+                <option value="">— Select Grade —</option>
+                <option value="Associate Member (ACIMS)">Associate Member (ACIMS)</option>
+                <option value="Chartered Member (MCIMS)">Chartered Member (MCIMS)</option>
+                <option value="Chartered Fellow (FCIMS)">Chartered Fellow (FCIMS)</option>
+                <option value="Chartered Doctoral Fellow (DCIMS)">Chartered Doctoral Fellow (DCIMS)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Practitioner sub-select -->
+        <div id="practitionerOptions" style="display:none">
+          <div class="reg-section-label">Practitioner Qualification</div>
+          <div class="reg-row c1">
+            <div class="reg-field">
+              <label>Select Designation <span class="req">*</span></label>
+              <select id="practitionerTrack" onchange="updateInfoBox()">
+                <option value="">— Select Designation —</option>
+                <option>Chartered Project Manager</option>
+                <option>Chartered Operations Manager</option>
+                <option>Chartered Project Management Officer (PMO)</option>
+                <option>Chartered HR Manager</option>
+                <option>Chartered Project Cost Control Manager</option>
+                <option>Chartered Sales and Marketing Manager</option>
+                <option>Chartered Doctor of Business Administration</option>
+                <option>Chartered Global Supply Chain and Logistics Manager</option>
+                <option>Chartered Business Continuity Manager</option>
+                <option>Chartered Healthcare Information Manager</option>
+                <option>Chartered Safety Manager</option>
+                <option>Chartered Fire &amp; Safety Manager</option>
+                <option>Chartered Office Manager</option>
+                <option>Chartered Sales Manager</option>
+                <option>Chartered Healthcare Quality Improvement Manager</option>
+                <option>Chartered Procurement Manager</option>
+                <option>Chartered Contract Manager</option>
+                <option>Chartered Bids and Proposal Manager</option>
+                <option>Chartered Compliance Manager</option>
+                <option>Chartered Contract Administrator</option>
+                <option>Chartered Strategy Manager</option>
+                <option>Chartered Healthcare Risk Manager</option>
+                <option>Chartered Healthcare Facility Manager</option>
+                <option>Chartered Governance Manager</option>
+                <option>Chartered Claims Manager</option>
+                <option>Chartered Digital Marketing Manager</option>
+                <option>Chartered Data Analytics Manager</option>
+                <option>Chartered Healthcare Administration Manager</option>
+                <option>Chartered Energy Manager</option>
+                <option>Chartered Project Risk Manager</option>
+                <option>Chartered Sustainability Manager</option>
+                <option>Chartered Strategic Management Professional</option>
+                <option>Chartered Oil and Gas Management Professional</option>
+                <option>Chartered IT Manager</option>
+                <option>Chartered Recruitment Manager</option>
+                <option>Chartered Sustainable Supply Chain Professional</option>
+                <option>Chartered Financial Risk Manager</option>
+                <option>Chartered Energy Risk Manager</option>
+                <option>Chartered Human Resource Professional</option>
+                <option>Chartered Marketing and Branding Professional</option>
+                <option>Chartered Facilities Manager</option>
+              </select>
+              <div class="reg-hint">41 broad-based designations. See the full list on the <a href="practitioner-qualifications.html" target="_blank" style="color:var(--burgundy);">Practitioner Qualifications</a> page.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Specialist sub-select -->
+        <div id="specialistOptions" style="display:none">
+          <div class="reg-section-label">Specialist Qualification</div>
+          <div class="reg-row c1">
+            <div class="reg-field">
+              <label>Select Designation <span class="req">*</span></label>
+              <select id="specialistTrack" onchange="updateInfoBox()">
+                <option value="">— Select Designation —</option>
+                <option>Chartered Human Resource Management Specialist</option>
+                <option>Chartered Leadership and Strategic Planning Specialist</option>
+                <option>Chartered International Trade &amp; Logistics Specialist</option>
+                <option>Chartered Quality Management Specialist</option>
+                <option>Chartered Management Specialist</option>
+                <option>Chartered Business Specialist</option>
+                <option>Chartered Agile and Scrum Specialist</option>
+                <option>Chartered Supply Chain Management Specialist</option>
+                <option>Chartered Health and Safety Management Specialist</option>
+                <option>Chartered Training and Development Management Specialist</option>
+                <option>Chartered Transportation and Pipeline Logistics Management Specialist</option>
+                <option>Chartered Operations &amp; Production Management Specialist</option>
+                <option>Chartered Oil Stock Manager</option>
+              </select>
+              <div class="reg-hint">13 targeted designations. See the full list on the <a href="specialist-qualifications.html" target="_blank" style="color:var(--burgundy);">Specialist Qualifications</a> page.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reg-info-box" id="infoBox"></div>
+
+        <div class="reg-nav">
+          <span></span>
+          <button type="button" class="reg-btn-next" onclick="goToStep(2)">Continue<span>&rarr;</span></button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 2: PERSONAL & PROFESSIONAL INFO ===== -->
+      <div class="reg-panel" id="panel-2">
+        <h2>Your <em>Personal &amp; Professional</em> Details</h2>
+        <p class="sub">This information is used to assess your eligibility and will appear on your CIMS member record once approved.</p>
+
+        <div class="reg-section-label">Profile Photo</div>
+        <div class="reg-row c1">
+          <div class="reg-field" style="align-items:flex-start;">
+            <label>Passport-Style Photo <span class="req">*</span></label>
+            <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+              <div id="photoPreviewWrap" style="width:88px;height:88px;border-radius:50%;background:var(--parchment);border:1.5px dashed var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;">
+                <span id="photoPreviewIcon" style="color:var(--slate-soft);font-size:.7rem;text-align:center;">No<br>Photo</span>
+                <img id="photoPreviewImg" style="display:none;width:100%;height:100%;object-fit:cover;">
+              </div>
+              <div>
+                <label for="photoInput" style="display:inline-block;padding:10px 20px;border:1.5px solid var(--line);border-radius:2px;font-family:'Sora',sans-serif;font-size:.82rem;font-weight:600;color:var(--ink);cursor:pointer;">Choose Photo</label>
+                <input type="file" id="photoInput" accept="image/png,image/jpeg,image/webp" style="display:none;">
+                <div class="reg-hint" style="margin-top:6px;">Clear, front-facing photo. JPG or PNG, will be resized automatically. This is what admins and (once approved) your member profile will show.</div>
+              </div>
+            </div>
+            <div class="reg-err" id="photoErr">Please upload a profile photo.</div>
+          </div>
+        </div>
+
+        <div class="reg-section-label">Personal Information</div>
+        <div class="reg-row c3">
+          <div class="reg-field">
+            <label>Title</label>
+            <select id="title">
+              <option value="">—</option>
+              <option>Mr</option><option>Mrs</option><option>Ms</option>
+              <option>Dr</option><option>Prof</option><option>Other</option>
+            </select>
+          </div>
+          <div class="reg-field">
+            <label>First Name <span class="req">*</span></label>
+            <input type="text" id="firstName" autocomplete="given-name">
+            <div class="reg-err" id="firstNameErr">First name is required.</div>
+          </div>
+          <div class="reg-field">
+            <label>Last Name <span class="req">*</span></label>
+            <input type="text" id="lastName" autocomplete="family-name">
+            <div class="reg-err" id="lastNameErr">Last name is required.</div>
+          </div>
+        </div>
+        <div class="reg-row c2">
+          <div class="reg-field">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" id="email" autocomplete="email">
+            <div class="reg-err" id="emailErr">Enter a valid email address.</div>
+          </div>
+          <div class="reg-field">
+            <label>Phone Number <span class="req">*</span></label>
+            <input type="tel" id="phone" autocomplete="tel" placeholder="+1 555 000 0000">
+            <div class="reg-err" id="phoneErr">Phone number is required.</div>
+          </div>
+        </div>
+        <div class="reg-row c1">
+          <div class="reg-field">
+            <label>Country of Residence <span class="req">*</span></label>
+            <input type="text" id="country" autocomplete="country-name">
+            <div class="reg-err" id="countryErr">Country is required.</div>
+          </div>
+        </div>
+
+        <div class="reg-section-label">Academic Background</div>
+        <div class="reg-row c2">
+          <div class="reg-field">
+            <label>Highest Academic Qualification <span class="req">*</span></label>
+            <select id="highestQual">
+              <option value="">— Select —</option>
+              <option>High School Diploma</option>
+              <option>Associate Degree</option>
+              <option>Bachelor's Degree</option>
+              <option>Master's Degree</option>
+              <option>Doctoral Degree</option>
+              <option>Professional Certification (no degree)</option>
+              <option>Other / Equivalent</option>
+            </select>
+            <div class="reg-err" id="highestQualErr">Please select your highest qualification.</div>
+          </div>
+          <div class="reg-field">
+            <label>Field of Study <span class="req">*</span></label>
+            <input type="text" id="fieldOfStudy" placeholder="e.g. Business Administration">
+            <div class="reg-err" id="fieldOfStudyErr">Field of study is required.</div>
+          </div>
+        </div>
+
+        <div class="reg-section-label">Professional Experience</div>
+        <div class="reg-row c2">
+          <div class="reg-field">
+            <label>Current Job Title <span class="req">*</span></label>
+            <input type="text" id="jobTitle">
+            <div class="reg-err" id="jobTitleErr">Job title is required.</div>
+          </div>
+          <div class="reg-field">
+            <label>Current Employer / Organisation <span class="req">*</span></label>
+            <input type="text" id="employer">
+            <div class="reg-err" id="employerErr">Employer is required.</div>
+          </div>
+        </div>
+        <div class="reg-row c1">
+          <div class="reg-field">
+            <label>Years of Relevant Professional Experience <span class="req">*</span></label>
+            <select id="yearsExp">
+              <option value="">— Select —</option>
+              <option>Less than 2 years</option>
+              <option>2–4 years</option>
+              <option>5–7 years</option>
+              <option>8–10 years</option>
+              <option>11–15 years</option>
+              <option>16+ years</option>
+            </select>
+            <div class="reg-err" id="yearsExpErr">Please select your experience range.</div>
+          </div>
+        </div>
+
+        <div class="reg-nav">
+          <button type="button" class="reg-btn-prev" onclick="goToStep(1)">&larr; Back</button>
+          <button type="button" class="reg-btn-next" onclick="goToStep(3)">Continue<span>&rarr;</span></button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 3: ACCOUNT SECURITY ===== -->
+      <div class="reg-panel" id="panel-3">
+        <h2>Secure Your <em>Account</em></h2>
+        <p class="sub">This password protects your CIMS member portal account. You'll use it together with your email to log in once your application is approved.</p>
+
+        <div class="reg-row c1">
+          <div class="reg-field">
+            <label>Password <span class="req">*</span></label>
+            <div class="reg-pw-wrap">
+              <input type="password" id="password" autocomplete="new-password">
+              <button type="button" class="reg-pw-toggle" id="pwToggle1">SHOW</button>
+            </div>
+            <div class="reg-pw-strength" id="pwStrength"><div class="reg-pw-fill" id="pwFill"></div></div>
+            <div class="reg-pw-label" id="pwLabel"></div>
+            <div class="reg-hint">Minimum 8 characters. Use a mix of upper/lowercase letters, numbers and symbols for a stronger password.</div>
+            <div class="reg-err" id="passwordErr">Password must be at least 8 characters.</div>
+          </div>
+          <div class="reg-field">
+            <label>Confirm Password <span class="req">*</span></label>
+            <div class="reg-pw-wrap">
+              <input type="password" id="confirmPassword" autocomplete="new-password">
+              <button type="button" class="reg-pw-toggle" id="pwToggle2">SHOW</button>
+            </div>
+            <div class="reg-err" id="confirmPasswordErr">Passwords do not match.</div>
+          </div>
+        </div>
+
+        <div class="reg-nav">
+          <button type="button" class="reg-btn-prev" onclick="goToStep(2)">&larr; Back</button>
+          <button type="button" class="reg-btn-next" onclick="goToStep(4)">Continue<span>&rarr;</span></button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 4: REVIEW & SUBMIT ===== -->
+      <div class="reg-panel" id="panel-4">
+        <h2>Review &amp; <em>Submit</em></h2>
+        <p class="sub">Please confirm everything below is correct before submitting. You can go back to any step to make changes.</p>
+
+        <div class="reg-review-section">
+          <div class="reg-review-head">
+            <h4>Application</h4>
+            <span class="reg-review-edit" onclick="goToStep(1)">Edit</span>
+          </div>
+          <div class="reg-review-grid">
+            <div>
+              <div class="reg-review-label">Category</div>
+              <div class="reg-review-val" id="rv-apptype">—</div>
+            </div>
+            <div>
+              <div class="reg-review-label">Grade / Designation</div>
+              <div class="reg-review-val gold" id="rv-track">—</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reg-review-section">
+          <div class="reg-review-head">
+            <h4>Personal Information</h4>
+            <span class="reg-review-edit" onclick="goToStep(2)">Edit</span>
+          </div>
+          <div class="reg-review-grid">
+            <div><div class="reg-review-label">Full Name</div><div class="reg-review-val" id="rv-name">—</div></div>
+            <div><div class="reg-review-label">Email</div><div class="reg-review-val" id="rv-email">—</div></div>
+            <div><div class="reg-review-label">Phone</div><div class="reg-review-val" id="rv-phone">—</div></div>
+            <div><div class="reg-review-label">Country</div><div class="reg-review-val" id="rv-country">—</div></div>
+            <div><div class="reg-review-label">Highest Qualification</div><div class="reg-review-val" id="rv-qual">—</div></div>
+            <div><div class="reg-review-label">Field of Study</div><div class="reg-review-val" id="rv-field">—</div></div>
+            <div><div class="reg-review-label">Job Title</div><div class="reg-review-val" id="rv-job">—</div></div>
+            <div><div class="reg-review-label">Employer</div><div class="reg-review-val" id="rv-employer">—</div></div>
+            <div><div class="reg-review-label">Experience</div><div class="reg-review-val" id="rv-exp">—</div></div>
+          </div>
+        </div>
+
+        <div class="reg-declaration">
+          <p>I confirm that the information provided in this application is true and accurate to the best of my knowledge. I understand that CIMS will review my application and that submission does not guarantee admission. I understand that account access will only be granted once my application has been reviewed and approved by the Membership Team.</p>
+          <label class="reg-declaration-check">
+            <input type="checkbox" id="declarationCheck">
+            <span>I have read and agree to the above declaration and the <a href="privacy.html" target="_blank">Privacy Policy</a>.</span>
+          </label>
+        </div>
+
+        <div class="reg-nav">
+          <button type="button" class="reg-btn-prev" onclick="goToStep(3)">&larr; Back</button>
+          <button type="button" class="reg-btn-submit" id="submitBtn" onclick="submitApplication()">
+            <span id="submitBtnText">Submit Application</span>
+            <span class="spinner" id="submitSpinner"></span>
+          </button>
+        </div>
+      </div>
+
+    </form>
+
+    <!-- ===== SUCCESS SCREEN ===== -->
+    <div class="reg-success" id="successScreen">
+      <div class="reg-success-icon">&#10003;</div>
+      <h2>Application <em>Submitted</em></h2>
+      <p>Thank you for applying to CIMS. A verification email has been sent to <strong id="successEmail"></strong> &mdash; please verify your address. Your application is now <strong>pending review</strong> by our Membership Team. You'll be able to log in to the Member Portal once your application is approved.</p>
+      <div class="reg-ref-box">
+        <div class="reg-ref-label">Your Application Reference</div>
+        <div class="reg-ref-num" id="refNumber">—</div>
+      </div>
+      <div class="reg-success-btns">
+        <a href="index.html" class="btn btn-ghost">Return Home</a>
+        <a href="member-login.html" class="btn btn-primary">Go to Member Log In</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+<footer id="site-footer">
+  <div class="wrap">
+
+
+
+    <div class="foot-grid" style="padding-top:40px;">
+      <div class="foot-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><img src="assets/logos/logo.png" alt="CIMS logo"></span>
+        </a>
+        <p class="foot-institution-name">Chartered Institute of Management Specialists</p>
+        <p>Step into the world of management and future-ready your career with the knowledge, skills and ethics the profession demands.</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/profile.php?id=61590429427981" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg></a>
+          <a href="https://www.linkedin.com/company/chartered-institute-of-management-specialists/about/?viewAsMember=true" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+          <a href="https://www.instagram.com/charteredims/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.23.41.55.21.95.47 1.37.89.42.42.68.82.89 1.37.17.42.36 1.05.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.41 2.23-.21.55-.47.95-.89 1.37-.42.42-.82.68-1.37.89-.42.17-1.05.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.23-.41-.55-.21-.95-.47-1.37-.89-.42-.42-.68-.82-.89-1.37-.17-.42-.36-1.05-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.24-1.8.41-2.23.21-.55.47-.95.89-1.37.42-.42.82-.68 1.37-.89.42-.17 1.05-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39C1.35 2.68.94 3.35.63 4.14.33 4.9.14 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.85a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h4>About Us</h4>
+        <ul>
+          <li><a href="history.html">History</a></li>
+          <li><a href="council-members.html">Council Members</a></li>
+          <li><a href="overseas-representatives.html">Overseas Representatives</a></li>
+          <li><a href="legal-standing.html">Legal Standing</a></li>
+          <li><a href="why-choose-us.html">Why Choose Us</a></li>
+          <li><a href="recognition.html">Professional Recognition</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Membership</h4>
+        <ul>
+          <li><a href="membership.html">Overview</a></li>
+          <li><a href="membership-associate.html">Associate Member (ACIMS)</a></li>
+          <li><a href="membership-chartered.html">Chartered Member (MCIMS)</a></li>
+          <li><a href="membership-fellow.html">Chartered Fellow (FCIMS)</a></li>
+          <li><a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a></li>
+          <li><a href="membership-benefits.html">Membership Benefits</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Qualifications &amp; Employers</h4>
+        <ul>
+          <li><a href="specialist-qualifications.html">Specialist Qualifications</a></li>
+          <li><a href="practitioner-qualifications.html">Practitioner Qualifications</a></li>
+          <li><a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
+          <li><a href="partnership-framework.html">Partnership Framework</a></li>
+          <li><a href="employers-hire-member.html">Hire a CIMS Member</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Member Area</h4>
+        <ul>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="member-login.html">Member Log In</a></li>
+          <li><a href="admin-login.html">Admin Log In</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><strong>Registered Office Address:</strong><br>821 N ST STE 102<br>Anchorage, AK 99501, USA</li>
+          <li>Monday to Saturday, 9:00 to 17:00</li>
+          <li><a href="mailto:admin@charteredims.com">admin@charteredims.com</a></li>
+          <li><a href="tel:+18592109109">+1 (859) 210-9109</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Chartered Institute of Management Specialists, LLC. All rights reserved.</span>
+      <span style="display:flex;gap:18px;flex-wrap:wrap;">
+        <a href="privacy.html">Privacy</a>
+        <a href="legal-standing.html">Legal Standing</a>
+        <a href="faq.html">FAQ</a>
+        <a href="certificate-verification.html">Certificate Verification</a>
+      </span>
+    </div>
+  </div>
+</footer>
+<script src="site-search.js"></script>
+<script>
+  // ---------- mobile menu toggle (same behaviour as rest of site) ----------
+  const toggle = document.getElementById('menuToggle');
+  const menu = document.getElementById('mobileMenu');
+  function closeMobileMenu(){
+    menu.classList.remove('open');
+    toggle.classList.remove('active');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.querySelectorAll('.mobile-list li.has-sub.open').forEach(li => li.classList.remove('open'));
+  }
+  toggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    toggle.classList.toggle('active', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  document.querySelectorAll('.msub-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const li = btn.closest('li');
+      const wasOpen = li.classList.contains('open');
+      li.parentElement.querySelectorAll(':scope > li.has-sub').forEach(l => l.classList.remove('open'));
+      li.classList.toggle('open', !wasOpen);
+    });
+  });
+  const dropdownItems = document.querySelectorAll('.nav-item.has-dropdown');
+  let closeTimer = null;
+  function openItem(item, viaClick){
+    clearTimeout(closeTimer);
+    dropdownItems.forEach(i => { if (i !== item) i.classList.remove('open'); });
+    item.classList.add('open');
+    if (viaClick) item.dataset.openedByClick = 'true';
+    const link = item.querySelector('.nav-link');
+    if (link) link.setAttribute('aria-expanded', 'true');
+  }
+  function closeItem(item){
+    item.classList.remove('open');
+    delete item.dataset.openedByClick;
+    const link = item.querySelector('.nav-link');
+    if (link) link.setAttribute('aria-expanded', 'false');
+  }
+  function closeAllDropdowns(){ dropdownItems.forEach(closeItem); }
+  dropdownItems.forEach(item => {
+    const link = item.querySelector('.nav-link');
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isOpen = item.classList.contains('open');
+      const openedByClick = item.dataset.openedByClick === 'true';
+      if (isOpen && openedByClick) { closeItem(item); }
+      else { dropdownItems.forEach(i => { if (i !== item) closeItem(i); }); openItem(item, true); }
+    });
+    item.addEventListener('mouseenter', () => openItem(item));
+    item.addEventListener('mouseleave', () => { closeTimer = setTimeout(() => closeItem(item), 380); });
+    item.addEventListener('focusin', () => openItem(item));
+  });
+  document.addEventListener('click', (e) => {
+    dropdownItems.forEach(item => { if (!item.contains(e.target)) closeItem(item); });
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAllDropdowns(); });
+  const breakpointQuery = window.matchMedia('(max-width: 1100px)');
+  function resetNavForViewport(){ closeMobileMenu(); closeAllDropdowns(); }
+  if (breakpointQuery.addEventListener) { breakpointQuery.addEventListener('change', resetNavForViewport); }
+  else if (breakpointQuery.addListener) { breakpointQuery.addListener(resetNavForViewport); }
+  let resizeDebounce;
+  window.addEventListener('resize', () => { clearTimeout(resizeDebounce); resizeDebounce = setTimeout(resetNavForViewport, 150); });
+
+  // ---------- live site search (top bar) ----------
+  (function(){
+    const input = document.getElementById('siteSearchInput');
+    const box = document.getElementById('siteSearchSuggest');
+    const form = document.getElementById('siteSearchForm');
+    if (!input || !box || !form || !window.CIMS_SEARCH) return;
+
+    let activeIndex = -1;
+
+    function render(results) {
+      activeIndex = -1;
+      if (!results.length) {
+        box.innerHTML = '<div class="no-results">No matching pages. Press Enter to see full results.</div>';
+        box.classList.add('open');
+        return;
+      }
+      box.innerHTML = results.slice(0, 8).map(p =>
+        `<a href="${p.url}"><span>${p.title}</span><small>${p.section}</small></a>`
+      ).join('');
+      box.classList.add('open');
+    }
+
+    function close(){ box.classList.remove('open'); box.innerHTML=''; activeIndex = -1; }
+
+    input.addEventListener('input', () => {
+      const q = input.value;
+      if (!q.trim()) { close(); return; }
+      render(window.CIMS_SEARCH(q));
+    });
+
+    input.addEventListener('keydown', (e) => {
+      const items = Array.from(box.querySelectorAll('a'));
+      if (!items.length) return;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeIndex = (activeIndex + 1) % items.length;
+        items.forEach((a,i)=>a.classList.toggle('active', i===activeIndex));
+        items[activeIndex].scrollIntoView({block:'nearest'});
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeIndex = (activeIndex - 1 + items.length) % items.length;
+        items.forEach((a,i)=>a.classList.toggle('active', i===activeIndex));
+        items[activeIndex].scrollIntoView({block:'nearest'});
+      } else if (e.key === 'Enter' && activeIndex >= 0) {
+        e.preventDefault();
+        window.location.href = items[activeIndex].getAttribute('href');
+      } else if (e.key === 'Escape') {
+        close();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!form.contains(e.target) && !box.contains(e.target)) close();
+    });
+
+    form.addEventListener('submit', (e) => {
+      if (!input.value.trim()) e.preventDefault();
+    });
+  })();
+</script>
+
+<!-- ═══ REGISTRATION WIZARD LOGIC ═══════════════════════ -->
+<script>
+  let currentStep = 1;
+
+  function v(id){ return document.getElementById(id)?.value?.trim() || ''; }
+
+  // ---------- profile photo: resize + compress client-side, store as base64 ----------
+  let profilePhotoData = '';
+  document.getElementById('photoInput').addEventListener('change', function(){
+    const file = this.files[0];
+    if (!file) return;
+    if (file.size > 8 * 1024 * 1024){
+      showAlert('⚠️ Photo is too large. Please choose an image under 8MB.');
+      this.value = '';
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = function(e){
+      const img = new Image();
+      img.onload = function(){
+        const size = 320; // final square size
+        const canvas = document.createElement('canvas');
+        canvas.width = size; canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        // cover-crop to square
+        const minSide = Math.min(img.width, img.height);
+        const sx = (img.width - minSide) / 2;
+        const sy = (img.height - minSide) / 2;
+        ctx.drawImage(img, sx, sy, minSide, minSide, 0, 0, size, size);
+        profilePhotoData = canvas.toDataURL('image/jpeg', 0.82);
+        document.getElementById('photoPreviewImg').src = profilePhotoData;
+        document.getElementById('photoPreviewImg').style.display = 'block';
+        document.getElementById('photoPreviewIcon').style.display = 'none';
+        showErr('photoInput','photoErr', false);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  function getAppTypeLabel(){
+    const map = { membership:'Membership Grade', practitioner:'Practitioner Qualification', specialist:'Specialist Qualification' };
+    return map[v('appType')] || '—';
+  }
+  function getTrack(){
+    const type = v('appType');
+    if (type === 'membership')   return v('membershipGrade');
+    if (type === 'practitioner') return v('practitionerTrack');
+    if (type === 'specialist')   return v('specialistTrack');
+    return '';
+  }
+
+  function updateAppType(){
+    const val = v('appType');
+    ['membershipOptions','practitionerOptions','specialistOptions'].forEach(id => {
+      document.getElementById(id).style.display = 'none';
+    });
+    if (val === 'membership')   document.getElementById('membershipOptions').style.display = 'block';
+    if (val === 'practitioner') document.getElementById('practitionerOptions').style.display = 'block';
+    if (val === 'specialist')   document.getElementById('specialistOptions').style.display = 'block';
+    updateInfoBox();
+  }
+
+  const membershipInfo = {
+    'Associate Member (ACIMS)': '<strong>Associate Member (ACIMS)</strong>A minimum of a bachelor\'s degree in a relevant field (or an equivalent qualification recognized by CIMS), and up to 5 years of relevant, entry-level professional experience.',
+    'Chartered Member (MCIMS)': '<strong>Chartered Member (MCIMS)</strong>A bachelor\'s degree or higher in a relevant field, and a minimum of 8 years of relevant work experience in a managerial or leadership role.',
+    'Chartered Fellow (FCIMS)': '<strong>Chartered Fellow (FCIMS)</strong>A master\'s degree or higher in a relevant field, and a minimum of 10 years of significant work experience in a leadership or executive capacity.',
+    'Chartered Doctoral Fellow (DCIMS)': '<strong>Chartered Doctoral Fellow (DCIMS)</strong>A doctoral degree in a relevant field, and a minimum of 15 years of distinguished work experience in a leadership or executive capacity.'
+  };
+  function qualificationInfo(name, kind){
+    if (!name) return '';
+    return `<strong>${name}</strong>Assessed through CIMS's structured Recognition of Prior Learning (RPL) framework: Professional Credential Verification (20%), RPL Portfolio Assessment (40%), and an Applied Professional Case Study (40%). Conferred with an internationally verifiable digital credential upon approval by the Governing Council.`;
+  }
+  function updateInfoBox(){
+    const box = document.getElementById('infoBox');
+    const type = v('appType');
+    let html = '';
+    if (type === 'membership')   html = membershipInfo[v('membershipGrade')] || '';
+    if (type === 'practitioner') html = qualificationInfo(v('practitionerTrack'));
+    if (type === 'specialist')   html = qualificationInfo(v('specialistTrack'));
+    if (html){ box.innerHTML = html; box.style.display = 'block'; } else { box.style.display = 'none'; }
+  }
+
+  function goToStep(step){
+    if (step > currentStep && !validateStep(currentStep)) return;
+    document.querySelectorAll('.reg-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + step).classList.add('active');
+    document.querySelectorAll('.reg-step').forEach(s => {
+      const n = parseInt(s.dataset.step, 10);
+      s.classList.toggle('active', n === step);
+      s.classList.toggle('done', n < step);
+    });
+    if (step === 4) populateReview();
+    currentStep = step;
+    document.getElementById('regWrap').scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+
+  function showErr(fieldId, errId, show){
+    const input = document.getElementById(fieldId);
+    const err = document.getElementById(errId);
+    if (show){ input?.classList.add('err'); err?.classList.add('show'); }
+    else { input?.classList.remove('err'); err?.classList.remove('show'); }
+    return show;
+  }
+
+  function validateStep(step){
+    let ok = true;
+    if (step === 1){
+      const type = v('appType');
+      if (showErr('appType','appTypeErr', !type)) ok = false;
+      if (type && !getTrack()) ok = false;
+    }
+    if (step === 2){
+      if (showErr('firstName','firstNameErr', !v('firstName'))) ok = false;
+      if (showErr('lastName','lastNameErr', !v('lastName'))) ok = false;
+      if (showErr('email','emailErr', !v('email') || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email')))) ok = false;
+      if (showErr('phone','phoneErr', !v('phone'))) ok = false;
+      if (showErr('country','countryErr', !v('country'))) ok = false;
+      if (showErr('highestQual','highestQualErr', !v('highestQual'))) ok = false;
+      if (showErr('fieldOfStudy','fieldOfStudyErr', !v('fieldOfStudy'))) ok = false;
+      if (showErr('jobTitle','jobTitleErr', !v('jobTitle'))) ok = false;
+      if (showErr('employer','employerErr', !v('employer'))) ok = false;
+      if (showErr('yearsExp','yearsExpErr', !v('yearsExp'))) ok = false;
+      if (showErr('photoInput','photoErr', !profilePhotoData)) ok = false;
+    }
+    if (step === 3){
+      const pw = v('password'), cpw = v('confirmPassword');
+      if (showErr('password','passwordErr', pw.length < 8)) ok = false;
+      if (showErr('confirmPassword','confirmPasswordErr', pw !== cpw || !cpw)) ok = false;
+    }
+    return ok;
+  }
+
+  function makeToggle(btnId, inputId){
+    document.getElementById(btnId).addEventListener('click', () => {
+      const input = document.getElementById(inputId);
+      const isPw = input.type === 'password';
+      input.type = isPw ? 'text' : 'password';
+      document.getElementById(btnId).textContent = isPw ? 'HIDE' : 'SHOW';
+    });
+  }
+  makeToggle('pwToggle1','password');
+  makeToggle('pwToggle2','confirmPassword');
+
+  document.getElementById('password').addEventListener('input', function(){
+    const val = this.value;
+    const bar = document.getElementById('pwStrength');
+    const fill = document.getElementById('pwFill');
+    const label = document.getElementById('pwLabel');
+    if (!val){ bar.style.display = 'none'; label.textContent=''; return; }
+    bar.style.display = 'block';
+    let score = 0;
+    if (val.length >= 8) score++;
+    if (/[A-Z]/.test(val)) score++;
+    if (/[0-9]/.test(val)) score++;
+    if (/[^A-Za-z0-9]/.test(val)) score++;
+    const levels = [
+      { pct:'25%', color:'#c0392b', text:'Weak' },
+      { pct:'50%', color:'#c98a2e', text:'Fair' },
+      { pct:'75%', color:'#B08D57', text:'Good' },
+      { pct:'100%', color:'#2e7d46', text:'Strong' }
+    ];
+    const l = levels[score - 1] || levels[0];
+    fill.style.width = l.pct; fill.style.background = l.color;
+    label.textContent = l.text; label.style.color = l.color;
+  });
+
+  function populateReview(){
+    document.getElementById('rv-apptype').textContent = getAppTypeLabel();
+    document.getElementById('rv-track').textContent   = getTrack() || '—';
+    document.getElementById('rv-name').textContent     = `${v('title') ? v('title')+' ' : ''}${v('firstName')} ${v('lastName')}`.trim() || '—';
+    document.getElementById('rv-email').textContent    = v('email') || '—';
+    document.getElementById('rv-phone').textContent    = v('phone') || '—';
+    document.getElementById('rv-country').textContent  = v('country') || '—';
+    document.getElementById('rv-qual').textContent     = v('highestQual') || '—';
+    document.getElementById('rv-field').textContent    = v('fieldOfStudy') || '—';
+    document.getElementById('rv-job').textContent      = v('jobTitle') || '—';
+    document.getElementById('rv-employer').textContent = v('employer') || '—';
+    document.getElementById('rv-exp').textContent      = v('yearsExp') || '—';
+  }
+
+  function genRef(){
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let r = '';
+    for (let i = 0; i < 8; i++) r += chars[Math.floor(Math.random() * chars.length)];
+    return 'CIMS-2026-' + r;
+  }
+
+  function showAlert(msg){
+    const a = document.getElementById('formAlert');
+    a.innerHTML = msg;
+    a.style.display = 'flex';
+    a.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+  function clearAlert(){
+    document.getElementById('formAlert').style.display = 'none';
+  }
+</script>
+
+<!-- ═══ FIREBASE ══════════════════════════════════════ -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    sendEmailVerification,
+    updateProfile
+  } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+  import {
+    getFirestore,
+    doc,
+    setDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+
+  // ── Firebase config (cims-portal) ────────────────────
+  const firebaseConfig = {
+    apiKey: "AIzaSyDFNk8Atqix_OKoKRv_iO-vLNrPxyUJ9l0",
+    authDomain: "cims-portal-8a2c5.firebaseapp.com",
+    projectId: "cims-portal-8a2c5",
+    storageBucket: "cims-portal-8a2c5.firebasestorage.app",
+    messagingSenderId: "985325727387",
+    appId: "1:985325727387:web:2519bf6c04a38525b9203e"
+  };
+
+  const app  = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db   = getFirestore(app);
+
+  window.submitApplication = async function submitApplication(){
+    clearAlert();
+
+    if (!validateStep(1) ) { goToStep(1); return; }
+    if (!validateStep(2) ) { goToStep(2); return; }
+    if (!validateStep(3) ) { goToStep(3); return; }
+
+    if (!document.getElementById('declarationCheck').checked){
+      showAlert('⚠️ Please read and confirm the declaration before submitting.');
+      return;
+    }
+
+    const btn     = document.getElementById('submitBtn');
+    const btnText = document.getElementById('submitBtnText');
+    const spinner = document.getElementById('submitSpinner');
+    btn.disabled = true; btnText.textContent = 'Submitting…'; spinner.style.display = 'inline-block';
+
+    const email      = v('email');
+    const password   = v('password');
+    const firstName  = v('firstName');
+    const lastName   = v('lastName');
+    const fullName   = `${firstName} ${lastName}`;
+    const ref        = genRef();
+
+    try {
+      // 1. Create Firebase Auth account
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // 2. Set display name
+      await updateProfile(user, { displayName: fullName });
+
+      // 3. Send email verification
+      await sendEmailVerification(user);
+
+      // 4. Save application record to Firestore (status: pending — admin must approve)
+      await setDoc(doc(db, 'applications', user.uid), {
+        uid: user.uid,
+        referenceNumber: ref,
+        applicationType: v('appType'),          // 'membership' | 'practitioner' | 'specialist'
+        track: getTrack(),                       // specific grade / designation name
+        title: v('title'),
+        firstName, lastName, fullName,
+        email, phone: v('phone'), country: v('country'),
+        highestQualification: v('highestQual'),
+        fieldOfStudy: v('fieldOfStudy'),
+        jobTitle: v('jobTitle'),
+        employer: v('employer'),
+        yearsExperience: v('yearsExp'),
+        photoBase64: profilePhotoData,
+        status: 'pending',            // admin changes this to 'approved' or 'rejected'
+        emailVerified: false,
+        createdAt: serverTimestamp(),
+        approvedAt: null,
+        approvedBy: null
+      });
+
+      // 5. Show success state
+      document.getElementById('regForm').style.display = 'none';
+      document.getElementById('regProgress').style.display = 'none';
+      document.getElementById('successEmail').textContent = email;
+      document.getElementById('refNumber').textContent = ref;
+      document.getElementById('successScreen').style.display = 'block';
+      document.getElementById('successScreen').scrollIntoView({ behavior:'smooth', block:'start' });
+
+    } catch (err) {
+      console.error(err);
+      let msg = 'Something went wrong. Please try again.';
+      if (err.code === 'auth/email-already-in-use') {
+        msg = '⚠️ This email is already registered. <a href="member-login.html" style="color:#7a2a22;font-weight:700;">Log in instead?</a>';
+      } else if (err.code === 'auth/invalid-email') {
+        msg = '⚠️ The email address is not valid.';
+      } else if (err.code === 'auth/weak-password') {
+        msg = '⚠️ Your password is too weak. Use at least 8 characters with a mix of letters and numbers.';
+      } else if (err.code === 'auth/network-request-failed') {
+        msg = '⚠️ Network error. Please check your connection and try again.';
+      }
+      showAlert(msg);
+      btn.disabled = false; btnText.textContent = 'Submit Application'; spinner.style.display = 'none';
+    }
+  };
+</script>
+</body>
+</html>
