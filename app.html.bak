@@ -1,0 +1,2539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Application Form | Chartered Institute of Management Specialists (CIMS)</title>
+<meta name="description" content="Apply for CIMS Membership, Qualifications, Membership Upgrade, or Partnership Accreditation.">
+<link rel="icon" type="image/png" href="assets/logos/cims-logo.png">
+<link rel="apple-touch-icon" href="assets/logos/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#13233d;
+    --ink-soft:#1c3763;
+    --charcoal:#241f1a;
+    --charcoal-2:#2f2822;
+    --parchment:#F6F1E4;
+    --paper:#FBF8F1;
+    --gold:#B08D57;
+    --gold-light:#D8BD8A;
+    --gold-dim:rgba(176,141,87,.35);
+    --burgundy:#6E1423;
+    --burgundy-dark:#4c0e18;
+    --slate:#26241f;
+    --slate-soft:#5b564c;
+    --line: rgba(43,36,32,.14);
+    --line-gold: rgba(176,141,87,.45);
+    --shadow: 0 20px 50px rgba(43,36,32,.14);
+    --radius: 2px;
+    --red:#a3312a;
+    --green:#3f6b4a;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--slate);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:'Sora',sans-serif;color:var(--ink);margin:0;font-weight:700;letter-spacing:-.01em;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  @media (max-width:700px){ .wrap{padding:0 20px;} }
+  .eyebrow{font-family:'Sora',sans-serif;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;display:inline-flex;align-items:center;gap:.6em;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--gold);display:inline-block;}
+  .seal-rule{height:14px;background-image: repeating-linear-gradient(90deg, var(--gold) 0 6px, transparent 6px 16px);opacity:.55;margin:0;}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    background:var(--charcoal);
+    color:#e7ddce;
+    font-family:'Sora',sans-serif;
+    font-size:.75rem;
+    letter-spacing:.02em;
+  }
+  .topbar .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:9px;
+    padding-bottom:9px;
+    gap:20px;
+    flex-wrap:wrap;
+  }
+  .topbar-left{display:flex;gap:22px;flex-wrap:wrap;}
+  .topbar a:hover{color:var(--gold-light);}
+  .topbar-social{display:flex;gap:12px;}
+  .topbar-social a{
+    width:24px;height:24px;
+    border:1px solid rgba(231,221,206,.28);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .topbar-social a svg{width:12px;height:12px;fill:#e7ddce;transition:fill .15s ease;}
+  .topbar-social a:hover{border-color:var(--gold);}
+  .topbar-social a:hover svg{fill:var(--gold);}
+  .topbar-search-wrap{position:relative;flex:0 1 260px;}
+  .topbar-search{
+    display:flex;align-items:center;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(231,221,206,.28);
+    border-radius:999px;
+    overflow:hidden;
+    width:100%;
+  }
+  .topbar-search input{
+    flex:1;min-width:0;
+    background:none;border:none;outline:none;
+    padding:7px 4px 7px 16px;
+    color:#e7ddce;
+    font-family:'Inter',sans-serif;
+    font-size:.78rem;
+  }
+  .topbar-search input::placeholder{color:rgba(231,221,206,.5);}
+  .topbar-search button{
+    background:var(--burgundy);
+    border:none;margin:3px;
+    width:26px;height:26px;flex-shrink:0;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;cursor:pointer;
+    transition:background .15s ease;
+  }
+  .topbar-search button:hover{background:var(--burgundy-dark);}
+  .topbar-search button svg{width:13px;height:13px;}
+  .search-suggest{
+    position:absolute;top:calc(100% + 8px);left:0;right:0;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-top:2px solid var(--gold);
+    box-shadow:var(--shadow);
+    z-index:60;
+    max-height:340px;overflow-y:auto;
+    display:none;
+  }
+  .search-suggest.open{display:block;}
+  .search-suggest a{
+    display:flex;flex-direction:column;gap:2px;
+    padding:9px 16px;
+    color:var(--ink);
+    font-size:.83rem;font-weight:600;
+    border-bottom:1px solid var(--line);
+  }
+  .search-suggest a:last-child{border-bottom:none;}
+  .search-suggest a:hover, .search-suggest a.active{background:var(--parchment);color:var(--burgundy);}
+  .search-suggest a small{
+    font-family:'Sora',sans-serif;
+    font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;
+  }
+  .search-suggest .no-results{padding:12px 16px;font-size:.8rem;color:var(--slate-soft);}
+  .topbar-apply{
+    flex-shrink:0;
+    background:var(--gold);
+    color:var(--charcoal);
+    font-weight:700;
+    font-size:.74rem;
+    letter-spacing:.03em;
+    padding:8px 20px;
+    border-radius:999px;
+    white-space:nowrap;
+    transition:background .15s ease;
+  }
+  .topbar-apply:hover{background:var(--gold-light);}
+  @media (max-width:560px){ .topbar-search-wrap{display:none;} }
+
+  /* ---------- header / nav (mirrors site) ---------- */
+  header.site{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;}
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 0;
+    gap:32px;
+  }
+  .brand{display:flex;align-items:center;gap:14px;}
+  .brand-mark{height:64px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+  .brand-mark img{height:100%;width:auto;object-fit:contain;}
+  @media (max-width:700px){ .brand-mark{height:46px;} }
+  .nav-brand-text{display:flex;flex-direction:column;justify-content:center;line-height:1;}
+  .nav-brand-text .acronym{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:1.9rem;
+    letter-spacing:.03em;
+    color:#1C0D5B;
+    line-height:1;
+  }
+  .nav-brand-text .fullname{
+    font-family:'Playfair Display',serif;
+    font-weight:600;
+    font-size:.62rem;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    color:#1C0D5B;
+    line-height:1.55;
+    margin-top:5px;
+    white-space:nowrap;
+  }
+  @media (max-width:700px){
+    .nav-brand-text .acronym{font-size:1.3rem;}
+    .nav-brand-text .fullname{font-size:.5rem;letter-spacing:.09em;}
+  }
+  @media (max-width:420px){
+    .brand{gap:8px;}
+    .brand-mark{height:38px;}
+    .nav-brand-text .acronym{font-size:1.05rem;}
+    .nav-brand-text .fullname{
+      white-space:normal;
+      font-size:.4rem;
+      letter-spacing:.05em;
+      line-height:1.35;
+      margin-top:3px;
+      max-width:120px;
+    }
+  }
+  @media (max-width:360px){
+    .brand{gap:6px;}
+    .brand-mark{height:32px;}
+    .nav-brand-text .acronym{font-size:.92rem;}
+    .nav-brand-text .fullname{font-size:.36rem;max-width:100px;}
+  }
+
+  nav.main{display:flex;align-items:center;}
+  nav.main > ul{
+    list-style:none;margin:0;padding:0;
+    display:flex;align-items:center;gap:34px;
+    font-size:.83rem;font-weight:600;
+    color:var(--ink);
+  }
+  nav.main > ul > li{position:relative;}
+  nav.main > ul > li > a,
+  nav.main > ul > li > button.nav-link{
+    display:flex;align-items:center;gap:6px;
+    padding:10px 2px;
+    border-bottom:2px solid transparent;
+    background:none;border-top:none;border-left:none;border-right:none;
+    font:inherit;color:inherit;cursor:pointer;
+    transition:border-color .15s ease, color .15s ease;
+    white-space:nowrap;
+  }
+  nav.main > ul > li > a:hover,
+  nav.main > ul > li > button.nav-link:hover,
+  nav.main > ul > li.open > button.nav-link,
+  nav.main > ul > li.open > a{border-color:var(--gold);color:var(--burgundy);}
+  .caret{width:10px;height:10px;flex-shrink:0;stroke:currentColor;transition:transform .25s ease;}
+  .nav-item.open > .nav-link .caret,
+  .nav-item.open > .nav-link > .caret{transform:rotate(180deg);}
+
+  .dropdown{
+    position:absolute;top:100%;left:0;
+    min-width:265px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-top:2px solid var(--gold);
+    box-shadow:var(--shadow);
+    padding:8px 0;
+    margin-top:14px;
+    opacity:0;visibility:hidden;
+    transform:translateY(8px);
+    transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+    z-index:90;
+  }
+  .dropdown::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px;}
+  .nav-item.open > .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+  .dropdown a{
+    display:block;
+    padding:11px 22px;
+    font-size:.85rem;font-weight:600;
+    color:var(--ink);
+    border-left:2px solid transparent;
+  }
+  .dropdown a:hover{background:var(--parchment);border-left-color:var(--gold);color:var(--burgundy);}
+  .nav-utils .dropdown{left:auto;right:0;min-width:220px;}
+
+  .nav-utils{display:flex;align-items:center;gap:10px;}
+  .btn-pill{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:'Sora',sans-serif;
+    font-weight:700;font-size:.78rem;letter-spacing:.02em;
+    padding:10px 20px;
+    border-radius:999px;
+    border:1.5px solid var(--burgundy);
+    cursor:pointer;white-space:nowrap;
+    transition:all .18s ease;background:transparent;color:var(--burgundy);
+  }
+  .btn-pill:hover{background:var(--burgundy);color:#fff;}
+  .btn-pill.filled{background:var(--burgundy);color:#fff;}
+  .btn-pill.filled:hover{background:var(--burgundy-dark);border-color:var(--burgundy-dark);}
+  .btn-pill .caret{border-color:currentColor;}
+
+  .menu-toggle{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    width:34px;height:34px;
+    background:none;border:none;cursor:pointer;padding:6px;
+    flex-shrink:0;
+  }
+  .menu-toggle span{width:22px;height:2px;background:var(--ink);display:block;transition:transform .22s ease, opacity .22s ease;}
+  .menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .menu-toggle.active span:nth-child(2){opacity:0;}
+  .menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  @media (max-width:1100px){
+    nav.main{display:none;}
+    .nav-utils > .btn-pill,
+    .nav-utils > .nav-item.has-dropdown{display:none;}
+    .menu-toggle{display:flex;}
+  }
+  @media (min-width:1101px){ .mobile-menu{display:none !important;} }
+
+  .mobile-menu{
+    display:none;
+    background:var(--charcoal);
+    color:var(--paper);
+    max-height:calc(100vh - 100%);
+    overflow-y:auto;
+  }
+  .mobile-menu.open{display:block;}
+  .mobile-list{list-style:none;margin:0;padding:10px 0;display:flex;flex-direction:column;}
+  .mobile-list > li{border-bottom:1px solid rgba(255,255,255,.08);}
+  .mobile-list > li > a,
+  .msub-toggle{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    width:100%;padding:15px 28px;
+    font-weight:600;font-size:.92rem;
+    background:none;border:none;color:var(--paper);font-family:inherit;
+    text-align:left;cursor:pointer;
+  }
+  .msub-toggle .mcaret{width:11px;height:11px;flex-shrink:0;stroke:var(--gold-light);transition:transform .25s ease;}
+  li.has-sub.open > .msub-toggle .mcaret{transform:rotate(180deg);}
+  .msub{
+    list-style:none;margin:0;padding:0;
+    max-height:0;overflow:hidden;
+    background:rgba(0,0,0,.2);
+    transition:max-height .3s ease;
+  }
+  li.has-sub.open > .msub{max-height:600px;}
+  .msub li a{
+    display:block;padding:12px 28px 12px 42px;
+    font-size:.85rem;color:#d9cfc0;
+    border-bottom:1px solid rgba(255,255,255,.05);
+  }
+  .msub li a:hover{color:var(--gold-light);}
+  .mobile-actions{padding:20px 28px 30px;display:flex;flex-direction:column;gap:12px;}
+  .mobile-actions .btn{justify-content:center;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:var(--radius);font-family:'Sora',sans-serif;font-size:.82rem;font-weight:600;border:1px solid transparent;cursor:pointer;transition:all .18s ease;}
+  .btn-primary{background:var(--burgundy);color:#fff;}
+  .btn-primary:hover{background:var(--burgundy-dark);}
+  .apply-pill{background:var(--burgundy);color:#fff;padding:10px 20px;border-radius:999px;font-family:'Sora',sans-serif;font-size:.8rem;font-weight:600;}
+  .apply-pill:hover{background:var(--burgundy-dark);}
+
+  /* ---------- hero ---------- */
+  .app-hero{background:var(--ink);padding:56px 0 40px;position:relative;overflow:hidden;}
+  .app-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%, rgba(176,141,87,.18), transparent 60%);}
+  .app-hero .wrap{position:relative;}
+  .app-hero .eyebrow{color:var(--gold-light);}
+  .app-hero .eyebrow::before{background:var(--gold-light);}
+  .app-hero h1{color:#fff;font-size:2rem;margin-top:12px;max-width:720px;}
+  .app-hero h1 em{color:var(--gold-light);font-style:italic;}
+  .app-hero p{color:#d9cfc0;max-width:640px;margin-top:12px;line-height:1.7;font-size:.98rem;}
+
+  /* ---------- layout ---------- */
+  .app-layout{max-width:1240px;margin:0 auto;padding:44px 32px 80px;display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:start;}
+  @media (max-width:900px){ .app-layout{grid-template-columns:1fr;padding:28px 20px 60px;} }
+
+  .step-sidebar{background:var(--ink);border-radius:8px;overflow:hidden;position:sticky;top:88px;}
+  .step-sidebar-head{padding:22px 24px 18px;border-bottom:1px solid rgba(255,255,255,.1);}
+  .step-sidebar-head p{font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;font-family:'Sora',sans-serif;}
+  .step-sidebar-head strong{font-size:1rem;color:#fff;font-family:'Sora',sans-serif;}
+  .step-list{padding:12px 0;}
+  .step-item{display:flex;align-items:center;gap:14px;padding:12px 24px;cursor:pointer;transition:background .15s ease;}
+  .step-item:hover{background:rgba(255,255,255,.05);}
+  .step-item.active{background:rgba(176,141,87,.16);}
+  .step-item.done{opacity:.75;}
+  .step-num{width:30px;height:30px;border-radius:50%;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:rgba(255,255,255,.55);flex-shrink:0;transition:all .15s ease;font-family:'Sora',sans-serif;}
+  .step-item.active .step-num{border-color:var(--gold);background:var(--gold);color:#fff;}
+  .step-item.done .step-num{border-color:var(--green);background:var(--green);color:#fff;}
+  .step-text{flex:1;}
+  .step-text-label{font-size:.68rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;font-family:'Sora',sans-serif;}
+  .step-text-name{font-size:.85rem;color:rgba(255,255,255,.85);font-weight:500;margin-top:2px;}
+  .step-check{font-size:.85rem;color:var(--green);display:none;}
+  .step-item.done .step-check{display:block;}
+  .step-sidebar-footer{padding:18px 24px;border-top:1px solid rgba(255,255,255,.1);}
+  .step-sidebar-footer p{font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.6;}
+  .step-sidebar-footer a{color:var(--gold-light);}
+  @media (max-width:900px){ .step-sidebar{position:static;margin-bottom:24px;} }
+
+  /* ---------- form panel ---------- */
+  .form-area{background:#fff;border:1px solid var(--line);border-radius:8px;padding:40px 44px;}
+  @media (max-width:640px){ .form-area{padding:26px 20px;} }
+  .form-panel{display:none;}
+  .form-panel.active{display:block;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);} to{opacity:1;transform:translateY(0);}}
+  .form-panel-title{font-size:1.5rem;}
+  .form-panel-title em{color:var(--burgundy);font-style:italic;}
+  .form-panel-sub{color:var(--slate-soft);font-size:.92rem;line-height:1.7;margin-top:10px;margin-bottom:8px;}
+  .form-section-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);border-bottom:2px solid var(--line);padding-bottom:8px;margin:26px 0 16px;font-family:'Sora',sans-serif;}
+  .form-row{display:grid;gap:18px;margin-bottom:16px;}
+  .form-row.cols-1{grid-template-columns:1fr;}
+  .form-row.cols-2{grid-template-columns:1fr 1fr;}
+  .form-row.cols-3{grid-template-columns:1fr 1fr 1fr;}
+  @media (max-width:640px){ .form-row.cols-2,.form-row.cols-3{grid-template-columns:1fr;} }
+  .field label{display:block;font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:7px;font-family:'Sora',sans-serif;}
+  .req{color:var(--red);}
+  .field input[type=text],.field input[type=email],.field input[type=tel],.field input[type=date],.field input[type=number],.field select,.field textarea{
+    width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:6px;font-family:'Inter',sans-serif;font-size:.92rem;color:var(--ink);background:var(--paper);transition:border-color .15s ease;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);background:#fff;}
+  .field textarea{resize:vertical;min-height:90px;}
+  .field .error{border-color:var(--red)!important;background:#fdf2f1;}
+  .field-hint{display:block;font-size:.76rem;color:var(--slate-soft);margin-top:6px;}
+  .checklist{display:flex;flex-direction:column;gap:10px;}
+  .checklist label{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--slate);font-weight:400;cursor:pointer;}
+  .checklist input{margin-top:3px;}
+
+  .radio-group{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  @media (max-width:640px){ .radio-group{grid-template-columns:1fr 1fr;} }
+  .radio-opt{border:1px solid var(--line);border-radius:6px;padding:12px;display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.85rem;transition:all .15s ease;}
+  .radio-opt.selected{border-color:var(--gold);background:var(--parchment);}
+
+  .prog-info-box{display:none;background:var(--parchment);border-left:3px solid var(--gold);border-radius:4px;padding:16px 18px;font-size:.86rem;line-height:1.6;color:var(--slate);margin-top:6px;}
+  .prog-info-box strong{display:block;color:var(--burgundy);font-family:'Sora',sans-serif;margin-bottom:4px;}
+
+  .form-nav{display:flex;align-items:center;justify-content:space-between;margin-top:34px;padding-top:24px;border-top:1px solid var(--line);flex-wrap:wrap;gap:14px;}
+  .step-progress{font-size:.8rem;color:var(--slate-soft);}
+  .step-progress strong{color:var(--ink);}
+  .btn-next,.btn-prev,.btn-submit-final{font-family:'Sora',sans-serif;font-size:.85rem;font-weight:600;padding:13px 26px;border-radius:6px;border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .15s ease;}
+  .btn-next,.btn-submit-final{background:var(--burgundy);color:#fff;}
+  .btn-next:hover,.btn-submit-final:hover{background:var(--burgundy-dark);}
+  .btn-prev{background:transparent;color:var(--ink);border-color:var(--line);}
+  .btn-prev:hover{background:var(--parchment);}
+  .btn-submit-final{position:relative;}
+  .spinner{display:none;width:16px;height:16px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* ---------- file upload ---------- */
+  .file-upload{border:1.5px dashed var(--line-gold);border-radius:8px;padding:26px;text-align:center;cursor:pointer;position:relative;transition:border-color .15s ease;background:var(--parchment);}
+  .file-upload:hover{border-color:var(--gold);}
+  .file-upload input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
+  .file-upload-icon{font-size:1.6rem;margin-bottom:6px;}
+  .file-upload p{font-size:.88rem;color:var(--slate);margin:0 0 4px;}
+  .file-types{font-size:.74rem;color:var(--slate-soft);}
+  .file-list{margin-top:10px;}
+  .file-item{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:9px 12px;font-size:.82rem;}
+  .file-item-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .file-item-size{color:var(--slate-soft);}
+  .file-item-remove{cursor:pointer;color:var(--red);font-weight:700;}
+
+  /* ---------- review ---------- */
+  .review-section{background:var(--parchment);border-radius:8px;padding:20px 24px;margin-bottom:16px;}
+  .review-section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+  .review-section-head h4{font-size:.86rem;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.06em;font-family:'Sora',sans-serif;}
+  .review-edit{font-size:.78rem;color:var(--burgundy);cursor:pointer;font-weight:600;}
+  .review-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media (max-width:640px){ .review-grid{grid-template-columns:1fr;} }
+  .review-item-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--slate-soft);margin-bottom:3px;}
+  .review-item-val{font-size:.9rem;color:var(--ink);font-weight:600;}
+  .review-item-val.gold{color:var(--burgundy);}
+  .declaration-box{background:var(--ink);border-radius:8px;padding:24px 26px;margin:26px 0;}
+  .declaration-box p{color:#d9cfc0;font-size:.84rem;line-height:1.7;margin:0 0 16px;}
+  .declaration-check{display:flex;align-items:flex-start;gap:10px;cursor:pointer;color:#fff;font-size:.86rem;line-height:1.6;}
+  .declaration-check a{color:var(--gold-light);text-decoration:underline;}
+  .declaration-check input{margin-top:3px;}
+
+  /* ---------- success screen ---------- */
+  .success-screen{display:none;text-align:center;padding:60px 20px;}
+  .success-icon{width:72px;height:72px;border-radius:50%;background:var(--green);color:#fff;font-size:2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
+  .success-screen h2{font-size:1.7rem;}
+  .success-screen h2 em{color:var(--burgundy);font-style:italic;}
+  .success-screen p{color:var(--slate-soft);max-width:520px;margin:14px auto 0;line-height:1.7;}
+  .success-ref{background:var(--parchment);border:1px dashed var(--gold);border-radius:8px;padding:20px;max-width:360px;margin:26px auto;}
+  .success-ref-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--slate-soft);margin-bottom:6px;}
+  .success-ref-num{font-family:'Sora',sans-serif;font-size:1.3rem;font-weight:800;color:var(--burgundy);}
+  .success-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+  /* footer */
+  footer{
+    background:var(--charcoal-2);
+    color:#c9bfae;
+    padding-top:64px;
+  }
+  .foot-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr .9fr 1fr;
+    gap:36px;
+    padding-bottom:40px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  @media (max-width:1180px){.foot-grid{grid-template-columns:1fr 1fr 1fr;row-gap:44px;}}
+  @media (max-width:700px){.foot-grid{grid-template-columns:1fr 1fr;row-gap:36px;}}
+  @media (max-width:480px){.foot-grid{grid-template-columns:1fr;}}
+  footer h4{
+    color:var(--gold-light);
+    font-family:'Sora',sans-serif;
+    font-size:.7rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:.85rem;}
+  footer ul li{line-height:1.5;}
+  footer ul li a:hover{color:var(--gold-light);}
+  .foot-brand .brand-mark{height:52px;margin-bottom:6px;}
+  footer .foot-brand p{color:#b7ac98;font-size:.88rem;line-height:1.6;margin-top:14px;max-width:34ch;}
+  .foot-institution-name{
+    font-family:'Sora',sans-serif;
+    font-weight:700;
+    color:#fff !important;
+    font-size:1rem;
+    line-height:1.35;
+    letter-spacing:.01em;
+    margin-top:16px !important;
+    max-width:22ch;
+  }
+  .foot-social{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
+  .foot-social a{
+    width:32px;height:32px;border:1px solid rgba(255,255,255,.2);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .foot-social a svg{width:14px;height:14px;fill:#c9bfae;transition:fill .15s ease;}
+  .foot-social a:hover{border-color:var(--gold-light);}
+  .foot-social a:hover svg{fill:var(--gold-light);}
+  .foot-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 0;font-size:.78rem;color:#8f846f;flex-wrap:wrap;gap:10px;
+  }
+  .foot-bottom a:hover{color:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-search-wrap">
+      <form class="topbar-search" role="search" action="search-results.html" method="get" id="siteSearchForm" autocomplete="off">
+        <input type="search" name="q" id="siteSearchInput" aria-label="Search site">
+        <button type="submit" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+      <div class="search-suggest" id="siteSearchSuggest"></div>
+    </div>
+    <a href="app.html" class="topbar-apply">Apply Now</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><img src="assets/logos/cims-logo.png" alt="Chartered Institute of Management Specialists (CIMS) crest"></span>
+      <div class="nav-brand-text">
+        <span class="acronym">CIMS</span>
+        <span class="fullname">Chartered Institute of<br>Management Specialists</span>
+      </div>
+    </a>
+
+    <nav class="main" aria-label="Primary">
+      <ul>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link" aria-expanded="false">About Us<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dropdown">
+            <a href="history.html">History</a>
+            <a href="council-members.html">Council Members</a>
+            <a href="overseas-representatives.html">Overseas Representatives</a>
+            <a href="legal-standing.html">Legal Standing</a>
+            <a href="why-choose-us.html">Why Choose Us</a>
+            <a href="recognition.html">Professional Recognition</a>
+            <a href="professional-standards-ethics.html">Professional Standards &amp; Ethics</a>
+            <a href="policies-regulations.html">Policies &amp; Regulations</a>
+            <a href="complaints-appeals.html">Complaints &amp; Appeals</a>
+            <a href="management-journal-publications.html">Management Journal &amp; Publications</a>
+          </div>
+        </li>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link" aria-expanded="false">Membership<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dropdown">
+            <a href="membership.html">Overview</a>
+            <a href="membership-associate.html">Associate Member (ACIMS)</a>
+            <a href="membership-chartered.html">Chartered Member (MCIMS)</a>
+            <a href="membership-fellow.html">Chartered Fellow (FCIMS)</a>
+            <a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a>
+            <a href="cpd.html">Continuing Professional Development (CPD)</a>
+            <a href="membership-benefits.html">Membership Benefits</a>
+
+            <a href="digital-credentials-verification.html">Digital Credentials &amp; Verification</a>
+          </div>
+        </li>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link" aria-expanded="false">Qualifications<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dropdown">
+            <a href="specialist-qualifications.html">Specialist Qualifications</a>
+            <a href="practitioner-qualifications.html">Practitioner Qualifications</a>
+            <a href="assessment-quality-assurance.html">Assessment &amp; Quality Assurance</a>
+          </div>
+        </li>
+        <li class="nav-item has-dropdown">
+          <button class="nav-link" aria-expanded="false">Employers<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="dropdown">
+            <a href="partnership-framework.html">Partnership Framework</a>
+            <a href="employers-hire-member.html">Hire a CIMS Member</a>
+            <a href="accredited-training-partners.html">Accredited Training Partners</a>
+            <a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="nav-utils">
+      <div class="nav-item has-dropdown">
+        <button class="nav-link btn-pill filled" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="dropdown">
+          <a href="register.html">Register</a>
+          <a href="member-login.html">Member Log In</a>
+          <a href="admin-login.html">Admin Log In</a>
+        </div>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-list">
+      <li class="has-sub">
+        <button class="msub-toggle">About Us<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="history.html">History</a></li>
+          <li><a href="council-members.html">Council Members</a></li>
+          <li><a href="overseas-representatives.html">Overseas Representatives</a></li>
+          <li><a href="legal-standing.html">Legal Standing</a></li>
+          <li><a href="why-choose-us.html">Why Choose Us</a></li>
+          <li><a href="recognition.html">Professional Recognition</a></li>
+          <li><a href="professional-standards-ethics.html">Professional Standards &amp; Ethics</a></li>
+          <li><a href="policies-regulations.html">Policies &amp; Regulations</a></li>
+          <li><a href="complaints-appeals.html">Complaints &amp; Appeals</a></li>
+          <li><a href="management-journal-publications.html">Management Journal &amp; Publications</a></li>
+        </ul>
+      </li>
+      <li class="has-sub">
+        <button class="msub-toggle">Membership<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="membership.html">Overview</a></li>
+          <li><a href="membership-associate.html">Associate Member (ACIMS)</a></li>
+          <li><a href="membership-chartered.html">Chartered Member (MCIMS)</a></li>
+          <li><a href="membership-fellow.html">Chartered Fellow (FCIMS)</a></li>
+          <li><a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a></li>
+          <li><a href="cpd.html">Continuing Professional Development (CPD)</a></li>
+          <li><a href="digital-credentials-verification.html">Digital Credentials &amp; Verification</a></li>
+        </ul>
+      </li>
+      <li class="has-sub">
+        <button class="msub-toggle">Qualifications<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="specialist-qualifications.html">Specialist Qualifications</a></li>
+          <li><a href="practitioner-qualifications.html">Practitioner Qualifications</a></li>
+          <li><a href="assessment-quality-assurance.html">Assessment &amp; Quality Assurance</a></li>
+        </ul>
+      </li>
+      <li class="has-sub">
+        <button class="msub-toggle">Employers<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="partnership-framework.html">Partnership Framework</a></li>
+          <li><a href="employers-hire-member.html">Hire a CIMS Member</a></li>
+          <li><a href="accredited-training-partners.html">Accredited Training Partners</a></li>
+          <li><a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a></li>
+        </ul>
+      </li>
+      <li><a href="chartered-strategic-director.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
+      <li class="has-sub">
+        <button class="msub-toggle">CPD Portal<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <ul class="msub">
+          <li><a href="register.html">Register</a></li>
+          <li><a href="member-login.html">Member Log In</a></li>
+          <li><a href="admin-login.html">Admin Log In</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="mobile-actions">
+      <a href="contact-us.html" class="btn btn-gold" style="border-color:var(--gold-light);color:var(--paper);">Contact Us</a>
+    </div>
+  </div>
+</header>
+<div class="seal-rule"></div>
+
+<div class="app-hero">
+  <div class="wrap">
+    <span class="eyebrow">CIMS Application Portal</span>
+    <h1>Apply for <em>Membership, Qualification, or Partnership</em></h1>
+    <p>Complete the relevant section carefully — organisation and individual applications are reviewed by the CIMS Secretariat within 2–3 working days.</p>
+  </div>
+</div>
+
+<div class="app-layout" id="appLayout">
+
+  <!-- ===== SIDEBAR (rendered dynamically by JS) ===== -->
+  <aside class="step-sidebar">
+    <div class="step-sidebar-head">
+      <p>Your Progress</p>
+      <strong id="sidebarTrackName">Application</strong>
+    </div>
+    <div class="step-list" id="stepList"></div>
+    <div class="step-sidebar-footer">
+      <p>Need assistance? Email <a href="mailto:admin@charteredims.com">admin@charteredims.com</a> or call <a href="tel:+18592109109">+1 (859) 210-9109</a>.</p>
+    </div>
+  </aside>
+
+  <!-- ===== FORM AREA ===== -->
+  <div class="form-area">
+
+    <!-- ===================================================== -->
+    <!-- STEP 1 — PROGRAMME SELECTION (shared entry point)      -->
+    <!-- ===================================================== -->
+    <div class="form-panel active" id="panel-1">
+      <h2 class="form-panel-title">Choose Your <em>Application Type</em></h2>
+      <p class="form-panel-sub">Select the category you are applying for. CIMS offers Membership Grades, the Qualification Framework (Practitioner &amp; Specialist), Membership Upgrades, and Partnership Accreditation for institutions. Fields marked <span class="req">*</span> are required.</p>
+
+      <div class="form-section-label">Application Category</div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <label>Application Type <span class="req">*</span></label>
+          <select id="appType" required onchange="updateAppType()">
+            <option value="">— Select Application Type —</option>
+            <option value="membership">Membership Application</option>
+            <option value="qualification">Qualification Framework (Practitioner / Specialist)</option>
+            <option value="upgrade">Membership Upgrade</option>
+            <option value="partnership">Partnership Accreditation (Organisation)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Membership sub-select -->
+      <div id="membershipOptions" style="display:none">
+        <div class="form-section-label">Membership Grade</div>
+        <div class="form-row cols-1">
+          <div class="field">
+            <label>Select Membership Grade <span class="req">*</span></label>
+            <select id="membershipGrade" onchange="updateProgInfo()">
+              <option value="">— Select Grade —</option>
+              <option value="Associate Member (ACIMS)">Associate Member (ACIMS)</option>
+              <option value="Chartered Member (MCIMS)">Chartered Member (MCIMS)</option>
+              <option value="Chartered Fellow (FCIMS)">Chartered Fellow (FCIMS)</option>
+              <option value="Chartered Doctoral Fellow (DCIMS)">Chartered Doctoral Fellow (DCIMS)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Qualification sub-select: category -->
+      <div id="qualificationOptions" style="display:none">
+        <div class="form-section-label">Qualification Category</div>
+        <div class="form-row cols-1">
+          <div class="field">
+            <label>Select Category <span class="req">*</span></label>
+            <select id="qualCategory" onchange="updateQualCategory()">
+              <option value="">— Select Category —</option>
+              <option value="practitioner">Practitioner Qualifications</option>
+              <option value="specialist">Specialist Qualifications</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Qualification sub-select: specific designation (practitioner) -->
+      <div id="practitionerOptions" style="display:none">
+        <div class="form-section-label">Practitioner Designation</div>
+        <div class="form-row cols-1">
+          <div class="field">
+            <label>Select Practitioner Designation <span class="req">*</span></label>
+            <select id="practitionerDesignation" onchange="updateProgInfo()">
+              <option value="">— Select Designation —</option>
+              <option value="Chartered Project Manager">Chartered Project Manager</option>
+              <option value="Chartered Operations Manager">Chartered Operations Manager</option>
+              <option value="Chartered Project Management Officer (PMO)">Chartered Project Management Officer (PMO)</option>
+              <option value="Chartered HR Manager">Chartered HR Manager</option>
+              <option value="Chartered Project Cost Control Manager">Chartered Project Cost Control Manager</option>
+              <option value="Chartered Sales and Marketing Manager">Chartered Sales and Marketing Manager</option>
+              <option value="Chartered Global Supply Chain and Logistics Manager">Chartered Global Supply Chain and Logistics Manager</option>
+              <option value="Chartered Business Continuity Manager">Chartered Business Continuity Manager</option>
+              <option value="Chartered Healthcare Information Manager">Chartered Healthcare Information Manager</option>
+              <option value="Chartered Safety Manager">Chartered Safety Manager</option>
+              <option value="Chartered Fire & Safety Manager">Chartered Fire & Safety Manager</option>
+              <option value="Chartered Office Manager">Chartered Office Manager</option>
+              <option value="Chartered Sales Manager">Chartered Sales Manager</option>
+              <option value="Chartered Healthcare Quality Improvement Manager">Chartered Healthcare Quality Improvement Manager</option>
+              <option value="Chartered Procurement Manager">Chartered Procurement Manager</option>
+              <option value="Chartered Contract Manager">Chartered Contract Manager</option>
+              <option value="Chartered Bids and Proposal Manager">Chartered Bids and Proposal Manager</option>
+              <option value="Chartered Compliance Manager">Chartered Compliance Manager</option>
+              <option value="Chartered Contract Administrator">Chartered Contract Administrator</option>
+              <option value="Chartered Strategy Manager">Chartered Strategy Manager</option>
+              <option value="Chartered Healthcare Risk Manager">Chartered Healthcare Risk Manager</option>
+              <option value="Chartered Healthcare Facility Manager">Chartered Healthcare Facility Manager</option>
+              <option value="Chartered Governance Manager">Chartered Governance Manager</option>
+              <option value="Chartered Claims Manager">Chartered Claims Manager</option>
+              <option value="Chartered Digital Marketing Manager">Chartered Digital Marketing Manager</option>
+              <option value="Chartered Data Analytics Manager">Chartered Data Analytics Manager</option>
+              <option value="Chartered Healthcare Administration Manager">Chartered Healthcare Administration Manager</option>
+              <option value="Chartered Energy Manager">Chartered Energy Manager</option>
+              <option value="Chartered Project Risk Manager">Chartered Project Risk Manager</option>
+              <option value="Chartered Sustainability Manager">Chartered Sustainability Manager</option>
+              <option value="Chartered Strategic Management Professional">Chartered Strategic Management Professional</option>
+              <option value="Chartered Oil and Gas Management Professional">Chartered Oil and Gas Management Professional</option>
+              <option value="Chartered IT Manager">Chartered IT Manager</option>
+              <option value="Chartered Recruitment Manager">Chartered Recruitment Manager</option>
+              <option value="Chartered Sustainable Supply Chain Professional">Chartered Sustainable Supply Chain Professional</option>
+              <option value="Chartered Financial Risk Manager">Chartered Financial Risk Manager</option>
+              <option value="Chartered Energy Risk Manager">Chartered Energy Risk Manager</option>
+              <option value="Chartered Human Resource Professional">Chartered Human Resource Professional</option>
+              <option value="Chartered Marketing and Branding Professional">Chartered Marketing and Branding Professional</option>
+              <option value="Chartered Facilities Manager">Chartered Facilities Manager</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Qualification sub-select: specific designation (specialist) -->
+      <div id="specialistOptions" style="display:none">
+        <div class="form-section-label">Specialist Designation</div>
+        <div class="form-row cols-1">
+          <div class="field">
+            <label>Select Specialist Designation <span class="req">*</span></label>
+            <select id="specialistDesignation" onchange="updateProgInfo()">
+              <option value="">— Select Designation —</option>
+              <option value="Chartered Human Resource Management Specialist">Chartered Human Resource Management Specialist</option>
+              <option value="Chartered Leadership and Strategic Planning Specialist">Chartered Leadership and Strategic Planning Specialist</option>
+              <option value="Chartered International Trade & Logistics Specialist">Chartered International Trade & Logistics Specialist</option>
+              <option value="Chartered Quality Management Specialist">Chartered Quality Management Specialist</option>
+              <option value="Chartered Management Specialist">Chartered Management Specialist</option>
+              <option value="Chartered Business Specialist">Chartered Business Specialist</option>
+              <option value="Chartered Agile and Scrum Specialist">Chartered Agile and Scrum Specialist</option>
+              <option value="Chartered Supply Chain Management Specialist">Chartered Supply Chain Management Specialist</option>
+              <option value="Chartered Health and Safety Management Specialist">Chartered Health and Safety Management Specialist</option>
+              <option value="Chartered Training and Development Management Specialist">Chartered Training and Development Management Specialist</option>
+              <option value="Chartered Transportation and Pipeline Logistics Management Specialist">Chartered Transportation and Pipeline Logistics Management Specialist</option>
+              <option value="Chartered Operations & Production Management Specialist">Chartered Operations & Production Management Specialist</option>
+              <option value="Chartered Oil Stock Manager">Chartered Oil Stock Manager</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upgrade sub-select -->
+      <div id="upgradeOptions" style="display:none">
+        <div class="form-section-label">Upgrade Details</div>
+        <div class="form-row cols-1">
+          <div class="field">
+            <label>New Membership Grade <span class="req">*</span></label>
+            <select id="upgradeGrade" onchange="updateProgInfo()">
+              <option value="">— Select the grade you are upgrading to —</option>
+              <option>Chartered Member (MCIMS)</option>
+              <option>Chartered Fellow (FCIMS)</option>
+              <option>Chartered Doctoral Fellow (DCIMS)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partnership: organisation type -->
+      <div id="partnershipOptions" style="display:none">
+        <div class="form-section-label">Partnership Type</div>
+        <div class="form-row cols-1">
+          <div class="field">
+            <label>Type of Organisation <span class="req">*</span></label>
+            <select id="partnershipType">
+              <option value="">— Select Type —</option>
+              <option>Training Provider / Learning Centre</option>
+              <option>University / Higher Education Institution</option>
+              <option>Corporate / Employer</option>
+              <option>Consultancy</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Programme info box -->
+      <div class="prog-info-box" id="progInfoBox"></div>
+
+      <div id="studyModeField" style="display:none">
+        <div class="form-section-label" style="margin-top:8px">Application Details</div>
+        <div class="form-row cols-1">
+          <div class="field">
+            <label>Preferred Study / Engagement Mode</label>
+            <select id="studyMode">
+              <option value="">Select Mode</option>
+              <option>Online / Distance Learning</option>
+              <option>Self-Study</option>
+              <option>Blended (Online + In-Person)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <div></div>
+        <div class="step-progress">Step <strong id="stepProgress1">1</strong> of <strong id="stepTotal1">7</strong></div>
+        <button class="btn-next" onclick="goToStepFrom1()">Continue <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- INDIVIDUAL TRACK: STEP 2 — PERSONAL INFORMATION        -->
+    <!-- ===================================================== -->
+    <div class="form-panel" id="panel-2">
+      <h2 class="form-panel-title">Personal <em>Information</em></h2>
+
+      <div class="form-section-label">Name &amp; Identity</div>
+      <div class="form-row cols-3">
+        <div class="field">
+          <label>Title <span class="req">*</span></label>
+          <select id="title" required>
+            <option value="">Select</option>
+            <option>Mr</option><option>Mrs</option><option>Ms</option><option>Dr</option><option>Prof</option><option>Engr</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" id="firstName" required/>
+        </div>
+        <div class="field">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" id="lastName" required/>
+        </div>
+      </div>
+      <div class="form-row cols-3">
+        <div class="field">
+          <label>Middle Name</label>
+          <input type="text" id="middleName"/>
+        </div>
+        <div class="field">
+          <label>Date of Birth <span class="req">*</span></label>
+          <input type="date" id="dob" required/>
+        </div>
+        <div class="field">
+          <label>Gender <span class="req">*</span></label>
+          <select id="gender" required>
+            <option value="">Select</option>
+            <option>Male</option><option>Female</option><option>Prefer not to say</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Nationality <span class="req">*</span></label>
+          <input type="text" id="nationality" required/>
+        </div>
+        <div class="field">
+          <label>Passport / National ID Number <span class="req">*</span></label>
+          <input type="text" id="passportNum" required/>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Country of Residence <span class="req">*</span></label>
+          <input type="text" id="country" required/>
+        </div>
+        <div class="field">
+          <label>State / Province</label>
+          <input type="text" id="stateProvince"/>
+        </div>
+      </div>
+
+      <div class="form-section-label">Contact Details</div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Email Address <span class="req">*</span></label>
+          <input type="email" id="email" required/>
+        </div>
+        <div class="field">
+          <label>Confirm Email Address <span class="req">*</span></label>
+          <input type="email" id="emailConfirm" required/>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Phone Number <span class="req">*</span></label>
+          <input type="tel" id="phone" required/>
+        </div>
+        <div class="field">
+          <label>WhatsApp Number</label>
+          <input type="tel" id="whatsapp"/>
+        </div>
+      </div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <label>Mailing Address <span class="req">*</span></label>
+          <textarea id="address" rows="3" required></textarea>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-prev" onclick="goToStep(1)">← Back</button>
+        <div class="step-progress">Step <strong>2</strong> of <strong>7</strong></div>
+        <button class="btn-next" onclick="goToStep(3)">Next: Academic Background <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- INDIVIDUAL TRACK: STEP 3 — ACADEMIC BACKGROUND         -->
+    <!-- ===================================================== -->
+    <div class="form-panel" id="panel-3">
+      <h2 class="form-panel-title">Academic <em>Background</em></h2>
+
+      <div class="form-section-label">Highest Qualification</div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Highest Qualification <span class="req">*</span></label>
+          <select id="highestQual" required>
+            <option value="">Select</option>
+            <option>Secondary / High School</option>
+            <option>Diploma / HND</option>
+            <option>Bachelor's Degree</option>
+            <option>Postgraduate Diploma</option>
+            <option>Master's Degree</option>
+            <option>Doctorate / PhD</option>
+            <option>Professional Certification (Non-Degree)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Field of Study <span class="req">*</span></label>
+          <input type="text" id="fieldOfStudy" required/>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Institution <span class="req">*</span></label>
+          <input type="text" id="institution1" required/>
+        </div>
+        <div class="field">
+          <label>Country of Institution <span class="req">*</span></label>
+          <input type="text" id="instCountry1" required/>
+        </div>
+      </div>
+      <div class="form-row cols-3">
+        <div class="field">
+          <label>Year of Graduation <span class="req">*</span></label>
+          <input type="number" id="gradYear" min="1960" max="2026" required/>
+        </div>
+        <div class="field">
+          <label>Grade / GPA / Class</label>
+          <input type="text" id="grade"/>
+        </div>
+        <div class="field">
+          <label>Language of Instruction</label>
+          <select id="instrLang">
+            <option value="">Select</option>
+            <option>English</option><option>French</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-section-label">Additional Qualifications (Optional)</div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Additional Qualification</label>
+          <input type="text" id="qual2"/>
+        </div>
+        <div class="field">
+          <label>Awarding Body</label>
+          <input type="text" id="body2"/>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Third Qualification</label>
+          <input type="text" id="qual3"/>
+        </div>
+        <div class="field">
+          <label>Awarding Body</label>
+          <input type="text" id="body3"/>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-prev" onclick="goToStep(2)">← Back</button>
+        <div class="step-progress">Step <strong>3</strong> of <strong>7</strong></div>
+        <button class="btn-next" onclick="goToStep(4)">Next: Professional Experience <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- INDIVIDUAL TRACK: STEP 4 — PROFESSIONAL EXPERIENCE     -->
+    <!-- ===================================================== -->
+    <div class="form-panel" id="panel-4">
+      <h2 class="form-panel-title">Professional <em>Experience</em></h2>
+
+      <div class="form-section-label">Current / Most Recent Position</div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Current Job Title <span class="req">*</span></label>
+          <input type="text" id="jobTitle" required/>
+        </div>
+        <div class="field">
+          <label>Current Employer <span class="req">*</span></label>
+          <input type="text" id="employer" required/>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Industry / Sector</label>
+          <select id="industry">
+            <option value="">Select</option>
+            <option>Oil &amp; Gas</option><option>Finance &amp; Banking</option><option>Healthcare</option>
+            <option>Education</option><option>Government / Public Sector</option><option>Manufacturing</option>
+            <option>Technology</option><option>Construction</option><option>Retail</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Total Years of Work Experience</label>
+          <select id="yearsExp">
+            <option value="">Select</option>
+            <option>Less than 2 years</option><option>2–4 years</option><option>5–9 years</option>
+            <option>10–14 years</option><option>15+ years</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row cols-3">
+        <div class="field">
+          <label>Management Experience</label>
+          <select id="mgmtExp">
+            <option value="">Select</option>
+            <option>None</option><option>1–3 years</option><option>4–7 years</option><option>8+ years</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Organisation Size</label>
+          <select id="orgSize">
+            <option value="">Select</option>
+            <option>1–50 employees</option><option>51–250 employees</option><option>251–1000 employees</option><option>1000+ employees</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Management Level</label>
+          <select id="mgmtLevel">
+            <option value="">Select</option>
+            <option>Supervisory</option><option>Middle Management</option><option>Senior Management</option><option>Executive / C-Suite</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-section-label">Previous Position (Optional)</div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Previous Job Title</label>
+          <input type="text" id="prevJobTitle"/>
+        </div>
+        <div class="field">
+          <label>Previous Employer</label>
+          <input type="text" id="prevEmployer"/>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Years in Previous Role</label>
+          <input type="text" id="prevYears"/>
+        </div>
+        <div class="field">
+          <label>Previous Responsibilities</label>
+          <input type="text" id="prevResp"/>
+        </div>
+      </div>
+
+      <div class="form-section-label">CPD &amp; Professional Activities (Optional)</div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <textarea id="cpdActivities" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-prev" onclick="goToStep(3)">← Back</button>
+        <div class="step-progress">Step <strong>4</strong> of <strong>7</strong></div>
+        <button class="btn-next" onclick="goToStep(5)">Next: Statement &amp; References <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- INDIVIDUAL TRACK: STEP 5 — STATEMENT & REFERENCES      -->
+    <!-- ===================================================== -->
+    <div class="form-panel" id="panel-5">
+      <h2 class="form-panel-title">Statement <em>&amp; References</em></h2>
+      <p class="form-panel-sub">Your statement of purpose is an important part of your application. Professional references are required.</p>
+
+      <div class="form-section-label">Statement of Interest / Purpose</div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <label>Why are you applying to CIMS? What motivates you? <span class="req">*</span></label>
+          <textarea id="motivation" rows="6" required></textarea>
+          <span class="field-hint">Minimum 150 words recommended.</span>
+        </div>
+      </div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <label>What are your short and long-term professional goals?</label>
+          <textarea id="goals" rows="4"></textarea>
+        </div>
+      </div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <label>Describe your most significant professional achievement or leadership experience</label>
+          <textarea id="achievement" rows="4"></textarea>
+        </div>
+      </div>
+
+      <div class="form-section-label">Professional References</div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Referee 1 — Full Name <span class="req">*</span></label>
+          <input type="text" id="ref1name" required/>
+        </div>
+        <div class="field">
+          <label>Referee 1 — Email Address <span class="req">*</span></label>
+          <input type="email" id="ref1email" required/>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Referee 1 — Position / Title <span class="req">*</span></label>
+          <input type="text" id="ref1title" required/>
+        </div>
+        <div class="field">
+          <label>Referee 1 — Organisation <span class="req">*</span></label>
+          <input type="text" id="ref1org" required/>
+        </div>
+      </div>
+      <div class="form-row cols-2" style="margin-top:8px">
+        <div class="field">
+          <label>Referee 2 — Full Name <span class="req">*</span></label>
+          <input type="text" id="ref2name" required/>
+        </div>
+        <div class="field">
+          <label>Referee 2 — Email Address <span class="req">*</span></label>
+          <input type="email" id="ref2email" required/>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Referee 2 — Position / Title <span class="req">*</span></label>
+          <input type="text" id="ref2title" required/>
+        </div>
+        <div class="field">
+          <label>Referee 2 — Organisation <span class="req">*</span></label>
+          <input type="text" id="ref2org" required/>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-prev" onclick="goToStep(4)">← Back</button>
+        <div class="step-progress">Step <strong>5</strong> of <strong>7</strong></div>
+        <button class="btn-next" onclick="goToStep(6)">Next: Documents <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- INDIVIDUAL TRACK: STEP 6 — DOCUMENTS                   -->
+    <!-- ===================================================== -->
+    <div class="form-panel" id="panel-6">
+      <h2 class="form-panel-title">Supporting <em>Documents</em></h2>
+      <p class="form-panel-sub">Upload clear, legible scans in PDF, JPG, or PNG format. Maximum 5MB per file.</p>
+
+      <div class="form-section-label">Required Documents</div>
+      <div class="form-row cols-1" style="gap:1.5rem">
+        <div class="field">
+          <label>Passport or National ID (Photo Page) <span class="req">*</span></label>
+          <div class="file-upload" id="drop-id">
+            <input type="file" id="upload_id" name="upload_id" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'drop-id','list-id')"/>
+            <div class="file-upload-icon">📋</div>
+            <p><strong>Click to upload</strong> or drag &amp; drop your passport / ID</p>
+            <div class="file-types">PDF, JPG, PNG — Max 5MB</div>
+          </div>
+          <div class="file-list" id="list-id"></div>
+        </div>
+
+        <div class="field">
+          <label>Academic Certificates &amp; Transcripts <span class="req">*</span></label>
+          <div class="file-upload" id="drop-transcripts">
+            <input type="file" id="upload_transcripts" name="upload_transcripts" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'drop-transcripts','list-transcripts')"/>
+            <div class="file-upload-icon">📄</div>
+            <p><strong>Click to upload</strong> your certificates and transcripts</p>
+            <div class="file-types">PDF, JPG, PNG — Max 5MB</div>
+          </div>
+          <div class="file-list" id="list-transcripts"></div>
+        </div>
+
+        <div class="field">
+          <label>Curriculum Vitae / Résumé <span class="req">*</span></label>
+          <div class="file-upload" id="drop-cv">
+            <input type="file" id="upload_cv" name="upload_cv" accept=".pdf,.doc,.docx" onchange="handleFile(this,'drop-cv','list-cv')"/>
+            <div class="file-upload-icon">📝</div>
+            <p><strong>Click to upload</strong> your CV or résumé</p>
+            <div class="file-types">PDF, DOC, DOCX — Max 5MB</div>
+          </div>
+          <div class="file-list" id="list-cv"></div>
+        </div>
+      </div>
+
+      <div class="form-section-label">Optional Documents</div>
+      <div class="form-row cols-1" style="gap:1.5rem">
+        <div class="field">
+          <label>Professional Certifications (ACCA, PMP, CPA, etc.)</label>
+          <div class="file-upload" id="drop-proofcert">
+            <input type="file" id="upload_proofcert" name="upload_proofcert" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'drop-proofcert','list-proofcert')"/>
+            <div class="file-upload-icon">🏆</div>
+            <p><strong>Click to upload</strong> any additional professional certificates</p>
+            <div class="file-types">PDF, JPG, PNG — Max 5MB</div>
+          </div>
+          <div class="file-list" id="list-proofcert"></div>
+        </div>
+
+        <div class="field">
+          <label>Letters of Reference / Recommendation</label>
+          <div class="file-upload" id="drop-refs">
+            <input type="file" id="upload_refs" name="upload_refs" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'drop-refs','list-refs')"/>
+            <div class="file-upload-icon">✉️</div>
+            <p><strong>Click to upload</strong> letters of recommendation</p>
+            <div class="file-types">PDF, JPG, PNG — Max 5MB</div>
+          </div>
+          <div class="file-list" id="list-refs"></div>
+        </div>
+
+        <div class="field">
+          <label>Proof of Work Experience (Employment Letter / Payslip)</label>
+          <div class="file-upload" id="drop-workproof">
+            <input type="file" id="upload_workproof" name="upload_workproof" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'drop-workproof','list-workproof')"/>
+            <div class="file-upload-icon">💼</div>
+            <p><strong>Click to upload</strong> employment letter or proof of work experience</p>
+            <div class="file-types">PDF, JPG, PNG — Max 5MB</div>
+          </div>
+          <div class="file-list" id="list-workproof"></div>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-prev" onclick="goToStep(5)">← Back</button>
+        <div class="step-progress">Step <strong>6</strong> of <strong>7</strong></div>
+        <button class="btn-next" onclick="goToStep(7)">Review Application <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- INDIVIDUAL TRACK: STEP 7 — REVIEW & SUBMIT             -->
+    <!-- ===================================================== -->
+    <div class="form-panel" id="panel-7">
+      <h2 class="form-panel-title">Review <em>&amp; Submit</em></h2>
+      <p class="form-panel-sub">Please review all sections carefully before submitting. You can go back to any section to make corrections.</p>
+
+      <div class="review-section">
+        <div class="review-section-head"><h4>Programme Selection</h4><span class="review-edit" onclick="goToStep(1)">Edit →</span></div>
+        <div class="review-grid">
+          <div class="review-item"><div class="review-item-label">Application Type</div><div class="review-item-val gold" id="rv-apptype">—</div></div>
+          <div class="review-item"><div class="review-item-label">Programme / Grade</div><div class="review-item-val gold" id="rv-programme">—</div></div>
+        </div>
+      </div>
+
+      <div class="review-section">
+        <div class="review-section-head"><h4>Personal Information</h4><span class="review-edit" onclick="goToStep(2)">Edit →</span></div>
+        <div class="review-grid">
+          <div class="review-item"><div class="review-item-label">Full Name</div><div class="review-item-val" id="rv-name">—</div></div>
+          <div class="review-item"><div class="review-item-label">Date of Birth</div><div class="review-item-val" id="rv-dob">—</div></div>
+          <div class="review-item"><div class="review-item-label">Nationality</div><div class="review-item-val" id="rv-nationality">—</div></div>
+          <div class="review-item"><div class="review-item-label">Country of Residence</div><div class="review-item-val" id="rv-country">—</div></div>
+          <div class="review-item"><div class="review-item-label">Email Address</div><div class="review-item-val" id="rv-email">—</div></div>
+          <div class="review-item"><div class="review-item-label">Phone Number</div><div class="review-item-val" id="rv-phone">—</div></div>
+        </div>
+      </div>
+
+      <div class="review-section">
+        <div class="review-section-head"><h4>Academic Background</h4><span class="review-edit" onclick="goToStep(3)">Edit →</span></div>
+        <div class="review-grid">
+          <div class="review-item"><div class="review-item-label">Highest Qualification</div><div class="review-item-val" id="rv-qual">—</div></div>
+          <div class="review-item"><div class="review-item-label">Field of Study</div><div class="review-item-val" id="rv-field">—</div></div>
+          <div class="review-item"><div class="review-item-label">Institution</div><div class="review-item-val" id="rv-inst">—</div></div>
+          <div class="review-item"><div class="review-item-label">Year of Graduation</div><div class="review-item-val" id="rv-gradyr">—</div></div>
+        </div>
+      </div>
+
+      <div class="review-section">
+        <div class="review-section-head"><h4>Professional Experience</h4><span class="review-edit" onclick="goToStep(4)">Edit →</span></div>
+        <div class="review-grid">
+          <div class="review-item"><div class="review-item-label">Job Title</div><div class="review-item-val" id="rv-job">—</div></div>
+          <div class="review-item"><div class="review-item-label">Employer</div><div class="review-item-val" id="rv-employer">—</div></div>
+          <div class="review-item"><div class="review-item-label">Industry</div><div class="review-item-val" id="rv-industry">—</div></div>
+          <div class="review-item"><div class="review-item-label">Total Experience</div><div class="review-item-val" id="rv-exp">—</div></div>
+        </div>
+      </div>
+
+      <div class="declaration-box">
+        <p>By submitting this application, I confirm that all information provided is accurate, complete, and truthful. I understand that any false or misleading information may result in the rejection of this application or, if discovered after admission, the cancellation of my membership or enrolment. I consent to CIMS processing my personal data in accordance with its Privacy Policy for the purpose of evaluating this application.</p>
+        <label class="declaration-check" id="declarationLabel">
+          <input type="checkbox" id="declarationCheck"/>
+          <span>I confirm that all information is accurate and I agree to the <a href="privacy.html">Privacy Policy</a> and Terms of Service of CIMS.</span>
+        </label>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-prev" onclick="goToStep(6)">← Back</button>
+        <div class="step-progress">Step <strong>7</strong> of <strong>7</strong></div>
+        <button class="btn-submit-final" id="submitBtn" onclick="submitApplication()">
+          <span id="submitBtnText">Submit Application ✓</span>
+          <span class="spinner" id="submitSpinner"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- PARTNERSHIP TRACK: STEP P2 — ORGANISATION & CONTACT    -->
+    <!-- ===================================================== -->
+    <div class="form-panel" id="panel-p2">
+      <h2 class="form-panel-title">Organisation <em>&amp; Contact</em></h2>
+      <p class="form-panel-sub">Tell us about your institution and the primary contact for this accreditation.</p>
+
+      <div class="form-section-label">1. Organisation Details</div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Full Legal Name of Institution / Company <span class="req">*</span></label>
+          <input type="text" id="orgLegalName" required/>
+        </div>
+        <div class="field">
+          <label>Trading Name (if different)</label>
+          <input type="text" id="orgTradingName"/>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Country <span class="req">*</span></label>
+          <input type="text" id="orgCountry" required/>
+        </div>
+        <div class="field">
+          <label>Year Established <span class="req">*</span></label>
+          <input type="number" id="orgYearEstablished" min="1900" max="2026" required/>
+        </div>
+      </div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <label>Address <span class="req">*</span></label>
+          <textarea id="orgAddress" rows="2" required></textarea>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Website</label>
+          <input type="text" id="orgWebsite"/>
+        </div>
+        <div class="field">
+          <label>Legal Status (e.g. Ltd, LLC)</label>
+          <input type="text" id="orgLegalStatus"/>
+        </div>
+      </div>
+
+      <div class="form-section-label">2. Contact Person Information</div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="contactFullName" required/>
+        </div>
+        <div class="field">
+          <label>Position / Title <span class="req">*</span></label>
+          <input type="text" id="contactPosition" required/>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Email Address <span class="req">*</span></label>
+          <input type="email" id="contactEmail" required/>
+        </div>
+        <div class="field">
+          <label>Phone Number <span class="req">*</span></label>
+          <input type="tel" id="contactPhone" required/>
+        </div>
+      </div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <label>Secondary Contact (optional)</label>
+          <input type="text" id="contactSecondary"/>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-prev" onclick="goToStep(1)">← Back</button>
+        <div class="step-progress">Step <strong>2</strong> of <strong>6</strong></div>
+        <button class="btn-next" onclick="goToStep('p3')">Next: Overview &amp; Accreditation <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- PARTNERSHIP TRACK: STEP P3 — OVERVIEW & ACCREDITATION  -->
+    <!-- ===================================================== -->
+    <div class="form-panel" id="panel-p3">
+      <h2 class="form-panel-title">Overview <em>&amp; Accreditation Request</em></h2>
+
+      <div class="form-section-label">3. Organisation Overview</div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <label>Brief description of your organisation and services <span class="req">*</span></label>
+          <textarea id="orgDescription" rows="4" required></textarea>
+        </div>
+      </div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <label>Key training programmes offered</label>
+          <textarea id="orgKeyPrograms" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="form-row cols-3">
+        <div class="field">
+          <label>No. of trainers / faculty</label>
+          <input type="number" id="orgTrainerCount" min="0"/>
+        </div>
+        <div class="field">
+          <label>Target audience</label>
+          <input type="text" id="orgTargetAudience"/>
+        </div>
+        <div class="field">
+          <label>Regions served</label>
+          <input type="text" id="orgRegionsServed"/>
+        </div>
+      </div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <label>Training delivery format</label>
+          <select id="orgDeliveryFormat">
+            <option value="">Select</option>
+            <option>Online</option><option>In-person</option><option>Hybrid</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-section-label">4. Accreditation Request</div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <label>CIMS qualifications of interest <span class="req">*</span></label>
+          <textarea id="accredQualsInterest" rows="2" required></textarea>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Proposed delivery format</label>
+          <select id="accredDeliveryFormat">
+            <option value="">Select</option>
+            <option>Online</option><option>In-person</option><option>Hybrid</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Estimated number of learners per year</label>
+          <input type="number" id="accredLearnersPerYear" min="0"/>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-prev" onclick="goToStep('p2')">← Back</button>
+        <div class="step-progress">Step <strong>3</strong> of <strong>6</strong></div>
+        <button class="btn-next" onclick="goToStep('p4')">Next: Training Capacity <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- PARTNERSHIP TRACK: STEP P4 — TRAINING CAPACITY         -->
+    <!-- ===================================================== -->
+    <div class="form-panel" id="panel-p4">
+      <h2 class="form-panel-title">Training <em>Capacity</em></h2>
+
+      <div class="form-section-label">5. Training Capacity</div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <label>Training facilities / platforms used</label>
+          <textarea id="capFacilities" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>No. of classrooms / training rooms</label>
+          <input type="number" id="capClassrooms" min="0"/>
+        </div>
+        <div class="field">
+          <label>E-learning platform(s) used (if any)</label>
+          <input type="text" id="capElearningPlatform"/>
+        </div>
+      </div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <label>Quality assurance processes in place (if any)</label>
+          <textarea id="capQA" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-prev" onclick="goToStep('p3')">← Back</button>
+        <div class="step-progress">Step <strong>4</strong> of <strong>6</strong></div>
+        <button class="btn-next" onclick="goToStep('p5')">Next: Documents <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- PARTNERSHIP TRACK: STEP P5 — DOCUMENTS                 -->
+    <!-- ===================================================== -->
+    <div class="form-panel" id="panel-p5">
+      <h2 class="form-panel-title">Supporting <em>Documents</em></h2>
+      <p class="form-panel-sub">Upload clear, legible scans in PDF, JPG, or PNG format. Maximum 5MB per file.</p>
+
+      <div class="form-section-label">6. Attach Documents</div>
+      <div class="form-row cols-1" style="gap:1.5rem">
+        <div class="field">
+          <label>Company Profile <span class="req">*</span></label>
+          <div class="file-upload" id="drop-companyprofile">
+            <input type="file" id="upload_companyprofile" name="upload_companyprofile" accept=".pdf,.doc,.docx" onchange="handleFile(this,'drop-companyprofile','list-companyprofile')"/>
+            <div class="file-upload-icon">🏢</div>
+            <p><strong>Click to upload</strong> your company profile</p>
+            <div class="file-types">PDF, DOC, DOCX — Max 5MB</div>
+          </div>
+          <div class="file-list" id="list-companyprofile"></div>
+        </div>
+
+        <div class="field">
+          <label>Lead Trainer CV(s) <span class="req">*</span></label>
+          <div class="file-upload" id="drop-trainercv">
+            <input type="file" id="upload_trainercv" name="upload_trainercv" accept=".pdf,.doc,.docx" onchange="handleFile(this,'drop-trainercv','list-trainercv')"/>
+            <div class="file-upload-icon">📝</div>
+            <p><strong>Click to upload</strong> lead trainer CV(s)</p>
+            <div class="file-types">PDF, DOC, DOCX — Max 5MB</div>
+          </div>
+          <div class="file-list" id="list-trainercv"></div>
+        </div>
+
+        <div class="field">
+          <label>Business Registration Certificate <span class="req">*</span></label>
+          <div class="file-upload" id="drop-bizreg">
+            <input type="file" id="upload_bizreg" name="upload_bizreg" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'drop-bizreg','list-bizreg')"/>
+            <div class="file-upload-icon">📜</div>
+            <p><strong>Click to upload</strong> your business registration certificate</p>
+            <div class="file-types">PDF, JPG, PNG — Max 5MB</div>
+          </div>
+          <div class="file-list" id="list-bizreg"></div>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-prev" onclick="goToStep('p4')">← Back</button>
+        <div class="step-progress">Step <strong>5</strong> of <strong>6</strong></div>
+        <button class="btn-next" onclick="goToStep('p6')">Review &amp; Declaration <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- PARTNERSHIP TRACK: STEP P6 — DECLARATION & SUBMIT      -->
+    <!-- ===================================================== -->
+    <div class="form-panel" id="panel-p6">
+      <h2 class="form-panel-title">Review <em>&amp; Submit</em></h2>
+      <p class="form-panel-sub">Please review your organisation's application before submitting.</p>
+
+      <div class="review-section">
+        <div class="review-section-head"><h4>Organisation</h4><span class="review-edit" onclick="goToStep('p2')">Edit →</span></div>
+        <div class="review-grid">
+          <div class="review-item"><div class="review-item-label">Legal Name</div><div class="review-item-val gold" id="rv-orgname">—</div></div>
+          <div class="review-item"><div class="review-item-label">Country</div><div class="review-item-val" id="rv-orgcountry">—</div></div>
+          <div class="review-item"><div class="review-item-label">Contact Person</div><div class="review-item-val" id="rv-orgcontact">—</div></div>
+          <div class="review-item"><div class="review-item-label">Contact Email</div><div class="review-item-val" id="rv-orgemail">—</div></div>
+        </div>
+      </div>
+
+      <div class="review-section">
+        <div class="review-section-head"><h4>Accreditation Request</h4><span class="review-edit" onclick="goToStep('p3')">Edit →</span></div>
+        <div class="review-grid">
+          <div class="review-item"><div class="review-item-label">Qualifications of Interest</div><div class="review-item-val" id="rv-orgquals">—</div></div>
+          <div class="review-item"><div class="review-item-label">Estimated Learners / Year</div><div class="review-item-val" id="rv-orglearners">—</div></div>
+        </div>
+      </div>
+
+      <div class="form-section-label">7. Declaration</div>
+      <div class="declaration-box">
+        <p>I confirm that the above information is accurate and agree to CIMS accreditation terms. I understand that the CIMS Secretariat will review this application and may request additional information or a verification call before a partnership decision is issued.</p>
+        <label class="declaration-check" id="declarationLabelP">
+          <input type="checkbox" id="declarationCheckP"/>
+          <span>I confirm that the above information is accurate and I agree to the <a href="privacy.html">Privacy Policy</a> and CIMS accreditation terms.</span>
+        </label>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Signatory Name <span class="req">*</span></label>
+          <input type="text" id="orgSignatoryName" required/>
+        </div>
+        <div class="field">
+          <label>Date <span class="req">*</span></label>
+          <input type="date" id="orgSignatoryDate" required/>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-prev" onclick="goToStep('p5')">← Back</button>
+        <div class="step-progress">Step <strong>6</strong> of <strong>6</strong></div>
+        <button class="btn-submit-final" id="submitBtnP" onclick="submitPartnership()">
+          <span id="submitBtnTextP">Submit Application ✓</span>
+          <span class="spinner" id="submitSpinnerP"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- UPGRADE TRACK: STEP U2 — CURRENT MEMBERSHIP DETAILS    -->
+    <!-- ===================================================== -->
+    <div class="form-panel" id="panel-u2">
+      <h2 class="form-panel-title">Current <em>Membership Details</em></h2>
+      <p class="form-panel-sub">Tell us who you are and provide your current CIMS membership number so we can locate your record.</p>
+
+      <div class="form-section-label">Applicant Details</div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="upgradeFullName" required/>
+        </div>
+        <div class="field">
+          <label>Email Address <span class="req">*</span></label>
+          <input type="email" id="upgradeEmail" required/>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field">
+          <label>Phone Number</label>
+          <input type="tel" id="upgradePhone"/>
+        </div>
+        <div class="field">
+          <label>Current Membership Number <span class="req">*</span></label>
+          <input type="text" id="currentMembershipNumber" required/>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-prev" onclick="goToStep(1)">← Back</button>
+        <div class="step-progress">Step <strong>2</strong> of <strong>3</strong></div>
+        <button class="btn-next" onclick="goToStep('u3')">Next: Documents <span>→</span></button>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- UPGRADE TRACK: STEP U3 — DOCUMENTS & SUBMIT            -->
+    <!-- ===================================================== -->
+    <div class="form-panel" id="panel-u3">
+      <h2 class="form-panel-title">Latest <em>Documents &amp; Submit</em></h2>
+      <p class="form-panel-sub">Upload clear, legible scans in PDF, JPG, or PNG format. Maximum 5MB per file.</p>
+
+      <div class="form-section-label">Latest Documents</div>
+      <div class="form-row cols-1" style="gap:1.5rem">
+        <div class="field">
+          <label>Latest Membership Certificate <span class="req">*</span></label>
+          <div class="file-upload" id="drop-currentcert">
+            <input type="file" id="upload_currentcert" name="upload_currentcert" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'drop-currentcert','list-currentcert')"/>
+            <div class="file-upload-icon">📜</div>
+            <p><strong>Click to upload</strong> your current membership certificate</p>
+            <div class="file-types">PDF, JPG, PNG — Max 5MB</div>
+          </div>
+          <div class="file-list" id="list-currentcert"></div>
+        </div>
+
+        <div class="field">
+          <label>Supporting Document (e.g. updated CV, proof of continued practice)</label>
+          <div class="file-upload" id="drop-upgradesupport">
+            <input type="file" id="upload_upgradesupport" name="upload_upgradesupport" accept=".pdf,.doc,.docx" onchange="handleFile(this,'drop-upgradesupport','list-upgradesupport')"/>
+            <div class="file-upload-icon">📝</div>
+            <p><strong>Click to upload</strong> a supporting document</p>
+            <div class="file-types">PDF, DOC, DOCX — Max 5MB</div>
+          </div>
+          <div class="file-list" id="list-upgradesupport"></div>
+        </div>
+      </div>
+
+      <div class="review-section">
+        <div class="review-section-head"><h4>Upgrade Summary</h4><span class="review-edit" onclick="goToStep(1)">Edit →</span></div>
+        <div class="review-grid">
+          <div class="review-item"><div class="review-item-label">New Membership Grade</div><div class="review-item-val gold" id="rv-upgradegrade">—</div></div>
+          <div class="review-item"><div class="review-item-label">Current Membership No.</div><div class="review-item-val" id="rv-upgradenum">—</div></div>
+          <div class="review-item"><div class="review-item-label">Full Name</div><div class="review-item-val" id="rv-upgradename">—</div></div>
+          <div class="review-item"><div class="review-item-label">Email Address</div><div class="review-item-val" id="rv-upgradeemail">—</div></div>
+        </div>
+      </div>
+
+      <div class="declaration-box">
+        <p>I confirm that the above information is accurate and agree to CIMS membership upgrade terms. I understand that the CIMS Secretariat will review this application and may request additional information before an upgrade decision is issued.</p>
+        <label class="declaration-check" id="declarationLabelU">
+          <input type="checkbox" id="declarationCheckU"/>
+          <span>I confirm that the above information is accurate and I agree to the <a href="privacy.html">Privacy Policy</a> and Terms of Service of CIMS.</span>
+        </label>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn-prev" onclick="goToStep('u2')">← Back</button>
+        <div class="step-progress">Step <strong>3</strong> of <strong>3</strong></div>
+        <button class="btn-submit-final" id="submitBtnU" onclick="submitUpgrade()">
+          <span id="submitBtnTextU">Submit Application ✓</span>
+          <span class="spinner" id="submitSpinnerU"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SUCCESS SCREEN -->
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon">✓</div>
+      <h2>Application <em>Submitted</em></h2>
+      <p id="successMessage">Thank you for applying to CIMS. Your application has been received and is now under review. You will receive a confirmation email shortly.</p>
+      <div class="success-ref">
+        <div class="success-ref-label">Your Application Reference Number</div>
+        <div class="success-ref-num" id="refNumber">CIMS-2026-——</div>
+      </div>
+      <p style="font-size:.84rem;color:var(--slate-soft)">Please save this reference number. Our team will contact you within <strong>2–3 working days</strong>. For enquiries, email <a href="mailto:admin@charteredims.com" style="color:var(--burgundy)">admin@charteredims.com</a>.</p>
+      <div class="success-btns" style="margin-top:24px">
+        <a href="index.html" class="btn-next" style="display:inline-flex;text-decoration:none;align-items:center;gap:8px">Return to Home</a>
+      </div>
+    </div>
+
+  </div><!-- /form-area -->
+</div><!-- /app-layout -->
+
+<footer id="site-footer">
+  <div class="wrap">
+
+
+
+    <div class="foot-grid" style="padding-top:40px;">
+      <div class="foot-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><img src="assets/logos/logo.png" alt="CIMS logo"></span>
+        </a>
+        <p class="foot-institution-name">Chartered Institute of Management Specialists</p>
+        <p>Step into the world of management and future-ready your career with the knowledge, skills and ethics the profession demands.</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/profile.php?id=61590429427981" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg></a>
+          <a href="https://www.linkedin.com/company/chartered-institute-of-management-specialists/about/?viewAsMember=true" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+          <a href="https://www.instagram.com/charteredims/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.23.41.55.21.95.47 1.37.89.42.42.68.82.89 1.37.17.42.36 1.05.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.41 2.23-.21.55-.47.95-.89 1.37-.42.42-.82.68-1.37.89-.42.17-1.05.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.23-.41-.55-.21-.95-.47-1.37-.89-.42-.42-.68-.82-.89-1.37-.17-.42-.36-1.05-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.24-1.8.41-2.23.21-.55.47-.95.89-1.37.42-.42.82-.68 1.37-.89.42-.17 1.05-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.39C1.35 2.68.94 3.35.63 4.14.33 4.9.14 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.85a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h4>About Us</h4>
+        <ul>
+          <li><a href="history.html">History</a></li>
+          <li><a href="council-members.html">Council Members</a></li>
+          <li><a href="overseas-representatives.html">Overseas Representatives</a></li>
+          <li><a href="legal-standing.html">Legal Standing</a></li>
+          <li><a href="why-choose-us.html">Why Choose Us</a></li>
+          <li><a href="recognition.html">Professional Recognition</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Membership</h4>
+        <ul>
+          <li><a href="membership.html">Overview</a></li>
+          <li><a href="membership-associate.html">Associate Member (ACIMS)</a></li>
+          <li><a href="membership-chartered.html">Chartered Member (MCIMS)</a></li>
+          <li><a href="membership-fellow.html">Chartered Fellow (FCIMS)</a></li>
+          <li><a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a></li>
+          <li><a href="membership-benefits.html">Membership Benefits</a></li>
+        </ul>
+      </div>
+
+       <div>
+        <h4>Qualifications &amp; Employers</h4>
+        <ul>
+          <li><a href="specialist-qualifications.html">Specialist Qualifications</a></li>
+          <li><a href="practitioner-qualifications.html">Practitioner Qualifications</a></li>
+          <li><a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
+          <li><a href="partnership-framework.html">Partnership Framework</a></li>
+          <li><a href="employers-hire-member.html">Hire a CIMS Member</a></li>
+        </ul>
+      </div>
+
+
+
+      <div>
+        <h4>Member Area</h4>
+        <ul>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="member-login.html">Member Log In</a></li>
+          <li><a href="admin-login.html">Admin Log In</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><strong>Registered Office Address:</strong><br>821 N ST STE 102<br>Anchorage, AK 99501, USA</li>
+          <li>Monday to Saturday, 9:00 to 17:00</li>
+          <li><a href="mailto:admin@charteredims.com">admin@charteredims.com</a></li>
+          <li><a href="tel:+18592109109">+1 (859) 210-9109</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Chartered Institute of Management Specialists, LLC. All rights reserved.</span>
+      <span style="display:flex;gap:18px;flex-wrap:wrap;">
+        <a href="privacy.html">Privacy</a>
+        <a href="legal-standing.html">Legal Standing</a>
+        <a href="faq.html">FAQ</a>
+        <a href="certificate-verification.html">Certificate Verification</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="site-search.js"></script>
+<script>
+// ===================================================================
+// STEP DEFINITIONS FOR THE TWO TRACKS
+// ===================================================================
+const INDIVIDUAL_STEPS = [
+  {id:1,   label:'Programme Selection'},
+  {id:2,   label:'Personal Info'},
+  {id:3,   label:'Academic Background'},
+  {id:4,   label:'Professional Experience'},
+  {id:5,   label:'Statement & References'},
+  {id:6,   label:'Documents'},
+  {id:7,   label:'Review & Submit'}
+];
+const PARTNERSHIP_STEPS = [
+  {id:1,   label:'Programme Selection'},
+  {id:'p2',label:'Organisation & Contact'},
+  {id:'p3',label:'Overview & Accreditation'},
+  {id:'p4',label:'Training Capacity'},
+  {id:'p5',label:'Documents'},
+  {id:'p6',label:'Declaration & Submit'}
+];
+const UPGRADE_STEPS = [
+  {id:1,   label:'Programme Selection'},
+  {id:'u2',label:'Current Membership'},
+  {id:'u3',label:'Documents & Submit'}
+];
+
+let currentTrack = 'individual';       // 'individual' | 'partnership' | 'upgrade'
+let currentStep  = 1;                  // number, 'p2'..'p6', or 'u2'..'u3'
+
+function activeSteps(){
+  if(currentTrack === 'partnership') return PARTNERSHIP_STEPS;
+  if(currentTrack === 'upgrade')     return UPGRADE_STEPS;
+  return INDIVIDUAL_STEPS;
+}
+
+// ---- ROUTES THE "CONTINUE" BUTTON ON STEP 1 TO THE RIGHT TRACK ----
+function goToStepFrom1(){
+  if(currentTrack === 'partnership') { goToStep('p2'); return; }
+  if(currentTrack === 'upgrade')     { goToStep('u2'); return; }
+  goToStep(2);
+}
+
+function renderSidebar(){
+  const steps = activeSteps();
+  document.getElementById('sidebarTrackName').textContent = currentTrack === 'partnership' ? 'Partnership Application' : 'Individual Application';
+  const list = document.getElementById('stepList');
+  list.innerHTML = steps.map((s, i) => `
+    <div class="step-item" data-step="${s.id}">
+      <div class="step-num">${i+1}</div>
+      <div class="step-text"><div class="step-text-label">Step ${i+1}</div><div class="step-text-name">${s.label}</div></div>
+      <span class="step-check">✓</span>
+    </div>`).join('');
+  markSidebar();
+}
+
+function markSidebar(){
+  const steps = activeSteps();
+  const idx = steps.findIndex(s => s.id === currentStep);
+  document.querySelectorAll('.step-item').forEach(el => {
+    const sid = isNaN(el.dataset.step) ? el.dataset.step : +el.dataset.step;
+    const i = steps.findIndex(s => s.id === sid);
+    el.classList.remove('active','done');
+    if(i < idx) el.classList.add('done');
+    if(i === idx) el.classList.add('active');
+  });
+}
+
+// ---- HAMBURGER (n/a on this page, no-op kept for parity) ----
+
+// ---- STEP NAVIGATION ----
+function goToStep(step){
+  const steps = activeSteps();
+  const fromIdx = steps.findIndex(s => s.id === currentStep);
+  const toIdx   = steps.findIndex(s => s.id === step);
+  if(toIdx === -1) return;
+  if(toIdx > fromIdx && !validateStep(currentStep)) return;
+
+  document.getElementById('panel-' + currentStep).classList.remove('active');
+  currentStep = step;
+  document.getElementById('panel-' + currentStep).classList.add('active');
+
+  if(step === 7) populateReview();
+  if(step === 'p6') populateReviewPartnership();
+  if(step === 'u3') populateReviewUpgrade();
+
+  markSidebar();
+  document.getElementById('appLayout').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function validateStep(step){
+  let ok = true;
+  const panel = document.getElementById('panel-' + step);
+  panel.querySelectorAll('[required]').forEach(el => {
+    el.classList.remove('error');
+    if(!el.value.trim()){ el.classList.add('error'); ok = false; }
+  });
+  if(step === 2){
+    const em = document.getElementById('email');
+    const ec = document.getElementById('emailConfirm');
+    if(em.value && ec.value && em.value !== ec.value){
+      ec.classList.add('error'); ok = false;
+      alert('Email addresses do not match. Please check and try again.');
+    }
+  }
+  if(step === 1){
+    const type = document.getElementById('appType').value;
+    if(type === 'qualification'){
+      const cat = document.getElementById('qualCategory').value;
+      if(!cat){ ok = false; alert('Please select a Qualification Category.'); }
+      else if(cat === 'practitioner' && !document.getElementById('practitionerDesignation').value){ ok = false; alert('Please select a Practitioner Designation.'); }
+      else if(cat === 'specialist' && !document.getElementById('specialistDesignation').value){ ok = false; alert('Please select a Specialist Designation.'); }
+    }
+    if(type === 'upgrade' && !document.getElementById('upgradeGrade').value){
+      ok = false; alert('Please select the new membership grade you are upgrading to.');
+    }
+  }
+  if(!ok){ panel.querySelector('.error')?.scrollIntoView({behavior:'smooth',block:'center'}); }
+  return ok;
+}
+
+// ---- APP TYPE SWITCHER ----
+function updateAppType(){
+  const val = document.getElementById('appType').value;
+
+  ['membershipOptions','qualificationOptions','practitionerOptions','specialistOptions','upgradeOptions','partnershipOptions'].forEach(id => {
+    document.getElementById(id).style.display = 'none';
+  });
+  if(val === 'membership')    document.getElementById('membershipOptions').style.display = 'block';
+  if(val === 'qualification') document.getElementById('qualificationOptions').style.display = 'block';
+  if(val === 'upgrade')       document.getElementById('upgradeOptions').style.display = 'block';
+  if(val === 'partnership')   document.getElementById('partnershipOptions').style.display = 'block';
+
+  document.getElementById('studyModeField').style.display = (val === 'qualification') ? 'block' : 'none';
+  if(val !== 'qualification') document.getElementById('studyMode').value = '';
+
+  // Switch track
+  if(val === 'partnership')      currentTrack = 'partnership';
+  else if(val === 'upgrade')     currentTrack = 'upgrade';
+  else                            currentTrack = 'individual';
+  renderSidebar();
+  document.getElementById('stepTotal1').textContent = activeSteps().length;
+
+  updateProgInfo();
+}
+
+function updateQualCategory(){
+  const cat = document.getElementById('qualCategory').value;
+  document.getElementById('practitionerOptions').style.display = (cat === 'practitioner') ? 'block' : 'none';
+  document.getElementById('specialistOptions').style.display   = (cat === 'specialist')   ? 'block' : 'none';
+  document.getElementById('progInfoBox').style.display = 'none';
+}
+
+function updateProgInfo(){
+  const box = document.getElementById('progInfoBox');
+  const type = document.getElementById('appType').value;
+  let text = '';
+  if(type === 'membership'){
+    const g = document.getElementById('membershipGrade').value;
+    text = g ? `<strong>${g}</strong>Please refer to the Membership page for full eligibility criteria for this grade.` : '';
+  }
+  if(type === 'qualification'){
+    const cat = document.getElementById('qualCategory').value;
+    const val = cat === 'practitioner' ? document.getElementById('practitionerDesignation').value
+              : cat === 'specialist'   ? document.getElementById('specialistDesignation').value : '';
+    text = val ? `<strong>${val}</strong>Part of the CIMS ${cat === 'practitioner' ? 'Practitioner' : 'Specialist'} Qualifications framework. Assessment is via credential verification, portfolio review, and an applied case study.` : '';
+  }
+  if(text){ box.innerHTML = text; box.style.display = 'block'; } else { box.style.display = 'none'; }
+}
+
+
+// ---- FILE UPLOAD ----
+function handleFile(input, dropId, listId){
+  const file = input.files[0];
+  if(!file) return;
+  const maxMB = 5;
+  if(file.size > maxMB * 1024 * 1024){
+    alert('File too large. Maximum size is 5MB.');
+    input.value=''; return;
+  }
+  const list = document.getElementById(listId);
+  const size = (file.size/1024).toFixed(1)+'KB';
+  list.innerHTML = `<div class="file-item">
+    <span>✅</span>
+    <span class="file-item-name">${file.name}</span>
+    <span class="file-item-size">${size}</span>
+    <span class="file-item-remove" onclick="removeFile('${input.id}','${dropId}','${listId}')">✕</span>
+  </div>`;
+  document.getElementById(dropId).style.borderColor='var(--green)';
+}
+function removeFile(inputId, dropId, listId){
+  document.getElementById(inputId).value='';
+  document.getElementById(listId).innerHTML='';
+  document.getElementById(dropId).style.borderColor='';
+}
+
+// ---- PROGRAMME LABEL HELPERS ----
+function getAppTypeLabel(){
+  const map = { membership:'Membership Application', qualification:'Qualification Framework', upgrade:'Membership Upgrade', partnership:'Partnership Accreditation' };
+  return map[document.getElementById('appType').value] || '—';
+}
+function getProgramme(){
+  const type = document.getElementById('appType').value;
+  if(type === 'membership')   return document.getElementById('membershipGrade')?.value || '—';
+  if(type === 'qualification'){
+    const cat = document.getElementById('qualCategory')?.value;
+    if(cat === 'practitioner') return document.getElementById('practitionerDesignation')?.value || '—';
+    if(cat === 'specialist')   return document.getElementById('specialistDesignation')?.value || '—';
+    return '—';
+  }
+  if(type === 'upgrade')      return `Upgrade to ${document.getElementById('upgradeGrade')?.value || ''}`;
+  if(type === 'partnership')  return document.getElementById('partnershipType')?.value || 'Partnership Accreditation';
+  return '—';
+}
+function v(id){ return document.getElementById(id)?.value?.trim() || '—'; }
+
+function populateReview(){
+  document.getElementById('rv-apptype').textContent    = getAppTypeLabel();
+  document.getElementById('rv-programme').textContent  = getProgramme();
+  document.getElementById('rv-name').textContent       = [v('title'),v('firstName'),v('middleName')!=='—'?v('middleName'):'',v('lastName')].filter(Boolean).join(' ');
+  document.getElementById('rv-dob').textContent        = v('dob');
+  document.getElementById('rv-nationality').textContent= v('nationality');
+  document.getElementById('rv-country').textContent    = v('country');
+  document.getElementById('rv-email').textContent      = v('email');
+  document.getElementById('rv-phone').textContent      = v('phone');
+  document.getElementById('rv-qual').textContent       = v('highestQual');
+  document.getElementById('rv-field').textContent      = v('fieldOfStudy');
+  document.getElementById('rv-inst').textContent       = v('institution1');
+  document.getElementById('rv-gradyr').textContent     = v('gradYear');
+  document.getElementById('rv-job').textContent        = v('jobTitle');
+  document.getElementById('rv-employer').textContent   = v('employer');
+  document.getElementById('rv-industry').textContent   = v('industry');
+  document.getElementById('rv-exp').textContent        = v('yearsExp');
+}
+
+function populateReviewPartnership(){
+  document.getElementById('rv-orgname').textContent    = v('orgLegalName');
+  document.getElementById('rv-orgcountry').textContent = v('orgCountry');
+  document.getElementById('rv-orgcontact').textContent = v('contactFullName');
+  document.getElementById('rv-orgemail').textContent   = v('contactEmail');
+  document.getElementById('rv-orgquals').textContent   = v('accredQualsInterest');
+  document.getElementById('rv-orglearners').textContent= v('accredLearnersPerYear');
+}
+
+function populateReviewUpgrade(){
+  document.getElementById('rv-upgradegrade').textContent = v('upgradeGrade');
+  document.getElementById('rv-upgradenum').textContent   = v('currentMembershipNumber');
+  document.getElementById('rv-upgradename').textContent  = v('upgradeFullName');
+  document.getElementById('rv-upgradeemail').textContent = v('upgradeEmail');
+}
+
+// ---- REFERENCE NUMBER GENERATOR ----
+function genRef(prefix){
+  const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let r='';
+  for(let i=0;i<8;i++) r+=chars[Math.floor(Math.random()*chars.length)];
+  return (prefix || 'CIMS') + '-2026-' + r;
+}
+
+// ---- SUBMIT: INDIVIDUAL TRACK ----
+function submitApplication(){
+  if(!document.getElementById('declarationCheck').checked){
+    document.getElementById('declarationLabel').style.color='var(--red)';
+    alert('Please read and confirm the declaration before submitting.');
+    return;
+  }
+  const btn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('submitBtnText');
+  const spinner = document.getElementById('submitSpinner');
+  btn.disabled=true; btnText.style.display='none'; spinner.style.display='block';
+
+  const ref = genRef('CIMS');
+
+  const formData = new FormData();
+  formData.append('track', 'individual');
+  formData.append('appType',        document.getElementById('appType').value);
+  formData.append('programSelect',  getProgramme());
+  formData.append('studyMode',      document.getElementById('appType').value === 'qualification' ? v('studyMode') : 'N/A');
+  formData.append('title',          v('title'));
+  formData.append('firstName',      v('firstName'));
+  formData.append('lastName',       v('lastName'));
+  formData.append('middleName',     v('middleName'));
+  formData.append('dob',            v('dob'));
+  formData.append('gender',         v('gender'));
+  formData.append('nationality',    v('nationality'));
+  formData.append('passportNum',    v('passportNum'));
+  formData.append('country',        v('country'));
+  formData.append('stateProvince',  v('stateProvince'));
+  formData.append('email',          v('email'));
+  formData.append('phone',          v('phone'));
+  formData.append('whatsapp',       v('whatsapp'));
+  formData.append('address',        v('address'));
+  formData.append('highestQual',    v('highestQual'));
+  formData.append('fieldOfStudy',   v('fieldOfStudy'));
+  formData.append('institution1',   v('institution1'));
+  formData.append('instCountry1',   v('instCountry1'));
+  formData.append('gradYear',       v('gradYear'));
+  formData.append('grade',          v('grade'));
+  formData.append('instrLang',      v('instrLang'));
+  formData.append('qual2',          v('qual2'));
+  formData.append('body2',          v('body2'));
+  formData.append('qual3',          v('qual3'));
+  formData.append('body3',          v('body3'));
+  formData.append('jobTitle',       v('jobTitle'));
+  formData.append('employer',       v('employer'));
+  formData.append('industry',       v('industry'));
+  formData.append('yearsExp',       v('yearsExp'));
+  formData.append('mgmtExp',        v('mgmtExp'));
+  formData.append('orgSize',        v('orgSize'));
+  formData.append('mgmtLevel',      v('mgmtLevel'));
+  formData.append('prevJobTitle',   v('prevJobTitle'));
+  formData.append('prevEmployer',   v('prevEmployer'));
+  formData.append('prevYears',      v('prevYears'));
+  formData.append('prevResp',       v('prevResp'));
+  formData.append('cpdActivities',  v('cpdActivities'));
+  formData.append('motivation',     v('motivation'));
+  formData.append('goals',          v('goals'));
+  formData.append('achievement',    v('achievement'));
+  formData.append('ref1name',       v('ref1name'));
+  formData.append('ref1email',      v('ref1email'));
+  formData.append('ref1title',      v('ref1title'));
+  formData.append('ref1org',        v('ref1org'));
+  formData.append('ref2name',       v('ref2name'));
+  formData.append('ref2email',      v('ref2email'));
+  formData.append('ref2title',      v('ref2title'));
+  formData.append('ref2org',        v('ref2org'));
+  formData.append('ref', ref);
+
+  const fileFields = ['upload_id','upload_transcripts','upload_cv','upload_proofcert','upload_refs','upload_workproof'];
+  fileFields.forEach(fid => {
+    const fi = document.getElementById(fid);
+    if(fi && fi.files.length) formData.append(fid, fi.files[0]);
+  });
+
+  fetch('send_mail_cims.php', { method: 'POST', body: formData })
+    .then(r => r.json())
+    .then(data => {
+      if(data.success){
+        showSuccess(ref, 'Thank you for applying to CIMS. Your application has been received and is now under review by our Membership Committee. You will receive a confirmation email shortly.');
+      } else {
+        alert('Submission error: ' + (data.message || 'Please try again or email us directly.'));
+        btn.disabled=false; btnText.style.display='inline'; spinner.style.display='none';
+      }
+    })
+    .catch(() => {
+      alert('There was a network error submitting your application. Please try again or email admin@charteredims.com directly.');
+      btn.disabled=false; btnText.style.display='inline'; spinner.style.display='none';
+    });
+}
+
+// ---- SUBMIT: PARTNERSHIP TRACK ----
+function submitPartnership(){
+  if(!document.getElementById('declarationCheckP').checked){
+    document.getElementById('declarationLabelP').style.color='var(--red)';
+    alert('Please read and confirm the declaration before submitting.');
+    return;
+  }
+  if(!validateStep('p6')) return;
+
+  const btn = document.getElementById('submitBtnP');
+  const btnText = document.getElementById('submitBtnTextP');
+  const spinner = document.getElementById('submitSpinnerP');
+  btn.disabled=true; btnText.style.display='none'; spinner.style.display='block';
+
+  const ref = genRef('CIMS-PTR');
+
+  const formData = new FormData();
+  formData.append('track', 'partnership');
+  formData.append('appType', 'partnership');
+  formData.append('partnershipType',       v('partnershipType'));
+  formData.append('orgLegalName',          v('orgLegalName'));
+  formData.append('orgTradingName',        v('orgTradingName'));
+  formData.append('orgCountry',            v('orgCountry'));
+  formData.append('orgAddress',            v('orgAddress'));
+  formData.append('orgWebsite',            v('orgWebsite'));
+  formData.append('orgYearEstablished',    v('orgYearEstablished'));
+  formData.append('orgLegalStatus',        v('orgLegalStatus'));
+  formData.append('contactFullName',       v('contactFullName'));
+  formData.append('contactPosition',       v('contactPosition'));
+  formData.append('contactEmail',          v('contactEmail'));
+  formData.append('contactPhone',          v('contactPhone'));
+  formData.append('contactSecondary',      v('contactSecondary'));
+  formData.append('orgDescription',        v('orgDescription'));
+  formData.append('orgKeyPrograms',        v('orgKeyPrograms'));
+  formData.append('orgTrainerCount',       v('orgTrainerCount'));
+  formData.append('orgTargetAudience',     v('orgTargetAudience'));
+  formData.append('orgRegionsServed',      v('orgRegionsServed'));
+  formData.append('orgDeliveryFormat',     v('orgDeliveryFormat'));
+  formData.append('accredQualsInterest',   v('accredQualsInterest'));
+  formData.append('accredDeliveryFormat',  v('accredDeliveryFormat'));
+  formData.append('accredLearnersPerYear', v('accredLearnersPerYear'));
+  formData.append('capFacilities',         v('capFacilities'));
+  formData.append('capClassrooms',         v('capClassrooms'));
+  formData.append('capElearningPlatform',  v('capElearningPlatform'));
+  formData.append('capQA',                 v('capQA'));
+  formData.append('orgSignatoryName',      v('orgSignatoryName'));
+  formData.append('orgSignatoryDate',      v('orgSignatoryDate'));
+  formData.append('ref', ref);
+
+  const fileFields = ['upload_companyprofile','upload_trainercv','upload_bizreg'];
+  fileFields.forEach(fid => {
+    const fi = document.getElementById(fid);
+    if(fi && fi.files.length) formData.append(fid, fi.files[0]);
+  });
+
+  fetch('send_mail_cims.php', { method: 'POST', body: formData })
+    .then(r => r.json())
+    .then(data => {
+      if(data.success){
+        showSuccess(ref, 'Thank you for applying for CIMS Partnership Accreditation. Your submission is now under review by our Accreditation Committee. You will receive a confirmation email shortly.');
+      } else {
+        alert('Submission error: ' + (data.message || 'Please try again or email us directly.'));
+        btn.disabled=false; btnText.style.display='inline'; spinner.style.display='none';
+      }
+    })
+    .catch(() => {
+      alert('There was a network error submitting your application. Please try again or email admin@charteredims.com directly.');
+      btn.disabled=false; btnText.style.display='inline'; spinner.style.display='none';
+    });
+}
+
+// ---- SUBMIT: UPGRADE TRACK ----
+function submitUpgrade(){
+  if(!document.getElementById('upgradeGrade').value){
+    alert('Please go back and select the new membership grade you are upgrading to.');
+    goToStep(1);
+    return;
+  }
+  if(!validateStep('u2')){
+    alert('Please go back and complete your name, email, and current membership number.');
+    goToStep('u2');
+    return;
+  }
+  if(!document.getElementById('upload_currentcert').files.length){
+    alert('Please upload your latest membership certificate before submitting.');
+    return;
+  }
+  if(!document.getElementById('declarationCheckU').checked){
+    document.getElementById('declarationLabelU').style.color='var(--red)';
+    alert('Please read and confirm the declaration before submitting.');
+    return;
+  }
+
+  const btn = document.getElementById('submitBtnU');
+  const btnText = document.getElementById('submitBtnTextU');
+  const spinner = document.getElementById('submitSpinnerU');
+  btn.disabled=true; btnText.style.display='none'; spinner.style.display='block';
+
+  const ref = genRef('CIMS-UPG');
+
+  const formData = new FormData();
+  formData.append('track', 'upgrade');
+  formData.append('appType', 'upgrade');
+  formData.append('upgradeGrade',              v('upgradeGrade'));
+  formData.append('currentMembershipNumber',   v('currentMembershipNumber'));
+  formData.append('upgradeFullName',           v('upgradeFullName'));
+  formData.append('upgradeEmail',              v('upgradeEmail'));
+  formData.append('upgradePhone',              v('upgradePhone'));
+  formData.append('ref', ref);
+
+  const fileFields = ['upload_currentcert','upload_upgradesupport'];
+  fileFields.forEach(fid => {
+    const fi = document.getElementById(fid);
+    if(fi && fi.files.length) formData.append(fid, fi.files[0]);
+  });
+
+  fetch('send_mail_cims.php', { method: 'POST', body: formData })
+    .then(r => r.json())
+    .then(data => {
+      if(data.success){
+        showSuccess(ref, 'Thank you for applying for a CIMS Membership Upgrade. Your submission is now under review by our Membership Committee. You will receive a confirmation email shortly.');
+      } else {
+        alert('Submission error: ' + (data.message || 'Please try again or email us directly.'));
+        btn.disabled=false; btnText.style.display='inline'; spinner.style.display='none';
+      }
+    })
+    .catch(() => {
+      alert('There was a network error submitting your application. Please try again or email admin@charteredims.com directly.');
+      btn.disabled=false; btnText.style.display='inline'; spinner.style.display='none';
+    });
+}
+
+function showSuccess(ref, message){
+  document.getElementById('panel-' + currentStep).classList.remove('active');
+  document.querySelectorAll('.step-item').forEach(el => el.classList.add('done'));
+  document.getElementById('refNumber').textContent = ref;
+  document.getElementById('successMessage').textContent = message;
+  document.getElementById('successScreen').style.display = 'block';
+  document.getElementById('successScreen').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ---- INIT ----
+renderSidebar();
+
+// ---------- mobile menu toggle ----------
+const toggle = document.getElementById('menuToggle');
+const menu = document.getElementById('mobileMenu');
+
+function closeMobileMenu(){
+  menu.classList.remove('open');
+  toggle.classList.remove('active');
+  toggle.setAttribute('aria-expanded', 'false');
+  document.querySelectorAll('.mobile-list li.has-sub.open').forEach(li => li.classList.remove('open'));
+}
+
+toggle.addEventListener('click', () => {
+  const isOpen = menu.classList.toggle('open');
+  toggle.classList.toggle('active', isOpen);
+  toggle.setAttribute('aria-expanded', String(isOpen));
+});
+
+// mobile accordion submenus (nothing hidden, everything reachable by tap)
+document.querySelectorAll('.msub-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const li = btn.closest('li');
+    const wasOpen = li.classList.contains('open');
+    li.parentElement.querySelectorAll(':scope > li.has-sub').forEach(l => l.classList.remove('open'));
+    li.classList.toggle('open', !wasOpen);
+  });
+});
+
+// ---------- desktop dropdowns (About Us, Membership, Qualifications, Employers, CPD Portal) ----------
+const dropdownItems = document.querySelectorAll('.nav-item.has-dropdown');
+let closeTimer = null;
+
+function openItem(item, viaClick){
+  clearTimeout(closeTimer);
+  dropdownItems.forEach(i => { if (i !== item) i.classList.remove('open'); });
+  item.classList.add('open');
+  if (viaClick) item.dataset.openedByClick = 'true';
+  const link = item.querySelector('.nav-link');
+  if (link) link.setAttribute('aria-expanded', 'true');
+}
+function closeItem(item){
+  item.classList.remove('open');
+  delete item.dataset.openedByClick;
+  const link = item.querySelector('.nav-link');
+  if (link) link.setAttribute('aria-expanded', 'false');
+}
+function closeAllDropdowns(){
+  dropdownItems.forEach(closeItem);
+}
+
+dropdownItems.forEach(item => {
+  const link = item.querySelector('.nav-link');
+
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const isOpen = item.classList.contains('open');
+    const openedByClick = item.dataset.openedByClick === 'true';
+    if (isOpen && openedByClick) {
+      closeItem(item);
+    } else {
+      dropdownItems.forEach(i => { if (i !== item) closeItem(i); });
+      openItem(item, true);
+    }
+  });
+
+  item.addEventListener('mouseenter', () => openItem(item));
+  item.addEventListener('mouseleave', () => {
+    closeTimer = setTimeout(() => closeItem(item), 380);
+  });
+  item.addEventListener('focusin', () => openItem(item));
+});
+
+document.addEventListener('click', (e) => {
+  dropdownItems.forEach(item => {
+    if (!item.contains(e.target)) closeItem(item);
+  });
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeAllDropdowns();
+});
+
+// ---------- keep layout sane when crossing the mobile/desktop breakpoint ----------
+const breakpointQuery = window.matchMedia('(max-width: 1100px)');
+function resetNavForViewport(){
+  closeMobileMenu();
+  closeAllDropdowns();
+}
+if (breakpointQuery.addEventListener) {
+  breakpointQuery.addEventListener('change', resetNavForViewport);
+} else if (breakpointQuery.addListener) {
+  breakpointQuery.addListener(resetNavForViewport);
+}
+let resizeDebounce;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeDebounce);
+  resizeDebounce = setTimeout(resetNavForViewport, 150);
+});
+
+// ---------- live site search (top bar) ----------
+(function(){
+  const input = document.getElementById('siteSearchInput');
+  const box = document.getElementById('siteSearchSuggest');
+  const form = document.getElementById('siteSearchForm');
+  if (!input || !box || !form || !window.CIMS_SEARCH) return;
+
+  let activeIndex = -1;
+
+  function render(results) {
+    activeIndex = -1;
+    if (!results.length) {
+      box.innerHTML = '<div class="no-results">No matching pages. Press Enter to see full results.</div>';
+      box.classList.add('open');
+      return;
+    }
+    box.innerHTML = results.slice(0, 8).map(p =>
+      `<a href="${p.url}"><span>${p.title}</span><small>${p.section}</small></a>`
+    ).join('');
+    box.classList.add('open');
+  }
+
+  function close(){ box.classList.remove('open'); box.innerHTML=''; activeIndex = -1; }
+
+  input.addEventListener('input', () => {
+    const q = input.value;
+    if (!q.trim()) { close(); return; }
+    render(window.CIMS_SEARCH(q));
+  });
+
+  input.addEventListener('keydown', (e) => {
+    const items = Array.from(box.querySelectorAll('a'));
+    if (!items.length) return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      activeIndex = (activeIndex + 1) % items.length;
+      items.forEach((a,i)=>a.classList.toggle('active', i===activeIndex));
+      items[activeIndex].scrollIntoView({block:'nearest'});
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      activeIndex = (activeIndex - 1 + items.length) % items.length;
+      items.forEach((a,i)=>a.classList.toggle('active', i===activeIndex));
+      items[activeIndex].scrollIntoView({block:'nearest'});
+    } else if (e.key === 'Enter' && activeIndex >= 0) {
+      e.preventDefault();
+      window.location.href = items[activeIndex].getAttribute('href');
+    } else if (e.key === 'Escape') {
+      close();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!form.contains(e.target) && !box.contains(e.target)) close();
+  });
+
+  form.addEventListener('submit', (e) => {
+    if (!input.value.trim()) e.preventDefault();
+  });
+})();
+</script>
+</body>
+</html>

@@ -190,11 +190,7 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
-    /* Only override top/bottom — the shorthand "padding:10px 0" used to also zero
-       out left/right, cancelling .wrap's 32px side padding and pushing the CPD
-       Portal button further right than Apply Now in the bar above it. */
-    padding-top:10px;
-    padding-bottom:10px;
+    padding:10px 0;
     gap:32px;
   }
   .brand{
@@ -265,14 +261,10 @@
   nav.main{display:flex;align-items:center;}
   nav.main > ul{
     list-style:none;margin:0;padding:0;
-    display:flex;align-items:center;gap:20px;
-    font-size:.88rem;font-weight:600;
+    display:flex;align-items:center;gap:34px;
+    font-size:.83rem;font-weight:600;
     color:var(--ink);
   }
-  /* Menu text steps up with screen width so it stays as large as possible without
-     crowding the logo or the CPD Portal button. */
-  @media (min-width:1200px){ nav.main > ul{gap:26px;font-size:.93rem;} }
-  @media (min-width:1280px){ nav.main > ul{gap:30px;font-size:.97rem;} }
   nav.main > ul > li{position:relative;}
   nav.main > ul > li > a,
   nav.main > ul > li > button.nav-link{
@@ -298,7 +290,7 @@
 
   .dropdown{
     position:absolute;top:100%;left:0;
-    min-width:290px;
+    min-width:265px;
     background:var(--paper);
     border:1px solid var(--line);
     border-top:2px solid var(--gold);
@@ -316,8 +308,8 @@
   .nav-item.open > .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
   .dropdown a{
     display:block;
-    padding:12px 24px;
-    font-size:.95rem;font-weight:600;
+    padding:11px 22px;
+    font-size:.85rem;font-weight:600;
     color:var(--ink);
     border-left:2px solid transparent;
   }
@@ -396,8 +388,8 @@
   .mobile-list > li > a,
   .msub-toggle{
     display:flex;align-items:center;justify-content:space-between;gap:10px;
-    width:100%;padding:17px 28px;
-    font-weight:600;font-size:1.05rem;
+    width:100%;padding:15px 28px;
+    font-weight:600;font-size:.92rem;
     background:none;border:none;color:var(--paper);font-family:inherit;
     text-align:left;cursor:pointer;
   }
@@ -413,10 +405,10 @@
     background:rgba(0,0,0,.2);
     transition:max-height .3s ease;
   }
-  li.has-sub.open > .msub{max-height:900px;}
+  li.has-sub.open > .msub{max-height:600px;}
   .msub li a{
-    display:block;padding:13px 28px 13px 42px;
-    font-size:.97rem;color:#d9cfc0;
+    display:block;padding:12px 28px 12px 42px;
+    font-size:.85rem;color:#d9cfc0;
     border-bottom:1px solid rgba(255,255,255,.05);
   }
   .msub li a:hover{color:var(--gold-light);}
@@ -753,7 +745,7 @@
       </form>
       <div class="search-suggest" id="siteSearchSuggest"></div>
     </div>
-    <a href="app.html" class="topbar-apply" id="applyNowBtn">Apply Now</a>
+    <a href="app.html" class="topbar-apply">Apply Now</a>
   </div>
 </div>
 
@@ -817,17 +809,14 @@
         </li>
 
         <li class="nav-item">
-          <a href="chartered-executive-leader-cexl.html" target="_blank" rel="noopener">CExL&trade;</a>
-        </li>
-        <li class="nav-item">
-          <a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">CSD&trade;</a>
+          <a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a>
         </li>
       </ul>
     </nav>
 
     <div class="nav-utils">
       <div class="nav-item has-dropdown">
-        <button class="nav-link btn-pill filled" id="cpdPortalBtn" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="nav-link btn-pill filled" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="dropdown">
           <a href="register.html">Register</a>
           <a href="member-login.html">Member Log In</a>
@@ -864,7 +853,6 @@
           <li><a href="membership-fellow.html">Chartered Fellow (FCIMS)</a></li>
           <li><a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a></li>
           <li><a href="cpd.html">Continuing Professional Development (CPD)</a></li>
-          <li><a href="membership-benefits.html">Membership Benefits</a></li>
           <li><a href="digital-credentials-verification.html">Digital Credentials &amp; Verification</a></li>
         </ul>
       </li>
@@ -885,8 +873,7 @@
           <li><a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a></li>
         </ul>
       </li>
-      <li><a href="chartered-executive-leader-cexl.html" target="_blank" rel="noopener">CExL&trade;</a></li>
-      <li><a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">CSD&trade;</a></li>
+      <li><a href="chartered-strategic-director.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
       <li class="has-sub">
         <button class="msub-toggle">CPD Portal<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <ul class="msub">
@@ -1191,38 +1178,6 @@
 <script src="site-search.js"></script>
 <script>
   // ---------- mobile menu toggle ----------
-  // ---------- centre "Apply Now" over "CPD Portal" ----------
-  // CPD Portal is wider than Apply Now (it has the dropdown arrow), so simply right-aligning
-  // both buttons leaves their edges flush but their centres offset. This measures both buttons'
-  // actual on-screen positions and nudges Apply Now sideways so their horizontal centres match
-  // exactly, on any screen size — a fixed pixel value would drift depending on font rendering
-  // and viewport width. Only runs at desktop widths (min-width:1101px), since below that the
-  // CPD Portal button in the header is replaced by the mobile hamburger menu.
-  (function alignApplyNowToCpdPortal(){
-    const applyBtn = document.getElementById('applyNowBtn');
-    const cpdBtn = document.getElementById('cpdPortalBtn');
-    if (!applyBtn || !cpdBtn) return;
-
-    function align(){
-      applyBtn.style.transform = ''; // reset before measuring, or offsets stack on repeated calls
-      if (window.innerWidth < 1101){
-        // CPD Portal is hidden on mobile/tablet (hamburger menu takes over) — nothing to align to.
-        return;
-      }
-      const cpdRect = cpdBtn.getBoundingClientRect();
-      const applyRect = applyBtn.getBoundingClientRect();
-      const cpdCenter = cpdRect.left + cpdRect.width / 2;
-      const applyCenter = applyRect.left + applyRect.width / 2;
-      applyBtn.style.transform = `translateX(${cpdCenter - applyCenter}px)`;
-    }
-
-    align();
-    window.addEventListener('resize', align);
-    // Re-run once web fonts finish loading — button widths (and therefore centres)
-    // can shift slightly once the real font swaps in for the fallback font.
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(align);
-  })();
-
   const toggle = document.getElementById('menuToggle');
   const menu = document.getElementById('mobileMenu');
 
@@ -1411,21 +1366,6 @@
     });
   })();
 </script>
-
-
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/66a63f20becc2fed692c2214/1i3smd6el';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
 
 </body>
 </html>

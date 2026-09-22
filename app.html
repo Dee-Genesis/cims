@@ -150,7 +150,11 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:10px 0;
+    /* Only override top/bottom — the shorthand "padding:10px 0" used to also zero
+       out left/right, cancelling .wrap's 32px side padding and pushing the CPD
+       Portal button further right than Apply Now in the bar above it. */
+    padding-top:10px;
+    padding-bottom:10px;
     gap:32px;
   }
   .brand{display:flex;align-items:center;gap:14px;}
@@ -204,10 +208,14 @@
   nav.main{display:flex;align-items:center;}
   nav.main > ul{
     list-style:none;margin:0;padding:0;
-    display:flex;align-items:center;gap:34px;
-    font-size:.83rem;font-weight:600;
+    display:flex;align-items:center;gap:20px;
+    font-size:.88rem;font-weight:600;
     color:var(--ink);
   }
+  /* Menu text steps up with screen width so it stays as large as possible without
+     crowding the logo or the CPD Portal button. */
+  @media (min-width:1200px){ nav.main > ul{gap:26px;font-size:.93rem;} }
+  @media (min-width:1280px){ nav.main > ul{gap:30px;font-size:.97rem;} }
   nav.main > ul > li{position:relative;}
   nav.main > ul > li > a,
   nav.main > ul > li > button.nav-link{
@@ -229,7 +237,7 @@
 
   .dropdown{
     position:absolute;top:100%;left:0;
-    min-width:265px;
+    min-width:290px;
     background:var(--paper);
     border:1px solid var(--line);
     border-top:2px solid var(--gold);
@@ -245,8 +253,8 @@
   .nav-item.open > .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
   .dropdown a{
     display:block;
-    padding:11px 22px;
-    font-size:.85rem;font-weight:600;
+    padding:12px 24px;
+    font-size:.95rem;font-weight:600;
     color:var(--ink);
     border-left:2px solid transparent;
   }
@@ -304,8 +312,8 @@
   .mobile-list > li > a,
   .msub-toggle{
     display:flex;align-items:center;justify-content:space-between;gap:10px;
-    width:100%;padding:15px 28px;
-    font-weight:600;font-size:.92rem;
+    width:100%;padding:17px 28px;
+    font-weight:600;font-size:1.05rem;
     background:none;border:none;color:var(--paper);font-family:inherit;
     text-align:left;cursor:pointer;
   }
@@ -317,10 +325,10 @@
     background:rgba(0,0,0,.2);
     transition:max-height .3s ease;
   }
-  li.has-sub.open > .msub{max-height:600px;}
+  li.has-sub.open > .msub{max-height:900px;}
   .msub li a{
-    display:block;padding:12px 28px 12px 42px;
-    font-size:.85rem;color:#d9cfc0;
+    display:block;padding:13px 28px 13px 42px;
+    font-size:.97rem;color:#d9cfc0;
     border-bottom:1px solid rgba(255,255,255,.05);
   }
   .msub li a:hover{color:var(--gold-light);}
@@ -417,12 +425,15 @@
   @keyframes spin{to{transform:rotate(360deg);}}
 
   /* ---------- file upload ---------- */
-  .file-upload{border:1.5px dashed var(--line-gold);border-radius:8px;padding:26px;text-align:center;cursor:pointer;position:relative;transition:border-color .15s ease;background:var(--parchment);}
+  .file-upload{border:1.5px dashed var(--line-gold);border-radius:8px;padding:26px;text-align:center;cursor:pointer;position:relative;transition:border-color .15s ease, background .15s ease;background:var(--parchment);}
   .file-upload:hover{border-color:var(--gold);}
   .file-upload input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;}
   .file-upload-icon{font-size:1.6rem;margin-bottom:6px;}
   .file-upload p{font-size:.88rem;color:var(--slate);margin:0 0 4px;}
   .file-types{font-size:.74rem;color:var(--slate-soft);}
+  .file-upload.file-missing{border-color:var(--red);border-style:solid;background:rgba(163,49,42,.06);}
+  .file-missing-msg{display:none;color:var(--red);font-size:.78rem;font-weight:600;margin-top:6px;}
+  .file-missing-msg.show{display:block;}
   .file-list{margin-top:10px;}
   .file-item{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:9px 12px;font-size:.82rem;}
   .file-item-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
@@ -516,14 +527,14 @@
   <div class="wrap">
     <div class="topbar-search-wrap">
       <form class="topbar-search" role="search" action="search-results.html" method="get" id="siteSearchForm" autocomplete="off">
-        <input type="search" name="q" id="siteSearchInput" placeholder="Search site" aria-label="Search site">
+        <input type="search" name="q" id="siteSearchInput" aria-label="Search site">
         <button type="submit" aria-label="Search">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </button>
       </form>
       <div class="search-suggest" id="siteSearchSuggest"></div>
     </div>
-    <a href="app.html" class="topbar-apply">Apply Now</a>
+    <a href="app.html" class="topbar-apply" id="applyNowBtn">Apply Now</a>
   </div>
 </div>
 
@@ -587,14 +598,17 @@
         </li>
 
         <li class="nav-item">
-          <a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a>
+          <a href="chartered-executive-leader-cexl.html" target="_blank" rel="noopener">CExL&trade;</a>
+        </li>
+        <li class="nav-item">
+          <a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">CSD&trade;</a>
         </li>
       </ul>
     </nav>
 
     <div class="nav-utils">
       <div class="nav-item has-dropdown">
-        <button class="nav-link btn-pill filled" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="nav-link btn-pill filled" id="cpdPortalBtn" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="dropdown">
           <a href="register.html">Register</a>
           <a href="member-login.html">Member Log In</a>
@@ -651,7 +665,8 @@
           <li><a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a></li>
         </ul>
       </li>
-      <li><a href="chartered-strategic-director.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
+      <li><a href="chartered-executive-leader-cexl.html" target="_blank" rel="noopener">CExL&trade;</a></li>
+      <li><a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">CSD&trade;</a></li>
       <li class="has-sub">
         <button class="msub-toggle">CPD Portal<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <ul class="msub">
@@ -672,7 +687,7 @@
   <div class="wrap">
     <span class="eyebrow">CIMS Application Portal</span>
     <h1>Apply for <em>Membership, Qualification, or Partnership</em></h1>
-    <p>Complete the relevant section carefully — organisation and individual applications are reviewed by the CIMS Secretariat within 2–4 weeks.</p>
+    <p>Complete the relevant section carefully — organisation and individual applications are reviewed by the CIMS Secretariat within 2–3 working days.</p>
   </div>
 </div>
 
@@ -698,7 +713,7 @@
     <!-- ===================================================== -->
     <div class="form-panel active" id="panel-1">
       <h2 class="form-panel-title">Choose Your <em>Application Type</em></h2>
-      <p class="form-panel-sub">Select the category you are applying for. CIMS offers Membership Grades, the Qualification Framework (Practitioner &amp; Specialist), Membership Upgrades, and Partnership Accreditation for institutions. Fields marked <span class="req">*</span> are required.</p>
+      <p class="form-panel-sub">Select the category you are applying for. CIMS offers Membership Grades, the Qualification Framework (Practitioner &amp; Specialist), the Chartered Strategic Director (CSD) executive recognition, Membership Upgrades, and Partnership Accreditation for institutions. Fields marked <span class="req">*</span> are required.</p>
 
       <div class="form-section-label">Application Category</div>
       <div class="form-row cols-1">
@@ -708,6 +723,7 @@
             <option value="">— Select Application Type —</option>
             <option value="membership">Membership Application</option>
             <option value="qualification">Qualification Framework (Practitioner / Specialist)</option>
+            <option value="csd">Chartered Strategic Director (CSD)</option>
             <option value="upgrade">Membership Upgrade</option>
             <option value="partnership">Partnership Accreditation (Organisation)</option>
           </select>
@@ -901,17 +917,17 @@
         </div>
         <div class="field">
           <label>First Name <span class="req">*</span></label>
-          <input type="text" id="firstName" placeholder="e.g. John" required/>
+          <input type="text" id="firstName" required/>
         </div>
         <div class="field">
           <label>Last Name <span class="req">*</span></label>
-          <input type="text" id="lastName" placeholder="e.g. Okafor" required/>
+          <input type="text" id="lastName" required/>
         </div>
       </div>
       <div class="form-row cols-3">
         <div class="field">
           <label>Middle Name</label>
-          <input type="text" id="middleName" placeholder="Optional"/>
+          <input type="text" id="middleName"/>
         </div>
         <div class="field">
           <label>Date of Birth <span class="req">*</span></label>
@@ -928,21 +944,21 @@
       <div class="form-row cols-2">
         <div class="field">
           <label>Nationality <span class="req">*</span></label>
-          <input type="text" id="nationality" placeholder="e.g. Nigerian, American, British" required/>
+          <input type="text" id="nationality" required/>
         </div>
         <div class="field">
           <label>Passport / National ID Number <span class="req">*</span></label>
-          <input type="text" id="passportNum" placeholder="e.g. A12345678" required/>
+          <input type="text" id="passportNum" required/>
         </div>
       </div>
       <div class="form-row cols-2">
         <div class="field">
           <label>Country of Residence <span class="req">*</span></label>
-          <input type="text" id="country" placeholder="e.g. Nigeria" required/>
+          <input type="text" id="country" required/>
         </div>
         <div class="field">
           <label>State / Province</label>
-          <input type="text" id="stateProvince" placeholder="e.g. Lagos, Ontario"/>
+          <input type="text" id="stateProvince"/>
         </div>
       </div>
 
@@ -950,27 +966,27 @@
       <div class="form-row cols-2">
         <div class="field">
           <label>Email Address <span class="req">*</span></label>
-          <input type="email" id="email" placeholder="you@example.com" required/>
+          <input type="email" id="email" required/>
         </div>
         <div class="field">
           <label>Confirm Email Address <span class="req">*</span></label>
-          <input type="email" id="emailConfirm" placeholder="Repeat email address" required/>
+          <input type="email" id="emailConfirm" required/>
         </div>
       </div>
       <div class="form-row cols-2">
         <div class="field">
           <label>Phone Number <span class="req">*</span></label>
-          <input type="tel" id="phone" placeholder="+234 800 000 0000" required/>
+          <input type="tel" id="phone" required/>
         </div>
         <div class="field">
           <label>WhatsApp Number</label>
-          <input type="tel" id="whatsapp" placeholder="If different from phone above"/>
+          <input type="tel" id="whatsapp"/>
         </div>
       </div>
       <div class="form-row cols-1">
         <div class="field">
           <label>Mailing Address <span class="req">*</span></label>
-          <textarea id="address" placeholder="Street address, city, state, country, postal code" rows="3" required></textarea>
+          <textarea id="address" rows="3" required></textarea>
         </div>
       </div>
 
@@ -1004,27 +1020,27 @@
         </div>
         <div class="field">
           <label>Field of Study <span class="req">*</span></label>
-          <input type="text" id="fieldOfStudy" placeholder="e.g. Business Administration, Engineering" required/>
+          <input type="text" id="fieldOfStudy" required/>
         </div>
       </div>
       <div class="form-row cols-2">
         <div class="field">
           <label>Institution <span class="req">*</span></label>
-          <input type="text" id="institution1" placeholder="e.g. University of Lagos" required/>
+          <input type="text" id="institution1" required/>
         </div>
         <div class="field">
           <label>Country of Institution <span class="req">*</span></label>
-          <input type="text" id="instCountry1" placeholder="e.g. Nigeria" required/>
+          <input type="text" id="instCountry1" required/>
         </div>
       </div>
       <div class="form-row cols-3">
         <div class="field">
           <label>Year of Graduation <span class="req">*</span></label>
-          <input type="number" id="gradYear" placeholder="e.g. 2018" min="1960" max="2026" required/>
+          <input type="number" id="gradYear" min="1960" max="2026" required/>
         </div>
         <div class="field">
           <label>Grade / GPA / Class</label>
-          <input type="text" id="grade" placeholder="e.g. 2nd Class Upper / 3.8 GPA"/>
+          <input type="text" id="grade"/>
         </div>
         <div class="field">
           <label>Language of Instruction</label>
@@ -1039,41 +1055,21 @@
       <div class="form-row cols-2">
         <div class="field">
           <label>Additional Qualification</label>
-          <input type="text" id="qual2" placeholder="e.g. ACCA, PMP, SHRM, CFA"/>
+          <input type="text" id="qual2"/>
         </div>
         <div class="field">
           <label>Awarding Body</label>
-          <input type="text" id="body2" placeholder="e.g. ACCA, PMI, CFA Institute"/>
+          <input type="text" id="body2"/>
         </div>
       </div>
       <div class="form-row cols-2">
         <div class="field">
           <label>Third Qualification</label>
-          <input type="text" id="qual3" placeholder="Optional — additional qualification"/>
+          <input type="text" id="qual3"/>
         </div>
         <div class="field">
           <label>Awarding Body</label>
-          <input type="text" id="body3" placeholder="Awarding institution"/>
-        </div>
-      </div>
-
-      <div class="form-section-label">English Language Proficiency</div>
-      <div class="form-row cols-1">
-        <div class="radio-group" id="englishGroup">
-          <label class="radio-opt"><input type="radio" name="english" value="Native Speaker"/> Native Speaker</label>
-          <label class="radio-opt"><input type="radio" name="english" value="TOEFL"/> TOEFL</label>
-          <label class="radio-opt"><input type="radio" name="english" value="IELTS"/> IELTS</label>
-          <label class="radio-opt"><input type="radio" name="english" value="Other"/> Other</label>
-        </div>
-      </div>
-      <div class="form-row cols-2" id="englishScoreRow" style="display:none">
-        <div class="field">
-          <label>Test Score</label>
-          <input type="text" id="englishScore" placeholder="e.g. IELTS 7.0 / TOEFL 100"/>
-        </div>
-        <div class="field">
-          <label>Test Date</label>
-          <input type="date" id="englishDate"/>
+          <input type="text" id="body3"/>
         </div>
       </div>
 
@@ -1094,11 +1090,11 @@
       <div class="form-row cols-2">
         <div class="field">
           <label>Current Job Title <span class="req">*</span></label>
-          <input type="text" id="jobTitle" placeholder="e.g. Finance Manager, Director of Operations" required/>
+          <input type="text" id="jobTitle" required/>
         </div>
         <div class="field">
           <label>Current Employer <span class="req">*</span></label>
-          <input type="text" id="employer" placeholder="e.g. Shell Nigeria, Ministry of Finance" required/>
+          <input type="text" id="employer" required/>
         </div>
       </div>
       <div class="form-row cols-2">
@@ -1148,28 +1144,28 @@
       <div class="form-row cols-2">
         <div class="field">
           <label>Previous Job Title</label>
-          <input type="text" id="prevJobTitle" placeholder="e.g. Senior Accountant"/>
+          <input type="text" id="prevJobTitle"/>
         </div>
         <div class="field">
           <label>Previous Employer</label>
-          <input type="text" id="prevEmployer" placeholder="e.g. Deloitte Nigeria"/>
+          <input type="text" id="prevEmployer"/>
         </div>
       </div>
       <div class="form-row cols-2">
         <div class="field">
           <label>Years in Previous Role</label>
-          <input type="text" id="prevYears" placeholder="e.g. 3 years (2018–2021)"/>
+          <input type="text" id="prevYears"/>
         </div>
         <div class="field">
           <label>Previous Responsibilities</label>
-          <input type="text" id="prevResp" placeholder="Brief description of role"/>
+          <input type="text" id="prevResp"/>
         </div>
       </div>
 
       <div class="form-section-label">CPD &amp; Professional Activities (Optional)</div>
       <div class="form-row cols-1">
         <div class="field">
-          <textarea id="cpdActivities" rows="3" placeholder="e.g. Attended a leadership programme (2023), member of a professional body, completed a project management certificate..."></textarea>
+          <textarea id="cpdActivities" rows="3"></textarea>
         </div>
       </div>
 
@@ -1185,68 +1181,68 @@
     <!-- ===================================================== -->
     <div class="form-panel" id="panel-5">
       <h2 class="form-panel-title">Statement <em>&amp; References</em></h2>
-      <p class="form-panel-sub">Your statement of purpose is an important part of your application. References are optional but strengthen your application.</p>
+      <p class="form-panel-sub">Your statement of purpose is an important part of your application. Professional references are required.</p>
 
       <div class="form-section-label">Statement of Interest / Purpose</div>
       <div class="form-row cols-1">
         <div class="field">
           <label>Why are you applying to CIMS? What motivates you? <span class="req">*</span></label>
-          <textarea id="motivation" rows="6" placeholder="Describe your motivation for applying, what you hope to achieve, and how it aligns with your professional goals. (Recommended: 200–400 words)" required></textarea>
+          <textarea id="motivation" rows="6" required></textarea>
           <span class="field-hint">Minimum 150 words recommended.</span>
         </div>
       </div>
       <div class="form-row cols-1">
         <div class="field">
           <label>What are your short and long-term professional goals?</label>
-          <textarea id="goals" rows="4" placeholder="Where do you see yourself in 3–5 years?"></textarea>
+          <textarea id="goals" rows="4"></textarea>
         </div>
       </div>
       <div class="form-row cols-1">
         <div class="field">
           <label>Describe your most significant professional achievement or leadership experience</label>
-          <textarea id="achievement" rows="4" placeholder="Describe a key project, initiative, or experience..."></textarea>
+          <textarea id="achievement" rows="4"></textarea>
         </div>
       </div>
 
-      <div class="form-section-label">Professional References (Optional but Recommended)</div>
+      <div class="form-section-label">Professional References</div>
       <div class="form-row cols-2">
         <div class="field">
-          <label>Referee 1 — Full Name</label>
-          <input type="text" id="ref1name" placeholder="Full name"/>
+          <label>Referee 1 — Full Name <span class="req">*</span></label>
+          <input type="text" id="ref1name" required/>
         </div>
         <div class="field">
-          <label>Referee 1 — Email Address</label>
-          <input type="email" id="ref1email" placeholder="referee@organisation.com"/>
+          <label>Referee 1 — Email Address <span class="req">*</span></label>
+          <input type="email" id="ref1email" required/>
         </div>
       </div>
       <div class="form-row cols-2">
         <div class="field">
-          <label>Referee 1 — Position / Title</label>
-          <input type="text" id="ref1title" placeholder="e.g. Managing Director, Professor"/>
+          <label>Referee 1 — Position / Title <span class="req">*</span></label>
+          <input type="text" id="ref1title" required/>
         </div>
         <div class="field">
-          <label>Referee 1 — Organisation</label>
-          <input type="text" id="ref1org" placeholder="e.g. World Bank, University of Ghana"/>
+          <label>Referee 1 — Organisation <span class="req">*</span></label>
+          <input type="text" id="ref1org" required/>
         </div>
       </div>
       <div class="form-row cols-2" style="margin-top:8px">
         <div class="field">
-          <label>Referee 2 — Full Name</label>
-          <input type="text" id="ref2name" placeholder="Full name"/>
+          <label>Referee 2 — Full Name <span class="req">*</span></label>
+          <input type="text" id="ref2name" required/>
         </div>
         <div class="field">
-          <label>Referee 2 — Email Address</label>
-          <input type="email" id="ref2email" placeholder="referee@organisation.com"/>
+          <label>Referee 2 — Email Address <span class="req">*</span></label>
+          <input type="email" id="ref2email" required/>
         </div>
       </div>
       <div class="form-row cols-2">
         <div class="field">
-          <label>Referee 2 — Position / Title</label>
-          <input type="text" id="ref2title" placeholder="e.g. HR Director, Dean"/>
+          <label>Referee 2 — Position / Title <span class="req">*</span></label>
+          <input type="text" id="ref2title" required/>
         </div>
         <div class="field">
-          <label>Referee 2 — Organisation</label>
-          <input type="text" id="ref2org" placeholder="e.g. MTN Nigeria, KNUST"/>
+          <label>Referee 2 — Organisation <span class="req">*</span></label>
+          <input type="text" id="ref2org" required/>
         </div>
       </div>
 
@@ -1275,6 +1271,7 @@
             <div class="file-types">PDF, JPG, PNG — Max 5MB</div>
           </div>
           <div class="file-list" id="list-id"></div>
+          <div class="file-missing-msg" id="msg-id">Please upload your passport or national ID before submitting.</div>
         </div>
 
         <div class="field">
@@ -1286,6 +1283,7 @@
             <div class="file-types">PDF, JPG, PNG — Max 5MB</div>
           </div>
           <div class="file-list" id="list-transcripts"></div>
+          <div class="file-missing-msg" id="msg-transcripts">Please upload your academic certificates and transcripts before submitting.</div>
         </div>
 
         <div class="field">
@@ -1297,6 +1295,7 @@
             <div class="file-types">PDF, DOC, DOCX — Max 5MB</div>
           </div>
           <div class="file-list" id="list-cv"></div>
+          <div class="file-missing-msg" id="msg-cv">Please upload your CV or résumé before submitting.</div>
         </div>
       </div>
 
@@ -1311,17 +1310,6 @@
             <div class="file-types">PDF, JPG, PNG — Max 5MB</div>
           </div>
           <div class="file-list" id="list-proofcert"></div>
-        </div>
-
-        <div class="field">
-          <label>English Language Certificate (TOEFL / IELTS)</label>
-          <div class="file-upload" id="drop-english">
-            <input type="file" id="upload_english" name="upload_english" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile(this,'drop-english','list-english')"/>
-            <div class="file-upload-icon">📝</div>
-            <p><strong>Click to upload</strong> English proficiency certificate (if applicable)</p>
-            <div class="file-types">PDF, JPG, PNG — Max 5MB</div>
-          </div>
-          <div class="file-list" id="list-english"></div>
         </div>
 
         <div class="field">
@@ -1456,11 +1444,11 @@
       <div class="form-row cols-2">
         <div class="field">
           <label>Website</label>
-          <input type="text" id="orgWebsite" placeholder="https://"/>
+          <input type="text" id="orgWebsite"/>
         </div>
         <div class="field">
           <label>Legal Status (e.g. Ltd, LLC)</label>
-          <input type="text" id="orgLegalStatus" placeholder="e.g. Ltd, LLC, Inc."/>
+          <input type="text" id="orgLegalStatus"/>
         </div>
       </div>
 
@@ -1488,7 +1476,7 @@
       <div class="form-row cols-1">
         <div class="field">
           <label>Secondary Contact (optional)</label>
-          <input type="text" id="contactSecondary" placeholder="Name, position, email, phone"/>
+          <input type="text" id="contactSecondary"/>
         </div>
       </div>
 
@@ -1525,11 +1513,11 @@
         </div>
         <div class="field">
           <label>Target audience</label>
-          <input type="text" id="orgTargetAudience" placeholder="e.g. Mid-level managers, graduates"/>
+          <input type="text" id="orgTargetAudience"/>
         </div>
         <div class="field">
           <label>Regions served</label>
-          <input type="text" id="orgRegionsServed" placeholder="e.g. West Africa, GCC"/>
+          <input type="text" id="orgRegionsServed"/>
         </div>
       </div>
       <div class="form-row cols-1">
@@ -1546,7 +1534,7 @@
       <div class="form-row cols-1">
         <div class="field">
           <label>CIMS qualifications of interest <span class="req">*</span></label>
-          <textarea id="accredQualsInterest" rows="2" placeholder="e.g. Chartered Project Manager, Chartered HR Management Specialist..." required></textarea>
+          <textarea id="accredQualsInterest" rows="2" required></textarea>
         </div>
       </div>
       <div class="form-row cols-2">
@@ -1590,7 +1578,7 @@
         </div>
         <div class="field">
           <label>E-learning platform(s) used (if any)</label>
-          <input type="text" id="capElearningPlatform" placeholder="e.g. Moodle, Teachable"/>
+          <input type="text" id="capElearningPlatform"/>
         </div>
       </div>
       <div class="form-row cols-1">
@@ -1625,6 +1613,7 @@
             <div class="file-types">PDF, DOC, DOCX — Max 5MB</div>
           </div>
           <div class="file-list" id="list-companyprofile"></div>
+          <div class="file-missing-msg" id="msg-companyprofile">Please upload your company profile before submitting.</div>
         </div>
 
         <div class="field">
@@ -1636,6 +1625,7 @@
             <div class="file-types">PDF, DOC, DOCX — Max 5MB</div>
           </div>
           <div class="file-list" id="list-trainercv"></div>
+          <div class="file-missing-msg" id="msg-trainercv">Please upload at least one lead trainer CV before submitting.</div>
         </div>
 
         <div class="field">
@@ -1647,6 +1637,7 @@
             <div class="file-types">PDF, JPG, PNG — Max 5MB</div>
           </div>
           <div class="file-list" id="list-bizreg"></div>
+          <div class="file-missing-msg" id="msg-bizreg">Please upload your business registration certificate before submitting.</div>
         </div>
       </div>
 
@@ -1736,7 +1727,7 @@
         </div>
         <div class="field">
           <label>Current Membership Number <span class="req">*</span></label>
-          <input type="text" id="currentMembershipNumber" placeholder="e.g. CIMS-2026-XXXXX" required/>
+          <input type="text" id="currentMembershipNumber" required/>
         </div>
       </div>
 
@@ -1765,6 +1756,7 @@
             <div class="file-types">PDF, JPG, PNG — Max 5MB</div>
           </div>
           <div class="file-list" id="list-currentcert"></div>
+          <div class="file-missing-msg" id="msg-currentcert">Please upload your latest membership certificate before submitting.</div>
         </div>
 
         <div class="field">
@@ -1816,7 +1808,7 @@
         <div class="success-ref-label">Your Application Reference Number</div>
         <div class="success-ref-num" id="refNumber">CIMS-2026-——</div>
       </div>
-      <p style="font-size:.84rem;color:var(--slate-soft)">Please save this reference number. Our team will contact you within <strong>2–4 weeks</strong>. For enquiries, email <a href="mailto:admin@charteredims.com" style="color:var(--burgundy)">admin@charteredims.com</a>.</p>
+      <p style="font-size:.84rem;color:var(--slate-soft)">Please save this reference number. Our team will contact you within <strong>2–3 working days</strong>. For enquiries, email <a href="mailto:admin@charteredims.com" style="color:var(--burgundy)">admin@charteredims.com</a>.</p>
       <div class="success-btns" style="margin-top:24px">
         <a href="index.html" class="btn-next" style="display:inline-flex;text-decoration:none;align-items:center;gap:8px">Return to Home</a>
       </div>
@@ -2012,12 +2004,6 @@ function validateStep(step){
     el.classList.remove('error');
     if(!el.value.trim()){ el.classList.add('error'); ok = false; }
   });
-  if(step === 3){
-    const radios = document.querySelectorAll('input[name="english"]');
-    const checked = [...radios].some(r => r.checked);
-    if(!checked){ document.getElementById('englishGroup').style.outline='2px solid var(--red)'; ok = false; }
-    else { document.getElementById('englishGroup').style.outline='none'; }
-  }
   if(step === 2){
     const em = document.getElementById('email');
     const ec = document.getElementById('emailConfirm');
@@ -2054,8 +2040,8 @@ function updateAppType(){
   if(val === 'upgrade')       document.getElementById('upgradeOptions').style.display = 'block';
   if(val === 'partnership')   document.getElementById('partnershipOptions').style.display = 'block';
 
-  document.getElementById('studyModeField').style.display = (val === 'qualification') ? 'block' : 'none';
-  if(val !== 'qualification') document.getElementById('studyMode').value = '';
+  document.getElementById('studyModeField').style.display = (val === 'qualification' || val === 'csd') ? 'block' : 'none';
+  if(val !== 'qualification' && val !== 'csd') document.getElementById('studyMode').value = '';
 
   // Switch track
   if(val === 'partnership')      currentTrack = 'partnership';
@@ -2088,18 +2074,12 @@ function updateProgInfo(){
               : cat === 'specialist'   ? document.getElementById('specialistDesignation').value : '';
     text = val ? `<strong>${val}</strong>Part of the CIMS ${cat === 'practitioner' ? 'Practitioner' : 'Specialist'} Qualifications framework. Assessment is via credential verification, portfolio review, and an applied case study.` : '';
   }
+  if(type === 'csd'){
+    text = `<strong>Chartered Strategic Director (CSD)</strong>One of the highest executive recognitions awarded by CIMS. Awarded through a structured professional assessment process — credential verification, portfolio review, and executive case study — rather than classroom attendance.`;
+  }
   if(text){ box.innerHTML = text; box.style.display = 'block'; } else { box.style.display = 'none'; }
 }
 
-// ---- ENGLISH PROFICIENCY TOGGLE ----
-document.querySelectorAll('input[name="english"]').forEach(r => {
-  r.addEventListener('change', function(){
-    const scoreRow = document.getElementById('englishScoreRow');
-    scoreRow.style.display = (this.value === 'TOEFL' || this.value === 'IELTS') ? 'grid' : 'none';
-    document.querySelectorAll('.radio-opt').forEach(o => o.classList.remove('selected'));
-    this.closest('.radio-opt').classList.add('selected');
-  });
-});
 
 // ---- FILE UPLOAD ----
 function handleFile(input, dropId, listId){
@@ -2118,7 +2098,11 @@ function handleFile(input, dropId, listId){
     <span class="file-item-size">${size}</span>
     <span class="file-item-remove" onclick="removeFile('${input.id}','${dropId}','${listId}')">✕</span>
   </div>`;
-  document.getElementById(dropId).style.borderColor='var(--green)';
+  const dropEl = document.getElementById(dropId);
+  dropEl.style.borderColor='var(--green)';
+  dropEl.classList.remove('file-missing');
+  const msgEl = document.getElementById('msg-' + dropId.replace('drop-',''));
+  if(msgEl) msgEl.classList.remove('show');
 }
 function removeFile(inputId, dropId, listId){
   document.getElementById(inputId).value='';
@@ -2126,9 +2110,30 @@ function removeFile(inputId, dropId, listId){
   document.getElementById(dropId).style.borderColor='';
 }
 
+// ---- REQUIRED DOCUMENT VALIDATION ----
+// fields: [{ fileId, dropId, msgId, label }]
+function validateRequiredFiles(fields){
+  const missing = [];
+  fields.forEach(f => {
+    const input = document.getElementById(f.fileId);
+    const dropEl = document.getElementById(f.dropId);
+    const msgEl = f.msgId ? document.getElementById(f.msgId) : null;
+    const hasFile = input && input.files && input.files.length > 0;
+    if(!hasFile){
+      missing.push(f.label);
+      if(dropEl) dropEl.classList.add('file-missing');
+      if(msgEl) msgEl.classList.add('show');
+    } else {
+      if(dropEl) dropEl.classList.remove('file-missing');
+      if(msgEl) msgEl.classList.remove('show');
+    }
+  });
+  return missing;
+}
+
 // ---- PROGRAMME LABEL HELPERS ----
 function getAppTypeLabel(){
-  const map = { membership:'Membership Application', qualification:'Qualification Framework', upgrade:'Membership Upgrade', partnership:'Partnership Accreditation' };
+  const map = { membership:'Membership Application', qualification:'Qualification Framework', csd:'Chartered Strategic Director (CSD)', upgrade:'Membership Upgrade', partnership:'Partnership Accreditation' };
   return map[document.getElementById('appType').value] || '—';
 }
 function getProgramme(){
@@ -2140,6 +2145,7 @@ function getProgramme(){
     if(cat === 'specialist')   return document.getElementById('specialistDesignation')?.value || '—';
     return '—';
   }
+  if(type === 'csd')          return 'Chartered Strategic Director (CSD)';
   if(type === 'upgrade')      return `Upgrade to ${document.getElementById('upgradeGrade')?.value || ''}`;
   if(type === 'partnership')  return document.getElementById('partnershipType')?.value || 'Partnership Accreditation';
   return '—';
@@ -2191,6 +2197,16 @@ function genRef(prefix){
 
 // ---- SUBMIT: INDIVIDUAL TRACK ----
 function submitApplication(){
+  const missingDocs = validateRequiredFiles([
+    { fileId:'upload_id',          dropId:'drop-id',          msgId:'msg-id',          label:'Passport or National ID (Photo Page)' },
+    { fileId:'upload_transcripts', dropId:'drop-transcripts', msgId:'msg-transcripts', label:'Academic Certificates & Transcripts' },
+    { fileId:'upload_cv',          dropId:'drop-cv',          msgId:'msg-cv',          label:'Curriculum Vitae / Résumé' }
+  ]);
+  if(missingDocs.length){
+    goToStep(6);
+    alert('Please upload the following required document(s) before submitting:\n\n• ' + missingDocs.join('\n• '));
+    return;
+  }
   if(!document.getElementById('declarationCheck').checked){
     document.getElementById('declarationLabel').style.color='var(--red)';
     alert('Please read and confirm the declaration before submitting.');
@@ -2202,13 +2218,12 @@ function submitApplication(){
   btn.disabled=true; btnText.style.display='none'; spinner.style.display='block';
 
   const ref = genRef('CIMS');
-  const englishVal = document.querySelector('input[name="english"]:checked')?.value || '';
 
   const formData = new FormData();
   formData.append('track', 'individual');
   formData.append('appType',        document.getElementById('appType').value);
   formData.append('programSelect',  getProgramme());
-  formData.append('studyMode',      document.getElementById('appType').value === 'qualification' ? v('studyMode') : 'N/A');
+  formData.append('studyMode',      (document.getElementById('appType').value === 'qualification' || document.getElementById('appType').value === 'csd') ? v('studyMode') : 'N/A');
   formData.append('title',          v('title'));
   formData.append('firstName',      v('firstName'));
   formData.append('lastName',       v('lastName'));
@@ -2234,9 +2249,6 @@ function submitApplication(){
   formData.append('body2',          v('body2'));
   formData.append('qual3',          v('qual3'));
   formData.append('body3',          v('body3'));
-  formData.append('englishMethod',  englishVal);
-  formData.append('englishScore',   v('englishScore'));
-  formData.append('englishDate',    v('englishDate'));
   formData.append('jobTitle',       v('jobTitle'));
   formData.append('employer',       v('employer'));
   formData.append('industry',       v('industry'));
@@ -2262,7 +2274,7 @@ function submitApplication(){
   formData.append('ref2org',        v('ref2org'));
   formData.append('ref', ref);
 
-  const fileFields = ['upload_id','upload_transcripts','upload_cv','upload_proofcert','upload_english','upload_refs','upload_workproof'];
+  const fileFields = ['upload_id','upload_transcripts','upload_cv','upload_proofcert','upload_refs','upload_workproof'];
   fileFields.forEach(fid => {
     const fi = document.getElementById(fid);
     if(fi && fi.files.length) formData.append(fid, fi.files[0]);
@@ -2286,6 +2298,16 @@ function submitApplication(){
 
 // ---- SUBMIT: PARTNERSHIP TRACK ----
 function submitPartnership(){
+  const missingDocsP = validateRequiredFiles([
+    { fileId:'upload_companyprofile', dropId:'drop-companyprofile', msgId:'msg-companyprofile', label:'Company Profile' },
+    { fileId:'upload_trainercv',      dropId:'drop-trainercv',      msgId:'msg-trainercv',      label:'Lead Trainer CV(s)' },
+    { fileId:'upload_bizreg',         dropId:'drop-bizreg',         msgId:'msg-bizreg',         label:'Business Registration Certificate' }
+  ]);
+  if(missingDocsP.length){
+    goToStep('p5');
+    alert('Please upload the following required document(s) before submitting:\n\n• ' + missingDocsP.join('\n• '));
+    return;
+  }
   if(!document.getElementById('declarationCheckP').checked){
     document.getElementById('declarationLabelP').style.color='var(--red)';
     alert('Please read and confirm the declaration before submitting.');
@@ -2367,7 +2389,10 @@ function submitUpgrade(){
     goToStep('u2');
     return;
   }
-  if(!document.getElementById('upload_currentcert').files.length){
+  const missingDocsU = validateRequiredFiles([
+    { fileId:'upload_currentcert', dropId:'drop-currentcert', msgId:'msg-currentcert', label:'Latest Membership Certificate' }
+  ]);
+  if(missingDocsU.length){
     alert('Please upload your latest membership certificate before submitting.');
     return;
   }
@@ -2429,6 +2454,38 @@ function showSuccess(ref, message){
 renderSidebar();
 
 // ---------- mobile menu toggle ----------
+  // ---------- centre "Apply Now" over "CPD Portal" ----------
+  // CPD Portal is wider than Apply Now (it has the dropdown arrow), so simply right-aligning
+  // both buttons leaves their edges flush but their centres offset. This measures both buttons'
+  // actual on-screen positions and nudges Apply Now sideways so their horizontal centres match
+  // exactly, on any screen size — a fixed pixel value would drift depending on font rendering
+  // and viewport width. Only runs at desktop widths (min-width:1101px), since below that the
+  // CPD Portal button in the header is replaced by the mobile hamburger menu.
+  (function alignApplyNowToCpdPortal(){
+    const applyBtn = document.getElementById('applyNowBtn');
+    const cpdBtn = document.getElementById('cpdPortalBtn');
+    if (!applyBtn || !cpdBtn) return;
+
+    function align(){
+      applyBtn.style.transform = ''; // reset before measuring, or offsets stack on repeated calls
+      if (window.innerWidth < 1101){
+        // CPD Portal is hidden on mobile/tablet (hamburger menu takes over) — nothing to align to.
+        return;
+      }
+      const cpdRect = cpdBtn.getBoundingClientRect();
+      const applyRect = applyBtn.getBoundingClientRect();
+      const cpdCenter = cpdRect.left + cpdRect.width / 2;
+      const applyCenter = applyRect.left + applyRect.width / 2;
+      applyBtn.style.transform = `translateX(${cpdCenter - applyCenter}px)`;
+    }
+
+    align();
+    window.addEventListener('resize', align);
+    // Re-run once web fonts finish loading — button widths (and therefore centres)
+    // can shift slightly once the real font swaps in for the fallback font.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(align);
+  })();
+
 const toggle = document.getElementById('menuToggle');
 const menu = document.getElementById('mobileMenu');
 
@@ -2585,5 +2642,20 @@ window.addEventListener('resize', () => {
   });
 })();
 </script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/66a63f20becc2fed692c2214/1i3smd6el';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
 </body>
 </html>

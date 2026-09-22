@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chartered Quality Management Specialist (CQMS™) | CIMS</title>
-<meta name="description" content="Earn the Chartered Quality Management Specialist (CQMS™) designation from CIMS. Review entry requirements, assessment method, core competencies and benefits, then apply.">
+<title>Accredited Training Partners | Chartered Institute of Management Specialists (CIMS)</title>
+<meta name="description" content="The CIMS Accredited Training Partner (ATP) Network — approved organisations authorised to support delivery of CIMS professional programmes and development pathways.">
 <link rel="icon" type="image/png" href="assets/logos/cims-logo.png">
 <link rel="apple-touch-icon" href="assets/logos/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -180,9 +180,6 @@
   .topbar-apply:hover{background:var(--gold-light);}
   @media (max-width:560px){ .topbar-search-wrap{display:none;} }
 
-
-  
-
   /* ---------- notice ribbon ---------- */
   .notice{
     background:var(--gold);
@@ -260,34 +257,39 @@
     color:#1C0D5B;
     line-height:1.55;
     margin-top:5px;
-    white-space:normal;
+    white-space:nowrap;
   }
   @media (max-width:700px){
     .nav-brand-text .acronym{font-size:1.3rem;}
     .nav-brand-text .fullname{font-size:.5rem;letter-spacing:.09em;}
   }
   @media (max-width:420px){
-    .brand{gap:10px;}
-    .nav-brand-text .acronym{font-size:1.1rem;}
-    .nav-brand-text .fullname{font-size:.42rem;letter-spacing:.05em;line-height:1.35;margin-top:3px;}
+    .brand{gap:8px;}
+    .brand-mark{height:38px;}
+    .nav-brand-text .acronym{font-size:1.05rem;}
+    .nav-brand-text .fullname{
+      white-space:normal;
+      font-size:.4rem;
+      letter-spacing:.05em;
+      line-height:1.35;
+      margin-top:3px;
+      max-width:120px;
+    }
   }
   @media (max-width:360px){
-    .brand{gap:7px;}
-    .brand-mark{height:38px;}
-    .nav-brand-text .acronym{font-size:.95rem;}
-    .nav-brand-text .fullname{font-size:.36rem;letter-spacing:.03em;line-height:1.3;margin-top:2px;}
+    .brand{gap:6px;}
+    .brand-mark{height:32px;}
+    .nav-brand-text .acronym{font-size:.92rem;}
+    .nav-brand-text .fullname{font-size:.36rem;max-width:100px;}
   }
 
   nav.main{display:flex;align-items:center;}
   nav.main > ul{
     list-style:none;margin:0;padding:0;
-    display:flex;align-items:center;gap:20px;
-    font-size:.88rem;font-weight:600;
+    display:flex;align-items:center;gap:34px;
+    font-size:.83rem;font-weight:600;
     color:var(--ink);
   }
-  /* scale desktop menu up on wider screens (hamburger takes over at 1100px) */
-  @media (min-width:1200px){ nav.main > ul{gap:26px;font-size:.93rem;} }
-  @media (min-width:1280px){ nav.main > ul{gap:30px;font-size:.97rem;} }
   nav.main > ul > li{position:relative;}
   nav.main > ul > li > a,
   nav.main > ul > li > button.nav-link{
@@ -314,7 +316,7 @@
   /* dropdown panel */
   .dropdown{
     position:absolute;top:100%;left:0;
-    min-width:290px;
+    min-width:265px;
     background:var(--paper);
     border:1px solid var(--line);
     border-top:2px solid var(--gold);
@@ -333,8 +335,8 @@
   .nav-item.open > .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
   .dropdown a{
     display:block;
-    padding:12px 24px;
-    font-size:.95rem;font-weight:600;
+    padding:11px 22px;
+    font-size:.85rem;font-weight:600;
     color:var(--ink);
     border-left:2px solid transparent;
   }
@@ -414,8 +416,8 @@
   .mobile-list > li > a,
   .msub-toggle{
     display:flex;align-items:center;justify-content:space-between;gap:10px;
-    width:100%;padding:17px 28px;
-    font-weight:600;font-size:1.05rem;
+    width:100%;padding:15px 28px;
+    font-weight:600;font-size:.92rem;
     background:none;border:none;color:var(--paper);font-family:inherit;
     text-align:left;cursor:pointer;
   }
@@ -431,10 +433,10 @@
     background:rgba(0,0,0,.2);
     transition:max-height .3s ease;
   }
-  li.has-sub.open > .msub{max-height:900px;}
+  li.has-sub.open > .msub{max-height:600px;}
   .msub li a{
-    display:block;padding:13px 28px 13px 42px;
-    font-size:.97rem;color:#d9cfc0;
+    display:block;padding:12px 28px 12px 42px;
+    font-size:.85rem;color:#d9cfc0;
     border-bottom:1px solid rgba(255,255,255,.05);
   }
   .msub li a:hover{color:var(--gold-light);}
@@ -994,123 +996,272 @@
   }
   .foot-bottom a:hover{color:var(--gold-light);}
 
-  /* ================= Specialist qualification page ================= */
-
-  /* breadcrumb */
-  .crumb-bar{background:var(--parchment);border-bottom:1px solid var(--line);}
-  .crumb-bar .wrap{padding:14px 32px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-family:'Sora',sans-serif;font-size:.78rem;font-weight:600;color:var(--slate-soft);}
-  .crumb-bar a:hover{color:var(--burgundy);}
-  .crumb-bar .sep{color:var(--gold);}
-  .crumb-bar .current{color:var(--ink);}
-
-  /* page hero (static banner, not a slider) */
-  .page-hero{position:relative;min-height:64vh;display:flex;align-items:flex-end;overflow:hidden;color:#fff;}
-  .page-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-  .page-hero::after{
-    content:"";position:absolute;inset:0;
+  /* ---------- inner page hero banner ---------- */
+  .hero-inner{
+    position:relative;
+    min-height:56vh;
+    overflow:hidden;
+    color:#fff;
+    display:flex;
+    align-items:center;
+  }
+  .hero-inner img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+  }
+  .hero-inner::after{
+    content:"";
+    position:absolute;inset:0;
     background:
-      linear-gradient(90deg, rgba(19,20,15,.85) 0%, rgba(19,20,15,.5) 55%, rgba(19,20,15,.22) 100%),
-      linear-gradient(0deg, rgba(19,20,15,.65) 0%, rgba(19,20,15,.05) 55%);
+      linear-gradient(90deg, rgba(19,20,15,.85) 0%, rgba(19,20,15,.55) 55%, rgba(19,20,15,.32) 100%),
+      linear-gradient(0deg, rgba(19,20,15,.5) 0%, rgba(19,20,15,0) 45%);
   }
-  .page-hero-content{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:64px 32px 46px;width:100%;}
-  .page-hero .eyebrow{color:var(--gold-light);}
-  .page-hero .eyebrow::before{background:var(--gold-light);}
-  .page-hero h1{color:#fff;font-size:clamp(1.9rem,4vw,3.05rem);line-height:1.1;margin:16px 0 18px;max-width:22ch;}
-  .page-hero p.lede{font-size:1.06rem;color:#e9e4d8;max-width:60ch;line-height:1.65;margin-bottom:26px;}
-  .page-hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
-  .page-hero-ctas .btn-primary{background:var(--gold);border-color:var(--gold);color:var(--charcoal);}
-  .page-hero-ctas .btn-primary:hover{background:var(--gold-light);border-color:var(--gold-light);}
-  .page-hero-ctas .btn-ghost{border-color:rgba(255,255,255,.55);color:#fff;}
-  .page-hero-ctas .btn-ghost:hover{background:#fff;color:var(--charcoal);border-color:#fff;}
-  @media (max-width:700px){ .page-hero{min-height:auto;} .page-hero-content{padding:44px 20px 34px;} }
-
-  /* quick fact strip under hero */
-  .fact-strip{background:var(--gold);}
-  .fact-strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);padding:26px 32px;gap:20px;}
-  @media (max-width:800px){ .fact-strip .wrap{grid-template-columns:1fr 1fr;} }
-  .fact{text-align:left;border-left:1px solid rgba(43,36,32,.25);padding-left:18px;}
-  .fact:first-child{border-left:none;padding-left:0;}
-  @media (max-width:800px){ .fact:nth-child(3){border-left:none;padding-left:0;} }
-  .fact .flbl{font-family:'Sora',sans-serif;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--charcoal);opacity:.75;}
-  .fact .fval{font-family:'Sora',sans-serif;font-weight:700;font-size:1.02rem;color:var(--charcoal);margin-top:5px;line-height:1.3;}
-
-  /* two column content layout */
-  .split{display:grid;grid-template-columns:1fr .62fr;gap:56px;align-items:start;}
-  @media (max-width:960px){ .split{grid-template-columns:1fr;gap:44px;} }
-  .main-col p{color:var(--slate-soft);line-height:1.75;font-size:1.02rem;margin-bottom:16px;}
-  .main-col h2{font-size:clamp(1.35rem,2.4vw,1.7rem);margin:0 0 16px;}
-  .main-col h2.with-rule{padding-bottom:14px;border-bottom:2px solid var(--line);}
-  .block{margin-bottom:52px;}
-  .block:last-child{margin-bottom:0;}
-
-  /* entry requirement / assessment cards */
-  .req-list{display:flex;flex-direction:column;gap:16px;margin-top:6px;}
-  .req-card{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--gold);padding:22px 24px;}
-  .req-card h4{font-size:.98rem;margin-bottom:8px;}
-  .req-card p{color:var(--slate-soft);font-size:.92rem;line-height:1.65;margin:0;}
-
-  .num-list{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;counter-reset:steps;}
-  .num-list li{display:flex;gap:16px;align-items:flex-start;counter-increment:steps;}
-  .num-list li::before{
-    content:counter(steps,decimal-leading-zero);
-    font-family:'Sora',sans-serif;font-weight:700;font-size:.78rem;color:var(--gold-light);
-    background:var(--charcoal);width:30px;height:30px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  .hero-inner-content{
+    position:relative;z-index:3;
+    max-width:1240px;
+    margin:0 auto;
+    padding:120px 32px 64px;
+    width:100%;
   }
-  .num-list li span{color:var(--slate-soft);font-size:.96rem;line-height:1.6;padding-top:4px;}
+  .breadcrumb{
+    display:flex;align-items:center;flex-wrap:wrap;gap:8px;
+    font-family:'Sora',sans-serif;
+    font-size:.78rem;font-weight:600;
+    color:#e9e4d8;
+    margin-bottom:20px;
+  }
+  .breadcrumb a{color:#e9e4d8;opacity:.85;}
+  .breadcrumb a:hover{color:var(--gold-light);opacity:1;}
+  .breadcrumb .sep{color:var(--gold-light);opacity:.7;}
+  .breadcrumb .current{color:var(--gold-light);}
+  .hero-inner h1{
+    color:#fff;
+    font-size:clamp(2.1rem, 4.4vw, 3.4rem);
+    line-height:1.1;
+    max-width:20ch;
+  }
+  .hero-inner p.lede{
+    font-size:1.05rem;
+    color:#e9e4d8;
+    max-width:56ch;
+    line-height:1.65;
+    margin-top:18px;
+  }
+  .hero-inner-seal{
+    position:absolute;
+    right:48px;bottom:40px;
+    width:104px;height:104px;
+    z-index:4;
+    opacity:.9;
+  }
+  .hero-inner-seal svg{width:100%;height:100%;}
+  .hero-inner-seal .ring-outer{animation:spin 60s linear infinite;transform-origin:center;}
+  @media (prefers-reduced-motion: reduce){ .hero-inner-seal .ring-outer{animation:none;} }
+  @media (max-width:900px){ .hero-inner-seal{display:none;} }
+  @media (max-width:700px){ .hero-inner-content{padding:100px 20px 48px;} }
 
-  /* standards & competencies checklist */
-  .comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px;}
-  @media (max-width:560px){ .comp-grid{grid-template-columns:1fr;} }
-  .comp-item{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);padding:16px 18px;}
-  .comp-item svg{width:18px;height:18px;flex-shrink:0;stroke:var(--gold);fill:none;stroke-width:2.4;margin-top:2px;}
-  .comp-item span{font-family:'Sora',sans-serif;font-weight:600;font-size:.88rem;color:var(--ink);line-height:1.4;}
+  /* ---------- official policy notice ---------- */
+  .notice-box{
+    background:var(--charcoal);
+    color:var(--paper);
+    border:1px solid var(--gold-dim);
+    border-top:3px solid var(--gold);
+    padding:36px 38px;
+  }
+  .notice-box .eyebrow{color:var(--gold-light);}
+  .notice-box .eyebrow::before{background:var(--gold-light);}
+  .notice-box h3{color:var(--paper);margin-top:12px;font-size:1.2rem;}
+  .notice-box p{color:#d9cfc0;line-height:1.8;font-size:.96rem;margin-top:14px;margin-bottom:0;}
+  .notice-box p strong{color:var(--gold-light);}
+  .notice-box p + p{margin-top:14px;}
 
-  /* benefit grid (features & benefits) */
-  .benefit-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:6px;}
-  @media (max-width:700px){ .benefit-grid{grid-template-columns:1fr;} }
-  .benefit-card{background:var(--paper);border:1px solid var(--line);padding:26px 24px;}
-  .benefit-card .fnum{font-family:'Sora',sans-serif;color:var(--gold);font-weight:700;font-size:.85rem;display:block;margin-bottom:10px;}
-  .benefit-card h4{font-size:1rem;margin-bottom:8px;}
-  .benefit-card p{color:var(--slate-soft);font-size:.9rem;line-height:1.6;margin:0;}
+  /* ---------- svg emblem row ---------- */
+  .emblem-row{
+    display:flex;
+    align-items:stretch;
+    justify-content:center;
+    gap:36px;
+    flex-wrap:wrap;
+    padding:48px 32px 56px;
+  }
+  .emblem-row figure{
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    align-items:center;
+    width:260px;
+    max-width:80vw;
+  }
+  .emblem-row .emblem-frame{
+    width:100%;
+    aspect-ratio:4/3;
+    background:var(--paper);
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    padding:14px;
+  }
+  .emblem-row img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+  }
+  .emblem-row figcaption{
+    font-family:'Sora',sans-serif;
+    font-weight:600;
+    font-size:.8rem;
+    color:var(--slate-soft);
+    text-align:center;
+  }
 
-  /* sticky apply sidebar */
-  .side-stack{display:flex;flex-direction:column;gap:24px;position:sticky;top:96px;}
-  .apply-card{background:var(--charcoal);color:var(--paper);padding:32px 28px;border:1px solid var(--gold-dim);position:relative;}
-  .apply-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);}
-  .apply-card .eyebrow{color:var(--gold-light);}
-  .apply-card .eyebrow::before{background:var(--gold-light);}
-  .apply-card h3{color:#fff;font-size:1.15rem;margin:12px 0 12px;}
-  .apply-card p{color:#cbbfa8;font-size:.9rem;line-height:1.6;margin-bottom:20px;}
-  .apply-card .btn-primary{background:var(--gold);color:var(--charcoal);border-color:var(--gold);width:100%;justify-content:center;margin-bottom:12px;}
-  .apply-card .btn-primary:hover{background:var(--gold-light);border-color:var(--gold-light);}
-  .apply-card .phone-row{display:flex;align-items:center;gap:10px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);margin-top:4px;}
-  .apply-card .phone-row svg{width:18px;height:18px;stroke:var(--gold-light);fill:none;stroke-width:2;flex-shrink:0;}
-  .apply-card .phone-row a{color:#fff;font-weight:700;font-size:.95rem;}
-  .apply-card .phone-row a:hover{color:var(--gold-light);}
+  /* ---------- grade badges ---------- */
+  .grade-badges{
+    display:flex;flex-wrap:wrap;gap:14px;
+    margin-top:28px;
+  }
+  .grade-badge{
+    display:flex;flex-direction:column;gap:2px;
+    padding:14px 22px;
+    background:var(--parchment);
+    border:1px solid var(--line);
+    border-left:3px solid var(--gold);
+  }
+  .grade-badge .gb-letters{
+    font-family:'Sora',sans-serif;font-weight:700;
+    font-size:1rem;color:var(--burgundy);
+  }
+  .grade-badge .gb-name{font-size:.8rem;color:var(--slate-soft);}
 
-  .related-card{background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow);}
-  .related-card .sw-head h3{font-size:.75rem;}
-  .related-card ul{list-style:none;margin:0;padding:0;}
-  .related-card li{border-bottom:1px solid var(--line);}
-  .related-card li:last-child{border-bottom:none;}
-  .related-card a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;font-size:.84rem;font-weight:600;color:var(--ink);}
-  .related-card a:hover{background:var(--parchment);color:var(--burgundy);}
-  .related-card a svg{width:13px;height:13px;flex-shrink:0;stroke:var(--gold);fill:none;stroke-width:2.2;}
+  /* ---------- how to join steps ---------- */
+  .join-steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+    margin-top:16px;
+  }
+  @media (max-width:900px){ .join-steps{grid-template-columns:1fr;} }
+  .join-step{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:30px 26px;
+    position:relative;
+  }
+  .join-step .js-num{
+    font-family:'Playfair Display',serif;
+    font-size:2.2rem;
+    color:var(--gold);
+    line-height:1;
+    margin-bottom:12px;
+    display:block;
+  }
+  .join-step h4{font-size:1.02rem;margin-bottom:8px;}
+  .join-step p{color:var(--slate-soft);font-size:.92rem;line-height:1.6;margin:0;}
 
-  /* explore all disciplines strip */
-  .discipline-band{background:var(--parchment);}
-  .discipline-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-  @media (max-width:960px){ .discipline-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:520px){ .discipline-grid{grid-template-columns:1fr;} }
-  .discipline-tile{background:var(--paper);border:1px solid var(--line);padding:18px 20px;font-family:'Sora',sans-serif;font-size:.86rem;font-weight:600;color:var(--ink);display:flex;align-items:center;justify-content:space-between;gap:10px;transition:border-color .15s ease, color .15s ease;}
-  .discipline-tile:hover{border-color:var(--gold);color:var(--burgundy);}
-  .discipline-tile.active{border-color:var(--gold);border-left:3px solid var(--gold);color:var(--burgundy);background:#fff;}
-  .discipline-tile svg{width:14px;height:14px;flex-shrink:0;stroke:var(--gold);fill:none;stroke-width:2.2;}
+  /* ---------- advantage blocks ---------- */
+  .adv-block{
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:18px;
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .adv-block:first-child{padding-top:0;}
+  .adv-block:last-child{border-bottom:none;}
+  .adv-block .adv-num{
+    width:44px;height:44px;
+    border-radius:50%;
+    background:var(--charcoal);
+    color:var(--gold-light);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Sora',sans-serif;font-weight:700;font-size:.92rem;
+    flex-shrink:0;
+  }
+  .adv-block h4{font-size:1.06rem;margin-bottom:8px;}
+  .adv-block p{color:var(--slate-soft);line-height:1.75;font-size:.96rem;margin:0;}
+  .adv-block .postnom-list{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:8px 20px;
+    margin-top:14px;
+    list-style:none;padding:0;
+  }
+  @media (max-width:560px){ .adv-block .postnom-list{grid-template-columns:1fr;} }
+  .adv-block .postnom-list li{
+    font-size:.92rem;color:var(--ink);
+    padding:8px 14px;
+    background:var(--parchment);
+    border-left:2px solid var(--gold);
+  }
+  .adv-block .postnom-list li strong{color:var(--burgundy);}
+
+  /* ---------- additional considerations (shared pattern) ---------- */
+  .consider-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+    margin-top:16px;
+  }
+  @media (max-width:900px){ .consider-grid{grid-template-columns:1fr;} }
+  .consider-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:32px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .consider-card .cc-icon{
+    width:48px;height:48px;
+    border-radius:50%;
+    background:var(--burgundy);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .consider-card .cc-icon svg{width:22px;height:22px;stroke:var(--gold-light);fill:none;stroke-width:1.7;}
+  .consider-card h4{font-size:1.06rem;}
+  .consider-card p{color:var(--slate-soft);font-size:.94rem;line-height:1.65;margin:0;}
+</style>
+<style>
+  .cpd-intro{max-width:780px;margin-bottom:44px;}
+  .cpd-intro p{color:var(--slate-soft);line-height:1.85;font-size:1.02rem;margin-top:16px;}
+
+  .cpd-block{max-width:820px;margin-bottom:48px;}
+  .cpd-block h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--ink);margin-bottom:16px;padding-bottom:14px;border-bottom:2px solid var(--line);}
+  .cpd-block p{color:var(--slate-soft);line-height:1.85;font-size:.98rem;margin-bottom:16px;}
+  .cpd-block p strong{color:var(--ink);}
+
+  .cpd-chip-grid{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 20px;}
+  .cpd-chip{
+    background:var(--paper);border:1px solid var(--line);border-radius:20px;
+    padding:8px 18px;font-size:.85rem;color:var(--slate);font-weight:500;
+  }
+
+  .cpd-note{
+    background:var(--parchment);border-left:3px solid var(--gold);padding:16px 20px;
+    font-size:.9rem;color:var(--slate-soft);line-height:1.7;border-radius:0 4px 4px 0;
+  }
+  .cpd-note strong{color:var(--ink);}
+
+  /* ---------- ATP check-list (reuses the same content-block rhythm) ---------- */
+  .check-list{
+    list-style:none;margin:16px 0 20px;padding:0;
+    display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;
+  }
+  @media (max-width:700px){ .check-list{grid-template-columns:1fr;} }
+  .check-list li{
+    display:flex;align-items:flex-start;gap:10px;
+    font-size:.94rem;color:var(--slate);line-height:1.55;
+    padding:10px 14px;
+    background:var(--paper);border:1px solid var(--line);border-left:2px solid var(--gold);
+  }
+  .check-list li svg{width:15px;height:15px;flex-shrink:0;margin-top:3px;stroke:var(--gold);fill:none;stroke-width:2.4;}
 </style>
 </head>
 <body>
-
 <div class="topbar">
   <div class="wrap">
     <div class="topbar-search-wrap">
@@ -1122,7 +1273,7 @@
       </form>
       <div class="search-suggest" id="siteSearchSuggest"></div>
     </div>
-    <a href="app.html" class="topbar-apply" id="applyNowBtn">Apply Now</a>
+    <a href="app.html" class="topbar-apply">Apply Now</a>
   </div>
 </div>
 
@@ -1161,9 +1312,8 @@
             <a href="membership-chartered.html">Chartered Member (MCIMS)</a>
             <a href="membership-fellow.html">Chartered Fellow (FCIMS)</a>
             <a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a>
-            <a href="cpd.html">Continuing Professional Development (CPD)</a>
             <a href="membership-benefits.html">Membership Benefits</a>
-
+            <a href="cpd.html">Continuing Professional Development (CPD)</a>
             <a href="digital-credentials-verification.html">Digital Credentials &amp; Verification</a>
           </div>
         </li>
@@ -1178,24 +1328,22 @@
         <li class="nav-item has-dropdown">
           <button class="nav-link" aria-expanded="false">Employers<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
           <div class="dropdown">
+            <a href="partnership-framework.html">Partnership Framework</a>
             <a href="employers-hire-member.html">Hire a CIMS Member</a>
-            <a href="accredited-training-partners.html">Accredited Training Partners</a>
+            <a href="accredited-training-partners.html" aria-current="page" style="color:var(--burgundy);">Accredited Training Partners</a>
             <a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a>
           </div>
         </li>
 
         <li class="nav-item">
-          <a href="chartered-executive-leader-cexl.html" target="_blank" rel="noopener">CExL&trade;</a>
-        </li>
-        <li class="nav-item">
-          <a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">CSD&trade;</a>
+          <a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a>
         </li>
       </ul>
     </nav>
 
     <div class="nav-utils">
       <div class="nav-item has-dropdown">
-        <button class="nav-link btn-pill filled" id="cpdPortalBtn" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button class="nav-link btn-pill filled" aria-expanded="false">CPD Portal<svg class="caret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="dropdown">
           <a href="register.html">Register</a>
           <a href="member-login.html">Member Log In</a>
@@ -1231,8 +1379,8 @@
           <li><a href="membership-chartered.html">Chartered Member (MCIMS)</a></li>
           <li><a href="membership-fellow.html">Chartered Fellow (FCIMS)</a></li>
           <li><a href="membership-doctoral-fellow.html">Chartered Doctoral Fellow (DCIMS)</a></li>
-          <li><a href="cpd.html">Continuing Professional Development (CPD)</a></li>
           <li><a href="membership-benefits.html">Membership Benefits</a></li>
+          <li><a href="cpd.html">Continuing Professional Development (CPD)</a></li>
           <li><a href="digital-credentials-verification.html">Digital Credentials &amp; Verification</a></li>
         </ul>
       </li>
@@ -1247,13 +1395,13 @@
       <li class="has-sub">
         <button class="msub-toggle">Employers<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <ul class="msub">
+          <li><a href="partnership-framework.html">Partnership Framework</a></li>
           <li><a href="employers-hire-member.html">Hire a CIMS Member</a></li>
           <li><a href="accredited-training-partners.html">Accredited Training Partners</a></li>
           <li><a href="become-accredited-training-partner.html">Become an Accredited Training Partner</a></li>
         </ul>
       </li>
-      <li><a href="chartered-executive-leader-cexl.html" target="_blank" rel="noopener">CExL&trade;</a></li>
-      <li><a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">CSD&trade;</a></li>
+      <li><a href="chartered-strategic-director.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
       <li class="has-sub">
         <button class="msub-toggle">CPD Portal<svg class="mcaret" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
         <ul class="msub">
@@ -1268,185 +1416,73 @@
     </div>
   </div>
 </header>
-
-<div class="crumb-bar">
-  <div class="wrap">
-    <a href="index.html">Home</a>
-    <span class="sep">/</span>
-    <a href="specialist-qualifications.html">Specialist Qualifications</a>
-    <span class="sep">/</span>
-    <span class="current">Chartered Quality Management Specialist (CQMS™)</span>
+<section class="hero-inner" aria-label="Page introduction">
+  <img src="assets/images/11.jpg" alt="CIMS Accredited Training Partners">
+  <div class="hero-inner-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="sep">/</span>
+      <a href="index.html#employers">Employers</a>
+      <span class="sep">/</span>
+      <span class="current">Accredited Training Partners</span>
+    </nav>
+    <span class="eyebrow">Employers</span>
+    <h1 style="margin-top:18px;">Accredited Training Partners</h1>
+    <p class="lede">Approved organisations authorised by the Institute to support the delivery of specified CIMS professional programmes and development pathways.</p>
   </div>
-</div>
-
-<section class="page-hero">
-  <img src="assets/images/1.jpg" alt="Quality management specialist reviewing process improvement data on a factory floor">
-  <div class="page-hero-content">
-    <span class="eyebrow">Specialist Qualification</span>
-    <h1>Chartered Quality Management Specialist <em style="font-style:italic;color:var(--gold-light);">(CQMS™)</em></h1>
-    <p class="lede">A specialist-level credential for professionals who lead quality assurance, process improvement and quality management systems, driving continuous improvement and organisational excellence.</p>
-    <div class="page-hero-ctas">
-      <a href="app.html" class="btn btn-primary">Get Registered</a>
-      <a href="#requirements" class="btn btn-ghost">View Entry Requirements</a>
-    </div>
+  <div class="hero-inner-seal">
+    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <g class="ring-outer">
+        <circle cx="150" cy="150" r="142" fill="none" stroke="#B08D57" stroke-width="2" stroke-dasharray="3 10"/>
+      </g>
+      <circle cx="150" cy="150" r="118" fill="none" stroke="#D8BD8A" stroke-width="2"/>
+      <circle cx="150" cy="150" r="104" fill="#241f1a" stroke="#B08D57" stroke-width="2"/>
+      <text x="150" y="145" text-anchor="middle" font-family="Sora, sans-serif" font-weight="700" font-size="44" fill="#F6F1E4">CIMS</text>
+      <text x="150" y="178" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" letter-spacing="3" fill="#D8BD8A">CHARTERED</text>
+    </svg>
   </div>
 </section>
-
-<div class="fact-strip">
-  <div class="wrap">
-    <div class="fact">
-      <div class="flbl">Credential Level</div>
-      <div class="fval">Specialist Qualification</div>
-    </div>
-    <div class="fact">
-      <div class="flbl">Awarding Body</div>
-      <div class="fval">Chartered Institute of Management Specialists</div>
-    </div>
-    <div class="fact">
-      <div class="flbl">Entry Route</div>
-      <div class="fval">Academic + Professional Experience</div>
-    </div>
-    <div class="fact">
-      <div class="flbl">Post-Nominal</div>
-      <div class="fval">CQMS&trade;</div>
-    </div>
-  </div>
-</div>
 
 <section>
   <div class="wrap">
-    <div class="split">
 
-      <div class="main-col">
+    <div class="cpd-intro">
+      <span class="eyebrow">The ATP Network</span>
+      <p>The <strong>CIMS Accredited Training Partner (ATP) Network</strong> comprises approved organisations authorised by the Institute to support the delivery of specified CIMS professional programmes and development pathways.</p>
+      <p>Accredited Training Partner status is not automatically granted through payment or application. Prospective partners undergo institutional review and professional accreditation assessment before approval.</p>
+    </div>
 
-        <div class="block">
-          <span class="eyebrow">Overview</span>
-          <h2 style="margin-top:14px;">About the CQMS&trade; designation</h2>
-          <p>The Chartered Quality Management Specialist (CQMS&trade;) is a specialist-level credential from the Chartered Institute of Management Specialists (CIMS) that recognises individuals with exceptional expertise and leadership in the field of quality management. It signifies a commitment to excellence in ensuring product and service quality, driving continuous improvement, and achieving organisational excellence.</p>
-          <p>Holders of the designation are recognised as quality management practitioners who can translate quality strategy into measurable business outcomes &mdash; from quality assurance through to process improvement and management-system implementation &mdash; while upholding the standards and rigour the profession demands.</p>
-        </div>
+    <div class="cpd-block">
+      <h2>Accredited Partners May Be Authorised To</h2>
+      <ul class="check-list">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Deliver specifically approved CIMS programmes</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Support candidate preparation for applicable professional assessments</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Facilitate approved RPL pathways</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Promote approved CIMS qualifications within authorised parameters</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Use the designated CIMS Accredited Training Partner identity, subject to brand guidelines</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Participate in CIMS professional-development initiatives</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Support appropriate membership and professional progression pathways</li>
+      </ul>
+    </div>
 
-        <div class="block" id="requirements">
-          <h2 class="with-rule">Entry requirements</h2>
-          <p style="margin-top:18px;">To be considered for the CQMS&trade; designation, applicants are expected to meet the following criteria:</p>
-          <div class="req-list">
-            <div class="req-card">
-              <h4>Academic background</h4>
-              <p>A bachelor's degree or advanced diploma in quality management, business administration, engineering, or a closely related discipline from a recognised institution.</p>
-            </div>
-            <div class="req-card">
-              <h4>Professional experience</h4>
-              <p>Around 5&ndash;10 years of relevant work in quality management roles, covering responsibilities such as quality assurance, process improvement and the implementation of quality management systems.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="block">
-          <h2 class="with-rule">Mode of assessment</h2>
-          <p style="margin-top:18px;">Candidates are evaluated across several dimensions to confirm their readiness for the designation:</p>
-          <ol class="num-list">
-            <li><span>Review of academic qualifications, focusing on coursework related to quality management principles, total quality management (TQM) and lean manufacturing.</span></li>
-            <li><span>Documentation of professional experience, including quality management projects undertaken, accomplishments in driving continuous improvement, and their impact on organisational performance.</span></li>
-            <li><span>Examination of technical knowledge and competency in quality management methodologies, tools and techniques, such as Six Sigma, ISO standards and statistical process control.</span></li>
-            <li><span>Case studies or practical assignments that assess an applicant's ability to identify quality issues, implement corrective actions, and lead quality improvement initiatives.</span></li>
-          </ol>
-        </div>
-
-        <div class="block">
-          <h2 class="with-rule">Standards &amp; competencies</h2>
-          <p style="margin-top:18px;">The CQMS&trade; designation is awarded to professionals who can demonstrate consistent, evidenced competency in the following areas:</p>
-          <div class="comp-grid">
-            <div class="comp-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Quality assurance &amp; quality control</span></div>
-            <div class="comp-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Total quality management (TQM) &amp; lean manufacturing</span></div>
-            <div class="comp-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Six Sigma &amp; statistical process control</span></div>
-            <div class="comp-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>ISO standards &amp; quality management systems</span></div>
-            <div class="comp-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Root-cause analysis &amp; corrective action</span></div>
-            <div class="comp-item"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Continuous improvement leadership</span></div>
-            <div class="comp-item" style="grid-column:1/-1;"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Process auditing &amp; compliance management</span></div>
-          </div>
-        </div>
-
-        <div class="block">
-          <h2 class="with-rule">Features &amp; benefits</h2>
-          <div class="benefit-grid">
-            <div class="benefit-card">
-              <span class="fnum">01</span>
-              <h4>Professional recognition</h4>
-              <p>Be recognised as a highly skilled, knowledgeable professional in quality management, enhancing your credibility and reputation within the business community and among organisational stakeholders.</p>
-            </div>
-            <div class="benefit-card">
-              <span class="fnum">02</span>
-              <h4>Career advancement</h4>
-              <p>Position yourself for leadership roles in quality departments, manufacturing firms, service organisations and regulatory agencies, with opportunities for career progression.</p>
-            </div>
-            <div class="benefit-card">
-              <span class="fnum">03</span>
-              <h4>Strategic impact</h4>
-              <p>Play a crucial role in driving operational excellence, ensuring product and service quality, and achieving customer satisfaction through effective quality management and continuous improvement.</p>
-            </div>
-            <div class="benefit-card">
-              <span class="fnum">04</span>
-              <h4>Continuous professional development</h4>
-              <p>Commit to ongoing learning, staying updated on emerging quality management trends, best practice and technologies throughout your career.</p>
-            </div>
-          </div>
-        </div>
-
+    <div class="cpd-block" style="margin-bottom:0;">
+      <h2>Quality Assurance</h2>
+      <p>ATP status remains subject to continuing compliance with CIMS requirements. The Institute may periodically review a partner's:</p>
+      <ul class="check-list">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Organisational standing</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Programme delivery</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Faculty or trainer competence</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Assessment administration</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Marketing practices</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Learner records</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Quality-assurance processes</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Compliance with CIMS policies</li>
+      </ul>
+      <div class="cpd-note">
+        <strong>Please note:</strong> Accredited Training Partner status does not constitute a franchise, university affiliation or governmental accreditation unless expressly stated otherwise. Only organisations appearing within the Institute's official partner records should be regarded as currently authorised CIMS Training Partners.
       </div>
-
-      <aside class="side-stack">
-        <div class="apply-card">
-          <span class="eyebrow">Ready to apply?</span>
-          <h3>Begin your CQMS&trade; application</h3>
-          <p>Submit your academic and professional experience for review and take the first step toward chartered recognition.</p>
-          <a href="app.html" class="btn btn-primary">Get Registered</a>
-          <div class="phone-row">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href="tel:+18592109109">+1 (859) 210-9109</a>
-          </div>
-        </div>
-
-        <div class="related-card sw">
-          <div class="sw-head">
-            <h3>Explore Other Disciplines</h3>
-          </div>
-          <ul>
-            <li><a href="chartered-management-specialist.html">Management Specialist<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a></li>
-            <li><a href="chartered-operations-production-management-specialist.html">Operations &amp; Production Management<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a></li>
-            <li><a href="chartered-health-and-safety-management-specialist.html">Health &amp; Safety Management<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a></li>
-            <li><a href="chartered-international-trade-logistics-specialist.html">International Trade &amp; Logistics<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a></li>
-            <li><a href="specialist-qualifications.html">View all 13 disciplines<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a></li>
-          </ul>
-        </div>
-      </aside>
-
     </div>
-  </div>
-</section>
 
-<div class="seal-rule"></div>
-
-<section class="discipline-band">
-  <div class="wrap">
-    <div class="section-head center">
-      <span class="eyebrow">Choose Your Discipline</span>
-      <h2>13 specialist qualifications, one chartered standard</h2>
-      <p>Every CIMS specialist designation follows the same rigorous entry, assessment and competency framework. Explore the full range and find the discipline that fits your career.</p>
-    </div>
-    <div class="discipline-grid">
-      <a class="discipline-tile" href="chartered-human-resource-management-specialist-chrms.html">Human Resource Management (CHRMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-leadership-and-strategic-planning-specialist.html">Leadership &amp; Strategic Planning (CLSPS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-international-trade-logistics-specialist.html">International Trade &amp; Logistics (CITLS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile active" href="chartered-quality-management-specialist.html">Quality Management (CQMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-management-specialist.html">Management Specialist (CMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-business-analyst-specialist.html">Business Specialist (CBS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-agile-and-scrum-specialist.html">Agile &amp; Scrum (CASS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-supply-chain-management-specialist.html">Supply Chain Management (CSCMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-health-and-safety-management-specialist.html">Health &amp; Safety Management (CHSMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-training-and-development-management-specialist.html">Training &amp; Development Management (CTDMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-transportation-and-pipeline-logistics-management-specialist.html">Transportation &amp; Pipeline Logistics (CTPLMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      <a class="discipline-tile" href="chartered-operations-production-management-specialist.html">Operations &amp; Production Management (COPMS&trade;)<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-    </div>
   </div>
 </section>
 
@@ -1454,18 +1490,17 @@
   <div class="wrap">
     <div class="partner-card">
       <div>
-        <span class="eyebrow">Take The Next Step</span>
-        <h2>Apply for CQMS&trade; today</h2>
-        <p>Join quality management professionals worldwide holding a chartered specialist credential recognised across 170+ countries.</p>
+        <span class="eyebrow">Expand Your Training Portfolio</span>
+        <h2>Interested in becoming a CIMS Accredited Training Partner?</h2>
+        <p>CIMS welcomes expressions of interest from established organisations seeking an institutional relationship with the Institute.</p>
       </div>
       <div style="display:flex;gap:14px;flex-wrap:wrap;">
-        <a href="app.html" class="btn btn-primary">Get Registered</a>
-        <a href="contact-us.html" class="btn btn-ghost" style="border-color:rgba(255,255,255,.5);color:#fff;">Contact Us</a>
+        <a href="become-accredited-training-partner.html" class="btn btn-primary">Apply for Partnership</a>
+        <a href="partnership-framework.html" class="btn btn-ghost" style="border-color:rgba(255,255,255,.5);color:#fff;">Explore the Partnership Framework</a>
       </div>
     </div>
   </div>
 </section>
-
 <footer id="site-footer">
   <div class="wrap">
 
@@ -1485,7 +1520,7 @@
         </div>
       </div>
 
-      <div>
+       <div>
         <h4>About Us</h4>
         <ul>
           <li><a href="history.html">History</a></li>
@@ -1509,15 +1544,19 @@
         </ul>
       </div>
 
-      <div>
+       <div>
         <h4>Qualifications &amp; Employers</h4>
         <ul>
           <li><a href="specialist-qualifications.html">Specialist Qualifications</a></li>
           <li><a href="practitioner-qualifications.html">Practitioner Qualifications</a></li>
           <li><a href="chartered-strategic-director-csd.html" target="_blank" rel="noopener">Chartered Strategic Director (CSD)</a></li>
+          <li><a href="partnership-framework.html">Partnership Framework</a></li>
           <li><a href="employers-hire-member.html">Hire a CIMS Member</a></li>
+          <li><a href="accredited-training-partners.html">Accredited Training Partners</a></li>
         </ul>
       </div>
+
+
 
       <div>
         <h4>Member Area</h4>
@@ -1531,7 +1570,7 @@
       <div>
         <h4>Contact</h4>
         <ul>
-          <li>821 N ST STE 102<br>Anchorage, AK 99501, USA</li>
+          <li><strong>Registered Office Address:</strong><br>821 N ST STE 102<br>Anchorage, AK 99501, USA</li>
           <li>Monday to Saturday, 9:00 to 17:00</li>
           <li><a href="mailto:admin@charteredims.com">admin@charteredims.com</a></li>
           <li><a href="tel:+18592109109">+1 (859) 210-9109</a></li>
@@ -1551,27 +1590,20 @@
     </div>
   </div>
 </footer>
-
 <script src="site-search.js"></script>
 <script>
-  // ---------- mobile menu toggle ----------
+  // ---------- mobile menu + dropdown behaviour (same as rest of site) ----------
   const toggle = document.getElementById('menuToggle');
   const menu = document.getElementById('mobileMenu');
-
   function closeMobileMenu(){
-    menu.classList.remove('open');
-    toggle.classList.remove('active');
-    toggle.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('open'); toggle.classList.remove('active'); toggle.setAttribute('aria-expanded','false');
     document.querySelectorAll('.mobile-list li.has-sub.open').forEach(li => li.classList.remove('open'));
   }
-
   toggle.addEventListener('click', () => {
     const isOpen = menu.classList.toggle('open');
     toggle.classList.toggle('active', isOpen);
     toggle.setAttribute('aria-expanded', String(isOpen));
   });
-
-  // mobile accordion submenus (nothing hidden, everything reachable by tap)
   document.querySelectorAll('.msub-toggle').forEach(btn => {
     btn.addEventListener('click', () => {
       const li = btn.closest('li');
@@ -1580,83 +1612,41 @@
       li.classList.toggle('open', !wasOpen);
     });
   });
-
-  // ---------- desktop dropdowns (About Us, Membership, Qualifications, Employers, Member Area) ----------
   const dropdownItems = document.querySelectorAll('.nav-item.has-dropdown');
   let closeTimer = null;
-
   function openItem(item, viaClick){
     clearTimeout(closeTimer);
     dropdownItems.forEach(i => { if (i !== item) i.classList.remove('open'); });
     item.classList.add('open');
     if (viaClick) item.dataset.openedByClick = 'true';
-    const link = item.querySelector('.nav-link');
-    if (link) link.setAttribute('aria-expanded', 'true');
+    item.querySelector('.nav-link')?.setAttribute('aria-expanded','true');
   }
   function closeItem(item){
-    item.classList.remove('open');
-    delete item.dataset.openedByClick;
-    const link = item.querySelector('.nav-link');
-    if (link) link.setAttribute('aria-expanded', 'false');
+    item.classList.remove('open'); delete item.dataset.openedByClick;
+    item.querySelector('.nav-link')?.setAttribute('aria-expanded','false');
   }
-  function closeAllDropdowns(){
-    dropdownItems.forEach(closeItem);
-  }
-
+  function closeAllDropdowns(){ dropdownItems.forEach(closeItem); }
   dropdownItems.forEach(item => {
     const link = item.querySelector('.nav-link');
-
-    // click toggles and stays open. On desktop, a hover already opened the
-    // panel before the click lands, so a click only *closes* it when the
-    // open state was itself the result of a previous click (keeps hover
-    // users from having the panel slam shut the instant they click).
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const isOpen = item.classList.contains('open');
       const openedByClick = item.dataset.openedByClick === 'true';
-      if (isOpen && openedByClick) {
-        closeItem(item);
-      } else {
-        dropdownItems.forEach(i => { if (i !== item) closeItem(i); });
-        openItem(item, true);
-      }
+      if (isOpen && openedByClick) closeItem(item);
+      else { dropdownItems.forEach(i => { if (i !== item) closeItem(i); }); openItem(item, true); }
     });
-
-    // hover intent with a grace delay so a small cursor slip doesn't close it
     item.addEventListener('mouseenter', () => openItem(item));
-    item.addEventListener('mouseleave', () => {
-      closeTimer = setTimeout(() => closeItem(item), 380);
-    });
+    item.addEventListener('mouseleave', () => { closeTimer = setTimeout(() => closeItem(item), 380); });
     item.addEventListener('focusin', () => openItem(item));
   });
-
-  document.addEventListener('click', (e) => {
-    dropdownItems.forEach(item => {
-      if (!item.contains(e.target)) closeItem(item);
-    });
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeAllDropdowns();
-  });
-
-  // ---------- keep layout sane when crossing the mobile/desktop breakpoint ----------
-  // resizing the window (either direction) fully resets menu state so nothing
-  // gets stuck open or hidden between minimum and maximum window sizes.
+  document.addEventListener('click', (e) => { dropdownItems.forEach(item => { if (!item.contains(e.target)) closeItem(item); }); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAllDropdowns(); });
   const breakpointQuery = window.matchMedia('(max-width: 1100px)');
-  function resetNavForViewport(){
-    closeMobileMenu();
-    closeAllDropdowns();
-  }
-  if (breakpointQuery.addEventListener) {
-    breakpointQuery.addEventListener('change', resetNavForViewport);
-  } else if (breakpointQuery.addListener) {
-    breakpointQuery.addListener(resetNavForViewport); // older Safari
-  }
+  function resetNavForViewport(){ closeMobileMenu(); closeAllDropdowns(); }
+  if (breakpointQuery.addEventListener) breakpointQuery.addEventListener('change', resetNavForViewport);
+  else if (breakpointQuery.addListener) breakpointQuery.addListener(resetNavForViewport);
   let resizeDebounce;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeDebounce);
-    resizeDebounce = setTimeout(resetNavForViewport, 150);
-  });
+  window.addEventListener('resize', () => { clearTimeout(resizeDebounce); resizeDebounce = setTimeout(resetNavForViewport, 150); });
 
   // ---------- live site search (top bar) ----------
   (function(){
@@ -1718,52 +1708,5 @@
     });
   })();
 </script>
-
-
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/66a63f20becc2fed692c2214/1i3smd6el';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-
-
-<script>
-  (function(){
-    var applyBtn = document.getElementById('applyNowBtn');
-    var cpdBtn = document.getElementById('cpdPortalBtn');
-    if (!applyBtn || !cpdBtn) return;
-
-    function alignApplyNow(){
-      // Below this width the desktop nav (and CPD Portal button) is hidden
-      // in favour of the hamburger menu, so there's nothing to align to.
-      if (window.innerWidth <= 1100) {
-        applyBtn.style.transform = '';
-        return;
-      }
-      var applyRect = applyBtn.getBoundingClientRect();
-      var cpdRect = cpdBtn.getBoundingClientRect();
-      var applyCenter = applyRect.left + (applyRect.width / 2);
-      var cpdCenter = cpdRect.left + (cpdRect.width / 2);
-      var shift = cpdCenter - applyCenter;
-      applyBtn.style.transform = 'translateX(' + shift + 'px)';
-    }
-
-    alignApplyNow();
-    window.addEventListener('resize', alignApplyNow);
-    window.addEventListener('load', alignApplyNow);
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(alignApplyNow);
-    }
-  })();
-</script>
-
 </body>
 </html>
